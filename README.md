@@ -11,3 +11,6 @@ App for a veterinary practice to store and maintain information relating to clie
  - Angular 8
  - Material UI
 
+## URLS for Angular/Material:
+### https://material.io
+### https://angular.io 
