@@ -23,7 +23,7 @@ import { DoggydashComponent } from './components/doggydash/doggydash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { FrontpageComponent } from './layout/frontpage/frontpage.component';
+import { LoginComponent } from './components/login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { FrontpageComponent } from './layout/frontpage/frontpage.component';
     EmployeesComponent,
     DoggynavComponent,
     DoggydashComponent,
-    FrontpageComponent
+    LoginComponent 
   ],
   imports: [
     BrowserModule,
