@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; 
  
 import { DoggydashComponent } from './components/doggydash/doggydash.component';
-import { ClientsComponent } from './components/clients/clients.component';
+import { ClientsComponent } from './components/cli/clients/clients.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { LoginComponent } from './components/login/login.component'; 
+import { LoginComponent } from './components/logins/login/login.component'; 
 
 
 const routes: Routes = [
