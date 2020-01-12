@@ -49,7 +49,8 @@ import { LoginComponent } from './components/login/login.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule
   ],
   providers: [
     EmployeesService,
