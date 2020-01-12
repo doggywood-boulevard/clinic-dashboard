@@ -24,7 +24,21 @@ import { DoggydashComponent } from './components/doggydash/doggydash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
-import { LoginComponent } from './components/login/login.component'; 
+import { LoginComponent } from './components/login/login.component';
+import { CreateClientComponent } from './components/create-client/create-client.component';
+import { CliProfileComponent } from './components/cli-profile/cli-profile.component';
+import { VetCliProfileComponent } from './components/vet-cli-profile/vet-cli-profile.component';
+import { ApptComponent } from './components/appt/appt.component';
+import { ApptCreateComponent } from './components/appt-create/appt-create.component';
+import { EmpVetLoginComponent } from './components/emp-vet-login/emp-vet-login.component';
+import { EmpRecLoginComponent } from './components/emp-rec-login/emp-rec-login.component';
+import { CliAnimalProfileComponent } from './components/cli-animal-profile/cli-animal-profile.component';
+import { VetAnimalProfileComponent } from './components/vet-animal-profile/vet-animal-profile.component';
+import { AnimalCreateComponent } from './components/animal-create/animal-create.component';
+import { VetLandingComponent } from './components/vet-landing/vet-landing.component';
+import { VetPetRecordComponent } from './components/vet-pet-record/vet-pet-record.component';
+import { CliPetRecordComponent } from './components/cli-pet-record/cli-pet-record.component';
+import { RecLandingComponent } from './components/rec-landing/rec-landing.component'; 
 
 @NgModule({
   declarations: [
@@ -33,7 +47,21 @@ import { LoginComponent } from './components/login/login.component';
     EmployeesComponent,
     DoggynavComponent,
     DoggydashComponent,
-    LoginComponent 
+    LoginComponent,
+    CreateClientComponent,
+    CliProfileComponent,
+    VetCliProfileComponent,
+    ApptComponent,
+    ApptCreateComponent,
+    EmpVetLoginComponent,
+    EmpRecLoginComponent,
+    CliAnimalProfileComponent,
+    VetAnimalProfileComponent,
+    AnimalCreateComponent,
+    VetLandingComponent,
+    VetPetRecordComponent,
+    CliPetRecordComponent,
+    RecLandingComponent 
   ],
   imports: [
     BrowserModule,
