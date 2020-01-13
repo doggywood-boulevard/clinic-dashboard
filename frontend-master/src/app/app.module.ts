@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { DoggydashComponent } from './components/doggydash/doggydash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -75,6 +76,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatSelectModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
