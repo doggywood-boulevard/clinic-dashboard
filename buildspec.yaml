@@ -11,11 +11,10 @@ phases:
       - cd ..
     build:
       commands:
-	- cd frontend-master
-        - ng build --prod
-	- cd ..
+      - cd frontend-master
+      - ng build --prod
+      - cd ..
     post_build:
       commands:
-        - aws s3 cp frontend-master/dist/doggywood 
-s3://doggywood-veterinary --recursive
+      - aws s3 cp frontend-master/dist/doggywood s3://doggywood-veterinary --recursive
   
