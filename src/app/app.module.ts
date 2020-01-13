@@ -39,6 +39,7 @@ import { VetLandingComponent } from './components/landing/vet-landing/vet-landin
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-record.component';
 import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component'; 
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { RecLandingComponent } from './components/landing/rec-landing/rec-landin
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule
   ],
   providers: [
     EmployeesService,
