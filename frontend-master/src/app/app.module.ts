@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { DoggydashComponent } from './components/doggydash/doggydash.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -40,6 +41,9 @@ import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-r
 import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-record.component';
 import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component'; 
 import {FlexLayoutModule} from '@angular/flex-layout';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -75,12 +79,15 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatSelectModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     EmployeesService,
