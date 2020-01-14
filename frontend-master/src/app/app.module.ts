@@ -42,6 +42,9 @@ import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-r
 import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component'; 
 import {FlexLayoutModule} from '@angular/flex-layout';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -82,7 +85,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatCardModule,
     MatMenuModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     EmployeesService,
