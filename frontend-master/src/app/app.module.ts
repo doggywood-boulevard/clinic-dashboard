@@ -1,30 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { EmployeesService } from './services/employees.service';
-import { ClientsService } from './services/clients.service';  
+import { ClientsService } from './services/clients.service';
 import { ClientsComponent } from './components/cli/clients/clients.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoggynavComponent } from './layout/doggynav/doggynav.component';
-
-import { LayoutModule } from '@angular/cdk/layout';
-import {MatInputModule} from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import { MatListModule } from '@angular/material/list';
 import { DoggydashComponent } from './components/doggydash/doggydash.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
 import { LoginComponent } from './components/logins/login/login.component';
 import { CreateClientComponent } from './components/cli/create-client/create-client.component';
 import { CliProfileComponent } from './components/landing/cli-profile/cli-profile.component';
@@ -39,15 +26,26 @@ import { AnimalCreateComponent } from './components/animal-create/animal-create.
 import { VetLandingComponent } from './components/landing/vet-landing/vet-landing.component';
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-record.component';
-import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component'; 
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component';
 
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     ClientsComponent,
     EmployeesComponent,
     DoggynavComponent,
@@ -66,7 +64,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     VetLandingComponent,
     VetPetRecordComponent,
     CliPetRecordComponent,
-    RecLandingComponent 
+    RecLandingComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +89,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   providers: [
     EmployeesService,
-    ClientsService 
+    ClientsService
   ],
   bootstrap: [AppComponent]
 })
