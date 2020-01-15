@@ -1,1 +1,50 @@
-<p>animal-create works!</p>
+<div fxLayout="column" fxLayoutAlign="space-evenly center">
+    <h3>{{title}}:</h3>
+
+    <form class="example-form child-1">
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" value="">
+        </mat-form-field>
+    </form>
+
+    <form class="example-form child-1">
+        <mat-form-field class="formField">
+            <mat-label>Type</mat-label>
+            <mat-select>
+                <mat-option value="dog">Dog</mat-option>
+                <mat-option value="cat">Cat</mat-option>
+                <mat-option value="parrot">Parrot</mat-option>
+                <mat-option value="ferret">Ferret</mat-option>
+                <mat-option value="other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+
+    <form class="example-form child-1">
+        <mat-form-field class="example-full-width">
+            <mat-label>Breed</mat-label>
+            <input matInput placeholder="Breed" value="">
+        </mat-form-field>
+    </form>
+
+    <form class="example-form child-1">
+        <mat-form-field class="example-full-width">
+            <mat-label>Weight</mat-label>
+            <input matInput  type="number" min="0" placeholder="Weight">
+        </mat-form-field>
+    </form>
+
+    <form class="example-form child-1">
+        <mat-form-field class="example-full-width">
+            <mat-label>Age</mat-label>
+            <input matInput type="number" min="0" placeholder="Age">
+        </mat-form-field>
+
+    </form>
+    <button button="submit" mat-raised-button color="primary">SUBMIT</button>
+    <hr>
+    <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button>
+    <hr>
+</div>
+
