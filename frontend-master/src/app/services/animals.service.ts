@@ -9,11 +9,17 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 })
 export class AnimalsService {
 
+  aniList: Animal[];
+  url: string= "http://localhost:3000/pet";
+  
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http :HttpClient) { }
    
+   getPets(): Observable<Animal[]>{
+     return this.http.get<Animal[]>(this.url);
+   }
     // form = new FormGroup({
     //   $key: (null),
     //   p_id: new FormControl(0),
@@ -45,7 +51,6 @@ export class AnimalsService {
     //   'p_id': [this.aniService.p_id],
     //   'c_id': [this.user.password]
     // });
-  aniList: Animal[];
 
   insertAnimal(animal) {
     this.aniList.push({

@@ -25,10 +25,11 @@ export class AnimalCreateComponent implements OnInit {
   animalCreateForm: FormGroup;
   constructor(private aniService: AnimalsService, private formBuilder: FormBuilder) { }
 
-
+  public petsList = [];
  
   ngOnInit() {
-
+    this.aniService.getPets()
+      .subscribe(data => this.petsList = data);
     this.showTitle();
     // this.p_id,
     // this.c_id,
