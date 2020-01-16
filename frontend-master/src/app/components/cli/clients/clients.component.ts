@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Customer } from 'src/app/models/customer';
 
 
+// import { RegisterModel } from '../models/register.model';
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
