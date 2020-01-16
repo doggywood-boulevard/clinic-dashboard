@@ -17,7 +17,7 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {
     // this.displayAllCustomer();
-    this.getCustomer();
+    // this.getCustomer();
   }
   // customer1: string;
   // c_id :number;
@@ -29,11 +29,11 @@ export class ClientsComponent implements OnInit {
   // photo :string;
 client :Customer;
 
-getCustomer(){
-  this.clientService.getClient(1).subscribe((response)=>{
-  this.client.c_id = response[0];  
-  });
-}
+// getCustomer(){
+//   this.clientService.getClient(1).subscribe((response)=>{
+//   this.client.c_id = response[0];  
+//   });
+// }
 
 }
 
