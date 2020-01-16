@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Animal } from 'src/app/models/animal';
+import { AnimalModel } from '../../models/animalModel';
+import { Animal } from '../../models/animal';
 import { AnimalsService } from '../../services/animals.service';
-import { Observable } from 'rxjs';
+import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+
 
 @Component({
   selector: 'app-animal-create',
@@ -9,36 +11,58 @@ import { Observable } from 'rxjs';
   styleUrls: ['./animal-create.component.css']
 })
 export class AnimalCreateComponent implements OnInit {
-  c_id: number;
-  p_id: number;
-  p_name: string;
-  dob: string;
-  p_weight: number;
-  p_breed: string;
-  p_type: number;
-  p_description: string;
-  photo: string;
+  // c_id: number;
+  // p_id: number;
+  // p_name: string;
+  // dob: string;
+  // p_weight: number;
+  // p_breed: string;
+  // p_type: number;
+  // p_description: string;
+  // photo: string;
 
-  constructor(private aniService: AnimalsService) { }
+  animal:AnimalModel = new AnimalModel();
+  animalCreateForm: FormGroup;
+  constructor(private aniService: AnimalsService, private formBuilder: FormBuilder) { }
 
+
+ 
   ngOnInit() {
+
     this.showTitle();
+    // this.p_id,
+    // this.c_id,
+    // this.p_name,
+    // this.dob,
+    // this.p_weight,
+    // this.p_type,
+    // this.p_breed,
+    // this.p_description,
+    // this.photo  
+    this.animalCreateForm = this.formBuilder.group({
+      'p_name': this.animal.p_name,
+      'p_breed': this.animal.p_breed,
+      'dob': this.animal.dob,
+      'p_weight': this.animal.p_weight,
+      'p_type': this.animal.p_type,
+      'photo': this.animal.photo,
+      'p_description': this.animal.p_description
+    });
   }
 
-  title: string = 'XXX';
-
+  title: string = '';
   showTitle() {
     this.title = 'Add Pet';
-  }
+  };
 
   submitToConsole() {
     console.log("adding to database");
     this.aniService.addJSONAnimal(new Animal(
-     99,
+      99,
       199,
       'peter-parrot',
       '9-9-99',
-     10,
+      10,
       3,
       'Macao',
       'Ugly, talkative',
@@ -52,8 +76,13 @@ export class AnimalCreateComponent implements OnInit {
       // this.p_breed,
       // this.p_description,
       // this.photo
-      ));
+    ));
   }
+
+  // onClear() {
+  //   this.aniService.form.reset();
+  //   this.aniService.initializeFormGroup();
+  // }
 
   addFormAnimal() {
     // this.validateInputFields();
@@ -63,22 +92,22 @@ export class AnimalCreateComponent implements OnInit {
       199,
       'peter-parrot',
       '9-9-99',
-     10,
+      10,
       3,
       'Macao',
       'Ugly, talkative',
       's3//doggywood-veterinary/parrot.png')).subscribe(
         (response) => {
           console.log(response);
-            // let list = this.animalList.slice();
-            // list.push(response);
-            // this.animalList = list;
-          },
-          (response) => {
-            console.log("Failed to add Animal");
-            console.log(response);
-          }
-    );
+          // let list = this.animalList.slice();
+          // list.push(response);
+          // this.animalList = list;
+        },
+        (response) => {
+          console.log("Failed to add Animal");
+          console.log(response);
+        }
+      );
     // }
   }
 }

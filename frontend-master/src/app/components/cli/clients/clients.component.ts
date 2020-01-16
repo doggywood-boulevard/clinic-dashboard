@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+// import { RegisterModel } from '../models/register.model';
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
