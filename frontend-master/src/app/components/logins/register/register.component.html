@@ -1,0 +1,74 @@
+<!-- <div fxLayout="column" fxLayoutAlign="space-evenly center"> -->
+    <h3>{{title}}:</h3>
+ 
+<div class="medium-list">
+  <div class="list-viewer-wrapper">
+    <div class="list-header-title">Register</div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onRegisterSubmit()" novalidate>
+      <div class="form-container">
+        <mat-form-field>
+          <input id="fname"
+                 matInput
+                 formControlName="fname"
+                 [(ngModel)]="user.fname"
+                 placeholder="Enter your name" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input id="email"
+                   matInput
+                   formControlName="email"
+                   [(ngModel)]="user.email"
+                   placeholder="Enter your email" />
+          </mat-form-field>
+
+        <mat-form-field>
+            <input id="password"
+                   matInput
+                   formControlName="password"
+                   [(ngModel)]="user.password"
+                   placeholder="Enter your password"
+                   [type]="hide ? 'password':'text'" />
+              <mat-icon matSuffix (click)="hide = !hide">
+                {{hide ? 'visibility' : 'visibility_off'}}
+              </mat-icon>
+          </mat-form-field>
+
+          <button mat-button type="submit" 
+                  class="mat-raised-button mat-primary" 
+                  [disabled]="!registerForm.valid">Register</button>
+          <button mat-button routerLink="/login" class="divider">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+ 
+
+    <!-- <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid" class="normal-form child-1">
+<div class="form-container">
+     
+        <mat-form-field class="example-full-width">
+            <input id="fname" matInput FormControlName="fname" placeholder="Name" type="text" [(ngModel)]="user.fname">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+            <input id="email" matInput FormControlName="email" placeholder="Name" type="text" [(ngModel)]="user.email">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+            <input id="password" matInput FormControlName="password" placeholder="Name" type="text"
+                [(ngModel)]="user.password">
+        </mat-form-field>
+        <br />
+
+
+        <button type="submit" mat-raised-button color="primary">Register</button>
+        <button mat-raised-button routerLink="/login" class="divider"  >Login</button>
+
+</div>
+    </form> -->
+
+<!-- </div> -->

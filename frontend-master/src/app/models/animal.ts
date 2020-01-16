@@ -1,4 +1,4 @@
-export class Animal {
+export class Animal  {
     p_id: number;
     c_id: number;
     p_name: string;

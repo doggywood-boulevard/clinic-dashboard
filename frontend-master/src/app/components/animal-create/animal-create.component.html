@@ -1,50 +1,60 @@
 <div fxLayout="column" fxLayoutAlign="space-evenly center">
-    <h3>{{title}}:</h3>
 
-    <form class="example-form child-1">
+    <h3>{{title}}:</h3>
+    <!-- <form [formGroup]="aniService.form" (submit)="onSubmit()" class="normal-form child-1"> -->
+    <form [formGroup]="animalCreateForm" (submit)="submit" class="normal-form child-1">
 
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name" value="">
+            <input matInput placeholder="Name" type="text" name="name"  
+                formControlName="p_name">
         </mat-form-field>
-    </form>
+        <br />
 
-    <form class="example-form child-1">
         <mat-form-field class="formField">
             <mat-label>Type</mat-label>
             <mat-select>
-                <mat-option value="dog">Dog</mat-option>
-                <mat-option value="cat">Cat</mat-option>
-                <mat-option value="parrot">Parrot</mat-option>
-                <mat-option value="ferret">Ferret</mat-option>
-                <mat-option value="other">Other</mat-option>
+                <!-- <ng-container *ngFor="let t of type.array">
+                    <mat-option value="{{t.$key}}">{{t.code}}-{{t.p_type}}</mat-option> -->
+                <mat-option value="1">Dog</mat-option>
+                <mat-option value="2">Cat</mat-option>
+                <mat-option value="3">Parrot</mat-option>
+                <mat-option value="4">Ferret</mat-option>
+                <mat-option value="5">Other</mat-option>
+                <!-- </ng-container> -->
             </mat-select>
         </mat-form-field>
-    </form>
+        <br />
 
-    <form class="example-form child-1">
         <mat-form-field class="example-full-width">
             <mat-label>Breed</mat-label>
-            <input matInput placeholder="Breed" value="">
+            <input matInput placeholder="Breed"  formControlName="p_breed"> 
         </mat-form-field>
-    </form>
+        <br />
 
-    <form class="example-form child-1">
         <mat-form-field class="example-full-width">
             <mat-label>Weight</mat-label>
-            <input matInput  type="number" min="0" placeholder="Weight">
+            <input matInput type="number" min="0" placeholder="Weight" 
+                formControlName="p_weight"> 
         </mat-form-field>
-    </form>
+        <br />
 
-    <form class="example-form child-1">
         <mat-form-field class="example-full-width">
-            <mat-label>Age</mat-label>
-            <input matInput type="number" min="0" placeholder="Age">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput type="number" min="0" placeholder="Date of Birth"  
+                formControlName="dob"> 
         </mat-form-field>
+        <br />
 
-    </form>
-    <button button="submit" mat-raised-button color="primary">SUBMIT</button>
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput type="number" min="0" placeholder="Description"  
+                formControlName="p_description"> 
+        </mat-form-field>
+        <br />
+
+        <button type="submit" mat-raised-button color="primary"> SUBMIT </button>
     <hr>
-    <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button>
-    <hr>
+        <br />
+        <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button>
+</form>
 </div>
-
