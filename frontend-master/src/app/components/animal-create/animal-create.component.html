@@ -2,7 +2,7 @@
 
     <h3>{{title}}:</h3>
     <!-- <form [formGroup]="aniService.form" (submit)="onSubmit()" class="normal-form child-1"> -->
-    <form [formGroup]="animalCreateForm" (submit)="submit" class="normal-form child-1">
+    <form [formGroup]="animalCreateForm"  class="normal-form child-1"><!--(submit)="submit"-->
 
         <mat-form-field class="example-full-width">
             <input matInput placeholder="Name" type="text" name="name"  
@@ -57,4 +57,20 @@
         <br />
         <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button>
 </form>
+<div>
+    <h2>some pets</h2>
+        <img [src]="https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg" width=200" />
+    <ul *ngFor="let pet of petsList">
+        <img src="{{pet.photo}}" width=200" />
+        <li>{{pet.p_id}}</li>
+        <li>{{pet.c_id}}</li>
+        <li>{{pet.p_name}}</li>
+        <li>{{pet.dob}}</li>
+        <li>{{pet.p_weight}}</li>
+        <li>{{pet.p_type}}</li>
+        <li>{{pet.p_breed}}</li>
+        <li>{{pet.p_description}}</li> 
+        
+    </ul>
+</div>
 </div>
