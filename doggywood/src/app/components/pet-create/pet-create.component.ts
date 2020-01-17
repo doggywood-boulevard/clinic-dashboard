@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PetsService } from '../../services/pets.service';
+
 
 @Component({
   selector: 'app-pet-create',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private aniService: PetsService) { }
+  public petsList = [];
+  public petsLocalDBList = [];
 
-  ngOnInit() {
-  }
+  ngOnInit() {    // on page load here  
+    this.aniService.getPets()
+      .subscribe(data => this.petsList = data); 
+// pets_url: string = 'http://localhost:8080/pets';
+// [{
+// 	"id": 2,
+// 	"cId": 1,
+// 	"petName": "Whiskers",
+// 	"birthDate": "2017-08-01 00:00:00.0",
+// 	"weight": 69,
+// 	"type": 2,
+// 	"breed": "English Bdog",
+// 	"description": null
+// }]
 
+    this.aniService.getPetsLocal()
+      .subscribe(data => this.petsLocalDBList = data);
+  } 
 }

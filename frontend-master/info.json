@@ -7,7 +7,7 @@
 			"phone": "555-555-5555",
 			"email": "boomermail@aol.com",
 			"pass": "hunter2",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.png"
 		},
 		{
 			"c_id": 2,
@@ -16,7 +16,7 @@
 			"phone": "666-666-6666",
 			"email": "catlady@aol.com",
 			"pass": "password",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.png"
 		},
 		{
 			"c_id": 3,
@@ -25,7 +25,7 @@
 			"phone": "777-777-7777",
 			"email": "phillyjim@aol.com",
 			"pass": "1234",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.png"
 		}
 	],
 	"pet": [
@@ -38,7 +38,7 @@
 			"p_type": 2,
 			"p_breed": "Himalayan",
 			"p_description": "Diabeetus.",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.png"
 		},
 		{
 			"p_id": 2,
@@ -49,7 +49,7 @@
 			"p_type": 2,
 			"p_breed": "Bengal",
 			"p_description": "There's bad blood--cliques, gangs.",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.png"
 		},
 		{
 			"p_id": 3,
@@ -60,7 +60,7 @@
 			"p_type": 2,
 			"p_breed": "British Shorthair",
 			"p_description": "Feral barn cat.",
-			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.png"
 		}
 	],
 	"appointment": [
