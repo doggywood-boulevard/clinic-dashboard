@@ -21,24 +21,29 @@ import { VetCliProfileComponent } from './components/vet/vet-cli-profile/vet-cli
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 
 const routes: Routes = [ 
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent  },
+  { path: 'cliLanding', component: CliProfileComponent},
+  { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent}, 
+  { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent},
+  { path: 'createClient', component: CreateClientComponent},
   { path: 'register', component: RegisterComponent },
+
   { path: 'pets', component: DoggydashComponent },   
   { path: 'clients', component: ClientsComponent }, 
   { path: 'petCreate', component: PetCreateComponent},
   { path: 'appt/:apptId', component: ApptComponent},
   { path: 'apptCreate', component: ApptCreateComponent},
-  { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent},
-  { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent},
-  { path: 'createClient', component: CreateClientComponent},
-  { path: 'cliLanding', component: CliProfileComponent},
-  { path: 'recLanding', component: RecLandingComponent},
-  { path: 'vetLanding', component: VetLandingComponent},
+
   { path: 'recLogin', component: EmpRecLoginComponent},
-  { path: 'vetLogin', component: EmpVetLoginComponent},
-  { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},
+  { path: 'recLanding', component: RecLandingComponent},
+
+  { path: 'vetLogin', component: EmpVetLoginComponent},  
+  { path: 'vetLanding', component: VetLandingComponent},
   { path: 'vetClientProfile/:clientId', component: VetCliProfileComponent},
-  { path: 'vetPetRecord/:animalId', component: VetPetRecordComponent}
+  { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},  
+  { path: 'vetPetRecord/:animalId', component: VetPetRecordComponent},
+  /* catch-all */
+  { path: '*', component: LoginComponent}
   // { path: 'admin/:userId', component: EmployeesComponent }
   // { path: 'clients/:userId', component: ClientsComponent }
 ];
