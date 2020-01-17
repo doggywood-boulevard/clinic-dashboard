@@ -13,8 +13,8 @@ public class Pet {
 	@Column(name = "P_ID")
 	private int id;
 	
-	@Column(name = "C_ID")
-	private int c_id;
+	@Column(name = "cId")
+	private int cId;
 	
 	@Column(name = "P_NAME")
 	private String petName;
@@ -34,11 +34,11 @@ public class Pet {
 	@Column(name = "P_DESCRIPTION")
 	private String Description;
 
-	public Pet(int id, int c_id, String petName, String birthDate, int weight, int type, String breed,
+	public Pet(int id, int cId, String petName, String birthDate, int weight, int type, String breed,
 			String description) {
 		super();
 		this.id = id;
-		this.c_id = c_id;
+		this.cId = cId;
 		this.petName = petName;
 		this.birthDate = birthDate;
 		this.weight = weight;
@@ -47,9 +47,9 @@ public class Pet {
 		Description = description;
 	}
 
-	public Pet(int c_id, String petName, String birthDate, int weight, int type, String breed, String description) {
+	public Pet(int cId, String petName, String birthDate, int weight, int type, String breed, String description) {
 		super();
-		this.c_id = c_id;
+		this.cId = cId;
 		this.petName = petName;
 		this.birthDate = birthDate;
 		this.weight = weight;
@@ -70,12 +70,12 @@ public class Pet {
 		this.id = id;
 	}
 
-	public int getC_id() {
-		return c_id;
+	public int getcId() {
+		return cId;
 	}
 
-	public void setC_id(int c_id) {
-		this.c_id = c_id;
+	public void setcId(int cId) {
+		this.cId = cId;
 	}
 
 	public String getPetName() {
@@ -128,7 +128,7 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", c_id=" + c_id + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
+		return "Pet [id=" + id + ", cId=" + cId + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
 				+ weight + ", type=" + type + ", breed=" + breed + ", Description=" + Description + "]";
 	}
 	
