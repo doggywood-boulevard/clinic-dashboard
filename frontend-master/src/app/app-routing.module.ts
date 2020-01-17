@@ -5,6 +5,8 @@ import { DoggydashComponent } from './components/doggydash/doggydash.component';
 import { ClientsComponent } from './components/cli/clients/clients.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { LoginComponent } from './components/logins/login/login.component'; 
+import { RegisterComponent } from './components/logins/register/register.component'; 
+
 import { AnimalCreateComponent } from './components/animal-create/animal-create.component';
 import { ApptComponent } from './components/appt/appt.component';
 import { ApptCreateComponent } from './components/appt-create/appt-create.component';
@@ -24,6 +26,7 @@ import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-r
 const routes: Routes = [
    
   { path: '', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'pets', component: DoggydashComponent },  
   { path: 'admin', component: EmployeesComponent },
   { path: 'clients', component: ClientsComponent }, 
