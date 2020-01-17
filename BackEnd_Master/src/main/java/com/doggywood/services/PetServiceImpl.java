@@ -3,10 +3,12 @@ package com.doggywood.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.doggywood.entities.Pet;
 import com.doggywood.repositories.PetRepository;
 
+@Service
 public class PetServiceImpl implements PetService {
 
 	@Autowired
@@ -45,7 +47,7 @@ public class PetServiceImpl implements PetService {
 
 	@Override
 	public List<Pet> getAllPetsByCustomer(int c_id) {
-		return pr.findByCId(c_id);
+		return pr.findBycId(c_id);
 	}
 
 }
