@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
- 
+ /* CUSTOM CLASSES */
+ .scroll-window {
+   /* this class for scrolling through long lists */
+   max-height:400px;
+   overflow-y: scroll;
+ }
+
+
 /* ANGULAR */
 
   :host {

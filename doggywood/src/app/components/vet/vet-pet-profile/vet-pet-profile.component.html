@@ -1,1 +1,34 @@
 <p>vet-pet-profile works!</p>
+
+<div class="row">
+    <div class="scroll-window col col-xs-6">
+        <ul *ngFor="let pet of petsLocalDBList">
+        <h6>JSON-SERVER: http://localhost:3000/pet</h6>
+        <hr>
+            <!-- <img src="{{pet.photo}}" width=200" /> -->
+            <li>{{pet.p_id}}</li>
+            <li>{{pet.c_id}}</li>
+            <li>{{pet.p_name}}</li>
+            <li>{{pet.dob}}</li>
+            <li>{{pet.p_weight}}</li>
+            <li>{{pet.p_type}}</li>
+            <li>{{pet.p_breed}}</li>
+            <li>{{pet.p_description}}</li>
+        </ul>
+    </div>
+    <div class="scroll-window col col-xs-6">
+        <h6>DATABASE: http://localhost:8080/pets</h6>
+        <hr>
+        <ul *ngFor="let pet of petsList">
+            <!-- <img src="{{pet.photo}}" width=200" /> -->
+            <li>{{pet.id}}</li>
+            <li>{{pet.cId}}</li>
+            <li>{{pet.petName}}</li>
+            <li>{{pet.birthDate}}</li>
+            <li>{{pet.weight}}</li>
+            <li>{{pet.type}}</li>
+            <li>{{pet.p_breed}}</li>
+            <li>{{pet.description}}</li>
+        </ul>
+    </div>
+</div>
