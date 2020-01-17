@@ -71,11 +71,6 @@ public class PetController {
 	public List<Pet> getAllPetsByCustomer(int c_id) {
 		return ps.getAllPetsByCustomer(c_id);
 	}
-	
-	
-	
-	
-	
-	
+	 
 	
 }
