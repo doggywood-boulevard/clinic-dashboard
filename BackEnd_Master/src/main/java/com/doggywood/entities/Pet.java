@@ -31,8 +31,8 @@ public class Pet {
 	@Column(name = "P_BREED")
 	private String breed;
 	
-	@Column(name = "P_DESCRIPTION")
-	private String Description;
+	@Column(name = "P_description")
+	private String description;
 
 	public Pet(int id, int cId, String petName, String birthDate, int weight, int type, String breed,
 			String description) {
@@ -44,7 +44,7 @@ public class Pet {
 		this.weight = weight;
 		this.type = type;
 		this.breed = breed;
-		Description = description;
+		this.description = description;
 	}
 
 	public Pet(int cId, String petName, String birthDate, int weight, int type, String breed, String description) {
@@ -55,7 +55,7 @@ public class Pet {
 		this.weight = weight;
 		this.type = type;
 		this.breed = breed;
-		Description = description;
+		this.description = description;
 	}
 
 	public Pet() {
@@ -118,18 +118,18 @@ public class Pet {
 		this.breed = breed;
 	}
 
-	public String getDescription() {
-		return Description;
+	public String getdescription() {
+		return this.description;
 	}
 
-	public void setDescription(String description) {
-		Description = description;
+	public void setdescription(String description) {
+		this.description = description;
 	}
 
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", cId=" + cId + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
-				+ weight + ", type=" + type + ", breed=" + breed + ", Description=" + Description + "]";
+				+ weight + ", type=" + type + ", breed=" + breed + ", description=" + description + "]";
 	}
 	
 	
