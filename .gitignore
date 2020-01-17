@@ -1,2 +1,4 @@
+Servers/
 frontend-master/node_modules/
 frontend-master/dist/
+/.metadata/
