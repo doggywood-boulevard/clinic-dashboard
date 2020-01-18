@@ -1,36 +1,128 @@
+<!-- [{"id":2,"cId":1,"petName":"Whiskers","birthDate":"2017-08-01 00:00:00.0","weight":69,"type":2,"breed":"English Bdog","description":null}] -->
+
+
+  <!-- <form [formGroup]="aniService.form" (submit)="onSubmit()" class="normal-form child-1"> -->
+  <!-- <form [formGroup]="animalCreateForm" class="normal-form child-1"> -->
+<form #petForm="ngForm" (ngSubmit)="savePet()">
+<div class="panel panel-primary" *ngIf="pet">
+     <div class="panel-heading">
+            <h3 class="panel-title">{{panelTitle}}</h3>
+        </div>
+    <!-- <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" type="text" name="name" formControlName="petName">
+        </mat-form-field> -->
+  <div class="panel-body">
+    <!-- <div class="form-group">
+      <label for="exampleFormControlInput1">Name</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Pet Name">
+    </div> -->
+            <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+                <label for="name" class="control-label">Pet Name<span class="required"> *</span></label>
+                <input id="name" required name="name" [(ngModel)]="pet.name" type="text" class="form-control" #name="ngModel">
+                <span class="help-block" *ngIf="name.invalid && name.touched"> Name is required
+                  </span>
+            </div>
+    <!-- <mat-form-field class="example-full-width">
+            <mat-label>Breed</mat-label>
+            <input matInput placeholder="Breed" formControlName="breed">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Weight</mat-label>
+            <input matInput type="number" min="0" placeholder="Weight" formControlName="weight">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput type="number" min="0" placeholder="Date of Birth" formControlName="birthDate">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput type="number" min="0" placeholder="Description" formControlName="description">
+        </mat-form-field>
+        <br /> -->
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <!-- <mat-label>Type</mat-label>
+            <mat-select>
+                 <ng-container *ngFor="let t of type.array"> 
+                    <mat-option value="{{t.$key}}">{{t.code}}-{{t.type}}</mat-option>
+                <mat-option value="1">Dog</mat-option>
+                <mat-option value="2">Cat</mat-option>
+                <mat-option value="3">Parrot</mat-option>
+                <mat-option value="4">Ferret</mat-option>
+                <mat-option value="5">Other</mat-option> 
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+        <br /> -->
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <!-- <button type="submit" mat-raised-button color="primary"> SUBMIT </button> -->
+    <!-- <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button> -->
+</div>
+</div>
+  </form>
+
+
 
 <div class="row">
-    <div class="scroll-window col col-xs-6">
-        <h6>JSON-SERVER: http://localhost:3000/pet</h6> 
-      <!-- <code>
+  <div class="scroll-window col col-xs-6">
+    <h6>JSON-SERVER: http://localhost:3000/pet</h6>
+    <!-- <code>
           [   {
-     "p_id": 1,
+     "id": 1,
      "c_id": 1,
-     "p_name": "Sprinkles",
+     "petName": "Sprinkles",
      "dob": "12-APR-01",
-     "p_weight": 60,
-     "p_type": 2,
-     "p_breed": "Himalayan",
-     "p_description": "Diabeetus.",
+     "weight": 60,
+     "type": 2,
+     "breed": "Himalayan",
+     "description": "Diabeetus.",
      "photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
    }]
       </code> -->
-        <ul *ngFor="let pet of petsLocalDBList">
-        <hr>
-            <!-- <img src="{{pet.photo}}" width=200" /> -->
-            <li>{{pet.p_id}}</li>
-            <li>{{pet.c_id}}</li>
-            <li>{{pet.p_name}}</li>
-            <li>{{pet.dob}}</li>
-            <li>{{pet.p_weight}}</li>
-            <li>{{pet.p_type}}</li>
-            <li>{{pet.p_breed}}</li>
-            <li>{{pet.p_description}}</li>
-        </ul>
-    </div>
-    <div class="scroll-window col col-xs-6"> 
-        <h6>DATABASE: http://localhost:8080/pets</h6>
-        <!-- <pre> 
+    <ul *ngFor="let pet of petsLocalDBList">
+      <hr>
+      <!-- <img src="{{pet.photo}}" width=200" /> -->
+      <li>{{pet.id}}</li>
+      <li>{{pet.cId}}</li>
+      <li>{{pet.petName}}</li>
+      <li>{{pet.birthDate}}</li>
+      <li>{{pet.weight}}</li>
+      <li>{{pet.type}}</li>
+      <li>{{pet.breed}}</li>
+      <li>{{pet.description}}</li>
+    </ul>
+  </div>
+  <div class="scroll-window col col-xs-6">
+    <h6>DATABASE: http://localhost:8080/pets</h6>
+    <!-- <pre> 
          [{
          	"id": 2,
          	"cId": 1,
@@ -42,94 +134,17 @@
          	"description": null
          }]
         </pre> -->
-        <hr>
-        <ul *ngFor="let pet of petsList">
-            <!-- <img src="{{pet.photo}}" width=200" /> -->
-            <li>{{pet.id}}</li>
-            <li>{{pet.cId}}</li>
-            <li>{{pet.petName}}</li>
-            <li>{{pet.birthDate}}</li>
-            <li>{{pet.weight}}</li>
-            <li>{{pet.type}}</li>
-            <li>{{pet.p_breed}}</li>
-            <li>{{pet.description}}</li>
-        </ul>
-    </div>
+    <hr>
+    <ul *ngFor="let pet of petsList">
+      <!-- <img src="{{pet.photo}}" width=200" /> -->
+      <li>{{pet.id}}</li>
+      <li>{{pet.cId}}</li>
+      <li>{{pet.petName}}</li>
+      <li>{{pet.birthDate}}</li>
+      <li>{{pet.weight}}</li>
+      <li>{{pet.type}}</li>
+      <li>{{pet.breed}}</li>
+      <li>{{pet.description}}</li>
+    </ul>
+  </div>
 </div>
-<!-- [{"id":2,"cId":1,"petName":"Whiskers","birthDate":"2017-08-01 00:00:00.0","weight":69,"type":2,"breed":"English Bdog","description":null}] -->
-<div class="row">
-    <!-- <form [formGroup]="aniService.form" (submit)="onSubmit()" class="normal-form child-1"> -->
-    <!-- <form [formGroup]="animalCreateForm" class="normal-form child-1"> -->
-<form>
-     <!-- <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name" type="text" name="name" formControlName="p_name">
-        </mat-form-field> -->
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-<!-- <mat-form-field class="example-full-width">
-            <mat-label>Breed</mat-label>
-            <input matInput placeholder="Breed" formControlName="p_breed">
-        </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Weight</mat-label>
-            <input matInput type="number" min="0" placeholder="Weight" formControlName="p_weight">
-        </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Date of Birth</mat-label>
-            <input matInput type="number" min="0" placeholder="Date of Birth" formControlName="dob">
-        </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <input matInput type="number" min="0" placeholder="Description" formControlName="p_description">
-        </mat-form-field>
-        <br /> -->
-
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-       <!-- <mat-label>Type</mat-label>
-            <mat-select>
-                 <ng-container *ngFor="let t of type.array"> 
-                    <mat-option value="{{t.$key}}">{{t.code}}-{{t.p_type}}</mat-option>
-                <mat-option value="1">Dog</mat-option>
-                <mat-option value="2">Cat</mat-option>
-                <mat-option value="3">Parrot</mat-option>
-                <mat-option value="4">Ferret</mat-option>
-                <mat-option value="5">Other</mat-option> 
-                </ng-container>
-            </mat-select>
-        </mat-form-field>
-        <br /> -->
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div> 
-        <!-- <button type="submit" mat-raised-button color="primary"> SUBMIT </button> -->
-    <!-- <button (click)="submitToConsole()" mat-raised-button>SUBMIT (toConsole)</button> -->
-</form> 
-</div> 

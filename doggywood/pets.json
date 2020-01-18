@@ -1,0 +1,37 @@
+ {
+     "pet": [
+		{
+			"id": 1,
+			"cId": 1,
+			"petName": "Sprinkles",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "Himalayan",
+			"description": "Diabeetus.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+		},
+		{
+			"id": 2,
+			"cId": 1,
+			"petName": "Bandit",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "Bengal",
+			"description": "There's bad blood--cliques, gangs.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+		},
+		{
+			"id": 3,
+			"cId": 2,
+			"petName": "Garbage",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "British Shorthair",
+			"description": "Feral barn cat.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+		}
+	] 
+ }
