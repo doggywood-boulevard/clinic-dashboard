@@ -3,10 +3,12 @@ package com.doggywood.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.doggywood.entities.Employee;
 import com.doggywood.repositories.EmployeeRepository;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
