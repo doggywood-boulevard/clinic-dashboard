@@ -43,13 +43,7 @@ BackEnd_Master/nbbuild/
 BackEnd_Master/dist/
 BackEnd_Master/nbdist/
 BackEnd_Master/.nb-gradle/
-BackEnd_Master/build/
-<<<<<<< HEAD
-
+BackEnd_Master/build/ 
 ### VS Code ###
-BackEnd_Master/.vscode/
-=======
-BackEnd_Master/
-BackEnd_Master/### VS Code ###
-BackEnd_Master/.vscode/
->>>>>>> c674b614b3a8f0ca9382c5b918df84719975d57f
+BackEnd_Master/.vscode/  
+ 
