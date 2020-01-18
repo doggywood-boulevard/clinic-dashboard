@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Navigation } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators, NgForm } from '@angular/forms';
 import { PetsService } from '../../services/pets.service';
-import { ClientsService } from '../../services/clients.service';
+import { ClientsService } from '../../services/clients.service'; 
 import { tap, first } from 'rxjs/operators';
 import { PetType } from '../../models/petType'
 import { Pet } from 'src/app/models/petModel';
@@ -38,11 +38,10 @@ export class PetCreateComponent implements OnInit {
   public petsList = [];
   //cust
   customer: Customer; 
-  public customersList = [];
+  public customersList = []; 
 
-
-
-  constructor(private aniService: PetsService, private clientService: ClientsService, private router: Router,
+  constructor(private petService: PetsService,  
+  private clientService: ClientsService, private router: Router,
     private activatedRoute: ActivatedRoute) {
       this.datePickerConfig = Object.assign({}, 
       {
@@ -54,20 +53,20 @@ export class PetCreateComponent implements OnInit {
     }
 
   ngOnInit() {    // on page load here  
-    this.aniService.getPets()
+    this.petService.getPets()
       .subscribe(data => this.petsList = data);
 
-    this.aniService.getPets()
+    this.petService.getPets()
       .subscribe(data => this.petsList = data);
     this.activatedRoute.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
       this.getPet(id);
     })
 // cust
-    this.aniService.getCustomers()
+    this.clientService.getCustomers()
       .subscribe(data => this.customersList = data);
 
-    this.aniService.getCustomers()
+    this.clientService.getCustomers()
       .subscribe(data => this.customersList = data);
     this.activatedRoute.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
@@ -91,7 +90,7 @@ export class PetCreateComponent implements OnInit {
       // this.createPetForm.resetForm();
     } else {
       // this.pet = Object.assign({}, this._petService.getPet(id));
-      this.aniService.getPet(id).subscribe(
+      this.petService.getPet(id).subscribe(
         (pet) => this.pet = pet,
         (err: any) => console.log('create-pet.comp:' + err)
       );
@@ -103,7 +102,7 @@ export class PetCreateComponent implements OnInit {
     //this._petService.save(newPet)(
       // this._petService.save(this.pet).subscribe(
       if (this.pet.id === null) {
-        this.aniService.addPet(this.pet).subscribe(
+        this.petService.addPet(this.pet).subscribe(
           (data: Pet) => {
             console.log(data);
             // this.createPetForm.resetForm();
@@ -112,7 +111,7 @@ export class PetCreateComponent implements OnInit {
           (error: any) => console.log(error)
         );
       } else {
-        this.aniService.updatePet(this.pet).subscribe(
+        this.petService.updatePet(this.pet).subscribe(
           () => { 
             // this.createPetForm.reset();
             // this.activatedRoute.navigate(['/']);
@@ -137,7 +136,7 @@ export class PetCreateComponent implements OnInit {
       // this.createPetForm.resetForm();
     } else {
       // this.pet = Object.assign({}, this._petService.getPet(id));
-      this.aniService.getCustomer(id).subscribe(
+      this.clientService.getCustomer(id).subscribe(
         (cust) => this.customer = cust,
         (err: any) => console.log('create-client.comp:' + err)
       );
@@ -149,7 +148,7 @@ export class PetCreateComponent implements OnInit {
     //this._petService.save(newPet)(
       // this._petService.save(this.pet).subscribe(
       if (this.pet.id === null) {
-        this.aniService.addPet(this.pet).subscribe(
+        this.petService.addPet(this.pet).subscribe(
           (data: Pet) => {
             console.log(data);
             // this.createPetForm.resetForm();
@@ -158,7 +157,7 @@ export class PetCreateComponent implements OnInit {
           (error: any) => console.log(error)
         );
       } else {
-        this.aniService.updatePet(this.pet).subscribe(
+        this.petService.updatePet(this.pet).subscribe(
           () => { 
             // this.createPetForm.reset();
             // this.activatedRoute.navigate(['/']);

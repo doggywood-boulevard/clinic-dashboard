@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../../../services/pets.service';
+import { ClientsService } from '../../../services/clients.service';
+
 
 @Component({
   selector: 'app-vet-pet-profile',
@@ -8,7 +10,7 @@ import { PetsService } from '../../../services/pets.service';
 })
 export class VetPetProfileComponent implements OnInit { 
 
-  constructor(private aniService: PetsService) { }
+  constructor(private aniService: PetsService, private cliService: ClientsService) { }
   public petsList = [];
   public customersList = [];
 
@@ -16,7 +18,7 @@ export class VetPetProfileComponent implements OnInit {
     this.aniService.getPets()
       .subscribe(data => this.petsList = data);
 
-    this.aniService.getCustomers()
+    this.cliService.getCustomers()
       .subscribe(data => this.customersList = data);
   } 
 

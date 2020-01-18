@@ -1,97 +1,205 @@
 {
-  "customer": [
-    {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe",
-      "phone": "555-555-5555",
-      "email": "boomermail@aol.com",
-      "password": "hunter2",
-      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
-    },
-    {
-      "id": 2,
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "phone": "666-666-6666",
-      "email": "catlady@aol.com",
-      "password": "passwordword",
-      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
-    },
-    {
-      "id": 3,
-      "firstName": "John",
-      "lastName": "Krasinski",
-      "phone": "777-777-7777",
-      "email": "phillyjim@aol.com",
-      "password": "1234",
-      "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
-    }
-  ],
-  "pet": [
-    {
-      "id": 1,
-      "cId": 1,
-      "petName": "Sprinkles",
-      "birthDate": "12-APR-01",
-      "weight": 60,
-      "type": 2,
-      "breed": "Himalayan",
-      "description": "Diabeetus.",
-      "photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
-    },
-    {
-      "id": 2,
-      "cId": 1,
-      "petName": "Bandit",
-      "birthDate": "12-APR-01",
-      "weight": 60,
-      "type": 2,
-      "breed": "Bengal",
-      "description": "There's bad blood--cliques, gangs.",
-      "photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
-    },
-    {
-      "id": 3,
-      "cId": 2,
-      "petName": "Garbage",
-      "birthDate": "12-APR-01",
-      "weight": 60,
-      "type": 2,
-      "breed": "British Shorthair",
-      "description": "Feral barn cat.",
-      "photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
-    },
-    {
-      "id": 4,
-      "cId": null,
-      "petName": "",
-      "birthDate": "33",
-      "weight": 33,
-      "type": null,
-      "breed": "sdf",
-      "description": "",
-      "name": "dsdf"
-    },
-    {
-      "id": 5,
-      "cId": null,
-      "petName": "a",
-      "birthDate": "a",
-      "weight": 1,
-      "type": null,
-      "breed": "a",
-      "description": "a"
-    },
-    {
-      "id": 6,
-      "cId": null,
-      "petName": "a",
-      "birthDate": "a",
-      "weight": 1,
-      "type": null,
-      "breed": "a",
-      "description": "a"
-    }
-  ]
+	"customers": [{
+			"id": 1,
+			"firstName": "John",
+			"lastName": "Doe",
+			"phone": "555-555-5555",
+			"email": "boomermail@aol.com",
+			"password": "hunter2",
+			"cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+		},
+		{
+			"id": 2,
+			"firstName": "Jane",
+			"lastName": "Doe",
+			"phone": "666-666-6666",
+			"email": "catlady@aol.com",
+			"password": "passwordword",
+			"cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
+		},
+		{
+			"id": 3,
+			"firstName": "John",
+			"lastName": "Krasinski",
+			"phone": "777-777-7777",
+			"email": "phillyjim@aol.com",
+			"password": "1234",
+			"cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+		}, {
+			"id": 3,
+			"firstName": "Crystal",
+			"lastName": "Diaz",
+			"phone": "888-888-8888",
+			"email": "project1@earthlink.net",
+			"password": "password",
+			"cusUrl": "gudpic.jpeg"
+		}, {
+			"id": 4,
+			"firstName": "Jalian",
+			"lastName": "JLast",
+			"phone": "999-999-9999",
+			"email": "project0@earthlink.net",
+			"password": "password",
+			"cusUrl": "greatpic.jpeg"
+		}, {
+			"id": 11,
+			"firstName": "Edmund",
+			"lastName": "Butkess",
+			"phone": "888-888-8888",
+			"email": "IdoThings@earthlink.net",
+			"password": "password",
+			"cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+		}, {
+			"id": 12,
+			"firstName": "Karen",
+			"lastName": "IWannaTalkToYourManager",
+			"phone": "888-888-8888",
+			"email": "karen@earthlink.net",
+			"password": "password",
+			"cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
+		}
+	],
+	"pets": [{
+			"id": 1,
+			"cId": 1,
+			"petName": "Sprinkles",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "Himalayan",
+			"description": "Diabeetus.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+		},
+		{
+			"id": 2,
+			"cId": 1,
+			"petName": "Bandit",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "Bengal",
+			"description": "There's bad blood--cliques, gangs.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a1.jpg"
+		},
+		{
+			"id": 3,
+			"cId": 2,
+			"petName": "Garbage",
+			"birthDate": "12-APR-01",
+			"weight": 60,
+			"type": 2,
+			"breed": "British Shorthair",
+			"description": "Feral barn cat.",
+			"photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a2.jpg"
+		}, {
+			"id": 5,
+			"cId": 5,
+			"petName": "Brandon",
+			"birthDate": "2020-04-20 00:00:00.0",
+			"weight": 60,
+			"color": "Black",
+			"type": 1,
+			"breed": "Malinois",
+			"neuter": 1,
+			"description": "Big ole pupper",
+			"petUrl": "mal.jpeg"
+		}, {
+			"id": 6,
+			"cId": 6,
+			"petName": "Ruben",
+			"birthDate": "2020-04-16 00:00:00.0",
+			"weight": 40,
+			"color": "Brown",
+			"type": 1,
+			"breed": "Chihuahua",
+			"neuter": 1,
+			"description": "Smol pupper",
+			"petUrl": "chi.jpeg"
+		}, {
+			"id": 8,
+			"cId": 5,
+			"petName": "Whiskers",
+			"birthDate": "2018-01-25 00:00:00.0",
+			"weight": 69,
+			"color": "Green",
+			"type": 2,
+			"breed": "English Bdog",
+			"neuter": 1,
+			"description": "Hes a big boy",
+			"petUrl": null
+		}, {
+			"id": 10,
+			"cId": 5,
+			"petName": "Whiskers",
+			"birthDate": "2018-01-25 00:00:00.0",
+			"weight": 69,
+			"color": "Green",
+			"type": 2,
+			"breed": "English Bdog",
+			"neuter": 1,
+			"description": "Hes a big boy",
+			"petUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
+		}, {
+			"id": 27,
+			"cId": 0,
+			"petName": null,
+			"birthDate": null,
+			"weight": 0,
+			"color": null,
+			"type": 0,
+			"breed": null,
+			"neuter": 0,
+			"description": null,
+			"petUrl": null
+		}
+	],
+	"employees": [{
+		"id": 48,
+		"eType": 1,
+		"firstName": "Victor",
+		"lastName": "Vet",
+		"phone": "555-555-5555",
+		"email": "victorvet@earthlink.net",
+		"password": "password"
+	}, {
+		"id": 49,
+		"eType": 1,
+		"firstName": "Vicky",
+		"lastName": "Vet",
+		"phone": "666-666-6666",
+		"email": "vickyvet@earthlink.net",
+		"password": "password"
+	}, {
+		"id": 50,
+		"eType": 2,
+		"firstName": "Rachel",
+		"lastName": "Receptionist",
+		"phone": "777-777-7777",
+		"email": "rachelrecep@earthlink.net",
+		"password": "password"
+	}, {
+		"id": 14,
+		"eType": 1,
+		"firstName": "Vetricious",
+		"lastName": "Vexation",
+		"phone": "666-666-6666",
+		"email": "vetricioust@earthlink.net",
+		"password": "password"
+	}, {
+		"id": 15,
+		"eType": 1,
+		"firstName": "Venomous",
+		"lastName": "Vandemoniansism",
+		"phone": "666-666-6666",
+		"email": "Vandemoniansism@earthlink.net",
+		"password": "password"
+	}, {
+		"id": 16,
+		"eType": 1,
+		"firstName": "Vandlop",
+		"lastName": "Vaniloquence",
+		"phone": "666-666-6666",
+		"email": "Vaniloquence@earthlink.net",
+		"password": "password"
+	}]
 }
