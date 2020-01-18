@@ -51,12 +51,12 @@ public class PetController {
 		return ps.updatesPet(change);
 	}
 
-	@DeleteMapping(value = "/pets", consumes = "application/json")
+	@DeleteMapping(value = "/pets/{id}")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public boolean deletePet(Pet pet) {
+	public boolean deletePet(@PathVariable("id") int id) {
 		try {
-			ps.deletePet(pet);
+			ps.deletePet(ps.getPetById(id));
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return false;
@@ -66,11 +66,11 @@ public class PetController {
 
 	
 	//Come back to this to provide restfull route
-	@GetMapping(value = "pets/customer/{cid}")
+	@GetMapping(value = "pets/customer/{cId}")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public List<Pet> getAllPetsByCustomer(int c_id) {
-		return ps.getAllPetsByCustomer(c_id);
+	public List<Pet> getAllPetsByCustomer(int cId) {
+		return ps.getAllPetsByCustomer(cId);
 	}
 	
 	
