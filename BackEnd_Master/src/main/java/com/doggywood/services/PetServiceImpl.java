@@ -46,8 +46,8 @@ public class PetServiceImpl implements PetService {
 	}
 
 	@Override
-	public List<Pet> getAllPetsByCustomer(int c_id) {
-		return pr.findBycId(c_id);
+	public List<Pet> getAllPetsByCustomer(int cId) {
+		return pr.findBycId(cId);
 	}
 
 }
