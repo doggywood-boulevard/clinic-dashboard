@@ -2,9 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Navigation } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators, NgForm } from '@angular/forms';
 import { PetsService } from '../../services/pets.service';
+import { ClientsService } from '../../services/clients.service';
 import { tap, first } from 'rxjs/operators';
 import { PetType } from '../../models/petType'
 import { Pet } from 'src/app/models/petModel';
+import { Customer } from 'src/app/models/customer';
 
 @Component({
   selector: 'app-pet-create',
@@ -34,9 +36,13 @@ export class PetCreateComponent implements OnInit {
 //     })
   public createPetForm: NgForm;
   public petsList = [];
-  public petsLocalDBList = [];
+  //cust
+  customer: Customer; 
+  public customersList = [];
 
-  constructor(private aniService: PetsService, private router: Router,
+
+
+  constructor(private aniService: PetsService, private clientService: ClientsService, private router: Router,
     private activatedRoute: ActivatedRoute) {
       this.datePickerConfig = Object.assign({}, 
       {
@@ -51,11 +57,21 @@ export class PetCreateComponent implements OnInit {
     this.aniService.getPets()
       .subscribe(data => this.petsList = data);
 
-    this.aniService.getPetsLocal()
-      .subscribe(data => this.petsLocalDBList = data);
+    this.aniService.getPets()
+      .subscribe(data => this.petsList = data);
     this.activatedRoute.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
       this.getPet(id);
+    })
+// cust
+    this.aniService.getCustomers()
+      .subscribe(data => this.customersList = data);
+
+    this.aniService.getCustomers()
+      .subscribe(data => this.customersList = data);
+    this.activatedRoute.paramMap.subscribe(parameterMap => {
+      const id = +parameterMap.get('id');
+      this.getCustomer(id);
     })
 
   }
@@ -82,7 +98,53 @@ export class PetCreateComponent implements OnInit {
       this.panelTitle = 'Edit Details';
     }
   }
-   savePet(): void { 
+   private savePet(): void { 
+    // const newPet: Pet = Object.assign ({}, this.pet); //no longer worry about addressing reference var
+    //this._petService.save(newPet)(
+      // this._petService.save(this.pet).subscribe(
+      if (this.pet.id === null) {
+        this.aniService.addPet(this.pet).subscribe(
+          (data: Pet) => {
+            console.log(data);
+            // this.createPetForm.resetForm();
+            // this.activatedRoute.navigate(['/']);
+          },
+          (error: any) => console.log(error)
+        );
+      } else {
+        this.aniService.updatePet(this.pet).subscribe(
+          () => { 
+            // this.createPetForm.reset();
+            // this.activatedRoute.navigate(['/']);
+          },
+          (error: any) => console.log(error)
+        );
+      } 
+   }
+   /// CUST
+    private getCustomer(id)   {
+    if (id === 0) {
+      this.customer = {
+        id: null,
+        firstName: "",
+        lastName:  "",
+        phone:  "",
+        email:  "",
+        password:  "",
+        cusUrl:  ""
+      };
+      this.panelTitle = 'Register';
+      // this.createPetForm.resetForm();
+    } else {
+      // this.pet = Object.assign({}, this._petService.getPet(id));
+      this.aniService.getCustomer(id).subscribe(
+        (cust) => this.customer = cust,
+        (err: any) => console.log('create-client.comp:' + err)
+      );
+      this.panelTitle = 'Edit Details';
+    }
+  } 
+  private saveCustomer(): void { 
     // const newPet: Pet = Object.assign ({}, this.pet); //no longer worry about addressing reference var
     //this._petService.save(newPet)(
       // this._petService.save(this.pet).subscribe(
@@ -105,6 +167,8 @@ export class PetCreateComponent implements OnInit {
         );
       } 
    
+
+
   }
   // pets_url: string = 'http://localhost:8080/pets';
   // [{

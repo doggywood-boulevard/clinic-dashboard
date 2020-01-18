@@ -1,0 +1,31 @@
+{
+    "customer": [
+        {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "phone": "555-555-5555",
+            "email": "boomermail@aol.com",
+            "password": "hunter2",
+            "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+        },
+        {
+            "id": 2,
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "phone": "666-666-6666",
+            "email": "catlady@aol.com",
+            "password": "passwordword",
+            "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p9.jpg"
+        },
+        {
+            "id": 3,
+            "firstName": "John",
+            "lastName": "Krasinski",
+            "phone": "777-777-7777",
+            "email": "phillyjim@aol.com",
+            "password": "1234",
+            "cusUrl": "https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg"
+        }
+    ]
+}

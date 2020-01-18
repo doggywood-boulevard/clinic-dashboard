@@ -26,13 +26,16 @@ import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-r
 import { ClientsComponent } from './components/cli/clients/clients.component';
 import { CreateClientComponent } from './components/cli/create-client/create-client.component';
 import { CliPetProfileComponent } from './components/cli/cli-pet-profile/cli-pet-profile.component';
+/* Layout */
 import { NavComponent } from './layout/nav/nav.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { DatePickerComponent } from './layout/date-picker/date-picker.component';
 /* Services */
 import { EmployeesService } from './services/employees.service';
 import { ClientsService } from './services/clients.service';
 import { PetsService } from './services/pets.service'; 
+
 @NgModule({
   declarations: [
     AppComponent, 
@@ -54,9 +57,11 @@ import { PetsService } from './services/pets.service';
     ClientsComponent,
     CreateClientComponent,
     CliPetProfileComponent,
+
     NavComponent,
     FooterComponent,
     HeaderComponent, 
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,

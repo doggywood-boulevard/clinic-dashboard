@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { Observable, throwError  } from 'rxjs';
 import { Pet } from '../models/pet';
+import { Customer } from '../models/customer';
 import { catchError } from 'rxjs/operators';
 
 
@@ -11,9 +12,9 @@ import { catchError } from 'rxjs/operators';
 export class PetsService {
   // PROD 
   // base_url: string = 'http://localhost:8080';
-  // pets_url: string = 'http://localhost:8080/pets';
-  base_url: string = 'http://localhost:3000';
-  pets_url: string = 'http://localhost:3000/pets';
+
+  pets_url: string = 'http://localhost:8080/pet'; 
+  cust_url: string= "http://localhost:8080/customer";
 // [{
 // 	"id": 2,
 // 	"cId": 1,
@@ -25,7 +26,6 @@ export class PetsService {
 // 	"description": null
 // }]
   // DEV
-  local_url: string= "http://localhost:3000/pet";
   //[   {
   //   "p_id": 1,
   //   "c_id": 1,
@@ -43,7 +43,7 @@ export class PetsService {
   // error handler
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
-      console.error('Client Side Error: ', errorResponse.error.message)
+      console.error('Customer Side Error: ', errorResponse.error.message)
     } else {
       console.error('Server Side Error: ', errorResponse);
     }
@@ -57,12 +57,12 @@ export class PetsService {
   
   getPet(id: number): Observable<Pet> {
     // return this.listPets.find(u => u.id === id)
-    return this.http.get<Pet>(`${this.base_url}/${id}`) 
+    return this.http.get<Pet>(`${this.pets_url}/${id}`) 
       .pipe(catchError(this.handleError));
   }
 
   addPet(pet: Pet): Observable<Pet> {
-    return this.http.post<Pet>(this.base_url, pet, {
+    return this.http.post<Pet>(this.pets_url, pet, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -71,7 +71,7 @@ export class PetsService {
   }
 
   updatePet(pet: Pet): Observable<void> {
-    return this.http.put<void>(`${this.base_url}/${pet.id}`, pet, {
+    return this.http.put<void>(`${this.pets_url}/${pet.id}`, pet, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -80,14 +80,49 @@ export class PetsService {
   }
 
   deletePet(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.base_url}/${id}`)
+    return this.http.delete<void>(`${this.pets_url}/${id}`)
       .pipe(catchError(this.handleError));
     
   }
+/// CLIENTS 
 
-/// DEV SERVER 3000
-  getPetsLocal(): Observable<Pet[]> { 
-     return this.http.get<Pet[]>(this.local_url)
-      .pipe(catchError(this.handleError));;
+  getCustomers(): Observable<Customer[]> { 
+     return this.http.get<Customer[]>(this.cust_url)
+      .pipe(catchError(this.handleError));
   }
+  
+  getCustomer(id: number): Observable<Customer> {
+    // return this.listCustomers.find(u => u.id === id)
+    return this.http.get<Customer>(`${this.cust_url}/${id}`) 
+      .pipe(catchError(this.handleError));
+  }
+
+  addCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(this.cust_url, customer, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError)); 
+  }
+
+  updateCustomer(customer: Customer): Observable<void> {
+    return this.http.put<void>(`${this.cust_url}/${customer.id}`, customer, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+  deleteCustomer(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.cust_url}/${id}`)
+      .pipe(catchError(this.handleError));
+    
+  }
+/// DEV SERVER 3000
+  // getCustomers(): Observable<Pet[]> { 
+  //    return this.http.get<Pet[]>(this.cust_url)
+  //     .pipe(catchError(this.handleError));;
+  // }
 }

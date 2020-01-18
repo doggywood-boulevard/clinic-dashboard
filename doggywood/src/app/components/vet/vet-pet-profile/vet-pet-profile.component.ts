@@ -10,14 +10,14 @@ export class VetPetProfileComponent implements OnInit {
 
   constructor(private aniService: PetsService) { }
   public petsList = [];
-  public petsLocalDBList = [];
+  public customersList = [];
 
   ngOnInit() {    // on page load here  
     this.aniService.getPets()
       .subscribe(data => this.petsList = data);
 
-    this.aniService.getPetsLocal()
-      .subscribe(data => this.petsLocalDBList = data);
+    this.aniService.getCustomers()
+      .subscribe(data => this.customersList = data);
   } 
 
 }
