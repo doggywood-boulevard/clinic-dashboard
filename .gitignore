@@ -9,11 +9,11 @@ doggywood/node_modules/
 doggywood/dist/
 
 ### SpringMaster branch ###
-BackEnd_Master/.metadata/
+.metadata/
 BackEnd_Master/target/
 
-BackEnd_Master/Servers/
-BackEnd_Master/**/application.properties
+Servers/
+.properties
 BackEnd_Master/HELP.md
 BackEnd_Master/target/
 
@@ -35,7 +35,7 @@ BackEnd_Master/.idea
 BackEnd_Master/*.iws
 BackEnd_Master/*.iml
 BackEnd_Master/*.ipr
-BackEnd_Master/
+
 
 ### NetBeans ###
 BackEnd_Master/nbproject/private/
@@ -44,6 +44,6 @@ BackEnd_Master/dist/
 BackEnd_Master/nbdist/
 BackEnd_Master/.nb-gradle/
 BackEnd_Master/build/
-BackEnd_Master/
-BackEnd_Master/### VS Code ###
+
+### VS Code ###
 BackEnd_Master/.vscode/
