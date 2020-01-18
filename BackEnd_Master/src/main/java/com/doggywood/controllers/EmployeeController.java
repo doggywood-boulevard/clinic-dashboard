@@ -13,64 +13,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.doggywood.entities.Pet;
-import com.doggywood.services.PetService;
+import com.doggywood.entities.Employee;
+import com.doggywood.services.EmployeeService;
+
 
 @RestController
-public class PetController {
+public class EmployeeController {
+
 
 	@Autowired
-	PetService ps;
+	EmployeeService es;
 	
-	@RequestMapping(value = "/pets", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/employees", method = RequestMethod.POST, consumes = "application/json")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public Pet createPet(@RequestBody Pet pet) {
-		return ps.createPet(pet);
+	public Employee createEmployee(@RequestBody Employee employee) {
+		return es.createEmployee(employee);
 	}
 	
-	@GetMapping(value = "/pets/{id}")
-
+	@GetMapping(value = "/employees/{id}")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public Pet getPetById(@PathVariable("id") int id) {
-		return ps.getPetById(id);
+	public Employee getEmployeeById(@PathVariable("id") int id) {
+		return es.getEmployeeById(id);
 	}
 
-	@GetMapping(value = "/pets")
+	@GetMapping(value = "/employees")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public List<Pet> getAllPets() {
-		return ps.getAllPets();
+	public List<Employee> getAllEmployees() {
+		return es.getAllEmployees();
 	}
 
-	@PutMapping(value = "/pets", consumes = "application/json")
+	@PutMapping(value = "/employees", consumes = "application/json")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public Pet updatesPet(Pet change) {
-		return ps.updatesPet(change);
+	public Employee updatesEmployee(Employee change) {
+		return es.updatesEmployee(change);
 	}
 
-	@DeleteMapping(value = "/pets/{id}")
+	@DeleteMapping(value = "/employees/{id}")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public boolean deletePet(@PathVariable("id") int id) {
+	public boolean deleteEmployee(@PathVariable("id") int id) {
 		try {
-			ps.deletePet(ps.getPetById(id));
+			es.deleteEmployee(es.getEmployeeById(id));
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
 	}
-
 	
-	//Come back to this to provide restfull route
-	@GetMapping(value = "pets/customer/{cId}")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
-	public List<Pet> getAllPetsByCustomer(int cId) {
-		return ps.getAllPetsByCustomer(cId);
-	}
-	 
 }

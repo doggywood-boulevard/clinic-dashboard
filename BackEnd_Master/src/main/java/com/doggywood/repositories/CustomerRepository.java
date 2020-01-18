@@ -1,15 +1,11 @@
 package com.doggywood.repositories;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.doggywood.entities.Pet;
+import com.doggywood.entities.Customer;
 
 @Repository
-public interface PetRepository extends CrudRepository<Pet, Integer> {
+public interface CustomerRepository extends CrudRepository<Customer, Integer> {
 
-	List<Pet> findBycId(int cId);
-	
 }
