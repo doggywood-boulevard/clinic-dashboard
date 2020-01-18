@@ -3,6 +3,7 @@ package com.doggywood.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,26 +23,36 @@ public class PetController {
 	PetService ps;
 	
 	@RequestMapping(value = "/pets", method = RequestMethod.POST, consumes = "application/json")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public Pet createPet(@RequestBody Pet pet) {
 		return ps.createPet(pet);
 	}
 	
 	@GetMapping(value = "/pets/{id}")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public Pet getPetById(@PathVariable("id") int id) {
 		return ps.getPetById(id);
 	}
 
 	@GetMapping(value = "/pets")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public List<Pet> getAllPets() {
 		return ps.getAllPets();
 	}
 
 	@PutMapping(value = "/pets", consumes = "application/json")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public Pet updatesPet(Pet change) {
 		return ps.updatesPet(change);
 	}
 
 	@DeleteMapping(value = "/pets", consumes = "application/json")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public boolean deletePet(Pet pet) {
 		try {
 			ps.deletePet(pet);
@@ -55,14 +66,11 @@ public class PetController {
 	
 	//Come back to this to provide restfull route
 	@GetMapping(value = "pets/customer/{cid}")
+//	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "*")
 	public List<Pet> getAllPetsByCustomer(int c_id) {
 		return ps.getAllPetsByCustomer(c_id);
 	}
-	
-	
-	
-	
-	
-	
+	 
 	
 }
