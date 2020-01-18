@@ -26,7 +26,7 @@ public class Pet {
 	private int weight;
 	
 	@Column(name = "P_COLOR")
-	private int color;
+	private String color;
 	
 	@Column(name = "P_TYPE")
 	private int type;
@@ -34,7 +34,7 @@ public class Pet {
 	@Column(name = "P_BREED")
 	private String breed;
 	
-	@Column(name = "P_NEUTER")
+	@Column(name = "NEUTER")
 	private int neuter; 
 	
 	@Column(name = "P_DESCRIPTION")
@@ -43,7 +43,7 @@ public class Pet {
 	@Column(name = "PET_URL")
 	private String petUrl;
 
-	public Pet(int id, int cId, String petName, String birthDate, int weight, int color, int type, String breed,
+	public Pet(int id, int cId, String petName, String birthDate, int weight, String color, int type, String breed,
 			int neuter, String description, String petUrl) {
 		super();
 		this.id = id;
@@ -59,7 +59,7 @@ public class Pet {
 		this.petUrl = petUrl;
 	}
 
-	public Pet(int cId, String petName, String birthDate, int weight, int color, int type, String breed, int neuter,
+	public Pet(int cId, String petName, String birthDate, int weight, String color, int type, String breed, int neuter,
 			String description, String petUrl) {
 		super();
 		this.cId = cId;
@@ -82,7 +82,8 @@ public class Pet {
 	public String toString() {
 		return "Pet [id=" + id + ", cId=" + cId + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
 				+ weight + ", color=" + color + ", type=" + type + ", breed=" + breed + ", neuter=" + neuter
-				+ ", description=" + description + ", petUrl=" + petUrl + "]";
+				+ ", description=" + description + ", petUrl=" + petUrl + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 	public int getId() {
@@ -125,11 +126,11 @@ public class Pet {
 		this.weight = weight;
 	}
 
-	public int getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(int color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 
@@ -173,6 +174,7 @@ public class Pet {
 		this.petUrl = petUrl;
 	}
 
+	
 	
 	
 }
