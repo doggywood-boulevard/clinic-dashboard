@@ -30,7 +30,6 @@ public class PetController {
 	}
 	
 	@GetMapping(value = "/pets/{id}")
-
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
 	public Pet getPetById(@PathVariable("id") int id) {
@@ -71,6 +70,7 @@ public class PetController {
 	@CrossOrigin(origins = "*")
 	public List<Pet> getAllPetsByCustomer(int cId) {
 		return ps.getAllPetsByCustomer(cId);
+
 	}
 	 
 	
