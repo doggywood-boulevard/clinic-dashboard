@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     sessionStorage.removeItem('authEmployee')
     this.errorMessage = '';
     this.panelTitle = "LOGIN";
-    this.message = "Customer creds:  user password & Employee creds: admin password";
+    this.message = `Customer creds:  user password & 
+          Employee creds: admin password`;
   }
 
   handleLogin() {

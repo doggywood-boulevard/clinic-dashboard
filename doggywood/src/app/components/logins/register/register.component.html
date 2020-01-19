@@ -1,5 +1,5 @@
  
-<form #registerForm="ngForm" (ngSubmit)="saveCustomer()">
+<form #registerForm="ngForm"   (ngSubmit)="saveCustomer()">  
   <div class="panel panel-primary" *ngIf="customer">
     <div class="panel-heading">
       <h3 class="panel-title">{{panelTitle}}</h3>
@@ -53,7 +53,7 @@
  
       </div>
  
-     
+        <div class="alert alert-warning" *ngIf="successMessage != '' ">{{successMessage}}</div>
       <button type="submit"  class="btn btn-primary"  > SUBMIT </button>
      
     </div> 

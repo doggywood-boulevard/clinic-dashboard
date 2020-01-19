@@ -11,37 +11,21 @@ import { ClientsService } from '../../../services/clients.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public registerForm: NgForm;
+  registerForm: NgForm;
+  //  @ViewChild('registerForm')
   panelTitle: string;
   customer: Customer;//;
   // registerForm: FormGroup;
-  hide = true;
- public customersList = [];
- 
-  constructor(  private clientService: ClientsService, private activatedRoute: ActivatedRoute) { }
+  successMessage: string;
+  public customersList = [];
+
+  constructor(private clientService: ClientsService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
     this.panelTitle = "CUSTOMER REGISTER";
-
-    // this.registerForm = this.formBuilder.group({
-    //   'firstName': [this.customer.firstName, [
-    //     Validators.required
-    //   ]],
-    //   'email': [this.customer.email, [
-    //     Validators.required,
-    //     Validators.email
-    //   ]],
-    //   'password': [this.customer.password, [
-    //     Validators.required,
-    //     Validators.minLength(4),
-    //     Validators.maxLength(30)
-
-    //   ]]
-    // });
-
-    
-// cust
+    this.successMessage = '';
+    // cust
     this.clientService.getCustomers()
       .subscribe(data => this.customersList = data);
 
@@ -50,41 +34,46 @@ export class RegisterComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(parameterMap => {
       const id = +parameterMap.get('id');
       this.clientService.getCustomer(id);
-            this.getCustomer(id);
+      this.getCustomer(id);
     })
   }
-  public saveCustomer(): void { 
-    
-      if (this.customer.id === null) {
-        this.clientService.addCustomer(this.customer).subscribe(
-          (data: Customer) => {
-            console.log(data);
-            // this.createPetForm.resetForm();
-            // this.activatedRoute.navigate(['/']);
-          },
-          (error: any) => console.log(error)
-        );
-      } else {
-        this.clientService.updateCustomer(this.customer).subscribe(
-          () => { 
-            // this.createPetForm.reset();
-            // this.activatedRoute.navigate(['/']);
-          },
-          (error: any) => console.log(error)
-        );
-      } 
-    
+  public saveCustomer(): void {
+
+    if (this.customer.id === null) {
+      this.clientService.addCustomer(this.customer).subscribe(
+        (data: Customer) => {
+          console.log(data);
+        },
+        (error: any) => console.log("error" + error)
+      );
+
+      //  this.registerForm.resetForm();
+      this.onRegisterSubmit();
+      this.router.navigate(['']);
+
+    } else {
+      this.clientService.updateCustomer(this.customer).subscribe(
+        () => {
+
+        },
+        (error: any) => console.log(error)
+      );
+      this.registerForm.reset();
+      console.log(this.customer);
+      this.router.navigate(['recLanding']);
+    }
+
   }
-public getCustomer(id)   {
+  public getCustomer(id) {
     if (id === 0) {
       this.customer = {
         id: null,
         firstName: "",
-        lastName:  "",
-        phone:  "",
-        email:  "",
-        password:  "",
-        cusUrl:  ""
+        lastName: "",
+        phone: "",
+        email: "",
+        password: "",
+        cusUrl: ""
       };
       this.panelTitle = 'Register';
       // this.createPetForm.resetForm();
@@ -96,8 +85,9 @@ public getCustomer(id)   {
       );
       this.panelTitle = 'Edit Details';
     }
-  } 
+  }
   public onRegisterSubmit() {
-    alert(this.customer.firstName + ' ' + this.customer.email + ' ' + this.customer.password);
+    this.successMessage = 'Great!, your name: *' + this.customer.firstName + '*; username/email: *' + this.customer.email + '* have registered successfully';
+
   }
 }
