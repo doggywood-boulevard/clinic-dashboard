@@ -4,7 +4,13 @@
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-<!-- 
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  <span> &nbsp; &nbsp;</span>
+  <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
+  </form>
+
+  <!-- 
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'pets', component: DoggydashComponent },   
@@ -26,53 +32,76 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home <span class="sr-only"> </span></a>
+
+      <!-- IF CUST OR EMP *NOT* LOGGED IN THEY SEE THIS -->
+      <!-- <li *ngIf="!isCustLoggedIn && !isEmpLoggedIn"   class="nav-item active">
+        <a  class="nav-link" routerLink="/">LOGIN<span class="sr-only"> </span></a>
+      </li>  -->
+      <li>
+
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="vetLogin/">Vet Login</a>
-      </li>
-      <li class="nav-item dropdown">
+
+      <!-- 
+      // 2nd and 3rd logins not necessary, as input has user/vet/rec routing
+      -->
+      <!-- <li  *ngIf="!isEmpLoggedIn"   class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Admin
-        </a>
+          ADMIN
+        </a> 
+      
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="vetLogin/">Vet Login</a>
-          <a class="dropdown-item"  routerLink="recLogin/">Rec Login</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="register/">Register</a>
+          <a class="dropdown-item" routerLink="vetLogin/">Veterinarian Login</a>
+          <a class="dropdown-item" routerLink="recLogin/">Receptionist Login</a>
+          <div class="dropdown-divider"></div> 
         </div>
-      </li>
-     
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown"
+      </li> -->
+
+      <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
+      <li *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()  "
+        class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Pages
+          Clients
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="clients/">clients</a> 
-          <a class="dropdown-item" routerLink="createClient/">createClient</a>
+          <a class="dropdown-item" routerLink="clients/">clients</a>
+          <a class="dropdown-item" routerLink="register/">createClient</a>
           <a class="dropdown-item" routerLink="cliLanding/">cliLanding</a>
-          <a class="dropdown-item"  routerLink="petCreate/">petCreate</a>
+          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="recLanding/">recLanding</a> 
 
-          <a class="dropdown-item" routerLink="vetLanding/">vetLanding</a> 
-          <a class="dropdown-item" routerLink="vetClientProfile/:clientId">vetClientProfile/:clientId</a> 
-          <a class="dropdown-item" routerLink="vetPetProfile/:animalId">vetPetProfile/:animalId</a>
-          <a class="dropdown-item" routerLink="vetPetRecord/:animalId">vetPetRecord/:animalId</a> 
           <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
         </div>
+
       </li>
-      <li class="nav-item">
-        <!-- <a class="nav-link disabled" routerLink="#"> </a> -->
-        <a class="nav-link " routerLink=""> </a>
+
+
+      <!-- IF EMP LOGGED IN THEY SEE THIS -->
+      <li *ngIf="authenticationService.isEmpLoggedIn()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Employees
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" routerLink="register/">createClient</a>
+          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="recLanding/">recLanding</a>
+          <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="vetLanding/">vetLanding</a>
+          <a class="dropdown-item" routerLink="vetClientProfile/:clientId">vetClientProfile/:clientId</a>
+          <a class="dropdown-item" routerLink="vetPetProfile/:animalId">vetPetProfile/:animalId</a>
+          <a class="dropdown-item" routerLink="vetPetRecord/:animalId">vetPetRecord/:animalId</a>
+        </div>
+
       </li>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
   </div>
 </nav>

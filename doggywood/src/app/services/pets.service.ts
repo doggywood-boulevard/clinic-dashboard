@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Observable, throwError  } from 'rxjs';
 import { Pet } from '../models/pet';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -9,8 +10,9 @@ import { Pet } from '../models/pet';
 })
 export class PetsService {
   // PROD 
-  base_url: string = 'http://localhost:8080';
-  pets_url: string = 'http://localhost:8080/pets';
+  // base_url: string = 'http://localhost:8080';
+
+  pets_url: string = 'http://localhost:8080/pets'; 
 // [{
 // 	"id": 2,
 // 	"cId": 1,
@@ -22,7 +24,6 @@ export class PetsService {
 // 	"description": null
 // }]
   // DEV
-  local_url: string= "http://localhost:3000/pet";
   //[   {
   //   "p_id": 1,
   //   "c_id": 1,
@@ -34,12 +35,52 @@ export class PetsService {
   //   "p_description": "Diabeetus.",
   //   "photo": "https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a8.jpg"
   // },
+   
   constructor(private http: HttpClient) { }
 
+  // error handler
+  private handleError(errorResponse: HttpErrorResponse) {
+    if (errorResponse.error instanceof ErrorEvent) {
+      console.error('Client-side Error getting pets: ', errorResponse.error.message)
+    } else {
+      console.error('Server Side Error: ', errorResponse);
+    }
+    return throwError('Oops, there is a problem  ..');
+  }
+
   getPets(): Observable<Pet[]> { 
-     return this.http.get<Pet[]>(this.pets_url);
+     return this.http.get<Pet[]>(this.pets_url)
+      .pipe(catchError(this.handleError));
   }
-  getPetsLocal(): Observable<Pet[]> { 
-     return this.http.get<Pet[]>(this.local_url);
+  
+  getPet(id: number): Observable<Pet> {
+    // return this.listPets.find(u => u.id === id)
+    return this.http.get<Pet>(`${this.pets_url}/${id}`) 
+      .pipe(catchError(this.handleError));
   }
+
+  addPet(pet: Pet): Observable<Pet> {
+    return this.http.post<Pet>(this.pets_url, pet, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError)); 
+  }
+
+  updatePet(pet: Pet): Observable<void> {
+    return this.http.put<void>(`${this.pets_url}/${pet.id}`, pet, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+  deletePet(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.pets_url}/${id}`)
+      .pipe(catchError(this.handleError));
+    
+  } 
+ 
 }

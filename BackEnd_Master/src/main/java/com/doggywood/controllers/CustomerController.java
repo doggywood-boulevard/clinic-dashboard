@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doggywood.entities.Customer;
 import com.doggywood.services.CustomerService;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class CustomerController {
 

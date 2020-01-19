@@ -65,4 +65,19 @@ public class EmployeeController {
 		return true;
 	}
 	
+//	@PostMapping(value="/login")
+//	public boolean loginEmployee(@RequestBody Employee employee, HttpSession httpSession) {
+//		
+//		String username = httpSession.getAttribute("login_attempt_username").toString();
+//		
+//		if(as.getEmployeeByNameAndPassword(associate.getName(), associate.getPassword()) != null) {
+//			return true;
+//		}
+//		else {
+//			return false;
+//		}
+//		
+//	}
+	
+	
 }
