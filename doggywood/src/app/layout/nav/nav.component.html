@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img width="110" class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  <span> &nbsp; &nbsp;</span>
+  <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
+  </form>
+
+  <!-- 
+  { path: '', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'pets', component: DoggydashComponent },   
+  { path: 'clients', component: ClientsComponent }, 
+  { path: 'petCreate', component: PetCreateComponent},
+  { path: 'appt/:apptId', component: ApptComponent},
+  { path: 'apptCreate', component: ApptCreateComponent},
+  { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent},
+  { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent},
+  { path: 'createClient', component: CreateClientComponent},
+  { path: 'cliLanding', component: CliProfileComponent},
+  { path: 'recLanding', component: RecLandingComponent},
+  { path: 'vetLanding', component: VetLandingComponent},
+  { path: 'recLogin', component: EmpRecLoginComponent},
+  { path: 'vetLogin', component: EmpVetLoginComponent},
+  { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},
+  { path: 'vetClientProfile/:clientId', component: VetCliProfileComponent},
+  { path: 'vetPetRecord/:animalId', component: VetPetRecordComponent} -->
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <!-- IF CUST OR EMP *NOT* LOGGED IN THEY SEE THIS -->
+      <!-- <li *ngIf="!isCustLoggedIn && !isEmpLoggedIn"   class="nav-item active">
+        <a  class="nav-link" routerLink="/">LOGIN<span class="sr-only"> </span></a>
+      </li>  -->
+      <li>
+
+      </li>
+
+      <!-- 
+      // 2nd and 3rd logins not necessary, as input has user/vet/rec routing
+      -->
+      <!-- <li  *ngIf="!isEmpLoggedIn"   class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          ADMIN
+        </a> 
+      
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="vetLogin/">Veterinarian Login</a>
+          <a class="dropdown-item" routerLink="recLogin/">Receptionist Login</a>
+          <div class="dropdown-divider"></div> 
+        </div>
+      </li> -->
+
+      <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
+      <li *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()  "
+        class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Clients
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="clients/">clients</a>
+          <a class="dropdown-item" routerLink="register/">createClient</a>
+          <a class="dropdown-item" routerLink="cliLanding/">cliLanding</a>
+          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
+        </div>
+
+      </li>
+
+
+      <!-- IF EMP LOGGED IN THEY SEE THIS -->
+      <li *ngIf="authenticationService.isEmpLoggedIn()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Employees
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" routerLink="register/">createClient</a>
+          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="recLanding/">recLanding</a>
+          <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="vetLanding/">vetLanding</a>
+          <a class="dropdown-item" routerLink="vetClientProfile/:clientId">vetClientProfile/:clientId</a>
+          <a class="dropdown-item" routerLink="vetPetProfile/:animalId">vetPetProfile/:animalId</a>
+          <a class="dropdown-item" routerLink="vetPetRecord/:animalId">vetPetRecord/:animalId</a>
+        </div>
+
+      </li>
+
+    </ul>
+
+  </div>
+</nav>

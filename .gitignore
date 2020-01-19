@@ -1,2 +1,52 @@
+# ROOT .gitignore 
+
+### Material Angular ###
 frontend-master/node_modules/
 frontend-master/dist/
+
+### NGmaster branch ###
+doggywood/node_modules/
+doggywood/dist/
+
+### SpringMaster branch ###
+.metadata/
+BackEnd_Master/target/
+
+Servers/
+.properties
+BackEnd_Master/HELP.md
+BackEnd_Master/target/
+
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+BackEnd_Master/.apt_generated
+BackEnd_Master/.classpath
+BackEnd_Master/.factorypath
+BackEnd_Master/.project
+BackEnd_Master/.settings
+BackEnd_Master/.springBeans
+BackEnd_Master/.sts4-cache
+
+### IntelliJ IDEA ###
+BackEnd_Master/.idea
+BackEnd_Master/*.iws
+BackEnd_Master/*.iml
+BackEnd_Master/*.ipr
+
+
+### NetBeans ###
+BackEnd_Master/nbproject/private/
+BackEnd_Master/nbbuild/
+BackEnd_Master/dist/
+BackEnd_Master/nbdist/
+BackEnd_Master/.nb-gradle/
+ 
+BackEnd_Master/build/ 
+### VS Code ###
+ 
+BackEnd_Master/.vscode/
+ 
+ 

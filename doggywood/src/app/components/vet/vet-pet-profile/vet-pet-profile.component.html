@@ -1,0 +1,23 @@
+<p>vet-pet-profile works!</p>
+
+<div class="row">
+
+<div class=" scroll-window"> 
+    <h6>PETS:<br /> http://localhost:8080/pets</h6>
+
+    <ul *ngFor="let pet of petsList">
+      <hr>
+      <img class="imageClass"  alt="pet.petUrl" width="100" [src]="pet.petUrl" /> 
+           <li><strong>pet.id: </strong> {{pet.id}}</li>
+           <li><strong>pet.cId: </strong> {{pet.cId}}</li>
+           <li><strong>pet.petName: </strong> {{pet.petName}}</li>
+           <li><strong>pet.birthDate: </strong> {{pet.birthDate}}</li>
+           <li><strong>pet.weight: </strong> {{pet.weight}}</li>
+           <li><strong>pet.type: </strong> {{pet.type}}</li>
+           <li><strong>pet.neuter: </strong> {{pet.neuter}}</li>
+           <li><strong>pet.breed: </strong> {{pet.breed}}</li>
+           <li><strong>pet.description: </strong> {{pet.description}}</li>
+    </ul>
+    </div>
+     
+</div>
