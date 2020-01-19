@@ -34,10 +34,10 @@ export class EmpRecLoginComponent implements OnInit {
             this.getEmployee(id);
     })
   }
-private loginEmployee() {
+public loginEmployee() {
   
 }
-private getEmployee(id)   {
+public getEmployee(id)   {
     if (id === 0) {
       this.employee = {
         id: null,

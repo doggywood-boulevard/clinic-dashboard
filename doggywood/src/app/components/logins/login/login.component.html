@@ -1,40 +1,33 @@
 <div class="container">
 
-    <form #registerForm="ngForm" (ngSubmit)="loginCustomer()">
-        <div class="panel panel-primary" *ngIf="customer">
+    <form (ngSubmit)="handleLogin()">
+        <div class="panel panel-primary">
             <hr>
             <div class="panel-heading">
                 <h4>{{panelTitle}}</h4>
+           
             </div>
             <hr>
             <div class="panel-body">
 
-
-                <div class="form-group  " [class.has-error]="name.invalid && name.touched"
-                    [class.has-success]="name.valid">
-                    <label for="email" class="control-label">Email<span class="required"> *</span></label>
-                    <input id="email" name="email" [(ngModel)]="customer.email" type="text" class="form-control"
-                        #name="ngModel">
-                    <span class="help-block" *ngIf="name.invalid && name.touched"> Email is required
-                    </span>
+                <div class="alert alert-warning" *ngIf="errorMessage != '' ">{{errorMessage}}</div>
+                <div class="form-group  ">
+                    <label for="email" class="control-label">Email </label>
+                    <input id="email" name="email" [(ngModel)]="email" type="text" class="form-control">
                 </div>
 
-                <div class="form-group" [class.has-error]="name.invalid && name.touched"
-                    [class.has-success]="name.valid">
-                    <label for="password" class="control-label">password<span class="required"> *</span></label>
-                    <input id="password" name="password" [(ngModel)]="customer.password" type="password" min="0"
-                        class="form-control" #name="ngModel">
-                    <span class="help-block" *ngIf="name.invalid && name.touched"> password is required
-                    </span>
-                </div>
-
+                <div class="form-group">
+                    <label for="password" class="control-label">Password </label>
+                    <input id="password" name="password" [(ngModel)]="password" type="password" class="form-control"> 
+                </div> 
+                     <pre class="pull-right"><em>{{message}}</em></pre>
             </div>
 
-
-            <button type="submit" class="btn btn-primary ">&nbsp;SUBMIT&nbsp;</button>
+      <br />
+            <button type="submit" class="btn btn-primary ">&nbsp;&nbsp;SUBMIT&nbsp; </button>
             <br />
-           <br />
-            <button type="submit" class="btn btn-warning"  routerLink="register/">REGISTER</button>
+            <br />
+            <button type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
 
 
         </div>

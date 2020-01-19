@@ -75,7 +75,7 @@ export class PetCreateComponent implements OnInit {
 //     })
 
   }
-  private getPet(id) {
+  public getPet(id) {
     if (id === 0) {
       this.pet = {
         id: null,
@@ -99,7 +99,7 @@ export class PetCreateComponent implements OnInit {
       this.panelTitle = 'Edit Pet Details';
     }
   }
-   private savePet(): void { 
+   public savePet(): void { 
     // const newPet: Pet = Object.assign ({}, this.pet); //no longer worry about addressing reference var
     //this._petService.save(newPet)(
       // this._petService.save(this.pet).subscribe(

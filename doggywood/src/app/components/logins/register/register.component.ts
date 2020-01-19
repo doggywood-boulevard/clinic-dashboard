@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
             this.getCustomer(id);
     })
   }
-  private saveCustomer(): void { 
+  public saveCustomer(): void { 
     
       if (this.customer.id === null) {
         this.clientService.addCustomer(this.customer).subscribe(
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
       } 
     
   }
-private getCustomer(id)   {
+public getCustomer(id)   {
     if (id === 0) {
       this.customer = {
         id: null,
@@ -97,7 +97,7 @@ private getCustomer(id)   {
       this.panelTitle = 'Edit Details';
     }
   } 
-  onRegisterSubmit() {
+  public onRegisterSubmit() {
     alert(this.customer.firstName + ' ' + this.customer.email + ' ' + this.customer.password);
   }
 }

@@ -35,6 +35,7 @@ import { DatePickerComponent } from './layout/date-picker/date-picker.component'
 import { EmployeesService } from './services/employees.service';
 import { ClientsService } from './services/clients.service';
 import { PetsService } from './services/pets.service'; 
+import { AuthenticationService } from './services/authentication.service'; 
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { PetsService } from './services/pets.service';
   providers: [
     EmployeesService,
     ClientsService,
-    PetsService
+    PetsService,
+    AuthenticationService
 
   ],
   bootstrap: [AppComponent]
