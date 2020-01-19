@@ -1,28 +1,28 @@
 export class Customer {
-    c_id: number;
-    fname: string;
-    lname: string;
+    id: number;
+    firstName: string;
+    lastName: string;
     phone: string;
     email: string;
-    pass: string;
-    photo: string;
+    password: string;
+    cusUrl: string;
 
-    constructor(
-        c_id: number,
-        fname: string,
-        lname: string,
-        phone: string,
-        email: string,
-        pass: string,
-        photo: string
-    ) {
-        this.c_id = c_id;
-        this.fname = fname;
-        this.lname = lname;
-        this.phone = phone;
-        this.email = email;
-        this.pass = pass;
-        this.photo = photo;
-    }
+    // constructor(
+    //     id: number,
+    //     firstName: string,
+    //     lastName: string,
+    //     phone: string,
+    //     email: string,
+    //     password: string,
+    //     cusUrl: string
+    // ) {
+    //     this.id = id;
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.phone = phone;
+    //     this.email = email;
+    //     this.password = password;
+    //     this.cusUrl = cusUrl;
+    // }
 
 }
