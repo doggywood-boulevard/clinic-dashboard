@@ -5,6 +5,7 @@ export class Pet {
     petName: string;
     birthDate: string;
     weight: number;
+    neuter: number;
     type: number;
     breed: string;
     description: string
@@ -15,6 +16,7 @@ export class Pet {
         petName: string,
         birthDate: string,
         weight: number,
+        neuter: number,
         type: number,
         breed: string,
         description: string,
@@ -25,6 +27,7 @@ export class Pet {
         this.petName = petName;
         this.birthDate = birthDate;
         this.weight = weight;
+        this.neuter=neuter;
         this.type = type;
         this.breed = breed;
         this.description = description;

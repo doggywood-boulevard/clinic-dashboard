@@ -5,7 +5,7 @@ import { PetsService } from '../../services/pets.service';
 import { ClientsService } from '../../services/clients.service'; 
 import { tap, first } from 'rxjs/operators';
 import { PetType } from '../../models/petType'
-import { Pet } from 'src/app/models/petModel';
+import { Pet } from 'src/app/models/pet';
 import { Customer } from 'src/app/models/customer';
 
 @Component({
@@ -34,11 +34,11 @@ export class PetCreateComponent implements OnInit {
 //         pet: any;
 //         static: boolean;
 //     })
-  public createPetForm: NgForm;
+  public petForm: NgForm;
   public petsList = [];
   //cust
-  customer: Customer; 
-  public customersList = []; 
+  // customer: Customer; 
+  // public customersList = []; 
 
   constructor(private petService: PetsService,  
   private clientService: ClientsService, private router: Router,
@@ -53,6 +53,7 @@ export class PetCreateComponent implements OnInit {
     }
 
   ngOnInit() {    // on page load here  
+      this.panelTitle = 'Register Pet';
     this.petService.getPets()
       .subscribe(data => this.petsList = data);
 
@@ -62,16 +63,16 @@ export class PetCreateComponent implements OnInit {
       const id = +parameterMap.get('id');
       this.getPet(id);
     })
-// cust
-    this.clientService.getCustomers()
-      .subscribe(data => this.customersList = data);
+// // cust
+//     this.clientService.getCustomers()
+//       .subscribe(data => this.customersList = data);
 
-    this.clientService.getCustomers()
-      .subscribe(data => this.customersList = data);
-    this.activatedRoute.paramMap.subscribe(parameterMap => {
-      const id = +parameterMap.get('id');
-      this.getCustomer(id);
-    })
+//     this.clientService.getCustomers()
+//       .subscribe(data => this.customersList = data);
+//     this.activatedRoute.paramMap.subscribe(parameterMap => {
+//       const id = +parameterMap.get('id');
+//       this.getCustomer(id);
+//     })
 
   }
   private getPet(id) {
@@ -82,11 +83,12 @@ export class PetCreateComponent implements OnInit {
         petName: '',
         birthDate: '',
         weight: null,
+        neuter: null,
         type: null,
         breed: '',
         description: '' 
       };
-      this.panelTitle = 'Create Pet';
+      this.panelTitle = 'Add Pet';
       // this.createPetForm.resetForm();
     } else {
       // this.pet = Object.assign({}, this._petService.getPet(id));
@@ -94,7 +96,7 @@ export class PetCreateComponent implements OnInit {
         (pet) => this.pet = pet,
         (err: any) => console.log('create-pet.comp:' + err)
       );
-      this.panelTitle = 'Edit Details';
+      this.panelTitle = 'Edit Pet Details';
     }
   }
    private savePet(): void { 
@@ -121,54 +123,29 @@ export class PetCreateComponent implements OnInit {
       } 
    }
    /// CUST
-    private getCustomer(id)   {
-    if (id === 0) {
-      this.customer = {
-        id: null,
-        firstName: "",
-        lastName:  "",
-        phone:  "",
-        email:  "",
-        password:  "",
-        cusUrl:  ""
-      };
-      this.panelTitle = 'Register';
-      // this.createPetForm.resetForm();
-    } else {
-      // this.pet = Object.assign({}, this._petService.getPet(id));
-      this.clientService.getCustomer(id).subscribe(
-        (cust) => this.customer = cust,
-        (err: any) => console.log('create-client.comp:' + err)
-      );
-      this.panelTitle = 'Edit Details';
-    }
-  } 
-  private saveCustomer(): void { 
-    // const newPet: Pet = Object.assign ({}, this.pet); //no longer worry about addressing reference var
-    //this._petService.save(newPet)(
-      // this._petService.save(this.pet).subscribe(
-      if (this.pet.id === null) {
-        this.petService.addPet(this.pet).subscribe(
-          (data: Pet) => {
-            console.log(data);
-            // this.createPetForm.resetForm();
-            // this.activatedRoute.navigate(['/']);
-          },
-          (error: any) => console.log(error)
-        );
-      } else {
-        this.petService.updatePet(this.pet).subscribe(
-          () => { 
-            // this.createPetForm.reset();
-            // this.activatedRoute.navigate(['/']);
-          },
-          (error: any) => console.log(error)
-        );
-      } 
-   
+  //   private getCustomer(id)   {
+  //   if (id === 0) {
+  //     this.customer = {
+  //       id: null,
+  //       firstName: "",
+  //       lastName:  "",
+  //       phone:  "",
+  //       email:  "",
+  //       password:  "",
+  //       cusUrl:  ""
+  //     };
+  //     this.panelTitle = 'Register';
+  //     // this.createPetForm.resetForm();
+  //   } else {
+  //     // this.pet = Object.assign({}, this._petService.getPet(id));
+  //     this.clientService.getCustomer(id).subscribe(
+  //       (cust) => this.customer = cust,
+  //       (err: any) => console.log('create-client.comp:' + err)
+  //     );
+  //     this.panelTitle = 'Edit Details';
+  //   }
+  // } 
 
-
-  }
   // pets_url: string = 'http://localhost:8080/pets';
   // [{
   // 	"id": 2,

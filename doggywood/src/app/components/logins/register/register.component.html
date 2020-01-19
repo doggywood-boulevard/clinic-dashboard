@@ -1,1 +1,74 @@
-<p>register works!</p>
+ 
+<form #registerForm="ngForm" (ngSubmit)="saveCustomer()">
+  <div class="panel panel-primary" *ngIf="customer">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{panelTitle}}</h3>
+    </div>
+ 
+    <div class="panel-body">
+    
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="customerName" class="control-label">First Name<span class="required"> *</span></label>
+        <input id="firstName" required name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" #name="ngModel">
+        <span class="help-block" *ngIf="name.invalid && name.touched"> Customer First Name is required
+        </span>
+      </div>
+     
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="customerName" class="control-label">Last Name<span class="required"> *</span></label>
+        <input id="lastName" required name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" #name="ngModel">
+        <span class="help-block" *ngIf="name.invalid && name.touched"> Customer Last Name is required
+        </span>
+      </div>
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="email" class="control-label">Email<span class="required"> *</span></label>
+        <input id="email" name="email" [(ngModel)]="customer.email" type="text" class="form-control" #name="ngModel">
+         <span class="help-block" *ngIf="name.invalid && name.touched"> Email is required
+        </span>
+      </div>
+     
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="password" class="control-label">password<span class="required"> *</span></label>
+        <input id="password" name="password" [(ngModel)]="customer.password" type="password" min="0" class="form-control" #name="ngModel">
+         <span class="help-block" *ngIf="name.invalid && name.touched"> password is required
+        </span>
+      </div>
+       
+
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="phone" class="control-label">Customer Phone<span class="required"> *</span></label>
+        <input id="phone" name="phone" [(ngModel)]="customer.phone" type="text" class="form-control" #name="ngModel">
+        <span class="help-block" *ngIf="name.invalid && name.touched"> Phone is required
+        </span>
+      </div>
+ 
+ 
+      <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+        <label for="cusUrl" class="control-label">Photo URL<span class="required"> *</span></label>
+        <input id="cusUrl" name="cusUrl" [(ngModel)]="customer.cusUrl" type="text" class="form-control" #name="ngModel">
+        <span class="help-block" *ngIf="name.invalid && name.touched"> photo is required
+        </span>
+        <code>Example:<br /><small>https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p7.png</small></code>
+      </div>
+ 
+      </div>
+ 
+     
+      <button type="submit"  class="btn btn-primary"  > SUBMIT </button>
+     
+    </div> 
+</form>
+ 
+<div class="scroll-window col col-xs-6">
+    <h6>CUSTOMERS: <br />http://localhost:8080/customers</h6>
+ 
+    <ul *ngFor="let cust of customersList">
+    <img class="imageClass"  alt="cust.cusUrl" width="100" [src]="cust.cusUrl" />>  
+            <li><strong>cust.id:</strong>  {{cust.id}}</li>
+            <li><strong>cust.firstName: </strong> {{cust.firstName}}</li>
+            <li><strong>cust.lastName: </strong> {{cust.lastName}}</li>
+            <li><strong>cust.phone: </strong> {{cust.phone}}</li>
+            <li><strong>cust.email: </strong> {{cust.email}}</li>
+            <li><strong>cust.password: </strong> {{cust.password}}</li>
+    </ul>
+  </div>

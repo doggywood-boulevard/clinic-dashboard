@@ -16,13 +16,13 @@ import { Component, OnInit } from '@angular/core';
 </form>
 
 <hr/>
-<pre>Model: {{ model | json }}</pre>
 
-<ngb-alert class="mt-3 mb-0" type="info" [dismissible]="false">
-  You must provide the icon for the button. This allows you
-  to choose an icon that matches your application's style.
-  In this example, the icon is set via a CSS class.
-</ngb-alert>
+
+ <!--
+ <pre>Model: {{ model | json }}</pre>
+ <ngb-alert class="mt-3 mb-0" type="info" [dismissible]="false">
+  </ngb-alert>
+  -->
   `,
   styles: []
 })
