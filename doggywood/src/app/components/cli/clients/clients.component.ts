@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../../../models/customer';
-import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
-
-import { Router, ActivatedRoute, Navigation } from '@angular/router';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Customer } from '../../../models/customer';
 
 @Component({
   selector: 'app-clients',
@@ -13,46 +12,48 @@ import { Router, ActivatedRoute, Navigation } from '@angular/router';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  // landing material from login
+    // landing material from login
   welcome: string;
   object: string; 
   email: string;
+
+  public custId: number;
   
+
   public customer: Customer;
   public customerList = [];
 
+  /// method 1 observable 
+  custs_url: string = "http://localhost:8080/customers";
 
-  constructor(private route: ActivatedRoute, private clientsService: ClientsService, private cliService: CliLandingService) { }
+  constructor(private clientService: ClientsService, private clientsService: ClientsService, private cliService: CliLandingService) { }
 
   ngOnInit() {
-    // this.clientsService.getCustomers().subscribe(data => this.customerList = data);
+    this.custId = 4; // TEMP, we'll get this number from the route params
 
-    // this.clientsService.getCustomer(4).subscribe(data => this.customer = data);
-
-    // this.email = this.route.snapshot.params['email'];
-
+    this.getCustomer(this.custId);
+    // this.getCustomerList();
   }
-  getWelcome() {
-    console.log(this.cliService.collectClientBean());
-
+    getWelcome() {
+    console.log(this.cliService.collectClientBean()); 
     this.cliService.collectClientBean().subscribe(
       response => this.handleSuccessfulResponse(response)
     );
     console.log('last line of message');
   }
-
   handleSuccessfulResponse(response) {
     console.log(response);
     console.log(response.message);
     this.object = response;
-    this.welcome = response.message;
-
-
-  }
+    this.welcome = response.message; 
+  } 
   getCustomer(id: number) {
-    this.clientsService.getCustomer(4).subscribe(data => this.customer = data);
+    this.clientService.getCustomer(4).subscribe(data => this.customer = data);
+    // return  this.clientService.getCustomer(id);
+    // this.clientService.getCustomers()
+    //     .subscribe(data => this.customerList = data); 
   }
-  getCustomers() {
+  getCustomerList() {
     this.clientsService.getCustomers().subscribe(data => this.customerList = data);
 
   }
@@ -62,6 +63,5 @@ export class ClientsComponent implements OnInit {
       response => this.handleSuccessfulResponse(response)
     );
   }
-
 
 }
