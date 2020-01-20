@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+    
+
     sessionStorage.removeItem('authUser'); 
     sessionStorage.removeItem('authEmployee')
     this.errorMessage = '';

@@ -1,0 +1,67 @@
+import { Component, OnInit } from '@angular/core';
+import { Customer } from '../../../models/customer';
+import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { ClientsService } from '../../../services/clients.service';
+import { CliLandingService } from '../../../services/cli-landing.service';
+
+import { Router, ActivatedRoute, Navigation } from '@angular/router';
+
+@Component({
+  selector: 'app-clients',
+  templateUrl: './clients.component.html',
+  styleUrls: ['./clients.component.css']
+})
+export class ClientsComponent implements OnInit {
+  // landing material from login
+  welcome: string;
+  object: string; 
+  email: string;
+  
+  public customer: Customer;
+  public customerList = [];
+
+
+  constructor(private route: ActivatedRoute, private clientsService: ClientsService, private cliService: CliLandingService) { }
+
+  ngOnInit() {
+    // this.clientsService.getCustomers().subscribe(data => this.customerList = data);
+
+    // this.clientsService.getCustomer(4).subscribe(data => this.customer = data);
+
+    // this.email = this.route.snapshot.params['email'];
+
+  }
+  getWelcome() {
+    console.log(this.cliService.collectClientBean());
+
+    this.cliService.collectClientBean().subscribe(
+      response => this.handleSuccessfulResponse(response)
+    );
+    console.log('last line of message');
+  }
+
+  handleSuccessfulResponse(response) {
+    console.log(response);
+    console.log(response.message);
+    this.object = response;
+    this.welcome = response.message;
+
+
+  }
+  getCustomer(id: number) {
+    this.clientsService.getCustomer(4).subscribe(data => this.customer = data);
+  }
+  getCustomers() {
+    this.clientsService.getCustomers().subscribe(data => this.customerList = data);
+
+  }
+  getClientData() {
+    console.log(this.cliService.collectClientBean());
+    this.cliService.collectClientBean().subscribe(
+      response => this.handleSuccessfulResponse(response)
+    );
+  }
+
+
+}

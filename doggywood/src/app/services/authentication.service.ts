@@ -1,11 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Customer } from '../models/customer';
+import { Observable, throwError  } from 'rxjs';
+import { ClientsService } from './clients.service';
+import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+ 
+export class CustomerWelcomeBean {
+  constructor(public message:string) { }
+
+}
+export class CustomerDataBean {
+   constructor(public message:string) { }
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
   loggedIn = false;
-  constructor() { }
+  cust_login: string="http://localhost:8080/customer-welcome/login/";
+
+  constructor(private clientsService: ClientsService,   private http: HttpClient ) { }
+
+  url = 'http://localhost:8080/customer-welcome/login/';
 
   public authenticate(email, password) { 
 
@@ -24,6 +41,11 @@ export class AuthenticationService {
     return false;
   }
 
+
+   public getCustomerAuth(email: string, pasword: string): Observable<Customer> {
+    return this.http.get<Customer>(`${this.cust_login}/?email=sunday@sun.com&password=sunpassword`);
+  }
+
   public isCustLoggedIn() {
     let user = sessionStorage.getItem('authUser')
     return !(user === null) // i.e. true
@@ -33,10 +55,9 @@ export class AuthenticationService {
     return !(user === null) // i.e. true
   }
 
-  logout() {
+  public  logout() {
     sessionStorage.removeItem('authUser');
 
     sessionStorage.removeItem('authEmployee')
-  }
-
+  } 
 }
