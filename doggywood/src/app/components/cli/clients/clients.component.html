@@ -1,1 +1,62 @@
-<p>clients works!</p>
+
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p10.jpg" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+                        <h3>{{customer.firstName}} {{customer.lastName}}</h3>
+					</div>
+					<div>
+                        <p> Phone:	{{customer.phone}}  </p>
+                        <p> Email: {{customer.email}} </p>
+                        <button class="btn btn-outline-info table-btn">Add Pet</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+    <table class="table pet-table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Animal Name</th>
+            <th scope="col">Animal Type</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Age</th>
+            <th scope="col">Records</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sparky</th>
+            <td>Dog</td>
+            <td>49 lbs</td>
+            <td>3 years</td>
+            <button class="btn btn-info table-btn">View Records</button>
+          </tr>
+          <tr>
+            <th scope="row">Butkuss</th>
+            <td>Dog</td>
+            <td>69 lbs</td>
+            <td>10 years</td>
+            <button class="btn btn-info table-btn">View Records</button>
+          </tr>
+          <tr>
+            <th scope="row">Catticus</th>
+            <td>Cat</td>
+            <td>5 lbs</td>
+            <td>2 years</td>
+            <button class="btn btn-info table-btn">View Records</button>
+          </tr>
+        </tbody>
+      </table>
+</div>
