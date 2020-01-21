@@ -5,13 +5,10 @@ import { CliLandingService } from '../../../services/cli-landing.service';
 
 import { Customer } from '../../../models/customer';
  
-import { ClientsService } from '../../../services/clients.service'; 
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
-import { Customer } from '../../../models/customer';
- 
-import { CliLandingService } from '../../../services/cli-landing.service';
+
   
  
 @Component({
@@ -44,6 +41,7 @@ export class ClientsComponent implements OnInit {
     // get logged in user email
     this.email = this.cliLandingService.getSessionEmail();
     this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customerObject = data);
+    
     
     // this.getCustomer(this.custId);
 
