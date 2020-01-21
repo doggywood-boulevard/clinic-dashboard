@@ -57,7 +57,7 @@ export class ClientsComponent implements OnInit {
      sessionStorage.setItem("cusUrl", customerObject.cusUrl) 
   }
   getClientSessionData() {
-    // this.cliLandingService.makeSessionData();
+ 
 
     this.custId = parseInt(sessionStorage.getItem("custId"));
     this.firstName = sessionStorage.getItem("firstName");
