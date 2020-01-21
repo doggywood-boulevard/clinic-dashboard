@@ -47,7 +47,7 @@ public class CustomerController {
 	@PutMapping(value = "/customers", consumes = "application/json")
 //	@CrossOrigin(origins = "http://localhost:8080")
 	@CrossOrigin(origins = "*")
-	public Customer updatesCustomer(Customer change) {
+	public Customer updatesCustomer(@RequestBody Customer change) {
 		return cs.updatesCustomer(change);
 	}
 

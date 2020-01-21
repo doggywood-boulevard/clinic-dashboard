@@ -43,9 +43,8 @@ public class CustomerWelcomeController {
 
 //customer-welcom/value-variable/
 	@GetMapping(value = "/customer-welcome/profile/{email}")
-	public String customerProfile(@PathVariable String email) {
-		//return new Customer(String.format("Welcome to Doggywood, %s", email));
-		return cs.getCustomerByEmail(email).toString();
+	public Customer customerProfile(@PathVariable String email) {
+		return cs.getCustomerByEmail(email);// .toString();
 	}
  
 	 

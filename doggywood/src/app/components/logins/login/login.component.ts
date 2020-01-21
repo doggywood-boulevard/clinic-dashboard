@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private clientService: ClientsService, private authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
 
-  ngOnInit() {
-    
+  ngOnInit() { 
 
     sessionStorage.removeItem('authUser'); 
     sessionStorage.removeItem('authEmployee')
@@ -37,13 +36,13 @@ export class LoginComponent implements OnInit {
 
       //REDIRECT TO Employee Landing
       if (this.authenticationService.isEmpLoggedIn()) {
-        this.router.navigate(['recLanding'])  // need other if for vetLogin
+        this.router.navigate(['vetLanding'])  // need other if for vetLogin
         console.log("logged in as employee")
         this.invalidLogin = false;
 
         //REDIRECT TO Client Landing
       } else if (this.authenticationService.isCustLoggedIn()) {
-        this.router.navigate(['cliLanding'])
+        this.router.navigate(['clients'])
         console.log("logged in as customer")   
         this.invalidLogin = false;
       }
