@@ -8,7 +8,7 @@ public interface PetService {
 
 	public Pet createPet(Pet pet);
 	public Pet getPetById(int id);
-	public List<Pet> getAllPetsByCustomer(int cId);
+	public List<Pet> getAllPetsByCustomer(int cId); 
 	public List<Pet> getAllPets();
 	public Pet updatesPet(Pet change);
 	public boolean deletePet(Pet pet);

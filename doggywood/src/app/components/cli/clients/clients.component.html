@@ -10,13 +10,13 @@
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-                        <h3>{{customer.firstName}} {{customer.lastName}}</h3>
+					<div *ngIf="customerObject" class="profile-usertitle-name">
+                        <h3>{{customerObject.firstName}} {{customerObject.lastName}}</h3>
 					</div>
-					<div>
-                        <p> Phone:	{{customer.phone}}  </p>
-                        <p> Email: {{customer.email}} </p>
-                        <button class="btn btn-outline-info table-btn">Add Pet</button>
+					<div  *ngIf="customerObject" >
+                        <p> Phone:	{{customerObject.phone}}  </p>
+                        <p> ID: </p>
+                        <button (click)="getCustomer(id)" class="btn btn-outline-info table-btn">Add Pet</button>
 					</div>
 				</div>
 
@@ -60,3 +60,20 @@
         </tbody>
       </table>
 </div>
+
+ <!--Bean stuff Dev Stuff Below-->
+ <p>  Bean stuff Dev Stuff Below</p> 
+
+<button (click)="getClientData()">CALL JAVA BEAN</button>
+<pre  ><p>response object:</p> {{object | json}}</pre>
+<div  ><p>response message: </p>{{welcome}}</div>
+<hr>
+
+<button (click)="getCustomerList()">GET ALL</button>
+<div *ngFor="let cust of customerList">{{cust.firstName}}</div>
+<button (click)="getCustomer(4)">get #4</button> 
+<div *ngIf="customer" >Welcome, {{customer.firstName}}  </div> 
+<hr>
+<br />
+<br />
+ 
