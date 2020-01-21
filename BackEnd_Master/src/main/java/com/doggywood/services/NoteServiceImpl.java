@@ -20,13 +20,13 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public Note getNoteByAId(int id) {
-		return nr.getNoteByAId(id);
+	public Note getNoteByAid(int id) {
+		return nr.getNoteByaid(id);
 	}
 
 	@Override
-	public List<Note> getNoteByPId(int id) {
-		return (List<Note>) nr.getNoteByPId(id);
+	public List<Note> getNoteByPid(int id) {
+		return (List<Note>) nr.getNoteBypid(id);
 	}
 
 	@Override
