@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientsService } from '../../../services/clients.service';
+import { ClientsService } from '../../../services/clients.service'; 
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
 import { Customer } from '../../../models/customer';
+ 
+import { CliLandingService } from '../../../services/cli-landing.service';
+
+import { Customer } from '../../../models/customer';
+ 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent implements OnInit {
+export class ClientsComponent implements OnInit { 
   constructor(private clientService: ClientsService, private http: HttpClient ) { }
 public customer: Customer;
  public  customerList = [];
@@ -31,4 +36,5 @@ getCustomer(id:number) {
     this.clientService.getCustomer(4).subscribe(data => this.customer  = data);
     // this.clientService.getCustomers().subscribe(data => this.customerList = data);
   }
+ 
 }
