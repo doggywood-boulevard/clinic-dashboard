@@ -1,41 +1,41 @@
 <div class="container">
     <h2>
-        Welcome Dr. Acula
+        Welcome Dr. GOOD ENOUGH FOR NOW{{apt[0].empId}} => EName 
     </h2>
 </div>
-<div class="container">
+
+    <div class="container">
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="coL">Animal Name</th>
-            <th scope="coL">Owner</th>
-             <th scope="coL">Appointment</th>
-             <th scope="coL">Dog Info</th>
-             <th scope="coL">Appt Info</th>
+            <th scope="coL" style="text-align:center">Animal Name</th>
+            <th scope="coL" style="text-align:center">CID => CName</th>
+             <th scope="coL" style="text-align:center">PID => PName</th>
+             <th scope="coL" style="text-align:center">Date</th>
+             <th scope="coL" style="text-align:center">Weight</th>
+             <th scope="coL" style="text-align:center">Time slot</th>
+             <th scope="coL" style="text-align:center">Description</th>
+             <th scope="coL" style="text-align:center">Dog Info</th>
+             <th scope="coL" style="text-align:center">Appt Info</th>
             </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">Sparky</th>
-            <td>Sindy</td>
-            <td>1/15/19 - 8:30am</td>
-            <td><button class="btn btn-info table-btn">See Profile</button></td>
-                <td> <button class="btn btn-info table-btn">View Appt</button></td>
-          </tr>
-          <tr>
-            <th scope="row">Butkuss</th>
-            <td>Mike</td>
-            <td>1/15/19 - 9:00am</td>
-            <td><button class="btn btn-info table-btn">See Profile</button></td>
-            <td><button class="btn btn-info table-btn">View Appt</button></td>
-          </tr>
-          <tr>
-            <th scope="row">Fluffy</th>
-            <td>Taquesha</td>
-            <td>1/15/19 - 9:30am</td>
-            <td><button class="btn btn-info table-btn">See Profile</button></td>
-            <td><button class="btn btn-info table-btn">View Appt</button></td>
-          </tr>
+          <ng-container>  
+            
+   <tr *ngFor="let apt of apptList"> 
+     <td>{{apt.id}}</td>
+    <td>{{apt.custId}}</td>
+    <td>{{apt.petId}}</td>  
+    <td>{{apt.date}}</td>
+    <td>{{apt.weight}}</td>
+    <td>{{apt.timeslot}}</td>
+    <td>{{apt.description}}</td>
+    <td><button class="btn btn-info table-btn">See Profile</button></td>
+    <td> <button class="btn btn-info table-btn">View Appt</button></td>
+   </tr>
+  </ng-container> 
+            
+          
         </tbody>
       </table>        
     </div>
