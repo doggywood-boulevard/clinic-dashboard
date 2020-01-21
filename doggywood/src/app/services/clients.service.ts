@@ -4,12 +4,25 @@ import { Observable, throwError  } from 'rxjs';
 import { Customer } from '../models/customer';
 import { catchError } from 'rxjs/operators';
 
+
+export class CustomerWelcomeBean {
+  constructor(public message: string) { }
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
 
+  base_url: string = 'http://localhost:8080';
   custs_url: string= "http://localhost:8080/customers";
+  
+  email: string;
+  emailUser: string;
+  emailEmployee: string;
+  public customerObject: Customer; // session OBJECT
+
  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -23,7 +36,7 @@ export class ClientsService {
     }
     return throwError('Oops, there is a problem  ..');
   }
-  
+ 
   getCustomers(): Observable<Customer[]> { 
      return this.http.get<Customer[]>(this.custs_url)
       .pipe(catchError(this.handleError));
@@ -64,4 +77,23 @@ export class ClientsService {
       .pipe(catchError(this.handleError));
     
   }
+  /// NON CRUD  -- FORMERLY CLI-LANDING
+  
+  public getSessionEmail() {
+    this.emailUser = sessionStorage.getItem('authUser');
+    this.emailEmployee = sessionStorage.getItem('authEmployee');
+    
+    this.email = (this.emailEmployee) ? this.emailEmployee : this.emailUser; 
+    console.log(this.email);
+    return this.email;
+  }
+ 
+
+  getClientByEmail(email) { 
+     return  this.http.get<Customer>(`${this.base_url}/customer-welcome/profile/${email}`);
+  }
+  // BEAN 
+  collectClientBean() {
+    return this.http.get<CustomerWelcomeBean>(`${this.base_url}/customer-welcome-bean`);
+  } 
 }

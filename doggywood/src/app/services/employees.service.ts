@@ -8,8 +8,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmployeesService {
-
-  emps_url: string= "http://localhost:8080/customers";
+  
+  emps_url: string= "http://localhost:8080/employees";
 
   constructor(private http: HttpClient) { }
 

@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   password: string;
   invalidLogin: boolean = true;
   errorMessage: string;
+  
   constructor(private clientService: ClientsService, private authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
 
