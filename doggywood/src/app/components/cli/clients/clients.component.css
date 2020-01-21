@@ -8,13 +8,15 @@
     border-radius: 50% !important;
   }
 
-  .pet-table{
-      margin-top: 20px;
+  .pet-table{ 
+      margin: 20px; 
   }
 
   .table-btn{
       margin: 5px;
-  }
+  } 
+  
+/*  TEMP DEV  (to see) */  
 p.dev {
     color:blue;
 }

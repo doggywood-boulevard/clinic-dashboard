@@ -6,6 +6,7 @@
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
  
+ 
 					<img src="{{customer.cusUrl}}" class="img-responsive" alt="">
  
 				</div>
@@ -37,27 +38,23 @@
         <thead class="thead-dark">
        
             <tr>
- 
+  
             <th scope="col">Animal Name</th>
             <th scope="col">Animal Type</th>
             <th scope="col">Weight</th>
             <th scope="col">Age</th>
-            <th scope="col">Records</th>
- 
+            <th scope="col">Records</th> 
             <th scope="col">View Pet</th>
           </tr>
         </thead>
         <tbody>
           <tr class="clickable-row" routerLink="register/">
-
+ 
             <th scope="row">Sparky</th>
             <td>Dog</td>
             <td>49 lbs</td>
-            <td>3 years</td>
- 
-            <td><button class="btn btn-info table-btn">View Records</button></td>
-            <td><button class="btn btn-info table-btn">View Pet</button></td>
- 
+            <td>3 years</td> 
+            <button class="btn btn-info table-btn">View Records</button> 
           </tr>
           <tr>
             <th scope="row">Butkuss</th>
@@ -65,14 +62,12 @@
             <td>69 lbs</td>
             <td>10 years</td>
  
+ 
             <td><button class="btn btn-info table-btn">View Records</button></td>
             <td><button class="btn btn-info table-btn">View Pet</button></td>
-          </tr>
-          <tr>
-            <th scope="row">Catticus</th>
-            <td>Cat</td>
-            <td>5 lbs</td>
-            <td>2 years</td>
+ 
+            <button class="btn btn-info table-btn">View Records</button>
+ 
             <td><button class="btn btn-info table-btn">View Records</button></td>
             <td><button class="btn btn-info table-btn">View Pet</button></td>
  
@@ -104,5 +99,4 @@
 <button (click)="getCustomer(4)">get #4</button> 
 <div *ngIf="customer" >Welcome, {{customer.firstName}}  </div> 
 <hr>
-<br />
 <br /> 
