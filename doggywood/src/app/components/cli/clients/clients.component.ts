@@ -17,7 +17,7 @@ customer5: Customer;
 /// method 1 observable 
 custs_url: string = "http://localhost:8080/customers";
 getCustomer(id:number) {
-  this.clientService.getCustomer(4).subscribe(data => this.customer  = data);
+  this.clientService.getCustomer(3).subscribe(data => this.customer  = data);
   // return  this.clientService.getCustomer(id);
   // this.clientService.getCustomers()
   //     .subscribe(data => this.customerList = data); 
