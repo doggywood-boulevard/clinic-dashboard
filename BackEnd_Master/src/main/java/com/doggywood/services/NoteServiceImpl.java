@@ -9,7 +9,7 @@ import com.doggywood.entities.Note;
 import com.doggywood.repositories.NoteRepository;
 
 @Service
-public class NoteServiceImpl implements NoteService {
+public abstract class NoteServiceImpl implements NoteService {
 
 	@Autowired
 	NoteRepository nr;
@@ -19,15 +19,15 @@ public class NoteServiceImpl implements NoteService {
 		return nr.findById(id).get();
 	}
 
-	@Override
-	public Note getNoteByAId(int id) {
-		return nr.getNoteByAId(id);
-	}
-
-	@Override
-	public List<Note> getNoteByPId(int id) {
-		return (List<Note>) nr.getNoteByPId(id);
-	}
+//	@Override
+//	public Note getNoteByAId(int id) {
+//		return nr.getNoteByAId(id);
+//	}
+//
+//	@Override
+//	public List<Note> getNoteByPId(int id) {
+//		return (List<Note>) nr.getNoteByPId(id);
+//	}
 
 	@Override
 	public Note createNote(Note note) {

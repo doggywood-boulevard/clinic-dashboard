@@ -25,6 +25,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 
 	@Override
+	public Employee getEmployeeByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
 	public List<Employee> getAllEmployees() {
 		return (List<Employee>)er.findAll();
 	}

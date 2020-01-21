@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service; 
 
 import com.doggywood.entities.Customer;
+import com.doggywood.entities.Employee;
 //import com.doggywood.entities.Pet;
 import com.doggywood.repositories.CustomerRepository; 
 
@@ -54,6 +55,6 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return true; 
 	}
-
+ 
 
 }

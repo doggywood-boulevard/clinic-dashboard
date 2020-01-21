@@ -21,48 +21,55 @@ export class CustomerDataBean {
 export class AuthenticationService {
   public customerList: Customer[] = [];
   public customer: Customer; // session OBJECT
-  public employee: Employee; 
+  public employee: Employee;
   loggedIn = false;
   // cust_login: string="http://localhost:8080/customer-welcome/login/";
   number: number;
   constructor(private cliLandingService: CliLandingService, private ClientsService: ClientsService, private http: HttpClient) { }
 
-  url = 'http://localhost:8080/customer-welcome/profile/';
-  emp_url = 'http://localhost:8080/employees/profile/';
+  url = 'http://localhost:8080/customer-welcome/profile';
+  emp_url = 'http://localhost:8080/employee-welcome/profile';
 
   allCustomer: Observable<Customer[]> = this.ClientsService.getCustomers();
 
 
   public authenticate(email, password) {
-    this.getCustomerAuth(email, password).subscribe
-      ( (response) => {
-          this.customer = response;
-          console.log("auth.getCustomerAuth( "+ this.customer);
-          if (email === this.customer.email && password === this.customer.password) { // 
-            console.log('before logged in: ' + this.customer.email + ' ' + 'logged-in: ' +  
-            this.isCustLoggedIn());
 
-            sessionStorage.setItem("authUser", email);
-            console.log('customer after ' + this.isCustLoggedIn());
-            return true;
+    this.getCustomerAuth(email, password).subscribe((response) => {
+        this.customer = response;
+        sessionStorage.setItem("authUser", this.customer.email);
+      console.log("auth.getCustomerAuth( " + this.customer.email);
+    },
+      (response) => {
+        return "Sorry it failed";
+      }
+    ); 
 
-          } else if (email === this.employee.email && password === this.employee.password) {
-            console.log('customer :' + this.employee + '' + 'before ' + this.isEmpLoggedIn()); 
-            sessionStorage.setItem("authEmployee", email);
-            console.log('before ' + this.isEmpLoggedIn());
-            return true;
+    this.getEmployeeAuth(email, password).subscribe((response) => {
+          this.employee = response;
+           sessionStorage.setItem("authEmployee", this.employee.email);
+      console.log("auth.getemployee-Auth( " + this.employee);
+    },
+      (response) => {
+        return "Sorry it failed";
+      }
+    ); // get email's OBJECT  
+    // if (this.customer && email === this.customer.email && password === this.customer.password) { // 
+    //   console.log('before logged in: ' + this.customer.email + ' ' + 'logged-in: ' +
+    //     this.isCustLoggedIn());
+ 
+    //   console.log('customer after ' + this.isCustLoggedIn());
 
-          }
-        }, 
-        (response) => {
-          return "Sorry it failed";
-        }
-      ); // get email's OBJECT 
-    // this.getClientDataByEmail(email); // get email's OBJECT ->this.customer
-    // console.log("auth, getclientdata, email: " + this.customer.email);
+    // } else if (this.employee && email === this.employee.email && password === this.employee.password) { // 
+    //   console.log('before logged in: ' + this.employee.email + ' ' + 'logged-in: ' +
+    //     this.isEmpLoggedIn());
 
+     
+    //   console.log('employee after ' + this.isEmpLoggedIn());
+
+    // }
     // this.makeSessionData(); // make session data
-    return false;
+    return (this.isCustLoggedIn() || this.isEmpLoggedIn()) ? true : false;
   }
   // GET EMAIL, then get OBJECT AND PUT IN SESSION STORAGE
   public getClientDataByEmail(email) {
@@ -99,8 +106,9 @@ export class AuthenticationService {
     let user = sessionStorage.getItem('authEmployee')
     return !(user === null) // i.e. true
   }
- 
+
   public logout() {
+    sessionStorage.removeItem('authEmployee');
     sessionStorage.removeItem('authUser');
     sessionStorage.removeItem("custId");
     sessionStorage.removeItem("firstName");

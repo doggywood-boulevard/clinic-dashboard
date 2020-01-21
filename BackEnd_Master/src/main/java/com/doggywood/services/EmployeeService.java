@@ -12,5 +12,6 @@ public interface EmployeeService {
 	public List<Employee> getAllEmployees();
 	public Employee updatesEmployee(Employee change);
 	public boolean deleteEmployee(Employee employee);
+	Employee getEmployeeByEmail(String email);
 	
 }
