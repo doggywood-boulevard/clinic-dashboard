@@ -65,10 +65,10 @@ public class PetController {
 
 	
 	//Come back to this to provide restfull route
-	@GetMapping(value = "pets/customer/{cId}")
 //	@CrossOrigin(origins = "http://localhost:8080")
+	@GetMapping(value = "/customers/{cId}/pets")
 	@CrossOrigin(origins = "*")
-	public List<Pet> getAllPetsByCustomer(int cId) {
+	public List<Pet> getAllPetsByCustomer(@PathVariable("cId") int cId) {
 		return ps.getAllPetsByCustomer(cId);
 	}
 	 
