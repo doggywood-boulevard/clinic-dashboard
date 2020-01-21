@@ -1,14 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+ 
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
 
 import { Customer } from '../../../models/customer';
-
+ 
+import { ClientsService } from '../../../services/clients.service'; 
+import { Observable, throwError  } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
+import { Customer } from '../../../models/customer';
+ 
+import { CliLandingService } from '../../../services/cli-landing.service';
+  
+ 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
-})
+}) 
+
 export class ClientsComponent implements OnInit {
   // landing material from login  // for bean
   id: number;
@@ -82,5 +93,5 @@ export class ClientsComponent implements OnInit {
     );
     console.log('last line of message from GetCLientData Function');
   }
-
+ 
 }
