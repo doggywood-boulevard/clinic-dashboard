@@ -12,6 +12,7 @@ export class PetsService {
   // PROD 
   // base_url: string = 'http://localhost:8080';
 
+  url: string = 'http://localhost:8080';
   pets_url: string = 'http://localhost:8080/pets'; 
 // [{
 // 	"id": 2,
@@ -52,7 +53,12 @@ export class PetsService {
      return this.http.get<Pet[]>(this.pets_url)
       .pipe(catchError(this.handleError));
   }
-  
+
+  getPetsByCustomer(id :number): Observable<Pet[]> {
+    return this.http.get<Pet[]>(`${this.url}/customers/${id}/pets`)
+      .pipe(catchError(this.handleError));
+  }
+
   getPet(id: number): Observable<Pet> {
     // return this.listPets.find(u => u.id === id)
     return this.http.get<Pet>(`${this.pets_url}/${id}`) 
