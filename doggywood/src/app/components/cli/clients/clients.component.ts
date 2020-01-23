@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
  
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
-
-import { Customer } from '../../../models/customer';
+  
  
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -41,8 +40,7 @@ export class ClientsComponent implements OnInit {
     // get logged in user email
     this.email = this.cliLandingService.getSessionEmail();
     this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customerObject = data);
-    
-    
+
     // this.getCustomer(this.custId);
 
     this.getClientSessionData();
