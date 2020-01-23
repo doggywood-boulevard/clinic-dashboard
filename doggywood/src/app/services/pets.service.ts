@@ -53,6 +53,12 @@ export class PetsService {
       .pipe(catchError(this.handleError));
   }
   
+  getPetByCust(id: number): Observable<Pet[]> {
+    // return this.listPets.find(u => u.id === id)
+    return this.http.get<Pet[]>(`http://localhost:8080/customers/${id}/pets`) 
+      .pipe(catchError(this.handleError));
+  }
+
   getPet(id: number): Observable<Pet> {
     // return this.listPets.find(u => u.id === id)
     return this.http.get<Pet>(`${this.pets_url}/${id}`) 
