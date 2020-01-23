@@ -2,12 +2,12 @@
 <div class="container">
     <div class="row profile">
 		<div class="col-md-3">
-			<div class="profile-sidebar">
+			<div *ngIf="customer" class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
+				<div  class="profile-userpic">
  
  
-					<img src="{{customer.cusUrl}}" class="img-responsive" alt="">
+					<img *ngIf="customer" src="{{customer.cusUrl}}" class="img-responsive" alt="">
  
 				</div>
 				<!-- END SIDEBAR USERPIC -->
@@ -30,6 +30,7 @@
     <div class="container">
 
         <button class="btn btn-block btn-outline-info table-btn">Add Pet</button>
+
     </div>
 
 <div class="container">
@@ -48,33 +49,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="clickable-row" routerLink="register/">
-            <th scope="row">Sparky</th>
-            <td>Dog</td>
-            <td>49 lbs</td>
-            <td>3 years</td> 
-
+          <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
+            <th scope="row">{{ pet.petName }}</th>
+            <td>{{ pet.type }}</td>
+            <td>{{ pet.weight }} lbs</td>
+            <td>{{ pet.birthDate }} years</td> 
            <td><button class="btn btn-info table-btn">View Records</button> </td>
            <td><button class="btn btn-info table-btn">View Pet</button> </td>
 
-          </tr>
-          <tr>
-            <th scope="row">Butkuss</th>
-            <td>Dog</td>
-            <td>69 lbs</td>
-            <td>10 years</td>
-
-            <td><button class="btn btn-info table-btn">View Records</button></td>
-            <td><button class="btn btn-info table-btn">View Pet</button></td>
- 
-          </tr>
-          <tr>
-            <th scope="row">Catticus</th>
-            <td>Cat</td>
-            <td>5 lbs</td>
-            <td>2 years</td>
-            <td><button class="btn btn-info table-btn">View Records</button></td>
-            <td><button class="btn btn-info table-btn">View Pet</button></td>
           </tr>
         </tbody>
       </table>
