@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
  
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
-
-import { Customer } from '../../../models/customer';
+  
  
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';

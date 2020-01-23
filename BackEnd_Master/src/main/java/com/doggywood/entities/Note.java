@@ -19,12 +19,12 @@ public class Note {
 	private int id;
 	
 
-	@Column(name="a_id")
-	private int AId;
+	@Column(name="aid")
+	private int aid;
 	
 
-	@Column(name="p_id")
-	private int PId;
+	@Column(name="pid")
+	private int pid;
 	
 	@Column(name="n_message")
 	private String n_message;
@@ -37,21 +37,21 @@ public class Note {
 	
 	@Override
 	public String toString() {
-		return "Note [n_id=" + id + ", a_id=" + AId + ", p_id=" + PId + ", n_message=" + n_message + "]";
+		return "Note [n_id=" + id + ", a_id=" + aid + ", p_id=" + pid + ", n_message=" + n_message + "]";
 	}
 	
 	public Note(int a_id, int p_id, String n_message) {
 		super();
-		this.AId = a_id;
-		this.PId = p_id;
+		this.aid = a_id;
+		this.pid = p_id;
 		this.n_message = n_message;
 	}
 
 	public Note(int n_id, int a_id, int p_id, String n_message) {
 		super();
 		this.id = n_id;
-		this.AId = a_id;
-		this.PId = p_id;
+		this.aid = a_id;
+		this.pid = p_id;
 		this.n_message = n_message;
 	}
 
@@ -64,19 +64,19 @@ public class Note {
 	}
 
 	public int getA_id() {
-		return AId;
+		return aid;
 	}
 
 	public void setA_id(int a_id) {
-		this.AId = a_id;
+		this.aid = a_id;
 	}
 
 	public int getP_id() {
-		return PId;
+		return pid;
 	}
 
 	public void setP_id(int p_id) {
-		this.PId = p_id;
+		this.pid = p_id;
 	}
 
 	public String getN_message() {
