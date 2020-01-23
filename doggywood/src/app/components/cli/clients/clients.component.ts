@@ -8,6 +8,8 @@ import { Customer } from '../../../models/customer';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
+import { Pet } from 'src/app/models/pet';
+import { PetsService } from 'src/app/services/pets.service';
 
   
  
@@ -24,7 +26,7 @@ export class ClientsComponent implements OnInit {
   object: string;
 
   // Customer data from Session:
-  public customerObject: Customer; // session OBJECT
+  // public customer: Customer; // session OBJECT
   custId: number;
   firstName: string;
   lastName: string;
@@ -34,15 +36,17 @@ export class ClientsComponent implements OnInit {
 
   public customer: Customer;
   public customerList = [];
+  public pet: Pet;
+  public petList = [];
 
-  constructor(private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService) { }
+  constructor(private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) { }
 
   ngOnInit() {
     // get logged in user email
-    this.email = this.cliLandingService.getSessionEmail();
-    this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customerObject = data);
-    
-    
+    // this.email = this.cliLandingService.getSessionEmail();
+    // this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customerObject = data);
+    this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
+    this.petService.getPetByCust(44).subscribe(data=>this.petList = data);
     // this.getCustomer(this.custId);
 
     this.getClientSessionData();
