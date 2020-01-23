@@ -35,7 +35,7 @@ createVaccRecord(record: VaccRecord): Observable<VaccRecord> {
  }
 
   getVaccRecordById(id: number): Observable<VaccRecord> {
-   return this.http.get<VaccRecord>(`http://localhost:8080/records${id}`) 
+   return this.http.get<VaccRecord>(`http://localhost:8080/records/${id}`) 
      .pipe(catchError(this.handleError));
  }
 
