@@ -21,47 +21,48 @@ export class LoginComponent implements OnInit {
   constructor(private clientService: ClientsService, private authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
 
-  ngOnInit() { 
-
-    sessionStorage.removeItem('authUser'); 
-    sessionStorage.removeItem('authEmployee')
+  ngOnInit() {  
+    this.authenticationService.logout();
+      sessionStorage.removeItem('empId');
     this.errorMessage = '';
     this.panelTitle = "LOGIN";
-    this.message = `Customer creds:  user password & 
-          Employee creds: admin password`;
+    this.message = `
+    Customer:  user or any email admiral@nelson.com   
+    Employee:     admin (or any) 
+    all pw's:  password`;
   }
-
   handleLogin() {
-    if (this.authenticationService.authenticate(this.email, this.password)) {
-
+    this.onLoginSubmit();
+       this.router.navigate(['vetLanding'])
+  // sessionStorage.setItem("authEmployee", email);
       //REDIRECT TO Employee Landing
-      if (this.authenticationService.isEmpLoggedIn()) {
-        this.router.navigate(['vetLanding'])  // need other if for vetLogin
-        console.log("logged in as employee")
+      if (this.authenticationService.isCustLoggedIn()!==null) {
+        console.log("logged in as customer")   
+        this.invalidLogin = false; 
+       this.router.navigate(['clients'])
+      } 
+    else  if (this.authenticationService.isEmpLoggedIn() ) { 
+        console.log("logged in as employee");
         this.invalidLogin = false;
+       this.router.navigate(['vetLanding'])
 
         //REDIRECT TO Client Landing
-      } else if (this.authenticationService.isCustLoggedIn()) {
-        this.router.navigate(['clients'])
-        console.log("logged in as customer")   
-        this.invalidLogin = false;
-      }
-
-    } else {
-      this.errorMessage = "Oops, password doesn't match"
-      this.router.navigate([''])
+      // } else if (this.authenticationService.isCustLoggedIn()) {
+  }   else  {
+      this.errorMessage = "Oops, password doesn't match" 
       this.invalidLogin = true;
     }
-
+   
   }
+
 
   logout() {
     sessionStorage.removeItem("authUser");
     sessionStorage.removeItem("authEmployee");
 
   }
-
+ 
   onLoginSubmit() {
-    alert("login username: " + this.email + "password username: " + this.password);
+    return this.authenticationService.authenticate(this.email, this.password); 
   }
 }
