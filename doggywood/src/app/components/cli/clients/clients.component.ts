@@ -7,7 +7,9 @@ import { CliLandingService } from '../../../services/cli-landing.service';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
+ 
 import { Customer } from 'src/app/models/customer';
+ 
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
 
@@ -44,7 +46,9 @@ export class ClientsComponent implements OnInit {
   ngOnInit() {
     // get logged in user email
     // this.email = this.cliLandingService.getSessionEmail();
+ 
     // this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customer = data);
+ 
     this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
     this.petService.getPetByCust(44).subscribe(data=>this.petList = data);
     // this.getCustomer(this.custId);
