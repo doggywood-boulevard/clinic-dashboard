@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"><img width="110" class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+ 
+  <button  *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+ 
   <form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  <span> &nbsp; &nbsp;</span>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  <span> &nbsp; &nbsp;</span> -->
+     <button  *ngIf="!authenticationService.isCustLoggedIn() || !authenticationService.isEmpLoggedIn()" type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
   <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
   </form>
 
