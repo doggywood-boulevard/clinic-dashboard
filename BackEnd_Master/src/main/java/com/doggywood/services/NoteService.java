@@ -8,9 +8,9 @@ public interface NoteService {
 
 	public Note getNoteById(int id);
 	
-	public Note getNoteByAId(int id);
+	public Note getNoteByAid(int id);
 	
-	public List<Note> getNoteByPId(int id);
+	public List<Note> getNoteByPid(int id);
 	
 	public Note createNote(Note note);
 	

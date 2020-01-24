@@ -35,16 +35,16 @@ public class NoteController {
 		return ns.getNoteById(id);
 	}
 	
-	@GetMapping(value="/note/appt/{aId}")
+	@GetMapping(value="/note/appt/{Aid}")
 	@CrossOrigin(origins = "*")
-	public Note getNoteByAId(@PathVariable("aId") int id) {
-		return ns.getNoteByAId(id);
+	public Note getNoteByAId(@PathVariable("Aid") int id) {
+		return ns.getNoteByAid(id);
 	}
 	
 	@GetMapping(value="/note/pet/{pId}")
 	@CrossOrigin(origins = "*")
 	public List<Note> getNoteByPId(@PathVariable("pId")int id) {
-		return ns.getNoteByPId(id);
+		return ns.getNoteByPid(id);
 	}
 	
 	@PutMapping(value="/note", consumes="application/json")

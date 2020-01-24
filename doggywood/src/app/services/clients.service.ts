@@ -8,8 +8,9 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ClientsService {
-
+  email: string;
   custs_url: string= "http://localhost:8080/customers";
+  base_url: string = 'http://localhost:8080';
  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
@@ -37,6 +38,9 @@ export class ClientsService {
     return this.http.get<Customer>(`${this.custs_url}/${id}`) 
       .pipe(catchError(this.handleError));
   }  
+  getClientByEmail(email: string) { 
+    return  this.http.get<Customer>(`${this.base_url}/customer-welcome/profile/${email}`);
+ }
     
   addCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.custs_url, customer, {

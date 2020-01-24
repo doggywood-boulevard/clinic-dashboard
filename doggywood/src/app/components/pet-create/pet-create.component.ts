@@ -79,14 +79,16 @@ export class PetCreateComponent implements OnInit {
     if (id === 0) {
       this.pet = {
         id: null,
-        cId: null,
+        custId: null,
         petName: '',
         birthDate: '',
         weight: null,
-        neuter: null,
+        color: '',
         type: null,
         breed: '',
-        description: '' 
+        neuter: null,
+        description: '',
+        petUrl: ''
       };
       this.panelTitle = 'Add Pet';
       // this.createPetForm.resetForm();
