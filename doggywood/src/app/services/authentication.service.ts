@@ -19,16 +19,15 @@ export class CustomerDataBean {
 export class AuthenticationService {
   customerObject: Customer = null; // session OBJECT
   employeeObject: Employee = null;
-  loggedIn = false;
-  // emp_url: string = "";
+  loggedIn = false; 
   object: any;
-  number: number;
+
   constructor(private cliLandingService: CliLandingService, private http: HttpClient) { }
 
   url = 'http://localhost:8080/customer-welcome/profile';
   emp_url = "http://localhost:8080/employee-welcome/profile";
 
-  public authenticate(email, password) {
+  public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
     this.getCustomerAuth(email, password).subscribe((response) => {
       // console.log("subscribe: " + response.email);
@@ -42,16 +41,22 @@ export class AuthenticationService {
         sessionStorage.setItem("cusUrl", this.customerObject.cusUrl);
         sessionStorage.setItem("authUser", this.customerObject.email);
         //  return   this.passCheck(email, password, this.customerObject);
-        return  this.customerObject;
+        return this.customerObject;
       }
     },
       (response) => {
         console.log("subscribe: " + response.error);
         return this.customerObject = null;
       }
-   
-    ); 
- 
+
+    );
+    return (this.customerObject !== null) ? true : false;
+
+  }
+
+
+
+  public authenticateEmp(email, password) {
     // CHECK DB EMP TABLE
     this.getEmployeeAuth(email, password).subscribe((response) => {
       // console.log("subscribe: " + response.email);
@@ -65,7 +70,7 @@ export class AuthenticationService {
         sessionStorage.setItem("phone", this.employeeObject.phone);
         sessionStorage.setItem("authEmployee", this.employeeObject.email);
         // return  this.passCheck(email, password, this.employeeObject);
-         return this.employeeObject;
+        return this.employeeObject;
       }
     },
       (response) => {
@@ -73,10 +78,9 @@ export class AuthenticationService {
         return this.employeeObject = null;
       }
     );
-  
-    return (this.customerObject !== null) || (this.employeeObject !== null)?true:false; 
+    return (this.employeeObject !== null) ? true : false;
   }
-
+  
   public passCheck(email, password, object) {
     if (email === "admin" && password === "password") {
       sessionStorage.setItem("authEmployee", email);
@@ -108,7 +112,8 @@ export class AuthenticationService {
   public makeSessionData() {
     // Customers
     if (this.customerObject !== null) {
-      sessionStorage.setItem("custId", (this.customerObject.id).toString()); sessionStorage.setItem("firstName", this.customerObject.firstName);
+      sessionStorage.setItem("custId", (this.customerObject.id).toString()); 
+      sessionStorage.setItem("firstName", this.customerObject.firstName);
       sessionStorage.setItem("lastName", this.customerObject.lastName);
       sessionStorage.setItem("email", this.customerObject.email);
       sessionStorage.setItem("phone", this.customerObject.phone);
@@ -165,4 +170,5 @@ export class AuthenticationService {
     sessionStorage.removeItem("phone");
     sessionStorage.removeItem("eType");
   }
+
 }

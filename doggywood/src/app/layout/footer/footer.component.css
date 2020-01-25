@@ -1,0 +1,17 @@
+footer {
+    position:absolute;
+    bottom:0px; 
+    padding: 10px 0 20px;
+    margin: 0;
+    min-width:100%;
+    background-color: rgba(144, 184, 219, 0.356); 
+    color: #004581;
+}
+.center {
+    margin-right:auto;
+    margin-left:auto;
+}
+.copyright {
+    color: #3379b7b4;
+}
+ 
