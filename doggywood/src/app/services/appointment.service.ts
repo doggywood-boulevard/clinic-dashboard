@@ -10,6 +10,7 @@ import { catchError } from 'rxjs/operators';
 export class AppointmentService {
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  url :string = "http://localhost:8080";
 
   constructor(private http :HttpClient) { }
 
@@ -25,49 +26,49 @@ export class AppointmentService {
 
   // create
   addAppointment(appointment :Appointment) :Observable<Appointment> {
-    return this.http.post<Appointment>(`http://localhost:8080/appointments/`, appointment, {headers: this.headers})
+    return this.http.post<Appointment>(`${this.url}/appointments/`, appointment, {headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   // get
   getAppointment(id :number) :Observable<Appointment> {
-    return this.http.get<Appointment>(`http://localhost:8080/appointments/${id}`)
+    return this.http.get<Appointment>(`${this.url}/appointments/${id}`)
     .pipe(catchError(this.handleError));
   }
 
   // get all
   getAllAppointments() :Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`http://localhost:8080/appointments/`)
+    return this.http.get<Appointment[]>(`${this.url}/appointments/`)
     .pipe(catchError(this.handleError));
   }
 
   // get appts by customer
   getAppointmentsByCustomer(id :number) :Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`http://localhost:8080/customers/${id}/appointments`)
+    return this.http.get<Appointment[]>(`${this.url}/customers/${id}/appointments`)
     .pipe(catchError(this.handleError));
   }
 
   // get appts by pet
   getAppointmentsByPet(id :number) :Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`http://localhost:8080/pets/${id}/appointments`)
+    return this.http.get<Appointment[]>(`${this.url}/pets/${id}/appointments`)
     .pipe(catchError(this.handleError));
   }
 
   // get appts by employee
   getAppointmentsByEmployee(id :number) :Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`http://localhost:8080/employees/${id}/appointments`)
+    return this.http.get<Appointment[]>(`${this.url}/employees/${id}/appointments`)
     .pipe(catchError(this.handleError));
   }
 
   // update
   updateAppointment(appointment :Appointment) :Observable<Appointment> {
-    return this.http.put<Appointment>(`http://localhost:8080/appointments/`, appointment, {headers: this.headers})
+    return this.http.put<Appointment>(`${this.url}/appointments/`, appointment, {headers: this.headers})
     .pipe(catchError(this.handleError));
   }
 
   // delete
   deleteAppointment(id :number) :Observable<void> {
-    return this.http.delete<void>(`http://localhost:8080/appointments/${id}`)
+    return this.http.delete<void>(`${this.url}/appointments/${id}`)
     .pipe(catchError(this.handleError));
   }
 }

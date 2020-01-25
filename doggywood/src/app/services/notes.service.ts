@@ -34,13 +34,18 @@ export class NotesService {
       .pipe(catchError(this.handleError));
   }
 
-  getNoteByApptId(id: number): Observable<Note> {
-    return this.http.get<Note>(`http://localhost:8080/note/appt/${id}`) 
-      .pipe(catchError(this.handleError));
-  }
+  // getNoteByApptId(id: number): Observable<Note> {
+  //   return this.http.get<Note>(`http://localhost:8080/note/appt/${id}`) 
+  //     .pipe(catchError(this.handleError));
+  // }
 
   getNoteByPetId(id: number): Observable<Note[]> {
     return this.http.get<Note[]>(`http://localhost:8080/note/pet/${id}`) 
+      .pipe(catchError(this.handleError));
+  }
+
+  getNotesByApptId(id :number) :Observable<Note[]> {
+    return this.http.get<Note[]>(`http://localhost:8080/appointments/${id}/notes`)
       .pipe(catchError(this.handleError));
   }
 
