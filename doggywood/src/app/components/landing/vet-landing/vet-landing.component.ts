@@ -44,5 +44,5 @@ export class VetLandingComponent implements OnInit {
     this.apptService.getAppointmentsByEmployee(48)
     .subscribe(data => {this.apptList = data}, data => {console.log('w e l o s t b o y s')});
   }
-// this.getClient
+
  }

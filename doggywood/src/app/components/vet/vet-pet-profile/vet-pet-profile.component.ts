@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PetsService } from '../../../services/pets.service';
-import { ClientsService } from '../../../services/clients.service';
 
+import {Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import {HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { AppointmentService } from '../../../services/appointment.service';
+import { Appointment } from '../../../models/appointment';
+
+import { ClientsService } from '../../../services/clients.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NotesService } from 'src/app/services/notes.service';
+import { Note } from '../../../models/note';
 
 @Component({
   selector: 'app-vet-pet-profile',
@@ -10,16 +18,22 @@ import { ClientsService } from '../../../services/clients.service';
 })
 export class VetPetProfileComponent implements OnInit { 
 
-  constructor(private aniService: PetsService, private cliService: ClientsService) { }
-  public petsList = [];
-  public customersList = [];
+  public noteObj: Note;
+  id: number;
+  apptId: number;
+  petId: number;
+  message: string;
+  
+ public note: Note;
+ public noteList = [];
 
-  ngOnInit() {    // on page load here  
-    this.aniService.getPets()
-      .subscribe(data => this.petsList = data);
+  constructor(private noteservice: NotesService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
-    this.cliService.getCustomers()
-      .subscribe(data => this.customersList = data);
-  } 
 
+  ngOnInit() {     
+    this.noteservice.getNoteByPetId(1)
+      .subscribe(data => {this.noteList = data}, data => {console.log('w e l o s t b o y s')});
+
+   
+  }
 }

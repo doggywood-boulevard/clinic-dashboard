@@ -1,45 +1,36 @@
-<p>vet-pet-profile works!</p>
-
-<div class="row">
-
-<div class=" scroll-window"> 
-    <h6>PETS:<br /> http://localhost:8080/pets</h6>
-
-    <ul *ngFor="let pet of petsList">
-      <hr>
-      <img class="imageClass"  alt="pet.petUrl" width="100" [src]="pet.petUrl" /> 
-           <li><strong>pet.id: </strong> {{pet.id}}</li>
-           <li><strong>pet.cId: </strong> {{pet.cId}}</li>
-           <li><strong>pet.petName: </strong> {{pet.petName}}</li>
-           <li><strong>pet.birthDate: </strong> {{pet.birthDate}}</li>
-           <li><strong>pet.weight: </strong> {{pet.weight}}</li>
-           <li><strong>pet.type: </strong> {{pet.type}}</li>
-           <li><strong>pet.neuter: </strong> {{pet.neuter}}</li>
-           <li><strong>pet.breed: </strong> {{pet.breed}}</li>
-           <li><strong>pet.description: </strong> {{pet.description}}</li>
-    </ul>
-    </div>
-     
+<div class="container">
+  <div style="float: left;">
+  <img src="https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg" alt="" style="width:300px;height:auto;">
 </div>
 
-<h2> ^ so this is gonna be what they select from or whats this for</h2>
+<h6>Type:</h6>
+<h6>Breed:</h6>
+<h6>Age:</h6>
+<h6>Weight:</h6>
+
+</div>
 
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Appt Date</th>
       <th scope="col">Notes</th>     
+      <th scope="col">Appt Date</th>
+      <th scope="col">Notes</th>
+      <th scope="col">Notes</th>
+           
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">12-8-18</th>
-      <td>Had mange. Gave him Mange-Be-Gone</td>     
-    </tr>
-    <tr>
-      <th scope="row">9-6-18</th>
-      <td>Bloodwork showed he has obesity. New diet is celery</td>
-    </tr>
+    <ng-container>         
+      <tr *ngFor="let n of noteList"  style="text-align:center"> 
+       <td>date here maybe</td>
+       <td>{{n.message}}</td>
+       <td>{{n.id}}</td>
+       <td>{{n.apptId}}</td>
+       <td>{{n.petId}}</td>
+      </tr>
+     </ng-container> 
   </tbody>
 </table>
 
