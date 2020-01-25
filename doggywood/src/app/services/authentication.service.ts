@@ -41,16 +41,15 @@ export class AuthenticationService {
         sessionStorage.setItem("cusUrl", this.customerObject.cusUrl);
         sessionStorage.setItem("authUser", this.customerObject.email);
         //  return   this.passCheck(email, password, this.customerObject);
-        return this.customerObject;
+          // this.customerObject;
       }
     },
       (response) => {
         console.log("subscribe: " + response.error);
-        return this.customerObject = null;
-      }
-
+          this.customerObject = null;
+      } 
     );
-    // return (this.customerObject !== null) ? true : false;
+    return (this.customerObject !== null) ? true : false;
 
   }
 
@@ -70,15 +69,15 @@ export class AuthenticationService {
         sessionStorage.setItem("phone", this.employeeObject.phone);
         sessionStorage.setItem("authEmployee", this.employeeObject.email);
         // return  this.passCheck(email, password, this.employeeObject);
-        return this.employeeObject;
+          this.employeeObject;
       }
     },
       (response) => {
         console.log("subscribe: " + response.error);
-        return this.employeeObject = null;
+          this.employeeObject = null;
       }
     );
-    // return (this.employeeObject !== null) ? true : false;
+    return (this.employeeObject !== null) ? true : false;
   }
   
   public passCheck(email, password, object) {

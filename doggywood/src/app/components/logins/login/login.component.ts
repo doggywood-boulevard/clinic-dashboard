@@ -35,22 +35,22 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     if (this.admin) { 
-      this.validLogin =  (this.onAdminSubmit()!==null)?true:false;
-      console.log("logged in as employee: "+this.validLogin); 
-     this.validLogin = true;
+      this.validLogin = this.authenticationService.authenticateEmp(this.email, this.password) 
+      console.log("logged in as employee: "+this.validLogin);  
       this.router.navigate(['vetLanding']);
 
     } else if (!this.admin) { 
-      this.validLogin = (this.onLoginSubmit()!==null)?true:false;
-      console.log("logged in as customer: "+this.validLogin);
-      this.validLogin = true;
+      this.validLogin = (this.authenticationService.authenticateCust(this.email, this.password));
+      console.log("logged in as customer: "+this.validLogin); 
       this.router.navigate(['clients']);
     }
      
-      this.errorMessage = "Oops, password doesn't match"
-      this.validLogin = false;
+     if(this.validLogin===false) {
+        this.errorMessage = "Oops, password doesn't match"
+      // this.validLogin = false;
       console.log("logged in?: "+this.validLogin)
       this.router.navigate([''])
+     }
     
  
   } 
