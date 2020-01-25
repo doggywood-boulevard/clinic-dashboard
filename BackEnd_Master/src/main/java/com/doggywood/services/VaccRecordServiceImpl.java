@@ -33,16 +33,6 @@ public class VaccRecordServiceImpl implements VaccRecordService {
 	}
 
 	@Override
-	public List<VaccRecord> getVaccRecordsByCustId(int custId) {
-		return vrr.findByCustId(custId);
-	}
-	
-	@Override
-	public List<VaccRecord> getVaccRecordsByApptId(int apptId) {
-		return vrr.findByApptId(apptId);
-	}
-
-	@Override
 	public VaccRecord updateVaccRecord(VaccRecord change) {
 		return vrr.save(change);
 	}
