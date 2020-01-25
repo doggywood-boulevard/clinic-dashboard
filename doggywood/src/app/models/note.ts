@@ -1,14 +1,14 @@
 export class Note{
 
-    id: number;
-    aid: number;
-    pid: number;
     n_message: string;
+    n_id: number;
+    a_id: number;
+    p_id: number;
 
-    constructor(id :number, aid: number, pid :number, n_message :string) {
-        this.id = id;
-        this.aid = aid;
-        this.pid = pid;
+    constructor(n_message :string, n_id :number, a_id: number, p_id :number) {
         this.n_message = n_message;
+        this.n_id = n_id;
+        this.a_id = a_id;
+        this.p_id = p_id;
     }
 }

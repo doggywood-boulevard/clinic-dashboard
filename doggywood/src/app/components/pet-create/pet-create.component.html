@@ -11,12 +11,22 @@
     description: string;
     petUrl: string; -->
 
+<button class="btn btn-block btn-outline-info table-btn" data-toggle="modal" data-target="#exampleModalCenter">ADD PET</button>
 
-<form #petForm="ngForm" (ngSubmit)="savePet()">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Add Pet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    <form #petForm="ngForm" (ngSubmit)="savePet()">
+  <div class="modal-body">
   <div class="panel panel-primary" *ngIf="pet">
-    <div class="panel-heading">
-      <h3 class="panel-title">{{panelTitle}}</h3>
-    </div>
 
     <div class="panel-body">
 
@@ -92,16 +102,22 @@
           </span>
         </div>
       </div>
-
-
-      <button type="submit" class="btn btn-primary"> SUBMIT </button> 
+ 
     </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary" data-dismiss="modal">Add Pet</button>
   </div>
 </form>
 
+    </div>
+  </div>
+</div>
 
 
-<div class=" scroll-window">
+<!-- <div class=" scroll-window">
   <h6>PETS:<br /> http://localhost:8080/pets</h6>
 
   <ul *ngFor="let pet of petsList">
@@ -117,4 +133,4 @@
     <li><strong>pet.breed: </strong> {{pet.breed}}</li>
     <li><strong>pet.description: </strong> {{pet.description}}</li>
   </ul>
-</div>
+</div> -->
