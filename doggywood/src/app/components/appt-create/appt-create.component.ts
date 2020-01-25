@@ -66,6 +66,6 @@ export class ApptCreateComponent implements OnInit {
       },
       response => {
         console.log("Failed to get pets");
-      })
+      });
   }
 }

@@ -22,6 +22,7 @@ export class ApptComponent implements OnInit {
   pet :Pet;
   customer :Customer;
   notes :Note[];
+  noteMessage :string;
 
   constructor(
     private route :ActivatedRoute,
@@ -81,7 +82,21 @@ export class ApptComponent implements OnInit {
     );
   }
 
+  addNote() {
+    this.noteService.createNote(new Note(this.noteMessage, 0, this.apptId, this.appointment.petId)).subscribe(
+      res => {
+        console.log(res);
+        let list = this.notes.slice();
+        list.push(res);
+        this.notes = list;
+      },
+      res => {
+        console.log("failed to add note");
+      }
+    )
+  }
+
   logAppt() {
-    console.log(this.appointment);
+    console.log(`To do: change how the dates are displayed, AM/PM, display weight, edit weight and then display it`);
   }
 }

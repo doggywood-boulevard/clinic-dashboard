@@ -21,7 +21,7 @@ export class NotesService {
   }
 
   createNote(note: Note): Observable<Note> {
-    return this.http.post<Note>(`http://localhost:8080/note`, note, {
+    return this.http.post<Note>(`http://localhost:8080/notes`, note, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -30,7 +30,7 @@ export class NotesService {
   }
 
   getNoteById(id: number): Observable<Note> {
-    return this.http.get<Note>(`http://localhost:8080/note/${id}`) 
+    return this.http.get<Note>(`http://localhost:8080/notes/${id}`) 
       .pipe(catchError(this.handleError));
   }
 
@@ -50,7 +50,7 @@ export class NotesService {
   }
 
   updateNote(note: Note): Observable<Note> {
-    return this.http.put<Note>(`http://localhost:8080/note`, note, {
+    return this.http.put<Note>(`http://localhost:8080/notes`, note, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -58,8 +58,8 @@ export class NotesService {
       .pipe(catchError(this.handleError));
   }
  
-  deleteVaccRecord(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`http://localhost:8080/note/{id}`)
+  deleteNote(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(`http://localhost:8080/notes/{id}`)
       .pipe(catchError(this.handleError));
   } 
   
