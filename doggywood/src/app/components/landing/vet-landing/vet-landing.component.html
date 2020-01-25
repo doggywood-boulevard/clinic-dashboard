@@ -7,29 +7,28 @@
     <div class="container">
       <table class="table table-striped">
         <thead class="thead-dark">
-          <tr>
-            <th scope="coL" style="text-align:center">Animal Name</th>
-            <th scope="coL" style="text-align:center">CID => CName</th>
-             <th scope="coL" style="text-align:center">PID => PName</th>
-             <th scope="coL" style="text-align:center">Date</th>
-             <th scope="coL" style="text-align:center">Weight</th>
-             <th scope="coL" style="text-align:center">Time slot</th>
-             <th scope="coL" style="text-align:center">Description</th>
-             <th scope="coL" style="text-align:center">Dog Info</th>
-             <th scope="coL" style="text-align:center">Appt Info</th>
+          <tr style="text-align:center">
+            <th scope="coL">Animal Name</th>
+            <th scope="coL">CID => CName</th>
+             <th scope="coL">PID => PName</th>
+             <th scope="coL">Date</th>
+             <th scope="coL">Weight</th>
+             <th scope="coL">Description</th>
+             <th scope="coL">Time slot</th>
+             <th scope="coL">Dog Info</th>
+             <th scope="coL">Appt Info</th>
             </tr>
         </thead>
         <tbody>
-          <ng-container>  
-            
-   <tr *ngFor="let apt of apptList"> 
-     <td>{{apt.id}}</td>
+          <ng-container>         
+   <tr *ngFor="let apt of apptList"  style="text-align:center"> 
+    <td>{{apt.id}}</td>
     <td>{{apt.custId}}</td>
     <td>{{apt.petId}}</td>  
     <td>{{apt.date}}</td>
     <td>{{apt.weight}}</td>
-    <td>{{apt.timeslot}}</td>
     <td>{{apt.description}}</td>
+    <td>{{apt.timeslot}}</td>
     <td><button class="btn btn-info table-btn">See Profile</button></td>
     <td> <button class="btn btn-info table-btn">View Appt</button></td>
    </tr>
