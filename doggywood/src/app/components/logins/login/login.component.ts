@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.authenticationService.logout(); 
+    this.authenticationService.deleteSession();
     sessionStorage.removeItem('empId');
     this.panelTitle = "CUSTOMER LOGIN";
     this.message = `
@@ -34,26 +34,30 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    if (this.admin) { 
-      this.validLogin =  (this.onAdminSubmit()!==null)?true:false;
-      console.log("logged in as employee: "+this.validLogin); 
-     this.validLogin = true;
-      this.router.navigate(['vetLanding']);
+    if (this.admin) {
+      console.log(this.email);
+      this.authenticationService.authenticateEmp(this.email, this.password);
+      console.log("logged in as employee: " + this.onAdminSubmit());
+      // this.validLogin = this.onAdminSubmit();
+      if (this.onAdminSubmit()===true) {
+        this.router.navigate(['vetLanding']);
+      } else {
+         this.logout();
+      }
 
-    } else if (!this.admin) { 
-      this.validLogin = (this.onLoginSubmit()!==null)?true:false;
-      console.log("logged in as customer: "+this.validLogin);
-      this.validLogin = true;
-      this.router.navigate(['clients']);
+    } else if (!this.admin) {
+      console.log(this.email);
+      this.authenticationService.authenticateCust(this.email, this.password);
+      console.log("logged in as customer: " + this.onLoginSubmit());
+      // this.validLogin = this.onLoginSubmit();
+      if (this.onLoginSubmit()===true) {
+        this.router.navigate(['clients']);
+      }  else {
+         this.logout();
+      }
     }
-     
-      this.errorMessage = "Oops, password doesn't match"
-      this.validLogin = false;
-      console.log("logged in?: "+this.validLogin)
-      this.router.navigate([''])
-    
- 
-  } 
+   
+  }
 
   // returns true if email/password in Employee DB
   onAdminSubmit() {
@@ -69,12 +73,10 @@ export class LoginComponent implements OnInit {
     this.admin = (this.admin === true) ? false : true;
     this.panelTitle = (this.admin === true) ? "ADMIN LOGIN" : "LOGIN";
   }
-  
+
   logout() {
-    sessionStorage.removeItem("authUser");
-    sessionStorage.removeItem("authEmployee");
+    this.authenticationService.deleteSession();
     this.errorMessage = '';
-    sessionStorage.removeItem('empId');
     // this.ngOnInit();
 
   }
