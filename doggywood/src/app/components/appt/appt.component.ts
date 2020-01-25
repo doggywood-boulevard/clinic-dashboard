@@ -6,6 +6,8 @@ import { PetsService } from 'src/app/services/pets.service';
 import { Pet } from 'src/app/models/pet';
 import { ClientsService } from 'src/app/services/clients.service';
 import { Customer } from 'src/app/models/customer';
+import { NotesService } from 'src/app/services/notes.service';
+import { Note } from 'src/app/models/note';
 
 @Component({
   selector: 'app-appt',
@@ -19,12 +21,14 @@ export class ApptComponent implements OnInit {
   petId :number;
   pet :Pet;
   customer :Customer;
+  notes :Note[];
 
   constructor(
     private route :ActivatedRoute,
     private apptService :AppointmentService,
     private petService :PetsService,
-    private clientService :ClientsService
+    private clientService :ClientsService,
+    private noteService :NotesService
   ) { }
 
   ngOnInit() {
@@ -37,6 +41,7 @@ export class ApptComponent implements OnInit {
       response => {
         this.appointment = response;
         this.getPet(this.appointment.petId);
+        this.getNotes(this.appointment.id);
       },
       response => {
         console.log("failed to get appointment");
@@ -65,7 +70,18 @@ export class ApptComponent implements OnInit {
       });
   }
 
+  getNotes(id :number) {
+    this.noteService.getNotesByApptId(id).subscribe(
+      res => {
+        this.notes = res;
+      },
+      res => {
+        console.log("failed to get notes");
+      }
+    );
+  }
+
   logAppt() {
-    console.log(this.petId);
+    console.log(this.appointment);
   }
 }
