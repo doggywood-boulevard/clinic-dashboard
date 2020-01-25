@@ -10,6 +10,6 @@ import com.doggywood.entities.Pet;
 @Repository
 public interface PetRepository extends CrudRepository<Pet, Integer> {
 
-	List<Pet> findBycId(int cId);
+	List<Pet> findByCustId(int CId);
 	
 }

@@ -14,7 +14,7 @@ public class Pet {
 	private int id;
 	
 	@Column(name = "C_ID")
-	private int cId;
+	private int custId;
 	
 	@Column(name = "P_NAME")
 	private String petName;
@@ -43,11 +43,11 @@ public class Pet {
 	@Column(name = "PET_URL")
 	private String petUrl;
 
-	public Pet(int id, int cId, String petName, String birthDate, int weight, String color, int type, String breed,
+	public Pet(int id, int custId, String petName, String birthDate, int weight, String color, int type, String breed,
 			int neuter, String description, String petUrl) {
 		super();
 		this.id = id;
-		this.cId = cId;
+		this.custId = custId;
 		this.petName = petName;
 		this.birthDate = birthDate;
 		this.weight = weight;
@@ -59,10 +59,10 @@ public class Pet {
 		this.petUrl = petUrl;
 	}
 
-	public Pet(int cId, String petName, String birthDate, int weight, String color, int type, String breed, int neuter,
+	public Pet(int custId, String petName, String birthDate, int weight, String color, int type, String breed, int neuter,
 			String description, String petUrl) {
 		super();
-		this.cId = cId;
+		this.custId = custId;
 		this.petName = petName;
 		this.birthDate = birthDate;
 		this.weight = weight;
@@ -80,7 +80,7 @@ public class Pet {
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", cId=" + cId + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
+		return "Pet [id=" + id + ", custId=" + custId + ", petName=" + petName + ", birthDate=" + birthDate + ", weight="
 				+ weight + ", color=" + color + ", type=" + type + ", breed=" + breed + ", neuter=" + neuter
 				+ ", description=" + description + ", petUrl=" + petUrl + ", getClass()=" + getClass() + ", hashCode()="
 				+ hashCode() + ", toString()=" + super.toString() + "]";
@@ -94,12 +94,12 @@ public class Pet {
 		this.id = id;
 	}
 
-	public int getcId() {
-		return cId;
+	public int getCustId() {
+		return custId;
 	}
 
-	public void setcId(int cId) {
-		this.cId = cId;
+	public void setCustId(int custId) {
+		this.custId = custId;
 	}
 
 	public String getPetName() {

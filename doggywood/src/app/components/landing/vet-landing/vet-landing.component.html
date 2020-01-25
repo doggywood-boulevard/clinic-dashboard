@@ -1,6 +1,6 @@
 <div class="container">
     <h2>
-        Welcome Dr. GOOD ENOUGH FOR NOW{{apt[0].empId}} => EName 
+        <!-- Welcome Dr. GOOD ENOUGH FOR NOW{{apt[0].empId}} => EName  -->
     </h2>
 </div>
 
@@ -20,7 +20,8 @@
             </tr>
         </thead>
         <tbody>
-          <ng-container>         
+                 
+            <ng-container *ngIf="apptList">  
    <tr *ngFor="let apt of apptList"  style="text-align:center"> 
     <td>{{apt.id}}</td>
     <td>{{apt.custId}}</td>

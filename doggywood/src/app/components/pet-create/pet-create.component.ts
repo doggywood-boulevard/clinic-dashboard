@@ -5,6 +5,7 @@ import { PetsService } from '../../services/pets.service';
 import { ClientsService } from '../../services/clients.service'; 
 import { tap, first } from 'rxjs/operators';
 import { PetType } from '../../models/petType'
+import { PetNeuter } from '../../models/petNeuter' 
 import { Pet } from 'src/app/models/pet';
 import { Customer } from 'src/app/models/customer';
 
@@ -14,44 +15,48 @@ import { Customer } from 'src/app/models/customer';
   styleUrls: ['./pet-create.component.css']
 })
 export class PetCreateComponent implements OnInit {
-
-  // regForm: FormGroup;
-  // form-state
+ 
   loading = false;
   success = false;
   panelTitle: string;
   pet: Pet;
-  petGroups: PetType[] = [
-    { type: 1, typeName: 'Dog' },
-    { type: 2, typeName: 'Cat' },
-    { type: 3, typeName: 'Parrot' },
-    { type: 4, typeName: 'Ferret' },
-    { type: 5, typeName: 'Other' },
+  custId: number;
+  petName: string;
+  weight:  number;
+  color: string; 
+  type: number ;
+  breed:  string;
+  neuter:number;
+  description: string;
+  petUrl: string ;
+  unformattedDate: Date = new Date('30-JAN-2020');
+  
+  petTypes: PetType[] = [
+    { id: Number(1), name: 'Dog' },
+    { id: Number(2), name: 'Cat' },
+    { id: Number(3), name: 'Parrot' },
+    { id: Number(4), name: 'Ferret' },
+    { id: Number(5), name: 'Other' },
+  ];0
+
+  petNeuters: PetNeuter[] = [
+    { id: 1, name: 'Not Neutered' },
+    { id: 2, name: 'Neutered' },
+    { id: 3, name: 'Not Spayed' },
+    { id: 4, name: 'Spayed' } 
   ];
-  dateOfBirth: Date = new Date(2020, 1, 30);
-   datePickerConfig:any;
-//  @ViewChild('petForm', opts: {
-//         pet: any;
-//         static: boolean;
-//     })
+
+  
+ 
   public petForm: NgForm;
-  public petsList = [];
-  //cust
-  // customer: Customer; 
-  // public customersList = []; 
+  public petsList = []; 
 
   constructor(private petService: PetsService,  
   private clientService: ClientsService, private router: Router,
     private activatedRoute: ActivatedRoute) {
-      this.datePickerConfig = Object.assign({}, 
-      {
-        containerClass: 'theme-dark-blue',
-        showWeekNumbers: true,
-        // minDate: new Date(2000, 0,1), // pets < 20 years?
-        dateInputFormat: 'yyyy-MM-dd'  
-        });
+  
     }
-
+ 
   ngOnInit() {    // on page load here  
       this.panelTitle = 'Register Pet';
     this.petService.getPets()
@@ -63,30 +68,23 @@ export class PetCreateComponent implements OnInit {
       const id = +parameterMap.get('id');
       this.getPet(id);
     })
-// // cust
-//     this.clientService.getCustomers()
-//       .subscribe(data => this.customersList = data);
-
-//     this.clientService.getCustomers()
-//       .subscribe(data => this.customersList = data);
-//     this.activatedRoute.paramMap.subscribe(parameterMap => {
-//       const id = +parameterMap.get('id');
-//       this.getCustomer(id);
-//     })
-
+  console.log(this.unformattedDate)
   }
+   
   public getPet(id) {
     if (id === 0) {
       this.pet = {
         id: null,
-        cId: null,
+        custId: null,
         petName: '',
         birthDate: '',
         weight: null,
-        neuter: null,
+        color: '',
         type: null,
         breed: '',
-        description: '' 
+        neuter: null,
+        description: '',
+        petUrl: ''
       };
       this.panelTitle = 'Add Pet';
       // this.createPetForm.resetForm();
@@ -100,15 +98,18 @@ export class PetCreateComponent implements OnInit {
     }
   }
    public savePet(): void { 
-    // const newPet: Pet = Object.assign ({}, this.pet); //no longer worry about addressing reference var
-    //this._petService.save(newPet)(
-      // this._petService.save(this.pet).subscribe(
+     
       if (this.pet.id === null) {
+        this.pet.id = 0; // TEMP until we can get formatting.
+        this.pet.custId = 99; // TEMP until session storage.
+        this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
+        this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
+
         this.petService.addPet(this.pet).subscribe(
           (data: Pet) => {
             console.log(data);
             // this.createPetForm.resetForm();
-            // this.activatedRoute.navigate(['/']);
+        this.router.navigate(['clients']);
           },
           (error: any) => console.log(error)
         );
@@ -116,46 +117,12 @@ export class PetCreateComponent implements OnInit {
         this.petService.updatePet(this.pet).subscribe(
           () => { 
             // this.createPetForm.reset();
-            // this.activatedRoute.navigate(['/']);
+            this.router.navigate(['clients']);
           },
           (error: any) => console.log(error)
         );
       } 
    }
-   /// CUST
-  //   private getCustomer(id)   {
-  //   if (id === 0) {
-  //     this.customer = {
-  //       id: null,
-  //       firstName: "",
-  //       lastName:  "",
-  //       phone:  "",
-  //       email:  "",
-  //       password:  "",
-  //       cusUrl:  ""
-  //     };
-  //     this.panelTitle = 'Register';
-  //     // this.createPetForm.resetForm();
-  //   } else {
-  //     // this.pet = Object.assign({}, this._petService.getPet(id));
-  //     this.clientService.getCustomer(id).subscribe(
-  //       (cust) => this.customer = cust,
-  //       (err: any) => console.log('create-client.comp:' + err)
-  //     );
-  //     this.panelTitle = 'Edit Details';
-  //   }
-  // } 
-
-  // pets_url: string = 'http://localhost:8080/pets';
-  // [{
-  // 	"id": 2,
-  // 	"cId": 1,
-  // 	"petName": "Whiskers",
-  // 	"birthDate": "2017-08-01 00:00:00.0",
-  // 	"weight": 69,
-  // 	"type": 2,
-  // 	"breed": "English Bdog",
-  // 	"description": null
-  // }]
+   
 
 }
