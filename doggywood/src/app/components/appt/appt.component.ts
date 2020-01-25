@@ -23,6 +23,7 @@ export class ApptComponent implements OnInit {
   customer :Customer;
   notes :Note[];
   noteMessage :string;
+  newWeight :number;
 
   constructor(
     private route :ActivatedRoute,
@@ -94,6 +95,18 @@ export class ApptComponent implements OnInit {
         console.log("failed to add note");
       }
     )
+  }
+
+  updateWeight() {
+    this.petService.addPet(new Pet(this.pet.id, this.pet.custId, this.pet.petName, this.pet.birthDate, 
+      this.newWeight, this.pet.neuter, this.pet.type, this.pet.breed, this.pet.description)).subscribe(
+        res => {
+          console.log(res);
+        },
+        res => {
+          console.log(res);
+        }
+      );
   }
 
   logAppt() {

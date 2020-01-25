@@ -37,7 +37,7 @@ export class PetCreateComponent implements OnInit {
     { id: Number(3), name: 'Parrot' },
     { id: Number(4), name: 'Ferret' },
     { id: Number(5), name: 'Other' },
-  ];0
+  ];
 
   petNeuters: PetNeuter[] = [
     { id: 1, name: 'Not Neutered' },
