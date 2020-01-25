@@ -39,20 +39,9 @@ public class VaccRecordController {
 		return vrs.getVaccRecordById(id);
 	}
 
-	@GetMapping(value = "/records/customer/{id}")
-	public List<VaccRecord> getVaccRecordsByCustId(@PathVariable("id") int custId) {
-		return vrs.getVaccRecordsByCustId(custId);
-	}
-
-
 	@GetMapping(value = "/records/pet/{id}")
 	public List<VaccRecord> getVaccRecordsByPetId(@PathVariable("id") int petId) {
 		return vrs.getVaccRecordsByPetId(petId);
-	}
-
-	@GetMapping(value = "/records/appt/{id}")
-	public List<VaccRecord> getVaccRecordsByApptId(@PathVariable("id") int apptId) {
-		return vrs.getVaccRecordsByApptId(apptId);
 	}
  
 	//UPDATE

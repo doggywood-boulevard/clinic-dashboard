@@ -10,36 +10,46 @@ public class VaccRecord {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "r_id")
+	@Column(name = "R_ID")
 	private int id;
 
-	@Column(name = "p_id")
-	private int petId;
+	@Column(name = "P_ID")
+	private int petId; 
+	
+	@Column(name = "VNAME")
+	private String vacName;
+	
+	@Column(name = "VTIME")
+	private int vacTime; 
+	
+	@Column(name = "VDATE")
+	private String vacDate;
 
-	@Column(name = "c_id")
-	private int custId;
+	public VaccRecord(int id, int petId, String vacName, int vacTime, String vacDate) {
+		super();
+		this.id = id;
+		this.petId = petId;
+		this.vacName = vacName;
+		this.vacTime = vacTime;
+		this.vacDate = vacDate;
+	}
 
-	@Column(name = "e_id")
-	private int empId;
-
-	@Column(name = "v_id")
-	private int vaccId;
-
-	@Column(name = "a_id")
-	private int apptId;
+	public VaccRecord(int petId, String vacName, int vacTime, String vacDate) {
+		super();
+		this.petId = petId;
+		this.vacName = vacName;
+		this.vacTime = vacTime;
+		this.vacDate = vacDate;
+	}
 
 	public VaccRecord() {
 		super();
 	}
 
-	public VaccRecord(int id, int petId, int custId, int empId, int vaccId, int apptId) {
-		super();
-		this.id = id;
-		this.petId = petId;
-		this.custId = custId;
-		this.empId = empId;
-		this.vaccId = vaccId;
-		this.apptId = apptId;
+	@Override
+	public String toString() {
+		return "VaccRecord [id=" + id + ", petId=" + petId + ", vacName=" + vacName + ", vacTime=" + vacTime
+				+ ", vacDate=" + vacDate + "]";
 	}
 
 	public int getId() {
@@ -58,42 +68,31 @@ public class VaccRecord {
 		this.petId = petId;
 	}
 
-	public int getCustId() {
-		return custId;
+	public String getVacName() {
+		return vacName;
 	}
 
-	public void setCustId(int custId) {
-		this.custId = custId;
+	public void setVacName(String vacName) {
+		this.vacName = vacName;
 	}
 
-	public int getEmpId() {
-		return empId;
+	public int getVacTime() {
+		return vacTime;
 	}
 
-	public void setEmpId(int empId) {
-		this.empId = empId;
+	public void setVacTime(int vacTime) {
+		this.vacTime = vacTime;
 	}
 
-	public int getVaccId() {
-		return vaccId;
+	public String getVacDate() {
+		return vacDate;
 	}
 
-	public void setVaccId(int vaccId) {
-		this.vaccId = vaccId;
-	}
+	public void setVacDate(String vacDate) {
+		this.vacDate = vacDate;
+	} 
+	
 
-	public int getApptId() {
-		return apptId;
-	}
 
-	public void setApptId(int apptId) {
-		this.apptId = apptId;
-	}
-
-	@Override
-	public String toString() {
-		return "VaccRecord [id=" + id + ", petId=" + petId + ", custId=" + custId + ", empId=" + empId + ", vaccId="
-				+ vaccId + ", apptId=" + apptId + "]";
-	}
 
 }

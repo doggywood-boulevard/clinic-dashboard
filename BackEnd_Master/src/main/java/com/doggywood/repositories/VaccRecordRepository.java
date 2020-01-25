@@ -14,7 +14,5 @@ public interface VaccRecordRepository extends CrudRepository<VaccRecord, Integer
 
 	List<VaccRecord> findByPetId(int petId);
 
-	List<VaccRecord> findByCustId(int custId);
 
-	List<VaccRecord> findByApptId(int apptId);
 }

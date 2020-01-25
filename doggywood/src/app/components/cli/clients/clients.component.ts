@@ -7,7 +7,7 @@ import { CliLandingService } from '../../../services/cli-landing.service';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
-
+ 
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
 import { Customer } from 'src/app/models/customer';
@@ -43,17 +43,16 @@ export class ClientsComponent implements OnInit {
   constructor(private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) { }
 
   ngOnInit() {
-    // get logged in user email
-    // this.email = this.cliLandingService.getSessionEmail();
- 
-    // this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customer = data);
- 
-    this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
-    this.petService.getPetByCust(44).subscribe(data=>this.petList = data);
-    // this.getCustomer(this.custId);
-
     this.getClientSessionData();
-    this.getClientData(); 
+    //    this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
+    this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
+    //this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
+    this.petService.getPetByCust(parseInt(sessionStorage.getItem("custId"))).subscribe(data=>this.petList = data); 
+    console.log(parseInt(sessionStorage.getItem("custId")));  // 91
+    console.log(this.custId); // 91
+    //this.getCustomer(this.custId);
+    // this.getClientSessionData();
+    // this.getClientData(); 
   }
 
   getCustomer(id: number) {
