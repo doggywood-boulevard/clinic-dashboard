@@ -38,7 +38,7 @@ export class CliPetProfileComponent implements OnInit {
   public pet: Pet;
   public petList = [];
   public note: Note;
-  public noteList = [];
+  public noteList = []
 
   constructor(private route :ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService, private noteService: NotesService) { }
 
