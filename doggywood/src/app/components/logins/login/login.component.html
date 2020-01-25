@@ -8,21 +8,22 @@
            
             </div>
             <hr>
-            <div class="panel-body">
-
-             
+            <div class="panel-body"> 
                 <div class="form-group  ">
                     <label for="email" class="control-label">Email </label>
-                    <input id="email" name="email" [(ngModel)]="email" type="text" class="form-control">
+                    <input id="email" name="email" [(ngModel)]="email" type="text" class="form-control"> 
                 </div>
 
                 <div class="form-group">
                     <label for="password" class="control-label">Password </label>
                     <input id="password" name="password" [(ngModel)]="password" type="password" class="form-control"> 
                 </div> 
-                   <div class="alert alert-warning" *ngIf="errorMessage != '' ">{{errorMessage}}</div>
+                   <div class="alert alert-warning" *ngIf="errorMessage !=''">{{errorMessage}}</div>
+               
+                       <span (click)="adminButton()" class="links" *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">    <pre>Administration</pre> </span> 
                      <pre class="pull-right"><em>{{message}}</em></pre>
             </div>
+
 
       <br />
             <button type="submit" class="btn btn-primary ">&nbsp;&nbsp;SUBMIT&nbsp; </button>
