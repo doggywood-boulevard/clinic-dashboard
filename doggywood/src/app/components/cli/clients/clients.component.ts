@@ -7,11 +7,10 @@ import { CliLandingService } from '../../../services/cli-landing.service';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
- 
-import { Customer } from 'src/app/models/customer';
- 
+
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
+import { Customer } from 'src/app/models/customer';
 
   
  
