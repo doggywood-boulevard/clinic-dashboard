@@ -45,12 +45,12 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {
     this.getClientSessionData();
-    //    this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
+      //  this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
     this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
-    //this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
-    this.petService.getPetByCust(parseInt(sessionStorage.getItem("custId"))).subscribe(data=>this.petList = data); 
-    console.log(parseInt(sessionStorage.getItem("custId")));  // 91
-    console.log(this.custId); // 91
+    // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
+    this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data); 
+    // console.log(parseInt(sessionStorage.getItem("custId")));  // 91
+    console.log((parseInt(sessionStorage.getItem('custId')))); // 91
     //this.getCustomer(this.custId);
     // this.getClientSessionData();
     // this.getClientData(); 
