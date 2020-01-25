@@ -9,7 +9,7 @@
   <form class="form-inline my-2 my-lg-0">
     <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>  <span> &nbsp; &nbsp;</span> -->
-     <button  *ngIf="!authenticationService.isCustLoggedIn() || !authenticationService.isEmpLoggedIn()" type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
+     <button  *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()" type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
   <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
   </form>
 

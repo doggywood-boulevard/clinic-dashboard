@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- 
+
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
   
@@ -11,6 +11,7 @@ import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/ht
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
 import { Customer } from 'src/app/models/customer';
+import { PetCreateComponent } from '../../pet-create/pet-create.component';
 
   
  
