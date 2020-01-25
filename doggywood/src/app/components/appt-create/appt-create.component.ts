@@ -60,7 +60,7 @@ export class ApptCreateComponent implements OnInit {
   }
 
   getPets() {
-    this.petService.getPetsByCustomer(this.custId).subscribe(
+    this.petService.getPetByCust(this.custId).subscribe(
       response => {
         this.pets = response;
       },

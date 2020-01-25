@@ -9,6 +9,7 @@ import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
+import { Customer } from 'src/app/models/customer';
 
   
  

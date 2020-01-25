@@ -20,17 +20,17 @@
     <div class="form-group">
         <label for="selectPet">Select a Time</label>
         <select class="form-control" id="selectPet" [(ngModel)]="timeSlot">
-          <option value="9">9 AM</option>
-          <option value="10">10 AM</option>
-          <option value="11">11 AM</option>
-          <option value="1">1 PM</option>
-          <option value="2">2 PM</option>
-          <option value="3">3 PM</option>
-          <option value="4">4 PM</option>
+          <option value="9">9:00 AM</option>
+          <option value="10">10:00 AM</option>
+          <option value="11">11:00 AM</option>
+          <option value="1">1:00 PM</option>
+          <option value="2">2:00 PM</option>
+          <option value="3">3:00 PM</option>
+          <option value="4">4:00 PM</option>
         </select>
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">Reason for Visit</label>
       <textarea class="form-control" id="description" rows="3" [(ngModel)]="description"></textarea>
     </div>
     <button style="margin-bottom: 10px;" type="button" class="btn btn-primary" (click) = "addAppointment()">SUBMIT (addAppointment test)</button>

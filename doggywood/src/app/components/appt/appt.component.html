@@ -1,3 +1,31 @@
 <div class="container">
-    <h3>{{pet.petName}}'s Appointment</h3>
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <button (click)="logAppt()">log appt</button>
+            <h3>{{pet.petName}}'s Appointment</h3>
+            <p><strong>Date and Time: </strong>{{appointment.date}} {{appointment.timeSlot}}:00</p>
+            <p><strong>Owner: </strong>{{customer.firstName}} {{customer.lastName}}</p>
+            <p><strong>Type: </strong></p>
+            <p><strong>Breed: </strong></p>
+            <p><strong>Date of Birth: </strong></p>
+        </div>
+        <div class="col-5 d-flex flex-column justify-content-center align-items-center">
+                <button type="button" class="btn btn-info appt-button">View petName's Profile</button>
+                <button type="button" class="btn btn-info appt-button">Enter petName's Weight at Appointment</button>
+        </div>
+        
+    </div>
+    <div class="row justify-content-center">
+        <table class="table table-striped appt-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="text-align: center;">Appointment Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-info">Add Note to Appointment</button>
+    </div>
 </div>
