@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.logout(); 
     sessionStorage.removeItem('empId');
-    this.panelTitle = "LOGIN";
+    this.panelTitle = "CUSTOMER LOGIN";
     this.message = `
     Customer:  user or any email admiral@nelson.com   
     Employee:     admin (or any) 
@@ -35,31 +35,24 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     if (this.admin) { 
-      this.validLogin =  this.onAdminSubmit();
+      this.validLogin =  (this.onAdminSubmit()!==null)?true:false;
       console.log("logged in as employee: "+this.validLogin); 
+     this.validLogin = true;
       this.router.navigate(['vetLanding']);
 
     } else if (!this.admin) { 
-      this.validLogin = this.onLoginSubmit();
+      this.validLogin = (this.onLoginSubmit()!==null)?true:false;
       console.log("logged in as customer: "+this.validLogin);
-      this.router.navigate(['clients'])
-
+      this.validLogin = true;
+      this.router.navigate(['clients']);
     }
-    if (!this.validLogin) {
+     
       this.errorMessage = "Oops, password doesn't match"
-      console.log("logged in?: "+this.validLogin)
       this.validLogin = false;
-
-       this.router.navigate([''])
-    }
-
-    //REDIRECT TO Employee Landing
-    if (this.authenticationService.isCustLoggedIn() !== null) {
-
-    }
-    else if (this.authenticationService.isEmpLoggedIn()) {
+      console.log("logged in?: "+this.validLogin)
+      this.router.navigate([''])
+    
  
-    } 
   } 
 
   // returns true if email/password in Employee DB

@@ -50,7 +50,7 @@ export class AuthenticationService {
       }
 
     );
-    return (this.customerObject !== null) ? true : false;
+    // return (this.customerObject !== null) ? true : false;
 
   }
 
@@ -78,7 +78,7 @@ export class AuthenticationService {
         return this.employeeObject = null;
       }
     );
-    return (this.employeeObject !== null) ? true : false;
+    // return (this.employeeObject !== null) ? true : false;
   }
   
   public passCheck(email, password, object) {
