@@ -1,1 +1,33 @@
-<p>appt works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <button (click)="logAppt()">log appt</button>
+            <h3 style="margin-bottom: 20px;">{{pet.petName}}'s Appointment</h3>
+            <p><strong>Date and Time: </strong>{{appointment.date}} {{appointment.timeSlot}}:00</p>
+            <p><strong>Owner: </strong>{{customer.firstName}} {{customer.lastName}}</p>
+            <p><strong>Type: </strong>{{pet.type}}</p>
+            <p><strong>Breed: </strong>{{pet.breed}}</p>
+            <p><strong>Date of Birth: </strong>{{pet.birthDate}}</p>
+        </div>
+        <div class="col-5 d-flex flex-column justify-content-center align-items-center">
+                <button type="button" class="btn btn-info appt-button">View {{pet.petName}}'s Profile</button>
+                <button type="button" class="btn btn-info appt-button">Enter {{pet.petName}}'s Weight at Appointment</button>
+        </div>
+        
+    </div>
+    <div class="row justify-content-center">
+        <table class="table table-striped appt-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="text-align: center;">Appointment Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let note of notes">
+                    <td>{{note.n_message}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-info">Add Note to Appointment</button>
+    </div>
+</div>

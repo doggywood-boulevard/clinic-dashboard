@@ -12,6 +12,7 @@ export class PetsService {
   // PROD 
   // base_url: string = 'http://localhost:8080';
 
+  url: string = 'http://localhost:8080';
   pets_url: string = 'http://localhost:8080/pets'; 
 // [{
 // 	"id": 2,

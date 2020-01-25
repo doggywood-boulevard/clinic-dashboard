@@ -48,6 +48,16 @@ public class NoteServiceImpl implements NoteService {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public List<Note> getNotesByAid(int aid) {
+		return nr.findByAid(aid);
+	}
+
+	@Override
+	public List<Note> getAllNotes() {
+		return (List<Note>) nr.findAll();
 	}	
 
 }
