@@ -101,7 +101,7 @@ export class PetCreateComponent implements OnInit {
      
       if (this.pet.id === null) {
         this.pet.id = 0; // TEMP until we can get formatting.
-        this.pet.custId = 99; // TEMP until session storage.
+        this.pet.custId = 3; // TEMP until session storage.
         this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
         this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
 
