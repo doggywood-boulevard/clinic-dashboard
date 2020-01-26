@@ -11,7 +11,7 @@ export class Pet {
     neuter: number;
     description: string;
     petUrl: string;
-
+ 
     constructor(
         id: number,
         custId: number,
@@ -33,6 +33,6 @@ export class Pet {
         this.type = type;
         this.breed = breed;
         this.description = description;
-    }
+    } 
 
 }
