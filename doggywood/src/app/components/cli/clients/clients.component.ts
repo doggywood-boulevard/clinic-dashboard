@@ -112,5 +112,28 @@ export class ClientsComponent implements OnInit {
     );
     console.log('last line of message from GetCLientData Function');
   }
+
+  petTypes(petType :number) :string {
+    switch (petType) {
+      case 1:
+        return "Dog";
+        break;
+      case 2:
+        return "Cat";
+        break;
+      case 3:
+        return "Parrot";
+        break;
+      case 4:
+        return "Ferret";
+        break;
+      case 5:
+        return "Other";
+        break;
+      default:
+        return "??????";
+        break;
+    }
+  }
  
 }
