@@ -1,8 +1,14 @@
  
-<div class="container">
+<!-- <div class="container">
   <div style="float: left;">
   <img src="https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg" alt="doggy" style="width:300px;height:auto;">
-</div >
+</div > -->
+<div  class="profile-userpic">
+
+
+  <img src="{{ pet.petUrl }}" class="img-responsive" alt="" style="float: left;">
+
+</div>
  <div  >
     <h5 style=" padding-left: 50px;"> &nbsp; &nbsp; &nbsp; Upload new File:</h5> 
   <input type="text" value="Type" style="margin-bottom: 10px; margin-left: 30px;"> <br>
@@ -10,16 +16,16 @@
   <input type="text" value="Expiration Date" style="margin-bottom: 10px; margin-left: 30px;"> <br>
   <button class="btn btn-outline-info" style=" margin-left: 30px;">Upload File</button>
  </div>
-</div>
+<!-- </div> -->
  
 
 
 <div class="container">
   <hr >
-<h2>Vaccination Records</h2>
-<table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
+<h2>{{pet.petName}} Vaccination Records</h2>
+<table class="table table-striped" >
+    <thead class="thead-dark" style="text-align: center;">
+      <tr >
         <th scope="col">Name</th>
         <th scope="col">Date Received</th>     
         <th scope="col">Expiration</th>     
