@@ -28,8 +28,9 @@
 	</div>
 </div> 
 
-    <div class="container">
+    <div class="container"> 
       <app-pet-create></app-pet-create>
+ 
     </div>
 
 <div class="container" *ngIf="petList.length > 0">
@@ -47,13 +48,12 @@
         </thead>
         <tbody>
           <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
-            <th scope="row">{{ pet.petName }}</th>
+            <th scope="row">{{ pet.petName }}</th> 
             <td>{{ petTypes(pet.type) }}</td>
             <td>{{ pet.weight }} lbs</td>
             <td>{{ pet.birthDate }} years</td> 
            <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
            <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
-
           </tr>
         </tbody>
       </table>

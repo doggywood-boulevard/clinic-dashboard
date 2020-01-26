@@ -6,8 +6,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
  
-  <form class="form-inline my-2 my-lg-0">
+  <form class="form-inline my-2 my-lg-0"> 
      <button  *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
+ 
   <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
   </form>
 

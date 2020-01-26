@@ -8,11 +8,12 @@ import {map} from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
- 
+  
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
 import { Customer } from 'src/app/models/customer';
 import { PetCreateComponent } from '../../pet-create/pet-create.component';
+ 
 
   
  
@@ -42,7 +43,7 @@ export class ClientsComponent implements OnInit {
   public customer: Customer;
   public customerList = [];
   public pet: Pet;
-  public petList = [];
+  public petList = []; 
 
   constructor(route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
 
@@ -57,7 +58,7 @@ export class ClientsComponent implements OnInit {
     // this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
     // this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
  
-    // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
+    // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data); 
 
     // this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data); 
     
