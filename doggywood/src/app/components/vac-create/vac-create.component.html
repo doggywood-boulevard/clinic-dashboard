@@ -22,16 +22,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="description">Vaccine Name:</label>
-          <textarea class="form-control" id="description" rows="1" [(ngModel)]="description"></textarea>
+          <label for="vName">Vaccine Name:</label>
+          <textarea class="form-control" id="vName" rows="1" [(ngModel)]="vName"></textarea>
         </div>
         <div class="form-group">
-          <label for="dateSelect">Date Recieved</label>
-          <input type="date" class="form-control" id="dateSelect" [(ngModel)]="date">
+          <label for="vDate">Date Recieved</label>
+          <input type="date" class="form-control" id="vDate" [(ngModel)]="vDate">
         </div>
         <div class="form-group">
-          <label for="selectPet">Days Valid</label>
-          <select class="form-control" id="selectPet" [(ngModel)]="timeSlot">
+          <label for="vTime">Days Valid</label>
+          <select class="form-control" id="vTime" [(ngModel)]="vTime">
             <option value="1">90</option>
             <option value="2">180</option>
             <option value="3">360</option>
@@ -40,7 +40,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info" data-dismiss="modal" (click)="addAppointment()">Submit</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" (click)="addRecord()">Submit</button>
       </div>
     </div>
   </div>
