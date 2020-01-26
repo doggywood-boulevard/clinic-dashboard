@@ -104,7 +104,7 @@ export class AuthenticationService {
       sessionStorage.setItem("phone", customerObject.phone);
       sessionStorage.setItem("cusUrl", customerObject.cusUrl);
       // auth session
-      sessionStorage.setItem("authEmployee", customerObject.email);
+      sessionStorage.setItem("authUser", customerObject.email);
     }
   }
   public makeEmpSessionData(employeeObject) {

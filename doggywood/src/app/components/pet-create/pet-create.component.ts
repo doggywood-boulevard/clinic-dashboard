@@ -31,6 +31,7 @@ export class PetCreateComponent implements OnInit {
   description: string;
   petUrl: string ;
   unformattedDate: Date = new Date('30-JAN-2020');
+  storage: any;
   
   petTypes: PetType[] = [
     { id: Number(1), name: 'Dog' },
@@ -65,11 +66,13 @@ export class PetCreateComponent implements OnInit {
 
     this.petService.getPets()
       .subscribe(data => this.petsList = data);
+
     // this.activatedRoute.paramMap.subscribe(parameterMap => {
     //   const id = +parameterMap.get('id');
     //   this.getPet(id);
     // })
   console.log(this.unformattedDate)
+
   }
    
   public getPet(id) {
@@ -102,9 +105,9 @@ export class PetCreateComponent implements OnInit {
      
       if (this.pet.id === null) {
         this.pet.id = 0; // TEMP until we can get formatting.
-        this.pet.custId = 3; // TEMP until session storage.
-        this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
-        this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
+        this.pet.custId = 99; // TEMP until session storage.
+        // this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
+        // this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
 
         this.petService.addPet(this.pet).subscribe(
           (data: Pet) => {
