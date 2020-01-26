@@ -65,10 +65,10 @@ export class PetCreateComponent implements OnInit {
 
     this.petService.getPets()
       .subscribe(data => this.petsList = data);
-    this.activatedRoute.paramMap.subscribe(parameterMap => {
-      const id = +parameterMap.get('id');
-      this.getPet(id);
-    })
+    // this.activatedRoute.paramMap.subscribe(parameterMap => {
+    //   const id = +parameterMap.get('id');
+    //   this.getPet(id);
+    // })
   console.log(this.unformattedDate)
   }
    
