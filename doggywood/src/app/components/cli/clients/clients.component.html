@@ -7,19 +7,19 @@
 				<div  class="profile-userpic">
  
  
-					<img *ngIf="customer" src="{{cusUrl}}" class="img-responsive" alt="">
+					<img *ngIf="customer" src="{{customer.cusUrl}}" class="img-responsive" alt="">
  
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle"> 
 					<div class="profile-usertitle-name">
-                        <h3>{{firstName}} {{lastName}}</h3>
+                        <h3>{{customer.firstName}} {{customer.lastName}}</h3>
 					</div>
 					<div>
-                        <p>ID: {{custId}}</p>
-                        <p> Phone:	{{phone}}  </p>
-                        <p> Email: {{email}} </p>
+                        <p>ID: {{customer.id}}</p>
+                        <p> Phone:	{{customer.phone}}  </p>
+                        <p> Email: {{customer.email}} </p>
 					</div>
 				</div>
                  
