@@ -6,19 +6,10 @@
     </button>
   </div> 
 
-  <div class="scroll-window-large col col-xs-4">
-    <h6>CUSTOMERS: <br /> </h6>
-
-    <ul class="cust-list" *ngFor="let cust of customersList">
-      <img class="imageClass" alt="cust.cusUrl" width="200" [src]="cust.cusUrl" />
-      
-      <li><strong>Name: </strong> {{cust.firstName}} {{cust.lastName}}</li>
-      <li><strong>Id: </strong> {{cust.id}}</li>
-      <li><strong>Phone: </strong> {{cust.phone}}</li>
-      <li><strong>Email: </strong> {{cust.email}}</li> 
-    </ul>
-  </div>
-</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+  Schedule a New Appointment
+</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -68,7 +59,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="addAppointment()">Submit</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" (click)="addAppointment()">Submit</button>
       </div>
     </div>
   </div>

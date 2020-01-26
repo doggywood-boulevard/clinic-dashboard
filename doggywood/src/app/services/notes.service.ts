@@ -20,8 +20,8 @@ export class NotesService {
     return throwError('Oops, there is a problem  ..');
   }
 
-  createNote(note: Note): Observable<Note> {
-    return this.http.post<Note>(`http://localhost:8080/notes`, note, {
+  createNote(note: Note): Observable<Note> { 
+    return this.http.post<Note>(`http://localhost:8080/notes`, note, { 
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -29,7 +29,7 @@ export class NotesService {
       .pipe(catchError(this.handleError)); 
   }
 
-  getNoteById(id: number): Observable<Note> {
+  getNoteById(id: number): Observable<Note> { 
     return this.http.get<Note>(`http://localhost:8080/notes/${id}`) 
       .pipe(catchError(this.handleError));
   }
@@ -45,21 +45,21 @@ export class NotesService {
   }
 
   getNotesByApptId(id :number) :Observable<Note[]> {
-    return this.http.get<Note[]>(`http://localhost:8080/appointments/${id}/notes`)
+    return this.http.get<Note[]>(`http://localhost:8080/appointments/${id}/notes`) 
       .pipe(catchError(this.handleError));
   }
 
-  updateNote(note: Note): Observable<Note> {
-    return this.http.put<Note>(`http://localhost:8080/notes`, note, {
+  updateNote(note: Note): Observable<Note> { 
+    return this.http.put<Note>(`http://localhost:8080/notes`, note, { 
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     })
       .pipe(catchError(this.handleError));
   }
- 
+  
   deleteNote(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`http://localhost:8080/notes/{id}`)
+    return this.http.delete<boolean>(`http://localhost:8080/notes/{id}`) 
       .pipe(catchError(this.handleError));
   } 
   

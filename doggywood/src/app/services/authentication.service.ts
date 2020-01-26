@@ -16,20 +16,20 @@ export class CustomerDataBean {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
-  public customerObject: Customer; // session OBJECT
+export class AuthenticationService { 
+  customerObject: Customer; // session OBJECT
   public custId:number;
   public employeeObject: Employee;
   public empId:number;
 
   loggedIn = false;
   object: any;
-
+ 
   constructor(private cliLandingService: CliLandingService, private http: HttpClient) { }
 
   url = 'http://localhost:8080/customer-welcome/profile';
   emp_url = "http://localhost:8080/employee-welcome/profile";
-
+ 
   public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
     this.getCustomerAuth(email, password).subscribe((response) => {
@@ -38,11 +38,11 @@ export class AuthenticationService {
         this.custId = this.customerObject.id;
         console.log("subscribeId: " + this.custId);
         console.log(this.customerObject);
-        this.makeSessionData(this.customerObject);
+        this.makeSessionData(this.customerObject); 
       }
     },
       (response) => {
-        console.log("subscribe: " + response.error);
+        console.log("subscribe: " + response.error); 
         this.customerObject = null;
       }
     );
@@ -85,7 +85,7 @@ export class AuthenticationService {
       data => this.customerObject = data
     );
 
-  }
+  } 
   public getCustomerAuth(email: string, password: string): Observable<Customer> {
     console.log(email + ' ' + password)
     return this.http.get<Customer>(`${this.url}/${email}`);
@@ -95,8 +95,8 @@ export class AuthenticationService {
     console.log(email + ' ' + password)
     return this.http.get<Employee>(`${this.emp_url}/${email}`);
   }
-
-  // verify Logged in 
+ 
+  // verify Logged in  
   public isCustLoggedIn() {
     let user = sessionStorage.getItem('authUser')
     return !(user === null) // i.e. true
@@ -105,7 +105,7 @@ export class AuthenticationService {
     let user = sessionStorage.getItem('authEmployee')
     return !(user === null) // i.e. true
   }
-
+ 
   // make session Data
   public makeSessionData(customerObject) {
     // Customers
@@ -137,7 +137,7 @@ export class AuthenticationService {
   }
 
   // delete session Data
-  public deleteSession() {
+  public deleteSession() { 
     // Customers
     sessionStorage.removeItem('authUser');
     sessionStorage.removeItem("custId");
@@ -147,13 +147,12 @@ export class AuthenticationService {
     sessionStorage.removeItem("phone");
     sessionStorage.removeItem("cusUrl");
     // Employees
-    sessionStorage.removeItem('authEmployee');
-    sessionStorage.removeItem('empId');
+    sessionStorage.removeItem('authEmployee'); 
+    sessionStorage.removeItem('empId'); 
     sessionStorage.removeItem("firstName");
     sessionStorage.removeItem("lastName");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("phone");
     sessionStorage.removeItem("eType");
-  }
-
+  } 
 }
