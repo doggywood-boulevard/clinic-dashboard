@@ -1,11 +1,28 @@
+<div class="row appt">
+  <!-- Button trigger modal -->
+  <div class=" col col-xs-8">
+    <button type="button" class="btn btn-primary btn-appt" data-toggle="modal" data-target="#exampleModalCenter">
+      Schedule a New Appointment
+    </button>
+  </div> 
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Schedule a New Appointment
-</button>
+  <div class="scroll-window-large col col-xs-4">
+    <h6>CUSTOMERS: <br /> </h6>
+
+    <ul class="cust-list" *ngFor="let cust of customersList">
+      <img class="imageClass" alt="cust.cusUrl" width="200" [src]="cust.cusUrl" />
+      
+      <li><strong>Name: </strong> {{cust.firstName}} {{cust.lastName}}</li>
+      <li><strong>Id: </strong> {{cust.id}}</li>
+      <li><strong>Phone: </strong> {{cust.phone}}</li>
+      <li><strong>Email: </strong> {{cust.email}}</li> 
+    </ul>
+  </div>
+</div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -17,31 +34,32 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="selectClient">Select a Client</label>
-          <select (change) = "getPets()" class="form-control" id="selectClient" [(ngModel)] = "custId">
-            <option [value]="customer.id" *ngFor = "let customer of customers">{{customer.firstName}} {{customer.lastName}}</option>
+          <select (change)="getPets()" class="form-control" id="selectClient" [(ngModel)]="custId">
+            <option [value]="customer.id" *ngFor="let customer of customers">{{customer.firstName}}
+              {{customer.lastName}}</option>
           </select>
         </div>
         <div class="form-group">
-            <label for="selectPet">Select a Pet</label>
-            <select class="form-control" id="selectPet" [(ngModel)]="petId">
-              <option [value]="pet.id" *ngFor = "let pet of pets">{{pet.petName}}</option>
-            </select>
+          <label for="selectPet">Select a Pet</label>
+          <select class="form-control" id="selectPet" [(ngModel)]="petId">
+            <option [value]="pet.id" *ngFor="let pet of pets">{{pet.petName}}</option>
+          </select>
         </div>
         <div class="form-group">
-            <label for="dateSelect">Appointment Date</label>
-            <input type="date" class="form-control" id="dateSelect" [(ngModel)]="date">
+          <label for="dateSelect">Appointment Date</label>
+          <input type="date" class="form-control" id="dateSelect" [(ngModel)]="date">
         </div>
         <div class="form-group">
-            <label for="selectPet">Select a Time</label>
-            <select class="form-control" id="selectPet" [(ngModel)]="timeSlot">
-              <option value="9">9:00 AM</option>
-              <option value="10">10:00 AM</option>
-              <option value="11">11:00 AM</option>
-              <option value="1">1:00 PM</option>
-              <option value="2">2:00 PM</option>
-              <option value="3">3:00 PM</option>
-              <option value="4">4:00 PM</option>
-            </select>
+          <label for="selectPet">Select a Time</label>
+          <select class="form-control" id="selectPet" [(ngModel)]="timeSlot">
+            <option value="9">9:00 AM</option>
+            <option value="10">10:00 AM</option>
+            <option value="11">11:00 AM</option>
+            <option value="1">1:00 PM</option>
+            <option value="2">2:00 PM</option>
+            <option value="3">3:00 PM</option>
+            <option value="4">4:00 PM</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="description">Reason for Visit</label>
