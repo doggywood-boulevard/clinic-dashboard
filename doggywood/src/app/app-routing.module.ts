@@ -28,8 +28,9 @@ const routes: Routes = [
   { path: 'createClient', component: CreateClientComponent},
   { path: 'register', component: RegisterComponent },
 
-  { path: 'pets', component: DoggydashComponent },   
-  { path: 'clients', component: ClientsComponent }, 
+  { path: 'pets', component: DoggydashComponent },    
+  // { path: 'clients', component: ClientsComponent },  
+  { path: 'clients/:id', component: ClientsComponent }, 
   { path: 'petCreate', component: PetCreateComponent},
   { path: 'appt/:apptId', component: ApptComponent},
   { path: 'apptCreate', component: ApptCreateComponent},
