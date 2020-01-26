@@ -3,11 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { AppointmentService } from '../../../services/appointment.service';
-import { Appointment } from '../../../models/appointment';
-import { EmployeesService } from '../../../services/employees.service';
-import { Employee } from '../../../models/employee';
-import { ClientsService } from '../../../services/clients.service';
+import { VaccRecord} from '../../../models/vacc-record';
+import { VaccRecordService } from "../../../services/vacc-record.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,9 +16,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class CliPetRecordComponent implements OnInit {
 
-  constructor(private apptService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute) { }
+recList: VaccRecord[];
+public expireList = [];
 
+
+  constructor(private vaccService: VaccRecordService, private router: Router, private activatedRoute: ActivatedRoute) { }
+
+  
   ngOnInit() {
+    this.vaccService.getVaccRecordByPetId(5)
+    .subscribe(data => {this.recList = data}, data => {console.log('w e l o s t b o y s')});
+
+   
   }
 
+  
+
 }
+
+
