@@ -18,9 +18,9 @@ export class CustomerDataBean {
 })
 export class AuthenticationService {
   customerObject: Customer; // session OBJECT
-  custId ;
+  public custId:number;
   employeeObject: Employee;
-  empId ;
+  empId:number;
 
   loggedIn = false;
   object: any;
@@ -34,9 +34,9 @@ export class AuthenticationService {
     // CHECK DB CUST TABLE
     this.getCustomerAuth(email, password).subscribe((response) => {
       this.customerObject = response;
-      this.custId =  this.customerObject.id;
-      console.log("subscribeCust: " + response.email);
       if (this.customerObject !== null) {
+        this.custId = this.customerObject.id;
+        console.log("subscribeId: " + this.custId);
         console.log(this.customerObject);
         this.makeSessionData(this.customerObject);
       }
@@ -46,11 +46,12 @@ export class AuthenticationService {
         this.customerObject = null;
       }
     );
-    return (this.customerObject !== null) ? true : false; 
+    return (this.customerObject !== null) ? true : false;
   }
- public getCustId() {
-   return this.custId;
- }
+  public getCustId() {
+    console.log("getcust:" + this.custId)
+    return this.custId;
+  }
 
   public authenticateEmp(email, password) {
     // CHECK DB EMP TABLE
@@ -70,7 +71,7 @@ export class AuthenticationService {
     );
     return (this.employeeObject !== null) ? true : false;
   }
-  
+
   // get cust data from email
   public getClientDataByEmail(email) {
     this.cliLandingService.getClientByEmail(email).subscribe(
