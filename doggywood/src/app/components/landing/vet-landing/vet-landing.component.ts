@@ -54,25 +54,27 @@ export class VetLandingComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.email = this.getEmail();
-    console.log(this.getEmail()); 
-    this.employeesService.getEmployeeByEmail(this.email).subscribe(data => { 
-      this.employee = data,
-        console.log(this.employee)
-    })
+
      
      setTimeout(() => {
-     this.getEmployeeSessionData(); 
+     this.getEmployeeSessionData();
   
+    this.email = this.getEmail();
+    console.log("vet landing email: "+this.email); 
+    
+    this.employeesService.getEmployeeByEmail(this.email).subscribe(data => { 
+      this.employee = data,
+        console.log("emp object: "+ this.employee)
+    })
+
      this.storage = sessionStorage
-     this.empId = parseInt(this.storage.getItem("empId"));
+     this.empId = (this.empId === (null || undefined || NaN))? parseInt(this.storage.getItem("empId")): this.empId;
+     console.log("empId "+ this.empId);
+
      this.apptService.getAppointmentsByEmployee(this.empId)
       .subscribe(data => { this.apptList = data }, data => { console.log('w e l o s t b o y s') });
-
-     this.empId = parseInt(sessionStorage.getItem('empId'));
-     
-    
-    }, 250);
+ 
+    }, 500);
    
   }
 
@@ -83,8 +85,7 @@ export class VetLandingComponent implements OnInit {
     this.lastName = sessionStorage.getItem("lastName");
     this.email = sessionStorage.getItem("email");
     this.phone = sessionStorage.getItem("phone");
-    this.eType = sessionStorage.getItem("eType");
-    return this.empId;
+    this.eType = sessionStorage.getItem("eType"); 
   }
 
   getEmail() {

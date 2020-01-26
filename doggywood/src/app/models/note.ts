@@ -1,4 +1,4 @@
-export class Note{
+export class Note{ 
 
     n_message: string;
     n_id: number;
@@ -10,5 +10,5 @@ export class Note{
         this.n_id = n_id;
         this.a_id = a_id;
         this.p_id = p_id;
-    }
+    } 
 }

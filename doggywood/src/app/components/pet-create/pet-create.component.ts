@@ -13,8 +13,8 @@ import { Customer } from 'src/app/models/customer';
   selector: 'app-pet-create',
   templateUrl: './pet-create.component.html',
   styleUrls: ['./pet-create.component.css']
-})
-
+}) 
+ 
 export class PetCreateComponent implements OnInit {
  
   loading = false;
@@ -30,15 +30,15 @@ export class PetCreateComponent implements OnInit {
   neuter:number;
   description: string;
   petUrl: string ;
-  unformattedDate: Date = new Date('30-JAN-2020');
-  storage: any;
+  unformattedDate: Date = new Date('30-JAN-2020'); 
+  storage: any; 
   
   petTypes: PetType[] = [
     { id: Number(1), name: 'Dog' },
     { id: Number(2), name: 'Cat' },
     { id: Number(3), name: 'Parrot' },
     { id: Number(4), name: 'Ferret' },
-    { id: Number(5), name: 'Other' },
+    { id: Number(5), name: 'Other' }, 
   ];
 
   petNeuters: PetNeuter[] = [
@@ -47,7 +47,7 @@ export class PetCreateComponent implements OnInit {
     { id: 3, name: 'Not Spayed' },
     { id: 4, name: 'Spayed' } 
   ];
-
+ 
   
  
   public petForm: NgForm;
@@ -65,14 +65,14 @@ export class PetCreateComponent implements OnInit {
       .subscribe(data => this.petsList = data);
 
     this.petService.getPets()
-      .subscribe(data => this.petsList = data);
+      .subscribe(data => this.petsList = data); 
 
     // this.activatedRoute.paramMap.subscribe(parameterMap => {
     //   const id = +parameterMap.get('id');
     //   this.getPet(id);
     // })
   console.log(this.unformattedDate)
-
+ 
   }
    
   public getPet(id) {
@@ -109,7 +109,7 @@ export class PetCreateComponent implements OnInit {
       //   this.pet.id = 0; // TEMP until we can get formatting.
       //   this.pet.custId = 99; // TEMP until session storage.
         // this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
-        // this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
+        // this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString(); 
 
         this.petService.addPet(this.pet).subscribe(
           (data) => {

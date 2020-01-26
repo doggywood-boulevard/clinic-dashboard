@@ -8,16 +8,13 @@ import { ClientsService } from 'src/app/services/clients.service';
 import { Customer } from 'src/app/models/customer';
 import { NotesService } from 'src/app/services/notes.service';
 import { Note } from 'src/app/models/note';
-
 // add notes and edit weight need to be fixed
-
 @Component({
   selector: 'app-appt',
   templateUrl: './appt.component.html',
   styleUrls: ['./appt.component.css']
 })
 export class ApptComponent implements OnInit {
-
   apptId :number;
   appointment :Appointment;
   petId :number;
@@ -28,7 +25,6 @@ export class ApptComponent implements OnInit {
   newWeight :number;
   // firstDate : Date = new Date("2020-4-20");
   // dateTest :Date = new Date(this.firstDate.valueOf() + 5 * 86400000);
-
   constructor(
     private route :ActivatedRoute,
     private apptService :AppointmentService,
@@ -36,7 +32,6 @@ export class ApptComponent implements OnInit {
     private clientService :ClientsService,
     private noteService :NotesService
   ) { }
-
   ngOnInit() {
     this.apptId = this.route.snapshot.params.apptId;
     this.getAppointment(201);
@@ -45,7 +40,6 @@ export class ApptComponent implements OnInit {
       console.log(this.pet.weight);
     }, 500);
   }
-
   getAppointment(id :number) {
     this.apptService.getAppointment(id).subscribe(
       response => {
@@ -57,7 +51,6 @@ export class ApptComponent implements OnInit {
         console.log("failed to get appointment");
       });
   }
-
   getPet(id :number) {
     this.petService.getPet(id).subscribe(
       res => {
@@ -69,7 +62,6 @@ export class ApptComponent implements OnInit {
         console.log("failed to get pet");
       });
   }
-
   getOwner(id :number) {
     this.clientService.getCustomer(id).subscribe(
       res => {
@@ -79,7 +71,6 @@ export class ApptComponent implements OnInit {
         console.log("failed to get pet owner");
       });
   }
-
   getNotes(id :number) {
     this.noteService.getNotesByApptId(id).subscribe(
       res => {
@@ -90,7 +81,6 @@ export class ApptComponent implements OnInit {
       }
     );
   }
-
   addNote() {
     this.noteService.createNote(new Note(this.noteMessage, 0, this.apptId, this.appointment.petId)).subscribe(
       res => {
@@ -104,7 +94,6 @@ export class ApptComponent implements OnInit {
       }
     )
   }
-
   updateWeight() {
     this.pet.weight = this.newWeight;
     console.log(this.pet);
@@ -116,7 +105,6 @@ export class ApptComponent implements OnInit {
           console.log("failed to update pet weight");
         }
       );
-    
     this.appointment.weight = this.newWeight;
     this.apptService.updateAppointment(this.appointment).subscribe(
       res => {
@@ -127,7 +115,6 @@ export class ApptComponent implements OnInit {
       }
     )
   }
-
   logAppt() {
     console.log(`To do: change how the dates are displayed, AM/PM, display weight, edit weight and then display it`);
     // console.log(this.firstDate)
