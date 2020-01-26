@@ -4,38 +4,33 @@
     </h2>
 </div>
 
-    <div class="container">
-      <table class="table table-striped">
-        <thead class="thead-dark">
-          <tr style="text-align:center">
-            <th scope="coL">Animal Name</th>
-            <th scope="coL">Customer Name</th>
-             <th scope="coL">Pet Name</th>
-             <th scope="coL">Date</th>
-             <th scope="coL">Weight</th>
-             <th scope="coL">Description</th>
-             <th scope="coL">Time slot</th>
-             <th scope="coL">Dog Info</th>
-             <th scope="coL">Appt Info</th>
-            </tr>
-        </thead>
-        <tbody>
-                 
-            <ng-container *ngIf="apptList">  
-   <tr *ngFor="let apt of apptList"  style="text-align:center"> 
-    <td>{{apt.id}}</td>
-    <td>{{apt.custId}}</td>
-    <td>{{apt.petId}}</td>  
-    <td>{{apt.date}}</td>
-    <td>{{apt.weight}}</td>
-    <td>{{apt.description}}</td>
-    <td>{{apt.timeSlot}}</td>
-    <td><button class="btn btn-info table-btn">See Profile</button></td>
-    <td> <button class="btn btn-info table-btn">View Appt</button></td>
-   </tr>
-  </ng-container> 
-            
-          
-        </tbody>
-      </table>        
-    </div>
+<div class="container">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr style="text-align:center">
+        <th scope="coL">Animal Name</th>
+        <th scope="coL">Customer Name</th>
+          <th scope="coL">Pet Name</th>
+          <th scope="coL">Date</th>
+          <th scope="coL">Weight</th>
+          <th scope="coL">Description</th>
+          <th scope="coL">Time slot</th>
+          <th scope="coL">Dog Info</th>
+          <th scope="coL">Appt Info</th>
+        </tr>
+    </thead>
+    <tbody> 
+      <tr *ngFor="let apt of apptList"  style="text-align:center"> 
+        <td>{{apt.id}}</td>
+        <td>{{apt.custId}}</td>
+        <td>{{apt.petId}}</td>  
+        <td>{{apt.date}}</td>
+        <td>{{apt.weight}}</td>
+        <td>{{apt.description}}</td>
+        <td>{{apt.timeSlot}}</td>
+        <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../vetPetProfile/{{apt.petId}}">See Profile</a></td>
+        <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../appt/{{apt.id}}">View Appt</a></td>
+      </tr>  
+    </tbody>
+  </table>        
+</div>
