@@ -24,7 +24,7 @@ export class ApptComponent implements OnInit {
   pet :Pet;
   customer :Customer;
   notes :Note[];
-  noteMessage :string;
+  noteMessage :string = "";
   newWeight :number;
   // firstDate : Date = new Date("2020-4-20");
   // dateTest :Date = new Date(this.firstDate.valueOf() + 5 * 86400000);
@@ -40,6 +40,10 @@ export class ApptComponent implements OnInit {
   ngOnInit() {
     this.apptId = this.route.snapshot.params.apptId;
     this.getAppointment(this.apptId);
+    setTimeout(() => {
+      this.newWeight = this.pet.weight;
+      console.log(this.pet.weight);
+    }, 500);
   }
 
   getAppointment(id :number) {
@@ -102,7 +106,6 @@ export class ApptComponent implements OnInit {
   }
 
   updateWeight() {
-    console.log(this.pet);
     this.pet.weight = this.newWeight;
     console.log(this.pet);
     this.petService.addPet(this.pet).subscribe(
@@ -129,6 +132,6 @@ export class ApptComponent implements OnInit {
     console.log(`To do: change how the dates are displayed, AM/PM, display weight, edit weight and then display it`);
     // console.log(this.firstDate)
     // console.log("date + 5 days: " + this.dateTest);
-    console.log(this.newWeight);
+    console.log(this.noteMessage);
   }
 }
