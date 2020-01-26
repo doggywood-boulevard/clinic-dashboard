@@ -39,7 +39,7 @@ export class ApptComponent implements OnInit {
 
   ngOnInit() {
     this.apptId = this.route.snapshot.params.apptId;
-    this.getAppointment(this.apptId);
+    this.getAppointment(201);
     setTimeout(() => {
       this.newWeight = this.pet.weight;
       console.log(this.pet.weight);

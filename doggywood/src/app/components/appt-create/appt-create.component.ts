@@ -29,7 +29,7 @@ export class ApptCreateComponent implements OnInit {
   ngOnInit() {
     this.getAllCustomers();
     setTimeout(() => {
-        this.storage = sessionStorage
+        this.storage = sessionStorage;
         this.empId = parseInt(this.storage.getItem("empId"));
        }, 250);
   }

@@ -20,7 +20,7 @@ export class PetCreateComponent implements OnInit {
   loading = false;
   success = false;
   panelTitle: string;
-  pet: Pet;
+  pet: Pet = new Pet(0, 0, "", "", 0, 0, 0, "", "");
   custId: number;
   petName: string;
   weight:  number;
@@ -102,30 +102,33 @@ export class PetCreateComponent implements OnInit {
     }
   }
    public savePet(): void { 
-     
-      if (this.pet.id === null) {
-        this.pet.id = 0; // TEMP until we can get formatting.
-        this.pet.custId = 99; // TEMP until session storage.
+
+    this.storage = sessionStorage
+    this.pet.custId = this.storage.getItem("custId");
+      // if (this.pet.id === null) {
+      //   this.pet.id = 0; // TEMP until we can get formatting.
+      //   this.pet.custId = 99; // TEMP until session storage.
         // this.pet.birthDate = '22-JAN-2020'; // TEMP until we can get formatting.
         // this.pet.birthDate !== ''? this.pet.birthDate:'22-JAN-2020'; // this.unformattedDate.toString();
 
         this.petService.addPet(this.pet).subscribe(
-          (data: Pet) => {
+          (data) => {
             console.log(data);
+          });
             // this.createPetForm.resetForm();
-        this.router.navigate(['clients']);
-          },
-          (error: any) => console.log(error)
-        );
-      } else {
-        this.petService.updatePet(this.pet).subscribe(
-          () => { 
-            // this.createPetForm.reset();
-            this.router.navigate(['clients']);
-          },
-          (error: any) => console.log(error)
-        );
-      } 
+        // this.router.navigate(['clients']);
+        //   },
+        //   (error: any) => console.log(error)
+        // );
+      // } else {
+      //   this.petService.updatePet(this.pet).subscribe(
+      //     () => { 
+      //       // this.createPetForm.reset();
+      //       this.router.navigate(['clients']);
+      //     },
+      //     (error: any) => console.log(error)
+      //   );
+      // } 
    }
    
 
