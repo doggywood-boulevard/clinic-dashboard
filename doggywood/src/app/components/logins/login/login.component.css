@@ -4,3 +4,10 @@ span.links:hover {
     text-decoration: none;
  
 }
+.admin-login {
+    padding:5px;
+    text-align:right;
+}
+.register-logout {
+    float:right;
+}
