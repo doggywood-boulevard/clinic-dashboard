@@ -9,6 +9,8 @@ import { Customer } from 'src/app/models/customer';
 import { NotesService } from 'src/app/services/notes.service';
 import { Note } from 'src/app/models/note';
 
+// add notes and edit weight need to be fixed
+
 @Component({
   selector: 'app-appt',
   templateUrl: './appt.component.html',
@@ -100,7 +102,9 @@ export class ApptComponent implements OnInit {
   }
 
   updateWeight() {
+    console.log(this.pet);
     this.pet.weight = this.newWeight;
+    console.log(this.pet);
     this.petService.addPet(this.pet).subscribe(
         res => {
           console.log(res);
