@@ -24,6 +24,8 @@ export class ApptComponent implements OnInit {
   notes :Note[];
   noteMessage :string;
   newWeight :number;
+  // firstDate : Date = new Date("2020-4-20");
+  // dateTest :Date = new Date(this.firstDate.valueOf() + 5 * 86400000);
 
   constructor(
     private route :ActivatedRoute,
@@ -98,18 +100,31 @@ export class ApptComponent implements OnInit {
   }
 
   updateWeight() {
-    this.petService.addPet(new Pet(this.pet.id, this.pet.custId, this.pet.petName, this.pet.birthDate, 
-      this.newWeight, this.pet.neuter, this.pet.type, this.pet.breed, this.pet.description)).subscribe(
+    this.pet.weight = this.newWeight;
+    this.petService.addPet(this.pet).subscribe(
         res => {
           console.log(res);
         },
         res => {
-          console.log(res);
+          console.log("failed to update pet weight");
         }
       );
+    
+    this.appointment.weight = this.newWeight;
+    this.apptService.updateAppointment(this.appointment).subscribe(
+      res => {
+        console.log(res);
+      },
+      res => {
+        console.log("failed to update appt weight");
+      }
+    )
   }
 
   logAppt() {
     console.log(`To do: change how the dates are displayed, AM/PM, display weight, edit weight and then display it`);
+    // console.log(this.firstDate)
+    // console.log("date + 5 days: " + this.dateTest);
+    console.log(this.newWeight);
   }
 }
