@@ -24,18 +24,16 @@ export class LoginComponent implements OnInit {
   errorMessage: string = '';
   constructor(private clientService: ClientsService, private authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
- 
+
   ngOnInit() {
     this.isLoginPage = true;
     this.authenticationService.deleteSession();
     sessionStorage.removeItem('empId');
-    this.panelTitle = "CUSTOMER LOGIN"; 
-    this.message = `
-    Customer:  user or any email admiral@nelson.com   
-    Employee:     admin (or any) 
-    all pw's:  password`;
+    this.panelTitle = "CUSTOMER LOGIN";
+    this.message = ``;
   }
-  handleLogin() { 
+
+  handleLogin() {
     if (this.admin) {
       console.log(this.email);
       this.authenticationService.authenticateEmp(this.email, this.password);
@@ -80,17 +78,17 @@ export class LoginComponent implements OnInit {
   // returns true if email/password in Customer DB
   onLoginSubmit() {
     return this.authenticationService.authenticateCust(this.email, this.password);
-  } 
+  }
 
   adminButton() {
     this.admin = (this.admin === true) ? false : true;
     this.panelTitle = (this.admin === true) ? "ADMIN LOGIN" : "LOGIN";
-  } 
+  }
 
   logout() {
     this.authenticationService.deleteSession();
     this.errorMessage = '';
     // this.ngOnInit();
- 
+
   }
 }
