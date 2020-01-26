@@ -48,11 +48,11 @@
         <tbody>
           <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
             <th scope="row">{{ pet.petName }}</th>
-            <td>{{ pet.type }}</td>
+            <td>{{ petTypes(pet.type) }}</td>
             <td>{{ pet.weight }} lbs</td>
             <td>{{ pet.birthDate }} years</td> 
-           <td><button class="btn btn-info table-btn">View Records</button> </td>
-           <td><button class="btn btn-info table-btn">View Pet</button> </td>
+           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
+           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
 
           </tr>
         </tbody>
