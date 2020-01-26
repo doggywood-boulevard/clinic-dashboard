@@ -45,27 +45,22 @@ export class ClientsComponent implements OnInit {
   public petList = [];
 
   constructor(route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
+
     this.id = route.snapshot.paramMap.get('id');
     this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
-    // const id: Observable<string> = route.params.pipe(map(p => p.id));
-    // this.id = parseInt(this.id);
-    // console.log("params: "+this.id);
-    // const url: Observable<string> = route.url.pipe(map(segments => segments.join('')));
-    // // route.data includes both `data` and `resolve`
-    // const customer = route.data.pipe(map(d => d.getCustomer));
+    this.petService.getPetByCust(this.id).subscribe(data=>this.petList = data); 
    }
 
   ngOnInit() {
-    // this.getClientSessionData();
-
+    // this.getClientSessionData(); 
       //  this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
     // this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
     // this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
-
+ 
     // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
 
     // this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data); 
-    this.petService.getPetByCust(this.id).subscribe(data=>this.petList = data); 
+    
 
 
     // console.log(parseInt(sessionStorage.getItem("custId")));  // 91
