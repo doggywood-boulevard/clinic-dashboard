@@ -46,6 +46,24 @@
 
 }
 
+/* appoint page */
+.scroll-window-large {
+    /* this class for scrolling through long lists */
+    max-height: 800px; 
+    overflow-y: scroll;
+}
+.appt {
+    width:100%;
+}
+.cust-list li {
+    list-style-type:none;
+}
+.cust-list li strong {
+    background-color:rgba(173, 216, 230, 0.219);
+    min-width:60px;
+    margin-right:5px;
+
+}
 /* ANGULAR */
 
  :host {
