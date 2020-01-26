@@ -16,118 +16,69 @@ export class CustomerDataBean {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
-  customerObject: Customer = null; // session OBJECT
-  employeeObject: Employee = null;
+export class AuthenticationService { 
+  customerObject: Customer; // session OBJECT
+  public custId:number;
+  employeeObject: Employee;
+  empId:number;
+
   loggedIn = false;
-  // emp_url: string = "";
   object: any;
-  number: number;
+ 
   constructor(private cliLandingService: CliLandingService, private http: HttpClient) { }
 
   url = 'http://localhost:8080/customer-welcome/profile';
   emp_url = "http://localhost:8080/employee-welcome/profile";
-
-  public authenticate(email, password) {
+ 
+  public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
     this.getCustomerAuth(email, password).subscribe((response) => {
-      // console.log("subscribe: " + response.email);
       this.customerObject = response;
       if (this.customerObject !== null) {
-        sessionStorage.setItem("custId", (this.customerObject.id).toString());
-        sessionStorage.setItem("firstName", this.customerObject.firstName);
-        sessionStorage.setItem("lastName", this.customerObject.lastName);
-        sessionStorage.setItem("email", this.customerObject.email);
-        sessionStorage.setItem("phone", this.customerObject.phone);
-        sessionStorage.setItem("cusUrl", this.customerObject.cusUrl);
-        sessionStorage.setItem("authUser", this.customerObject.email);
-        //  return   this.passCheck(email, password, this.customerObject);
-        return  this.customerObject;
+        this.custId = this.customerObject.id;
+        console.log("subscribeId: " + this.custId);
+        console.log(this.customerObject);
+        this.makeSessionData(this.customerObject); 
       }
     },
       (response) => {
-        console.log("subscribe: " + response.error);
-        return this.customerObject = null;
-      }
-   
-    ); 
- 
-    // CHECK DB EMP TABLE
-    this.getEmployeeAuth(email, password).subscribe((response) => {
-      // console.log("subscribe: " + response.email);
-      this.employeeObject = response;
-      if (this.employeeObject !== null) {
-        sessionStorage.setItem("empId", (this.employeeObject.id).toString());
-        sessionStorage.setItem("eType", (this.employeeObject.eType).toString());
-        sessionStorage.setItem("firstName", this.employeeObject.firstName);
-        sessionStorage.setItem("lastName", this.employeeObject.lastName);
-        sessionStorage.setItem("email", this.employeeObject.email);
-        sessionStorage.setItem("phone", this.employeeObject.phone);
-        sessionStorage.setItem("authEmployee", this.employeeObject.email);
-        // return  this.passCheck(email, password, this.employeeObject);
-         return this.employeeObject;
-      }
-    },
-      (response) => {
-        console.log("subscribe: " + response.error);
-        return this.employeeObject = null;
+        console.log("subscribe: " + response.error); 
+        this.customerObject = null;
       }
     );
-  
-    return (this.customerObject !== null) || (this.employeeObject !== null)?true:false; 
+    return (this.customerObject !== null) ? true : false;
+  }
+  public getCustId() {
+    console.log("getcust:" + this.custId)
+    return this.custId;
   }
 
-  public passCheck(email, password, object) {
-    if (email === "admin" && password === "password") {
-      sessionStorage.setItem("authEmployee", email);
-      // this.makeEmpSessionData(); // make session data
-      console.log('after1: ' + this.isEmpLoggedIn());
-      // return true;
+  public authenticateEmp(email, password) {
+    // CHECK DB EMP TABLE
+    this.getEmployeeAuth(email, password).subscribe((response) => {
+      this.employeeObject = response;
+      console.log("subscribeEmpl: " + response.email);
+      if (this.employeeObject !== null) {
+        console.log(this.employeeObject);
+        this.makeEmpSessionData(this.employeeObject)
 
-    } else if (email === object.email && password === object.password) {
-      sessionStorage.setItem("authUser", object.email);
-      // this.makeSessionData(); // make session data
-      console.log('after2: ' + this.isCustLoggedIn());
-      // return true;
-
-    } else if (email === object.email && password === object.password) {
-      sessionStorage.setItem("authEmployee", object.email);
-      // this.makeEmpSessionData(); // make session data
-      console.log('after3: ' + this.isEmpLoggedIn());
-      // return true;
-
-    }
-
+      }
+    },
+      (response) => {
+        console.log("subscribe: " + response.error);
+        this.employeeObject = null;
+      }
+    );
+    return (this.employeeObject !== null) ? true : false;
   }
+
+  // get cust data from email
   public getClientDataByEmail(email) {
     this.cliLandingService.getClientByEmail(email).subscribe(
       data => this.customerObject = data
     );
 
-  }
-  public makeSessionData() {
-    // Customers
-    if (this.customerObject !== null) {
-      sessionStorage.setItem("custId", (this.customerObject.id).toString()); sessionStorage.setItem("firstName", this.customerObject.firstName);
-      sessionStorage.setItem("lastName", this.customerObject.lastName);
-      sessionStorage.setItem("email", this.customerObject.email);
-      sessionStorage.setItem("phone", this.customerObject.phone);
-      sessionStorage.setItem("cusUrl", this.customerObject.cusUrl)
-    }
-  }
-
-  public makeEmpSessionData() {
-    // Employees
-    if (this.employeeObject !== null) {
-      sessionStorage.setItem("empId", (this.employeeObject.id).toString());
-      sessionStorage.setItem("eType", (this.employeeObject.eType).toString());
-      sessionStorage.setItem("firstName", this.employeeObject.firstName);
-      sessionStorage.setItem("lastName", this.employeeObject.lastName);
-      sessionStorage.setItem("email", this.employeeObject.email);
-      sessionStorage.setItem("phone", this.employeeObject.phone);
-    }
-  }
-
+  } 
   public getCustomerAuth(email: string, password: string): Observable<Customer> {
     console.log(email + ' ' + password)
     return this.http.get<Customer>(`${this.url}/${email}`);
@@ -137,7 +88,8 @@ export class AuthenticationService {
     console.log(email + ' ' + password)
     return this.http.get<Employee>(`${this.emp_url}/${email}`);
   }
-
+ 
+  // verify Logged in  
   public isCustLoggedIn() {
     let user = sessionStorage.getItem('authUser')
     return !(user === null) // i.e. true
@@ -146,8 +98,37 @@ export class AuthenticationService {
     let user = sessionStorage.getItem('authEmployee')
     return !(user === null) // i.e. true
   }
+ 
+  // make session Data
+  public makeSessionData(customerObject) {
+    // Customers
+    if (customerObject !== null) {
+      sessionStorage.setItem("custId", (customerObject.id).toString());
+      sessionStorage.setItem("firstName", customerObject.firstName);
+      sessionStorage.setItem("lastName", customerObject.lastName);
+      sessionStorage.setItem("email", customerObject.email);
+      sessionStorage.setItem("phone", customerObject.phone);
+      sessionStorage.setItem("cusUrl", customerObject.cusUrl);
+      // auth session
+      sessionStorage.setItem("authUser", customerObject.email);
+    }
+  }
+  public makeEmpSessionData(employeeObject) {
+    // Employees
+    if (employeeObject !== null) {
+      sessionStorage.setItem("empId", (employeeObject.id).toString());
+      sessionStorage.setItem("eType", (employeeObject.eType).toString());
+      sessionStorage.setItem("firstName", employeeObject.firstName);
+      sessionStorage.setItem("lastName", employeeObject.lastName);
+      sessionStorage.setItem("email", employeeObject.email);
+      sessionStorage.setItem("phone", employeeObject.phone);
+      // auth session
+      sessionStorage.setItem("authEmployee", employeeObject.email);
+    }
+  }
 
-  public logout() {
+  // delete session Data
+  public deleteSession() { 
     // Customers
     sessionStorage.removeItem('authUser');
     sessionStorage.removeItem("custId");
@@ -157,12 +138,12 @@ export class AuthenticationService {
     sessionStorage.removeItem("phone");
     sessionStorage.removeItem("cusUrl");
     // Employees
-    sessionStorage.removeItem('authEmployee');
-    sessionStorage.removeItem("id");
+    sessionStorage.removeItem('authEmployee'); 
+    sessionStorage.removeItem('empId'); 
     sessionStorage.removeItem("firstName");
     sessionStorage.removeItem("lastName");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("phone");
     sessionStorage.removeItem("eType");
-  }
+  } 
 }

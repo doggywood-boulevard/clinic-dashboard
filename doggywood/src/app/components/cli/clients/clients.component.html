@@ -17,6 +17,7 @@
                         <h3>{{customer.firstName}} {{customer.lastName}}</h3>
 					</div>
 					<div>
+                        <p>ID: {{customer.id}}</p>
                         <p> Phone:	{{customer.phone}}  </p>
                         <p> Email: {{customer.email}} </p>
 					</div>
@@ -27,13 +28,12 @@
 	</div>
 </div> 
 
-    <div class="container">
-
-        <button class="btn btn-block btn-outline-info table-btn">Add Pet</button>
-
+    <div class="container"> 
+      <app-pet-create></app-pet-create>
+ 
     </div>
 
-<div class="container">
+<div class="container" *ngIf="petList.length > 0">
     <table class="table table-striped pet-table">
 
         <thead class="thead-dark"> 
@@ -48,15 +48,15 @@
         </thead>
         <tbody>
           <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
-            <th scope="row">{{ pet.petName }}</th>
-            <td>{{ pet.type }}</td>
+            <th scope="row">{{ pet.petName }}</th> 
+            <td>{{ petTypes(pet.type) }}</td>
             <td>{{ pet.weight }} lbs</td>
             <td>{{ pet.birthDate }} years</td> 
-           <td><button class="btn btn-info table-btn">View Records</button> </td>
-           <td><button class="btn btn-info table-btn">View Pet</button> </td>
-
+           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
+           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
           </tr>
         </tbody>
       </table>
 </div>
  
+

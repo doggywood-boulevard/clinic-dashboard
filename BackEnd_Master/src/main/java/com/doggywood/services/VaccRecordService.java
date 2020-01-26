@@ -12,10 +12,6 @@ public interface VaccRecordService {
 
 	public List<VaccRecord> getVaccRecordsByPetId(int petId);
 
-	public List<VaccRecord> getVaccRecordsByCustId(int custId);
-
-	public List<VaccRecord> getVaccRecordsByApptId(int apptId);
-
 	public List<VaccRecord> getAllVaccRecords();
 
 	public VaccRecord updateVaccRecord(VaccRecord vr);

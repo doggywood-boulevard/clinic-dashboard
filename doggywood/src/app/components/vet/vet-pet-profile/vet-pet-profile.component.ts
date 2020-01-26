@@ -1,7 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { PetsService } from '../../../services/pets.service';
-import { ClientsService } from '../../../services/clients.service';
 
+import { ClientsService } from '../../../services/clients.service';
+import { CliLandingService } from '../../../services/cli-landing.service';
+  
+ 
+import { Observable, throwError  } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
+ 
+import { Pet } from 'src/app/models/pet';
+import { PetsService } from 'src/app/services/pets.service';
+import { Customer } from 'src/app/models/customer';
+import { PetCreateComponent } from '../../pet-create/pet-create.component';
+import { ActivatedRoute } from '@angular/router';
+import { NotesService } from 'src/app/services/notes.service';
+import { Note } from 'src/app/models/note';
 
 @Component({
   selector: 'app-vet-pet-profile',
@@ -9,17 +22,43 @@ import { ClientsService } from '../../../services/clients.service';
   styleUrls: ['./vet-pet-profile.component.css']
 })
 export class VetPetProfileComponent implements OnInit { 
+ 
+  id: number;
+  custId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  cusUrl: string;
+  petId: number;
 
-  constructor(private aniService: PetsService, private cliService: ClientsService) { }
-  public petsList = [];
-  public customersList = [];
+  public customer: Customer;
+  public customerList = [];
+  public pet: Pet;
+  public petList = [];
+  public note: Note;
+  public noteList = []
 
-  ngOnInit() {    // on page load here  
-    this.aniService.getPets()
-      .subscribe(data => this.petsList = data);
+  constructor(private route :ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService, private noteService: NotesService) { }
 
-    this.cliService.getCustomers()
-      .subscribe(data => this.customersList = data);
-  } 
+  ngOnInit() {
+    this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
+    this.petId = this.route.snapshot.params.animalId;
+    this.petService.getPet(this.petId).subscribe(data=>this.pet = data); 
+    this.noteService.getNoteByPetId(this.petId).subscribe(data=>this.noteList = data);
+    console.log("Look here" + this.pet);
+  }
+
+
+  getClientSessionData() {
+    // this.cliLandingService.makeSessionData();
+
+    this.custId = parseInt(sessionStorage.getItem("custId"));
+    this.firstName = sessionStorage.getItem("firstName");
+    this.lastName =sessionStorage.getItem("lastName");
+    this.email = sessionStorage.getItem("email");
+    this.phone = sessionStorage.getItem("phone");
+    this.cusUrl = sessionStorage.getItem("cusUrl"); 
+  }    
 
 }

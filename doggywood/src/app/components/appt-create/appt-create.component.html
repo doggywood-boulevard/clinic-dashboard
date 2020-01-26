@@ -1,42 +1,57 @@
-<div class="container">
-    <h3>Create a New Appointment</h3>
-    <div class="form-group">
-        <label for="selectClient">Select a Client</label>
-        <select class="form-control" id="selectClient">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+  Schedule a New Appointment
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Schedule Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="selectClient">Select a Client</label>
+          <select (change) = "getPets()" class="form-control" id="selectClient" [(ngModel)] = "custId">
+            <option [value]="customer.id" *ngFor = "let customer of customers">{{customer.firstName}} {{customer.lastName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="selectPet">Select a Pet</label>
+            <select class="form-control" id="selectPet" [(ngModel)]="petId">
+              <option [value]="pet.id" *ngFor = "let pet of pets">{{pet.petName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateSelect">Appointment Date</label>
+            <input type="date" class="form-control" id="dateSelect" [(ngModel)]="date">
+        </div>
+        <div class="form-group">
+            <label for="selectPet">Select a Time</label>
+            <select class="form-control" id="selectPet" [(ngModel)]="timeSlot">
+              <option value="9">9:00 AM</option>
+              <option value="10">10:00 AM</option>
+              <option value="11">11:00 AM</option>
+              <option value="1">1:00 PM</option>
+              <option value="2">2:00 PM</option>
+              <option value="3">3:00 PM</option>
+              <option value="4">4:00 PM</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label for="description">Reason for Visit</label>
+          <textarea class="form-control" id="description" rows="3" [(ngModel)]="description"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" (click)="addAppointment()">Submit</button>
+      </div>
     </div>
-    <div class="form-group">
-        <label for="selectPet">Select a Pet</label>
-        <select class="form-control" id="selectPet">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="dateSelect">Appointment Date</label>
-        <input type="date" class="form-control" id="dateSelect">
-    </div>
-    <div class="form-group">
-        <label for="selectPet">Select a Time</label>
-        <select class="form-control" id="selectPet">
-          <option value="9">9 AM</option>
-          <option value="10">10 AM</option>
-          <option value="11">11 AM</option>
-          <option value="1">1 PM</option>
-          <option value="2">2 PM</option>
-          <option value="3">3 PM</option>
-          <option value="4">4 PM</option>
-        </select>
-    </div>
-    <button type="button" class="btn btn-primary" (click) = "addAppointment()">SUBMIT (addAppointment test)</button>
-    <button type="button" class="btn btn-outline-primary" (click) = "updateAppointment()">updateAppointment test</button>
-    <button type="button" class="btn btn-outline-primary" (click) = "getAllAppointments()">getAllAppointments test</button>
+  </div>
 </div>

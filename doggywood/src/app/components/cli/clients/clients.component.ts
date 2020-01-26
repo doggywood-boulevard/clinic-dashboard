@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
- 
+
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service';
   
- 
+import {ActivatedRoute} from '@angular/router'; 
+import {map} from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {  HttpHeaders, HttpErrorResponse,  HttpClient } from '@angular/common/http';
- 
-import { Customer } from 'src/app/models/customer';
- 
+  
 import { Pet } from 'src/app/models/pet';
 import { PetsService } from 'src/app/services/pets.service';
+import { Customer } from 'src/app/models/customer';
+import { PetCreateComponent } from '../../pet-create/pet-create.component';
+ 
 
   
  
@@ -23,38 +25,50 @@ import { PetsService } from 'src/app/services/pets.service';
 
 export class ClientsComponent implements OnInit {
   // landing material from login  // for bean
-  id: number;
+  id: any;
   welcome: string;
   object: string;
 
   // Customer data from Session:
   // public customer: Customer; // session OBJECT
   custId: number;
+  // paramId: number;
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   cusUrl: string;
 
+  // public customerParam: Customer;
   public customer: Customer;
   public customerList = [];
   public pet: Pet;
-  public petList = [];
+  public petList = []; 
 
-  constructor(private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) { }
+  constructor(route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
+
+    this.id = route.snapshot.paramMap.get('id');
+    this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
+    this.petService.getPetByCust(this.id).subscribe(data=>this.petList = data); 
+   }
 
   ngOnInit() {
-    // get logged in user email
-    // this.email = this.cliLandingService.getSessionEmail();
+    // this.getClientSessionData(); 
+      //  this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
+    // this.clientsService.getClientByEmail(this.email).subscribe(data=>this.customer = data);
+    // this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
  
-    // this.cliLandingService.getClientByEmail(this.email).subscribe(data => this.customer = data);
- 
-    this.clientsService.getClientByEmail("project0@earthlink.net").subscribe(data=>this.customer = data);
-    this.petService.getPetByCust(44).subscribe(data=>this.petList = data);
-    // this.getCustomer(this.custId);
+    // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data); 
 
-    this.getClientSessionData();
-    this.getClientData(); 
+    // this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data); 
+    
+
+
+    // console.log(parseInt(sessionStorage.getItem("custId")));  // 91
+    console.log((parseInt(sessionStorage.getItem('custId')))); // 91
+    //this.getCustomer(this.custId);
+    // this.getClientSessionData();
+    // this.getClientData(); 
   }
 
   getCustomer(id: number) {
@@ -73,16 +87,16 @@ export class ClientsComponent implements OnInit {
      sessionStorage.setItem("phone",customer.email);
      sessionStorage.setItem("cusUrl", customer.cusUrl) 
   }
-  getClientSessionData() {
-    // this.cliLandingService.makeSessionData();
+  // getClientSessionData() {
+  //   // this.cliLandingService.makeSessionData();
 
-    this.custId = parseInt(sessionStorage.getItem("custId"));
-    this.firstName = sessionStorage.getItem("firstName");
-    this.lastName =sessionStorage.getItem("lastName");
-    this.email = sessionStorage.getItem("email");
-    this.phone = sessionStorage.getItem("phone");
-    this.cusUrl = sessionStorage.getItem("cusUrl"); 
-  }    
+  //   this.custId = parseInt(sessionStorage.getItem("custId"));
+  //   this.firstName = sessionStorage.getItem("firstName");
+  //   this.lastName =sessionStorage.getItem("lastName");
+  //   this.email = sessionStorage.getItem("email");
+  //   this.phone = sessionStorage.getItem("phone");
+  //   this.cusUrl = sessionStorage.getItem("cusUrl"); 
+  // }    
 
 
   // Get Bean ==>  FOR LATER
@@ -98,6 +112,29 @@ export class ClientsComponent implements OnInit {
       response => this.handleSuccessfulResponse(response)
     );
     console.log('last line of message from GetCLientData Function');
+  }
+
+  petTypes(petType :number) :string {
+    switch (petType) {
+      case 1:
+        return "Dog";
+        break;
+      case 2:
+        return "Cat";
+        break;
+      case 3:
+        return "Parrot";
+        break;
+      case 4:
+        return "Ferret";
+        break;
+      case 5:
+        return "Other";
+        break;
+      default:
+        return "??????";
+        break;
+    }
   }
  
 }
