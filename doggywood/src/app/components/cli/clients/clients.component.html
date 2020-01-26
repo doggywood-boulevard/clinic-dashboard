@@ -47,6 +47,16 @@
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+          <tr *ngFor="let pet of petList" class="clickable-row" >
+            <th scope="row">{{ pet.petName }}</th>
+            <td>{{ pet.type }}</td>
+            <td>{{ pet.weight }} lbs</td>
+            <td>{{ pet.birthDate }} years</td> 
+           <td><button class="btn btn-info table-btn"  (click)="seePetDetails(pet.id)">View Records {{pet.id}}</button> </td>
+           <td><button class="btn btn-info table-btn">View Pet</button> </td>
+
+=======
           <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
             <th scope="row">{{ pet.petName }}</th> 
             <td>{{ petTypes(pet.type) }}</td>
@@ -54,6 +64,7 @@
             <td>{{ pet.birthDate }} years</td> 
            <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
            <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
+>>>>>>> 946b36d83cfa3d7633052bcef77e83b029c061d9
           </tr>
         </tbody>
       </table>

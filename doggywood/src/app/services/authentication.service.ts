@@ -19,8 +19,8 @@ export class CustomerDataBean {
 export class AuthenticationService { 
   customerObject: Customer; // session OBJECT
   public custId:number;
-  employeeObject: Employee;
-  empId:number;
+  public employeeObject: Employee;
+  public empId:number;
 
   loggedIn = false;
   object: any;
@@ -34,7 +34,7 @@ export class AuthenticationService {
     // CHECK DB CUST TABLE
     this.getCustomerAuth(email, password).subscribe((response) => {
       this.customerObject = response;
-      if (this.customerObject !== null) {
+      if (this.customerObject !== (null || undefined)) {
         this.custId = this.customerObject.id;
         console.log("subscribeId: " + this.custId);
         console.log(this.customerObject);
@@ -48,17 +48,14 @@ export class AuthenticationService {
     );
     return (this.customerObject !== null) ? true : false;
   }
-  public getCustId() {
-    console.log("getcust:" + this.custId)
-    return this.custId;
-  }
-
+  
   public authenticateEmp(email, password) {
     // CHECK DB EMP TABLE
     this.getEmployeeAuth(email, password).subscribe((response) => {
       this.employeeObject = response;
       console.log("subscribeEmpl: " + response.email);
-      if (this.employeeObject !== null) {
+      if (this.employeeObject !== (null || undefined)) {
+        this.empId = this.employeeObject.id;
         console.log(this.employeeObject);
         this.makeEmpSessionData(this.employeeObject)
 
@@ -70,6 +67,16 @@ export class AuthenticationService {
       }
     );
     return (this.employeeObject !== null) ? true : false;
+  }
+// get ids
+
+  public getCustId() {
+    console.log("get custId:" + this.custId)
+    return this.custId;
+  }
+  public getEmpId() {
+    console.log("get empId:" + this.empId)
+    return this.empId;
   }
 
   // get cust data from email
@@ -112,6 +119,7 @@ export class AuthenticationService {
       // auth session
       sessionStorage.setItem("authUser", customerObject.email);
     }
+    return sessionStorage;
   }
   public makeEmpSessionData(employeeObject) {
     // Employees
@@ -125,6 +133,7 @@ export class AuthenticationService {
       // auth session
       sessionStorage.setItem("authEmployee", employeeObject.email);
     }
+     return sessionStorage;
   }
 
   // delete session Data
