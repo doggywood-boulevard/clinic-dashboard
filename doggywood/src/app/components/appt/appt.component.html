@@ -3,15 +3,16 @@
         <div class="col-5">
             <button (click)="logAppt()">log stuff</button>
             <h3 style="margin-bottom: 20px;">{{pet.petName}}'s Appointment</h3>
-            <p><strong>Date and Time: </strong>{{appointment.date}} {{appointment.timeSlot}}:00</p>
+            <p><strong>Date and Time: </strong>{{appointment.date}} | {{appointment.timeSlot}}:00</p>
             <p><strong>Owner: </strong>{{customer.firstName}} {{customer.lastName}}</p>
             <p><strong>Type: </strong>{{pet.type}}</p>
             <p><strong>Breed: </strong>{{pet.breed}}</p>
             <p><strong>Date of Birth: </strong>{{pet.birthDate}}</p>
+            <p><strong>Weight: </strong>{{appointment.weight}}</p>
         </div>
         <div class="col-5 d-flex flex-column justify-content-center align-items-center">
-                <button type="button" class="btn btn-info appt-button">View {{pet.petName}}'s Profile</button>
-                <button type="button" class="btn btn-info appt-button" data-toggle="modal" data-target="#editWeightModal">Enter {{pet.petName}}'s Weight at Appointment</button>
+            <a class="btn btn-outline-info appt-button" routerLink="../../vetPetProfile/{{appointment.petId}}" role="button">View {{pet.petName}}'s Profile</a>
+            <button type="button" class="btn btn-info appt-button" data-toggle="modal" data-target="#editWeightModal">Enter {{pet.petName}}'s Weight at Appointment</button>
         </div>
         
     </div>
@@ -32,7 +33,7 @@
     </div>
 </div>
 
-<!-- modals -->
+<!--add note modal -->
 <div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="addNoteModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -47,12 +48,13 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info" (click)="addNote()"  data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-info" (click)="addNote()" data-dismiss="modal">Submit</button>
         </div>
       </div>
     </div>
 </div>
 
+<!-- weight modal -->
 <div class="modal fade" id="editWeightModal" tabindex="-1" role="dialog" aria-labelledby="editWeightModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -67,7 +69,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-info"  data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-info" (click)="updateWeight()" data-dismiss="modal">Submit</button>
         </div>
       </div>
     </div>

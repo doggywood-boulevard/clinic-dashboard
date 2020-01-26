@@ -21,11 +21,17 @@ export class ApptCreateComponent implements OnInit {
   date :string;
   timeSlot :number;
   description :string;
+  storage :any;
+  empId :number;
 
   constructor(private apptService :AppointmentService, private clientService :ClientsService, private petService :PetsService) { }
 
   ngOnInit() {
     this.getAllCustomers();
+    setTimeout(() => {
+        this.storage = sessionStorage
+        this.empId = parseInt(this.storage.getItem("empId"));
+       }, 250);
   }
 
   addAppointment() {
@@ -33,19 +39,20 @@ export class ApptCreateComponent implements OnInit {
       response => {
         console.log(response.weight);
         this.weight = response.weight;
+        this.apptService.addAppointment(new Appointment(0, this.custId, this.petId, this.empId, 
+          this.date, this.weight, this.timeSlot, this.description)).subscribe(
+          response => {
+            console.log(response);
+          },
+          response => {
+            console.log(response);
+            console.log("Failed to add appointment.");
+          });
       },
       response => {
         console.log("failed to get pet by id");
       });
-    console.log(this.weight);
-    this.apptService.addAppointment(new Appointment(0, this.custId, this.petId, 48, this.date, this.weight, this.timeSlot, this.description)).subscribe(
-      response => {
-        console.log(response);
-      },
-      response => {
-        console.log(response);
-        console.log("Failed to add appointment.");
-      });
+    
   }
 
   getAllCustomers() {

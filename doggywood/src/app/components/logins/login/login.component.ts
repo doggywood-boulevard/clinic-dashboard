@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   message: string;
   admin: boolean = false;
   email: string;
+  public id: number;
   password: string;
   validLogin: boolean = false;
   errorMessage: string = '';
@@ -38,27 +39,32 @@ export class LoginComponent implements OnInit {
       console.log(this.email);
       this.authenticationService.authenticateEmp(this.email, this.password);
       console.log("logged in as employee: " + this.onAdminSubmit());
-      // this.validLogin = this.onAdminSubmit();
-      if (this.onAdminSubmit()===true) {
-        this.router.navigate(['vetLanding']);
+ 
+      if (this.onAdminSubmit() === true) {
+        this.router.navigate([`vetLanding`]);
       } else {
-         this.logout();
+        this.logout();
       }
 
     } else if (!this.admin) {
       console.log(this.email);
       this.authenticationService.authenticateCust(this.email, this.password);
       console.log("logged in as customer: " + this.onLoginSubmit());
-      // this.validLogin = this.onLoginSubmit();
-      if (this.onLoginSubmit()===true) {
-        this.router.navigate(['clients']);
-      }  else {
-         this.logout();
+      this.id = this.getId()
+      if (this.onLoginSubmit() === true) {
+        setTimeout(() => {
+          console.log("liftoff: " + this.id);
+          this.router.navigate([`clients/${this.id}`]);
+        }, 1000);
+
+      } else {
+        this.logout();
       }
     }
-   
   }
-
+  getId() {
+    return this.authenticationService.getCustId();
+  }
   // returns true if email/password in Employee DB
   onAdminSubmit() {
     return this.authenticationService.authenticateEmp(this.email, this.password);

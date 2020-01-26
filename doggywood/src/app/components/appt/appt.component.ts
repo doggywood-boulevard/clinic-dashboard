@@ -9,6 +9,8 @@ import { Customer } from 'src/app/models/customer';
 import { NotesService } from 'src/app/services/notes.service';
 import { Note } from 'src/app/models/note';
 
+// add notes and edit weight need to be fixed
+
 @Component({
   selector: 'app-appt',
   templateUrl: './appt.component.html',
@@ -22,7 +24,10 @@ export class ApptComponent implements OnInit {
   pet :Pet;
   customer :Customer;
   notes :Note[];
-  noteMessage :string;
+  noteMessage :string = "";
+  newWeight :number;
+  // firstDate : Date = new Date("2020-4-20");
+  // dateTest :Date = new Date(this.firstDate.valueOf() + 5 * 86400000);
 
   constructor(
     private route :ActivatedRoute,
@@ -35,6 +40,10 @@ export class ApptComponent implements OnInit {
   ngOnInit() {
     this.apptId = this.route.snapshot.params.apptId;
     this.getAppointment(this.apptId);
+    setTimeout(() => {
+      this.newWeight = this.pet.weight;
+      console.log(this.pet.weight);
+    }, 500);
   }
 
   getAppointment(id :number) {
@@ -96,7 +105,33 @@ export class ApptComponent implements OnInit {
     )
   }
 
+  updateWeight() {
+    this.pet.weight = this.newWeight;
+    console.log(this.pet);
+    this.petService.addPet(this.pet).subscribe(
+        res => {
+          console.log(res);
+        },
+        res => {
+          console.log("failed to update pet weight");
+        }
+      );
+    
+    this.appointment.weight = this.newWeight;
+    this.apptService.updateAppointment(this.appointment).subscribe(
+      res => {
+        console.log(res);
+      },
+      res => {
+        console.log("failed to update appt weight");
+      }
+    )
+  }
+
   logAppt() {
     console.log(`To do: change how the dates are displayed, AM/PM, display weight, edit weight and then display it`);
+    // console.log(this.firstDate)
+    // console.log("date + 5 days: " + this.dateTest);
+    console.log(this.noteMessage);
   }
 }

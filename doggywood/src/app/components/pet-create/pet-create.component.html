@@ -64,12 +64,12 @@
       <div class="form-group">
          <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid"></div>
         <label for="birthDate">Pet Date of Birth</label>
-        <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="unformattedDate"   #name="ngModel">
+        <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="pet.birthDate"   #name="ngModel">
          <span class="help-block" *ngIf="name.invalid && name.touched"> DOB is required
         </span>
       </div> 
  
-<div class="form-group"> 
+<div class="form-group">
   <label for="neuter" class="control-label">Pet Neuter<span class="required">
                 
                   </span></label>    
@@ -108,7 +108,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    <button type="submit" class="btn btn-primary" data-dismiss="modal">Add Pet</button>
+    <button type="submit" class="btn btn-primary">Add Pet</button>
   </div>
 </form>
 
