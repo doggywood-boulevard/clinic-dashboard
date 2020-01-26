@@ -1,16 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img width="110" class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
- 
-  <button  *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+  <a class="navbar-brand" *ngIf="authenticationService.isEmpLoggedIn()" routerLink="vetLanding/"><img width="110"
+      class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+
+  <a class="navbar-brand" *ngIf="authenticationService.isCustLoggedIn()" routerLink="clients/{{id}}"><img width="110"
+      class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+
+  <a class="navbar-brand" *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())"
+    routerLink="/"><img width="110" class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+
+  <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="navbar-toggler"
+    type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
- 
-  <form class="form-inline my-2 my-lg-0"> 
-     <button  *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
- 
-  <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="btn btn-outline-success" >  <a routerLink="/"> LOGOUT</a></button>
-  </form>
 
   <!-- 
   { path: '', component: LoginComponent },
@@ -60,17 +63,14 @@
       </li> -->
 
       <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
-      <li *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()  "
-        class="nav-item dropdown">
+      <li *ngIf="authenticationService.isCustLoggedIn()" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Clients
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="clients/">clients</a>
-          <a class="dropdown-item" routerLink="register/">createClient</a>
           <a class="dropdown-item" routerLink="cliLanding/">cliLanding</a>
-          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
+          <a class="dropdown-item" routerLink="petCreate/">Add a pet</a>
           <a class="dropdown-item" routerLink="cliPetRecord/:animalId">cliPetRecord/:animalId</a>
           <div class="dropdown-divider"></div>
 
@@ -88,18 +88,24 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-          <a class="dropdown-item" routerLink="register/">createClient</a>
-          <a class="dropdown-item" routerLink="petCreate/">petCreate</a>
+          <a class="dropdown-item" routerLink="register/">Add a Client</a>
+          <a class="dropdown-item" routerLink="petCreate/">Add a Pet</a>
+          <a class="dropdown-item" routerLink="recLanding/">Receptionist</a>
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="recLanding/">recLanding</a>
-          <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
-
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="vetLanding/">vetLanding</a>
+          <a class="dropdown-item" routerLink="vetLanding/">Veterinary</a>
           <a class="dropdown-item" routerLink="vetClientProfile/:clientId">vetClientProfile/:clientId</a>
           <a class="dropdown-item" routerLink="vetPetProfile/:animalId">vetPetProfile/:animalId</a>
           <a class="dropdown-item" routerLink="vetPetRecord/:animalId">vetPetRecord/:animalId</a>
+          <div class="dropdown-divider"></div>
+          <br />
+          <h6> &nbsp; &nbsp; &nbsp;Client View</h6>
+          <hr>
+          <a class="dropdown-item" routerLink="cliLanding/">Client</a>
+          <a class="dropdown-item" routerLink="petCreate/">Add a pet</a>
+          <a class="dropdown-item" routerLink="cliPetRecord/:animalId">Client Pet Record/:animalId</a>
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
         </div>
 
       </li>
@@ -107,4 +113,12 @@
     </ul>
 
   </div>
+
+  <form class="form-inline my-2 my-lg-0 register-logout">
+    <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
+      class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
+    <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"
+      class="btn btn-outline-success"> <a routerLink="/"> LOGOUT</a></button>
+  </form>
+
 </nav>

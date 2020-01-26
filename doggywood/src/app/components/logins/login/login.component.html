@@ -19,17 +19,19 @@
                 </div>
                 <div class="alert alert-warning" *ngIf="errorMessage !=''">{{errorMessage}}</div>
 
-                <span (click)="adminButton()" class="links"
+                <span (click)="adminButton()" class="links admin-login"
                     *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">
-                    <pre>Administration</pre> </span>
+                    <pre><em>Administration Login</em></pre> </span>
                 <pre class="pull-right"><em>{{message}}</em></pre>
             </div>
 
 
-            <br /> 
+            <br />
             <button type="submit" class="btn btn-primary ">&nbsp;&nbsp;SUBMIT&nbsp; </button>
             <br />
- 
+
+
+
 
         </div>
     </form>

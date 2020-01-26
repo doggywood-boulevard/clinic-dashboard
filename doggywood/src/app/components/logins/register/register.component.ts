@@ -11,6 +11,7 @@ import { ClientsService } from '../../../services/clients.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  register: boolean = true;
   registerForm: NgForm;
   //  @ViewChild('registerForm')
   panelTitle: string;
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.register = true;
     this.panelTitle = "CUSTOMER REGISTER";
     this.successMessage = '';
     // cust
@@ -64,6 +66,7 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+  
   public getCustomer(id) {
     if (id === 0) {
       this.customer = {
@@ -89,5 +92,8 @@ export class RegisterComponent implements OnInit {
   public onRegisterSubmit() {
     this.successMessage = 'Great!, your name: *' + this.customer.firstName + '*; username/email: *' + this.customer.email + '* have registered successfully';
 
+  }
+  public isPageRegister() {
+    return this.isPageRegister;
   }
 }
