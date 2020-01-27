@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <a class="navbar-brand" *ngIf="authenticationService.isEmpLoggedIn()" routerLink="vetLanding/"><img width="110"
-      class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+      class="logo" alt="Angular Logo" src="./assets/use this one.png"></a>
 
   <a class="navbar-brand" *ngIf="authenticationService.isCustLoggedIn()" routerLink="clients/{{id}}"><img width="110"
-      class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+      class="logo" alt="Angular Logo" src="./assets/use this one.png"></a>
 
   <a class="navbar-brand" *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())"
-    routerLink="/"><img width="110" class="logo" alt="Angular Logo" src="./assets/logo1.png"></a>
+    routerLink="/"><img width="110" class="logo" alt="Angular Logo" src="./assets/use this one.png"></a>
 
   <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()" class="navbar-toggler"
     type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
