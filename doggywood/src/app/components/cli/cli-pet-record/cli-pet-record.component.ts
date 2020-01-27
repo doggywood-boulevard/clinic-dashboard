@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import {HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+
+import { VacCreateComponent } from '../../vac-create/vac-create.component';
 import { VaccRecord} from '../../../models/vacc-record';
 import { VaccRecordService } from "../../../services/vacc-record.service";
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,7 +22,7 @@ import { Note } from 'src/app/models/note';
 
 export class CliPetRecordComponent implements OnInit {
 petId: number;
-
+parentPetId:number;
 
 recList: VaccRecord[];
 public vaccList = [];
@@ -36,6 +38,8 @@ public note:Note;
      
     this.petId = this.route.snapshot.params.animalId;
     console.log(this.petId);
+    this.parentPetId = this.petId;
+    
     this.petService.getPet(this.petId).subscribe(data=>this.pet = data); 
     console.log(this.pet);
     this.vaccService.getVaccRecordByPetId(this.petId)

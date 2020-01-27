@@ -36,7 +36,8 @@ export class ClientsComponent implements OnInit {
   public customerList = [];
   public pet: Pet;
   public petList = [];
-  constructor(route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
+  constructor(private route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
+    
     this.id = route.snapshot.paramMap.get('id');
     this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);
     this.petService.getPetByCust(this.id).subscribe(data=>this.petList = data); 
