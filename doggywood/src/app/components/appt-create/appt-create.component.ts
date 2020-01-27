@@ -27,8 +27,8 @@ export class ApptCreateComponent implements OnInit {
   constructor(private apptService :AppointmentService, private clientService :ClientsService, private petService :PetsService) { }
 
   ngOnInit() {
-    setTimeout(() => {
-        this.storage = sessionStorage;
+    setTimeout(() => { 
+        this.storage = sessionStorage; 
         this.empId = parseInt(this.storage.getItem("empId"));
        }, 250);
 

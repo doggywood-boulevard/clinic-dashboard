@@ -23,8 +23,7 @@ export class LoginComponent implements OnInit {
   validLogin: boolean = false;
   errorMessage: string = '';
   constructor(private clientService: ClientsService, public authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
-
-
+ 
   ngOnInit() {
     this.isLoginPage = true;
     this.authenticationService.deleteSession();
