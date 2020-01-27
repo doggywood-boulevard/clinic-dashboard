@@ -7,8 +7,8 @@ import { Pet } from 'src/app/models/pet';
 import { ClientsService } from 'src/app/services/clients.service';
 import { Customer } from 'src/app/models/customer';
 import { NotesService } from 'src/app/services/notes.service';
-import { Note } from 'src/app/models/note';
-// add notes and edit weight need to be fixed
+import { Note } from 'src/app/models/note'; 
+// add notes and edit weight need to be fixed 
 @Component({
   selector: 'app-appt',
   templateUrl: './appt.component.html',

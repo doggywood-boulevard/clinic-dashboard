@@ -63,7 +63,7 @@
     min-width:60px;
     margin-right:5px;
 
-}
+} 
 
 /* profile detils */
 .profile-details {
@@ -77,7 +77,7 @@
       background-color:rgba(173, 216, 230, 0.219);
      min-width:120px; 
     margin-right:5px; 
-} 
+}  
 /* ANGULAR */
 
  :host {
