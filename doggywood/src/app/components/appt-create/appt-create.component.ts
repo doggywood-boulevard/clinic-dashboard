@@ -31,6 +31,8 @@ export class ApptCreateComponent implements OnInit {
         this.storage = sessionStorage;
         this.empId = parseInt(this.storage.getItem("empId"));
        }, 250);
+
+    this.getAllCustomers();
   }
 
   addAppointment() {
