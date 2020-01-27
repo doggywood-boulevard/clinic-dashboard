@@ -45,10 +45,12 @@ export class VetLandingComponent implements OnInit {
   timeSlot: number;
   description: string;
 
+  custNameDisp :string;
+
   public employee: Employee
   public appointment: Appointment;
   public apptList = [];
-  constructor(private employeesService: EmployeesService, private apptService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private employeesService: EmployeesService, private apptService: AppointmentService, private router: Router, private activatedRoute: ActivatedRoute, private clientService :ClientsService) {
  
 
    }
@@ -91,4 +93,5 @@ export class VetLandingComponent implements OnInit {
   getEmail() {
     return this.email = sessionStorage.getItem("email");
   }
+
 }
