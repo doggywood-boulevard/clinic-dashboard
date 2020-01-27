@@ -1,62 +1,51 @@
-
 <div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div *ngIf="customer" class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div  class="profile-userpic">
- 
- 
-					<img *ngIf="customer" src="{{customer.cusUrl}}" class="img-responsive" alt="">
- 
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle"> 
-					<div class="profile-usertitle-name">
-                        <h3>{{customer.firstName}} {{customer.lastName}}</h3>
-					</div>
-					<div>
-                        <p>ID: {{customer.id}}</p>
-                        <p> Phone:	{{customer.phone}}  </p>
-                        <p> Email: {{customer.email}} </p>
-					</div>
-				</div>
-                 
-			</div>
-		</div>
-	</div>
-</div> 
-
-    <div class="container"> 
-      <app-pet-create></app-pet-create>
- 
+  <div class="row profile">
+  <div class="col-md-3">
+    <div *ngIf="customer" class="profile-sidebar">
+      <!-- SIDEBAR USERPIC -->
+      <div  class="profile-userpic">
+        <img *ngIf="customer" src="{{customer.cusUrl}}" class="img-responsive" alt="">
+      </div>
+      <!-- END SIDEBAR USERPIC -->
+      <!-- SIDEBAR USER TITLE -->
+      <div class="profile-usertitle"> 
+        <div class="profile-usertitle-name">
+                      <h4>{{customer.firstName}} {{customer.lastName}}</h4>
+        </div>
+        <div class="profile-details">
+                      <p><strong>ID:</strong> {{customer.id}}</p>
+                      <p> <strong>Phone:</strong>	{{customer.phone}}  </p>
+                      <p> <strong>Email:</strong> {{customer.email}} </p>
+        </div>
+      </div>
     </div>
-
-<div class="container" *ngIf="petList.length > 0">
-    <table class="table table-striped pet-table">
-
-        <thead class="thead-dark"> 
-            <tr> 
-            <th scope="col">Animal Name</th>
-            <th scope="col">Animal Type</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Age</th>
-            <th scope="col">Records</th> 
-            <th scope="col">View Pet</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
-            <th scope="row">{{ pet.petName }}</th> 
-            <td>{{ petTypes(pet.type) }}</td>
-            <td>{{ pet.weight }} lbs</td>
-            <td>{{ pet.birthDate }} years</td> 
-           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
-           <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
 </div>
- 
-
+</div> 
+  <div class="container" *ngIf="this.test">
+    <app-pet-create></app-pet-create>
+  </div>
+<div class="container" *ngIf="petList.length > 0">
+  <table class="table table-striped pet-table">
+      <thead class="thead-dark"> 
+        <tr> 
+          <th scope="col">Animal Name</th>
+          <th scope="col">Animal Type</th>
+          <th scope="col">Weight</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Records</th> 
+          <th scope="col">View Pet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pet of petList" class="clickable-row" routerLink="register/">
+          <th scope="row">{{ pet.petName }}</th>
+          <td>{{ petTypes(pet.type) }}</td>
+          <td>{{ pet.weight }} lbs</td>
+          <td>{{ pet.birthDate }}</td> 
+         <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
+         <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

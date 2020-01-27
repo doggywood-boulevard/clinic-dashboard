@@ -19,6 +19,7 @@ import { EmpVetLoginComponent } from './components/logins/emp-vet-login/emp-vet-
 import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component';
 import { VetCliProfileComponent } from './components/vet/vet-cli-profile/vet-cli-profile.component';
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
+import { VacCreateComponent } from './components/vac-create/vac-create.component';
 
 const routes: Routes = [ 
   { path: '', component: LoginComponent  },
@@ -43,6 +44,8 @@ const routes: Routes = [
   { path: 'vetClientProfile/:clientId', component: VetCliProfileComponent},
   { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},  
   { path: 'vetPetRecord/:animalId', component: VetPetRecordComponent},
+  { path: 'recordCreate', component: VacCreateComponent},
+  
   /* catch-all */
   { path: '*', component: LoginComponent}
   // { path: 'admin/:userId', component: EmployeesComponent }

@@ -28,15 +28,11 @@ export class ApptCreateComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-          // cust
-        this.getAllCustomers();
-        // side-list for employees
-        this.clientService.getCustomers()
-          .subscribe(data => this.customersList = data);
-
-        this.storage = sessionStorage
+        this.storage = sessionStorage;
         this.empId = parseInt(this.storage.getItem("empId"));
        }, 250);
+
+    this.getAllCustomers();
   }
 
   addAppointment() {

@@ -20,3 +20,8 @@
 p.dev {
     color:blue;
 }
+
+a:visited {
+    color: white;
+    text-decoration: none;
+  }
