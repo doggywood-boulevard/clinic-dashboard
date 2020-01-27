@@ -29,6 +29,8 @@ export class ClientsComponent implements OnInit {
   email: string;
   phone: string;
   cusUrl: string;
+  test: any;
+
   // public customerParam: Customer;
   public customer: Customer;
   public customerList = [];
@@ -48,7 +50,9 @@ export class ClientsComponent implements OnInit {
     // this.petService.getPetByCust(this.custId).subscribe(data=>this.petList = data);
     // this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data); 
     // console.log(parseInt(sessionStorage.getItem("custId")));  // 91
-    console.log((parseInt(sessionStorage.getItem('custId')))); // 91
+    // console.log((parseInt(sessionStorage.getItem('custId')))); // 91
+    this.test = (parseInt(sessionStorage.getItem('custId')));
+    console.log(this.test);
     //this.getCustomer(this.custId);
     // this.getClientSessionData();
     // this.getClientData(); 

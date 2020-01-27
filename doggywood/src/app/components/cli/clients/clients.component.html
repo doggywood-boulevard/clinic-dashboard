@@ -22,17 +22,17 @@
   </div>
 </div>
 </div> 
-  <div class="container">
+  <div class="container" *ngIf="this.test">
     <app-pet-create></app-pet-create>
   </div>
 <div class="container" *ngIf="petList.length > 0">
   <table class="table table-striped pet-table">
       <thead class="thead-dark"> 
-          <tr> 
+        <tr> 
           <th scope="col">Animal Name</th>
           <th scope="col">Animal Type</th>
           <th scope="col">Weight</th>
-          <th scope="col">Age</th>
+          <th scope="col">Date of Birth</th>
           <th scope="col">Records</th> 
           <th scope="col">View Pet</th>
         </tr>
@@ -42,7 +42,7 @@
           <th scope="row">{{ pet.petName }}</th>
           <td>{{ petTypes(pet.type) }}</td>
           <td>{{ pet.weight }} lbs</td>
-          <td>{{ pet.birthDate }} years</td> 
+          <td>{{ pet.birthDate }}</td> 
          <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a> </td>
          <td><a class="btn btn-outline-info table-btn" role="button" routerLink="../../cliPetProfile/{{pet.id}}">View Pet</a> </td>
         </tr>
