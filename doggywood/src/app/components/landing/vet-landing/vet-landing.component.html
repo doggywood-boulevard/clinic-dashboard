@@ -11,9 +11,8 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr style="text-align:center">
-        <th scope="coL">Animal Name</th>
-        <th scope="coL">Customer Name</th>
-          <th scope="coL">Pet Name</th>
+        <th scope="coL">Customer ID</th>
+          <th scope="coL">Pet ID</th>
           <th scope="coL">Date</th>
           <th scope="coL">Weight</th>
           <th scope="coL">Description</th>
@@ -24,7 +23,6 @@
     </thead>
     <tbody> 
       <tr *ngFor="let apt of apptList"  style="text-align:center"> 
-        <td>{{apt.id}}</td>
         <td>{{apt.custId}}</td>
         <td>{{apt.petId}}</td>  
         <td>{{apt.date}}</td>
