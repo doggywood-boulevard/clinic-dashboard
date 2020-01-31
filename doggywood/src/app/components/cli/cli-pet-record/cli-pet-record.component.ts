@@ -41,6 +41,7 @@ public note:Note;
     this.parentPetId = this.petId; 
     this.petService.getPet(this.petId).subscribe(data=>this.pet = data); 
     console.log(this.pet);
+    
     this.vaccService.getVaccRecordByPetId(this.petId)
     .subscribe(data => {this.recList = data}, data => {console.log('w e l o s t b o y s')});
 

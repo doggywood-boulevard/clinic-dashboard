@@ -7,16 +7,15 @@
       <div  class="profile-userpic">
 
 
-        <img src="{{ pet.petUrl }}" class="img-responsive" alt="">
+        <img *ngIf="pet" src="{{ pet.petUrl }}" width="400" class="img-responsive" alt="">
 
       </div>
       <!-- END SIDEBAR USERPIC -->
       <!-- SIDEBAR USER TITLE -->
       <div class="profile-usertitle"> 
-        <div class="profile-usertitle-name">
-                      <h3>Name: {{ pet.petName }}</h3>
-        </div>
-        <div>
+        <div  *ngIf="pet" class="profile-usertitle-name">
+                      <h5>Name: {{ pet.petName }}</h5>
+        
                       <p>ID: {{ pet.id }}</p>
                       <p> Type:	{{ pet.type }}  </p>
                       <p> Breed: {{ pet.breed }} </p>
@@ -29,7 +28,7 @@
   </div>
 </div>
 </div> 
-<div class="container">
+<div *ngIf="pet" class="container">
   <a role="button" class="btn btn-info" routerLink="../../cliPetRecord/{{pet.id}}">View Records</a>
   <a role="button" class="btn btn-info" routerLink="../../clients/{{pet.custId}}">View Owner</a>
 </div>

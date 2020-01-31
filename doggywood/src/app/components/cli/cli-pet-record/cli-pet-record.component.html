@@ -6,7 +6,7 @@
 <div class="row">
   <div class="profile-userpic col col-sm-8"> 
 
-    <img src="{{ pet.petUrl }}" alt=""  >
+    <img  *ngIf="pet" src="{{ pet.petUrl }}" alt=""  >
 
   </div>
   <div class=" col col-sm-4">
@@ -20,9 +20,10 @@
 
 
 
-<div class="container">
+<div   *ngIf="pet" class="container">
   <hr>
-  <h2>{{pet.petName}} Vaccination Records</h2>
+  <h3>{{pet.petName}} Vaccination Records</h3>
+  <br />
   <table class="table table-striped">
     <thead class="thead-dark" style="text-align: center;">
       <tr> 
