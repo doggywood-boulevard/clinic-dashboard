@@ -1,16 +1,14 @@
 <div class="container">
 
-    <form (ngSubmit)="handleLogin()">
+    <form (ngSubmit)="handleLogin()"
+        [ngStyle]="{'background':this.admin === false ? '' : 'rgba(144, 184, 219, 0.156)' }">
         <div class="panel panel-primary">
-            <hr>
+            <br />
             <div class="panel-heading">
-                <h4>{{panelTitle}}</h4>
-           
-            </div>
-            <hr>
+                <h5 class="panel-title">{{panelTitle}}</h5>
+            </div> 
+            <hr> 
             <div class="panel-body">
-
-             
                 <div class="form-group  ">
                     <label for="email" class="control-label">Email </label>
                     <input id="email" name="email" [(ngModel)]="email" type="text" class="form-control">
@@ -18,19 +16,23 @@
 
                 <div class="form-group">
                     <label for="password" class="control-label">Password </label>
-                    <input id="password" name="password" [(ngModel)]="password" type="password" class="form-control"> 
-                </div> 
-                   <div class="alert alert-warning" *ngIf="errorMessage != '' ">{{errorMessage}}</div>
-                     <pre class="pull-right"><em>{{message}}</em></pre>
+                    <input id="password" name="password" [(ngModel)]="password" type="password" class="form-control">
+                </div>
+                <div class="alert alert-warning" *ngIf="errorMessage !=''">{{errorMessage}}</div>
+
+
+                <pre class="pull-right"><em>{{message}}</em></pre>
             </div>
 
-      <br />
+
             <button type="submit" class="btn btn-primary ">&nbsp;&nbsp;SUBMIT&nbsp; </button>
             <br />
+            <hr>
             <br />
-            <button type="submit" class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
-
-
+        <span (click)="adminButton()" class="links admin-login"
+            *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">
+            <pre><em>{{adminLogin}}</em></pre> </span>
         </div>
+
     </form>
 </div>

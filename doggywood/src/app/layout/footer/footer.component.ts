@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  title: string = 'An Angular-Java-Oracle Full-Stack App by: Thomas Maestas, Brendan Wilson, Davis Cowles, Ruben Colon';
+  footerTitle: string = 'Doggywood Boulevard Veterinary';
+  footerSubtext: string = 'Safeguarding The Bond We Share with Our Pets';
+
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }

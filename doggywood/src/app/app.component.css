@@ -1,0 +1,16 @@
+.title {
+    color:rgba(0, 0, 139, 0.719);
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    font-style:italic;
+}
+
+/* app-router content */
+.main { 
+    background-color: rgba(144, 184, 219, 0.156);
+border-radius:10px;
+width:90%;
+margin:0px auto;
+padding:10px;
+}

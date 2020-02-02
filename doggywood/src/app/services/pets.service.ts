@@ -12,6 +12,7 @@ export class PetsService {
   // PROD 
   // base_url: string = 'http://localhost:8080';
 
+  url: string = 'http://localhost:8080';
   pets_url: string = 'http://localhost:8080/pets'; 
 // [{
 // 	"id": 2,
@@ -47,18 +48,7 @@ export class PetsService {
     }
     return throwError('Oops, there is a problem  ..');
   }
-
-  getPets(): Observable<Pet[]> { 
-     return this.http.get<Pet[]>(this.pets_url)
-      .pipe(catchError(this.handleError));
-  }
   
-  getPet(id: number): Observable<Pet> {
-    // return this.listPets.find(u => u.id === id)
-    return this.http.get<Pet>(`${this.pets_url}/${id}`) 
-      .pipe(catchError(this.handleError));
-  }
-
   addPet(pet: Pet): Observable<Pet> {
     return this.http.post<Pet>(this.pets_url, pet, {
       headers: new HttpHeaders({
@@ -68,6 +58,23 @@ export class PetsService {
       .pipe(catchError(this.handleError)); 
   }
 
+  getPets(): Observable<Pet[]> { 
+     return this.http.get<Pet[]>(this.pets_url)
+      .pipe(catchError(this.handleError));
+  }
+  
+  getPetByCust(id: number): Observable<Pet[]> {
+    // return this.listPets.find(u => u.id === id)
+    return this.http.get<Pet[]>(`http://localhost:8080/customers/${id}/pets`) 
+      .pipe(catchError(this.handleError));
+  }
+
+  getPet(id: number): Observable<Pet> {
+    // return this.listPets.find(u => u.id === id)
+    return this.http.get<Pet>(`${this.pets_url}/${id}`) 
+      .pipe(catchError(this.handleError));
+  }
+ 
   updatePet(pet: Pet): Observable<void> {
     return this.http.put<void>(`${this.pets_url}/${pet.id}`, pet, {
       headers: new HttpHeaders({

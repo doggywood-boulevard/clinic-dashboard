@@ -7,6 +7,6 @@ import { NavComponent } from './layout/nav/nav.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'DOGGYWOOD';
+  title = 'DOGGYWOOD VETERINARY CLINIC';
  
 }

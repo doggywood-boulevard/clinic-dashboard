@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VetCliProfileComponent } from './vet-cli-profile.component';
+import { VacCreateComponent } from './vac-create.component';
 
-describe('VetCliProfileComponent', () => {
-  let component: VetCliProfileComponent;
-  let fixture: ComponentFixture<VetCliProfileComponent>;
+describe('VacCreateComponent', () => {
+  let component: VacCreateComponent;
+  let fixture: ComponentFixture<VacCreateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VetCliProfileComponent ]
+      declarations: [ VacCreateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VetCliProfileComponent);
+    fixture = TestBed.createComponent(VacCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

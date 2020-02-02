@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { Observable, throwError  } from 'rxjs';
+import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { Employee } from '../models/employee';
 import { catchError } from 'rxjs/operators';
 
@@ -8,12 +8,11 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmployeesService {
-  
-  emps_url: string= "http://localhost:8080/employees";
 
+  emps_url: string = "http://localhost:8080/customers";
+  empsByEmail_url: string = "http://localhost:8080/employee-welcome/profile";
   constructor(private http: HttpClient) { }
-
-  
+ 
   // error handler
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
@@ -24,14 +23,19 @@ export class EmployeesService {
     return throwError('Oops, there is a problem  ..');
   }
 
-  getEmployees(): Observable<Employee[]> { 
-     return this.http.get<Employee[]>(this.emps_url)
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.emps_url)
       .pipe(catchError(this.handleError));
   }
-  
+
+  getEmployeeByEmail(email: string): Observable<Employee> {
+    // return this.listEmployees.find(u => u.id === id)
+    return this.http.get<Employee>(`${this.empsByEmail_url}/${email}`)
+      .pipe(catchError(this.handleError));
+  }
   getEmployee(id: number): Observable<Employee> {
     // return this.listEmployees.find(u => u.id === id)
-    return this.http.get<Employee>(`${this.emps_url}/${id}`) 
+    return this.http.get<Employee>(`${this.emps_url}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
@@ -41,7 +45,7 @@ export class EmployeesService {
         'Content-Type': 'application/json'
       })
     })
-      .pipe(catchError(this.handleError)); 
+      .pipe(catchError(this.handleError));
   }
 
   updateEmployee(employee: Employee): Observable<void> {
@@ -56,6 +60,6 @@ export class EmployeesService {
   deleteEmployee(id: number): Observable<void> {
     return this.http.delete<void>(`${this.emps_url}/${id}`)
       .pipe(catchError(this.handleError));
-    
-  } 
+
+  }
 }

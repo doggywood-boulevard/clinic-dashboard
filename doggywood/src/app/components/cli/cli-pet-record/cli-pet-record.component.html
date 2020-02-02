@@ -1,37 +1,44 @@
-<div class="container">
-    
+
+<!-- <div class="container">
+  <div style="float: left;">
+  <img src="https://doggywood-veterinary.s3.amazonaws.com/assets/Animals/random_a3.jpg" alt="doggy" style="width:300px;height:auto;">
+</div > --> 
+<div class="row">
+  <div class="profile-userpic col col-sm-8"> 
+
+    <img  *ngIf="pet" src="{{ pet.petUrl }}" alt=""  >
+
+  </div>
+  <div class=" col col-sm-4">
+    <app-vac-create [importPetId]="parentPetId"></app-vac-create>
+    <br />
+    <h5> &nbsp;Upload Record</h5>
+    <button class="btn btn-outline-info">&nbsp; &nbsp; &nbsp; Upload File &nbsp; &nbsp; &nbsp; </button> 
+  </div>
 </div>
+<!-- </div> -->
 
-<h2>Vaccinations</h2>
 
-<div class="container">
-<table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Date Received</th>     
-        <th scope="col">Expiration</th>     
-        <th scope="col">Download <-what dat means?</th>     
+
+<div   *ngIf="pet" class="container">
+  <hr>
+  <h3>{{pet.petName}} Vaccination Records</h3>
+  <br />
+  <table class="table table-striped">
+    <thead class="thead-dark" style="text-align: center;">
+      <tr> 
+        <th scope="col">Name</th>
+        <th scope="col">Date Received</th>
+        <th scope="col">Expiration</th>
+
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">Rabies</th>
-        <td>1-15-19</td>     
-        <td>previous column + vaccination.duration</td>     
-        <td> <button class="btn btn-info table-btn">Download/View</button></td>     
-      </tr>
-      <tr>
-        <th scope="row">Bordatella</th>
-        <td>9-3-19</td>
-        <td>1-15-20</td>
-        <td> <button class="btn btn-info table-btn">Download/View</button></td>
-      </tr>
-      <tr>
-        <th scope="row">Measels</th>
-        <td>5-11-19</td>
-        <td>1-15-20</td>
-        <td> <button class="btn btn-info table-btn">Download/View</button></td>
+
+      <tr *ngFor="let r of recList" style="text-align: center;">
+        <td>{{r.vacName}}</td>
+        <td>{{r.vacDate}}</td>
+        <td>{{r.vacTime}}</td>
       </tr>
     </tbody>
   </table>

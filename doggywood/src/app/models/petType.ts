@@ -1,4 +1,4 @@
 export class PetType { 
-	type: number;  
-	typeName: string;
+	id: number;  
+	name: string;
 }

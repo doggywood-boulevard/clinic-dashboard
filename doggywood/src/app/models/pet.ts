@@ -1,18 +1,20 @@
 export class Pet {
  
     id: number;
-    cId: number;
+    custId: number;
     petName: string;
     birthDate: string;
     weight: number;
-    neuter: number;
+    color: string;
     type: number;
     breed: string;
-    description: string
-
+    neuter: number;
+    description: string;
+    petUrl: string;
+ 
     constructor(
         id: number,
-        cId: number,
+        custId: number,
         petName: string,
         birthDate: string,
         weight: number,
@@ -23,7 +25,7 @@ export class Pet {
     ) {
 
         this.id = id;
-        this.cId = cId;
+        this.custId = custId;
         this.petName = petName;
         this.birthDate = birthDate;
         this.weight = weight;
@@ -31,6 +33,6 @@ export class Pet {
         this.type = type;
         this.breed = breed;
         this.description = description;
-    }
+    } 
 
 }
