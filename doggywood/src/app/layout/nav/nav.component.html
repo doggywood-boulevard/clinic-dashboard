@@ -38,29 +38,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <!-- IF CUST OR EMP *NOT* LOGGED IN THEY SEE THIS -->
-      <!-- <li *ngIf="!isCustLoggedIn && !isEmpLoggedIn"   class="nav-item active">
-        <a  class="nav-link" routerLink="/">LOGIN<span class="sr-only"> </span></a>
-      </li>  -->
+  
       <li>
 
       </li>
-
-      <!-- 
-      // 2nd and 3rd logins not necessary, as input has user/vet/rec routing
-      -->
-      <!-- <li  *ngIf="!isEmpLoggedIn"   class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          ADMIN
-        </a> 
-      
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="vetLogin/">Veterinarian Login</a>
-          <a class="dropdown-item" routerLink="recLogin/">Receptionist Login</a>
-          <div class="dropdown-divider"></div> 
-        </div>
-      </li> -->
+ 
 
       <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
       <li *ngIf="authenticationService.isCustLoggedIn()" class="nav-item dropdown">
@@ -112,13 +94,13 @@
 
     </ul>
 
+  </div>
+
   <form class="form-inline my-2 my-lg-0 register-logout">
     <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
       class="btn  " routerLink="register/">REGISTER</button>
     <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"
       class="btn btn-outline-success"> <a routerLink="/"> LOGOUT</a></button>
   </form>
-  </div>
-
 
 </nav>
