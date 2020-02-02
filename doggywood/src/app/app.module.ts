@@ -19,8 +19,7 @@ import { LoginComponent } from './components/logins/login/login.component';
 import { RegisterComponent } from './components/logins/register/register.component';
 import { EmpRecLoginComponent } from './components/logins/emp-rec-login/emp-rec-login.component';
 import { EmpVetLoginComponent } from './components/logins/emp-vet-login/emp-vet-login.component';
-import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component';
-import { VetCliProfileComponent } from './components/vet/vet-cli-profile/vet-cli-profile.component';
+import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component'; 
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-record.component';
 import { ClientsComponent } from './components/cli/clients/clients.component';
@@ -52,8 +51,7 @@ import { VacCreateComponent } from './components/vac-create/vac-create.component
     RegisterComponent,
     EmpRecLoginComponent,
     EmpVetLoginComponent,
-    VetPetProfileComponent,
-    VetCliProfileComponent,
+    VetPetProfileComponent, 
     VetPetRecordComponent, 
     CliPetRecordComponent,
     ClientsComponent,

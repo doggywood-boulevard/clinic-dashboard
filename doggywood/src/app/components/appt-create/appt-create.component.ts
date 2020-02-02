@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router  } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { Appointment } from 'src/app/models/appointment';
 import { ClientsService } from 'src/app/services/clients.service';
@@ -24,7 +25,7 @@ export class ApptCreateComponent implements OnInit {
   storage :any;
   empId :number;
 
-  constructor(private apptService :AppointmentService, private clientService :ClientsService, private petService :PetsService) { }
+  constructor(private router: Router, private apptService :AppointmentService, private clientService :ClientsService, private petService :PetsService) { }
 
   ngOnInit() {
     setTimeout(() => { 
@@ -48,6 +49,7 @@ export class ApptCreateComponent implements OnInit {
     this.apptService.addAppointment(new Appointment(0, this.custId, this.petId, this.empId, this.date, this.weight, this.timeSlot, this.description)).subscribe(
       response => {
         console.log(response);
+        this.router.navigate([`vetLanding`]);
       },
       response => {
         console.log(response);

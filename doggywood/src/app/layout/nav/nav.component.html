@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light ">
 
   <a class="navbar-brand" *ngIf="authenticationService.isEmpLoggedIn()" routerLink="vetLanding/"><img width="110"
       class="logo" alt="Angular Logo" src="./assets/use this one.png"></a>
@@ -112,13 +112,13 @@
 
     </ul>
 
-  </div>
-
   <form class="form-inline my-2 my-lg-0 register-logout">
     <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
-      class="btn btn-outline-primary" routerLink="register/">REGISTER</button>
+      class="btn  " routerLink="register/">REGISTER</button>
     <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"
       class="btn btn-outline-success"> <a routerLink="/"> LOGOUT</a></button>
   </form>
+  </div>
+
 
 </nav>

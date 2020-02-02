@@ -48,6 +48,15 @@ export class PetsService {
     }
     return throwError('Oops, there is a problem  ..');
   }
+  
+  addPet(pet: Pet): Observable<Pet> {
+    return this.http.post<Pet>(this.pets_url, pet, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError)); 
+  }
 
   getPets(): Observable<Pet[]> { 
      return this.http.get<Pet[]>(this.pets_url)
@@ -65,16 +74,7 @@ export class PetsService {
     return this.http.get<Pet>(`${this.pets_url}/${id}`) 
       .pipe(catchError(this.handleError));
   }
-
-  addPet(pet: Pet): Observable<Pet> {
-    return this.http.post<Pet>(this.pets_url, pet, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    })
-      .pipe(catchError(this.handleError)); 
-  }
-
+ 
   updatePet(pet: Pet): Observable<void> {
     return this.http.put<void>(`${this.pets_url}/${pet.id}`, pet, {
       headers: new HttpHeaders({

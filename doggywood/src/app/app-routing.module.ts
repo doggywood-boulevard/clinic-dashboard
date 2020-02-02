@@ -16,8 +16,7 @@ import { RecLandingComponent } from './components/landing/rec-landing/rec-landin
 import { VetLandingComponent } from './components/landing/vet-landing/vet-landing.component';
 import { EmpRecLoginComponent } from './components/logins/emp-rec-login/emp-rec-login.component';
 import { EmpVetLoginComponent } from './components/logins/emp-vet-login/emp-vet-login.component';
-import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component';
-import { VetCliProfileComponent } from './components/vet/vet-cli-profile/vet-cli-profile.component';
+import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component'; 
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 import { VacCreateComponent } from './components/vac-create/vac-create.component';
 
@@ -40,8 +39,7 @@ const routes: Routes = [
   { path: 'recLanding', component: RecLandingComponent},
 
   { path: 'vetLogin', component: EmpVetLoginComponent},  
-  { path: 'vetLanding', component: VetLandingComponent},
-  { path: 'vetClientProfile/:clientId', component: VetCliProfileComponent},
+  { path: 'vetLanding', component: VetLandingComponent}, 
   { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},  
   { path: 'vetPetRecord/:animalId', component: VetPetRecordComponent},
   { path: 'recordCreate', component: VacCreateComponent},

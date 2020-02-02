@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="row profile">
-  <div class="col-md-3">
+  <div class="col-md-6">
     <div class="profile-sidebar">
       <!-- SIDEBAR USERPIC -->
       <div  class="profile-userpic">
@@ -12,7 +12,12 @@
       </div>
       <!-- END SIDEBAR USERPIC -->
       <!-- SIDEBAR USER TITLE -->
-      <div class="profile-usertitle"> 
+    
+               
+    </div>
+  </div>
+    <div class="col-md-6">
+  <div class="profile-usertitle"> 
         <div  *ngIf="pet" class="profile-usertitle-name">
                       <h5>Name: {{ pet.petName }}</h5>
         
@@ -23,9 +28,7 @@
                       <p> Birthdate: {{ pet.birthDate }} </p>
         </div>
       </div>
-               
     </div>
-  </div>
 </div>
 </div> 
 <div *ngIf="pet" class="container">

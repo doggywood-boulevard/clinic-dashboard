@@ -1,12 +1,13 @@
 <div class="container">
 
-    <form (ngSubmit)="handleLogin()" [ngStyle]="{'background':this.admin === false ? '' : 'rgba(144, 184, 219, 0.156)' }">
-        <div class="panel panel-primary" >
-            <hr>
+    <form (ngSubmit)="handleLogin()"
+        [ngStyle]="{'background':this.admin === false ? '' : 'rgba(144, 184, 219, 0.156)' }">
+        <div class="panel panel-primary">
+            <br />
             <div class="panel-heading">
-                <h4>{{panelTitle}}</h4> 
-            </div>
-            <hr>
+                <h5 class="panel-title">{{panelTitle}}</h5>
+            </div> 
+            <hr> 
             <div class="panel-body">
                 <div class="form-group  ">
                     <label for="email" class="control-label">Email </label>
@@ -19,20 +20,19 @@
                 </div>
                 <div class="alert alert-warning" *ngIf="errorMessage !=''">{{errorMessage}}</div>
 
-                <span (click)="adminButton()" class="links admin-login"
-                    *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">
-                    <pre><em>Administration Login</em></pre> </span>
+
                 <pre class="pull-right"><em>{{message}}</em></pre>
             </div>
 
 
-            <br />
             <button type="submit" class="btn btn-primary ">&nbsp;&nbsp;SUBMIT&nbsp; </button>
             <br />
-
-
-
-
+            <hr>
+            <br />
+        <span (click)="adminButton()" class="links admin-login"
+            *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">
+            <pre><em>{{adminLogin}}</em></pre> </span>
         </div>
+
     </form>
 </div>

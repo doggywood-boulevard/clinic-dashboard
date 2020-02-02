@@ -11,7 +11,7 @@
 	<groupId>com.doggywood</groupId>
 	<artifactId>doggywood</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Doggywood_Master</name>
+	<name>BackEnd_Master</name>
 	<description>Doggy wood Vet App!</description>
 
 	<properties>

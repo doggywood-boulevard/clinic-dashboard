@@ -9,11 +9,15 @@ const { SpecReporter } = require('jasmine-spec-reporter');
  */
 exports.config = {
   allScriptsTimeout: 11000,
+  // seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    // chromeOptions: {
+    //   args: ["--headless", "--disable-gpu"]
+    // }
   },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
@@ -21,7 +25,7 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () { }
   },
   onPrepare() {
     require('ts-node').register({
@@ -30,3 +34,19 @@ exports.config = {
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
 };
+// NOTES::::::::::::::::::::::::::
+// exports.config = {
+
+//     seleniumAddress: 'http://localhost:4444/wd/hub',
+//     specs: ['spec.js'],
+
+//     capabilities: {
+
+//         browserName: 'chrome',
+
+//         chromeOptions: {
+//             args: ["--headless", "--disable-gpu"]
+//         }
+//     }
+
+// }
