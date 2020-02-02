@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doggywood.entities.Note;
 import com.doggywood.services.NoteService;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class NoteController {
 
@@ -22,40 +23,46 @@ public class NoteController {
 	NoteService ns;
 	
 	//works
-	@PostMapping(value="/note", consumes="application/json")
-	@CrossOrigin(origins = "*")
+	@PostMapping(value="/notes", consumes="application/json")
 	public Note createNote(@RequestBody Note note) {
 		return ns.createNote(note);
 	}
 	
+	// get all
+	@GetMapping(value="/notes")
+	public List<Note> getAllNotes() {
+		return ns.getAllNotes();
+	}
+	
 	//works
-	@GetMapping(value="/note/{id}")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value="/notes/{id}")
 	public Note getNoteById(@PathVariable("id") int id) {
 		return ns.getNoteById(id);
 	}
 	
-	@GetMapping(value="/note/appt/{Aid}")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value="/note/appt/{Aid}")  
 	public Note getNoteByAId(@PathVariable("Aid") int id) {
 		return ns.getNoteByAid(id);
 	}
 	
 	@GetMapping(value="/note/pet/{pId}")
-	@CrossOrigin(origins = "*")
 	public List<Note> getNoteByPId(@PathVariable("pId")int id) {
-		return ns.getNoteByPid(id);
+		return ns.getNoteByPid(id); 
 	}
 	
-	@PutMapping(value="/note", consumes="application/json")
-	@CrossOrigin(origins="*")
+	// get notes by appt id
+	@GetMapping(value="/appointments/{aid}/notes")
+	public List<Note> getNotesByAid(@PathVariable("aid") int aid) {
+		return ns.getNotesByAid(aid); 
+	}
+	
+	@PutMapping(value="/notes", consumes="application/json")
 	public Note updateNote(@RequestBody Note change) {
 		return ns.updateNote(change);
 	}
 	
 	//works
-	@DeleteMapping(value="/note/{id}")
-	@CrossOrigin(origins = "*")
+	@DeleteMapping(value="/notes/{id}")
 	public boolean deleteNote(@PathVariable("id")int id) {
 		try {
 			ns.deleteNote(ns.getNoteById(id));

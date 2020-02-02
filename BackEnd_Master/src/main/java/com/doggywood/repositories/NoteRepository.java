@@ -21,12 +21,6 @@ public interface NoteRepository extends CrudRepository <Note, Integer>{
 	
 	Note getNoteByaid(int id);
 	
-	List<Note> getNoteBypid(int id);
-
-
-	
-	
-	
-	
-
+	List<Note> getNoteBypid(int id); 
+	List<Note> findByAid(int aid); 
 }

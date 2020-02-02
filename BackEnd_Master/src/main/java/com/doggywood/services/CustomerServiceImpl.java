@@ -27,7 +27,11 @@ public class CustomerServiceImpl implements CustomerService {
 		} 
 	@Override
 	public Customer getCustomerByEmail(String email) {
-		return cr.findByEmail(email).get(); 
+		try {
+			return cr.findByEmail(email).get(); 
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	@Override
 	public Customer getCustomerByEmailAndPassword(String email, String password) {

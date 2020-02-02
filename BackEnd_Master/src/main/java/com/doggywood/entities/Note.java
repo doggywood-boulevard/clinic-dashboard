@@ -19,11 +19,12 @@ public class Note {
 	private int id;
 	
 
-	@Column(name="aid")
+ 
+	@Column(name="a_id")
 	private int aid;
 	
 
-	@Column(name="pid")
+	@Column(name="p_id") 
 	private int pid;
 	
 	@Column(name="n_message")
