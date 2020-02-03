@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service; 
 
 import com.doggywood.entities.Customer;
-import com.doggywood.entities.Employee;
 //import com.doggywood.entities.Pet;
 import com.doggywood.repositories.CustomerRepository; 
 
@@ -27,7 +26,11 @@ public class CustomerServiceImpl implements CustomerService {
 		} 
 	@Override
 	public Customer getCustomerByEmail(String email) {
-		return cr.findByEmail(email).get(); 
+		try {
+			return cr.findByEmail(email).get(); 
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	@Override
 	public Customer getCustomerByEmailAndPassword(String email, String password) {
@@ -55,6 +58,6 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return true; 
 	}
- 
+
 
 }

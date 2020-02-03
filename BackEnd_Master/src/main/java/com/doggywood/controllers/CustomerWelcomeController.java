@@ -12,34 +12,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.doggywood.entities.CustomerWelcomeBean;
-import com.doggywood.entities.Employee;
-//import com.doggywood.entities.Pet;
-import com.doggywood.entities.Customer;
+import com.doggywood.entities.Pet;
+import com.doggywood.entities.Customer; 
 import com.doggywood.services.CustomerService;
-import com.doggywood.services.EmployeeService;
+
 
 @CrossOrigin(origins = "*")
 @RestController
 public class CustomerWelcomeController {
-
+	
 	@Autowired
 	CustomerService cs;
 
-	@Autowired
-	EmployeeService es;
-
 	// CUSTOMER LANDING
 	@GetMapping(value = "/customer-welcome")
-	public String customerWelcome() {
+	public String  customerWelcome() {
 		return ("Welcome to Doggywood");
 	}
-
 // CUSTOMER BEAN LANDING 
 	@GetMapping(value = "/customer-welcome-bean")
 	public CustomerWelcomeBean customerWelcomBean() {
 		return new CustomerWelcomeBean("Welcome to Doggywood");
 	}
-
 //	 CUSTOMER BEAN LANDING - get info
 //customer-welcome/value-variable/
 	@GetMapping(value = "/customer-welcome/{email}")
@@ -50,44 +44,28 @@ public class CustomerWelcomeController {
 //customer-welcom/value-variable/
 	@GetMapping(value = "/customer-welcome/profile/{email}")
 	public Customer customerProfile(@PathVariable String email) {
-		try {
-			return cs.getCustomerByEmail(email);// .toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		} 
+		return cs.getCustomerByEmail(email);// .toString();
 	}
-
-	@CrossOrigin(origins = "*")
-	@GetMapping(value = "/employee-welcome/profile/{email}")
-	public Employee employeeProfile(@PathVariable String email) {
-		try {
-			return es.getEmployeeByEmail(email);// .toString();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		
-	}
-
+ 
+	 
 	@PostMapping(value = "/customer-welcome/register")
 	public boolean registerCustomer(@RequestBody Customer customer) {
 		if (cs.getCustomerByEmailAndPassword(customer.getEmail(), customer.getPassword()) != null) {
 			return true;
 		} else {
 			return false;
-		}
+		} 
 	};
-
-	/// TEMPORARY PASSWORD THRU PARAMS this testing through params....
-	@GetMapping(value = "/customer-login/") // {email}/{password}
+	 /// TEMPORARY PASSWORD THRU PARAMS    this testing through params....
+	@GetMapping(value = "/customer-login/")//{email}/{password}
 //	public Customer loginCustomer(@RequestParam String email, @RequestParam String password ) {
-	public String loginCustomer(@RequestParam String email, @RequestParam String password) {
-		if (email != null && password != null) {
-			return cs.getCustomerByEmailAndPassword(email, password).toString();
+	public String loginCustomer(@RequestParam String email, @RequestParam String password ) {
+			if (email != null && password != null) {
+				return cs.getCustomerByEmailAndPassword(email, password).toString();
 //				return cs.getCustomerByEmailAndPassword(email, password);
-		}
-		return null;
+			}
+			return null;
 	};
+ 
 
 }

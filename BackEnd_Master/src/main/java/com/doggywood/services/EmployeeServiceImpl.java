@@ -23,12 +23,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee getEmployeeById(int id) {
 		return er.findById(id).get();
 		}
-
+	
 	@Override
 	public Employee getEmployeeByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	try {
+		return er.findByEmail(email).get(); 
+	} catch (Exception e) {
+	return null;
 	}
+	}
+
+//	@Override
+//	public Object getEmployeeByEmailAndPassword(String email, String password) {
+//		return er.findByEmailAndPassword(email).get(); 
+//	}
+	
 	@Override
 	public List<Employee> getAllEmployees() {
 		return (List<Employee>)er.findAll();
@@ -49,4 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		return true; 
 	}
+
+
+
 }
