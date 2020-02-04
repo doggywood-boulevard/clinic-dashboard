@@ -14,6 +14,7 @@ public class BackEndMasterApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackEndMasterApplication.class, args);
+		
 	}
 
 }
