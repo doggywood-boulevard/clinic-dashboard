@@ -1,5 +1,6 @@
 <a style="margin-left:20%;" href="http://doggywood.s3-website-us-east-1.amazonaws.com
-"><img width="200" src="https://doggywood.s3.amazonaws.com/assets/style6.png" title="Doggywood_Veterinary_App" alt="Doggywood_Veterinary_Image"></a>
+">
+<img width="200" src="https://doggywood.s3.amazonaws.com/assets/style6.png" title="Doggywood_Veterinary_App" alt="Doggywood_Veterinary_Image"></a>
 
 ### Doggywood Veterinarian Data Tracker 
 > <a style="text-decoration:none;color:black;" href="http://doggywood.s3-website-us-east-1.amazonaws.com">Appointment and Pet Records Management URL</a>
@@ -7,10 +8,10 @@
 > Full-Stack application that manages clients' and employees' appointments and records
  
 ### Authors
--Brendan Wilson
--Davis Cowles
--Ruben Colons
--Thomas Maestas
+> Thomas Maestas
+> Brendan Wilson
+> Davis Cowles
+> Ruben Colons
 
 ### Application Overview
 The mission of the app is to organize and persist health and appointment information relating to clients and the client's pets. The architecture provides a service-based design managing both customers' and receptionists' data-related tasks. The system maintains vaccination records dynamically by tracking expiration dates, with notifications to customers of upcoming vaccination expiries and other information. 
@@ -20,10 +21,10 @@ The veterinarians are able to record notes based off the clients visits, and tho
 
 ### Technologies 
 | Fx | Tools | URLS |
-|------------|:------------:|---------:|
+|-----------------|:-----------------:|---------:|
 | Database | Oracle SE 11 | [Oracle]  | 
-| Cloud Data | Amazon RDS |  [AWS] | 
-| Cloud ASsets | Amazon S3 |  [S3]  |
+| Cloud Data | Amazon RDS |  [AWS-RDS] | 
+| Cloud ASsets | Amazon S3 |  [AWS-S3]  |
 | User Data | Angular 8 |  [Angular]  |
 | UI/UX | Angular-Bootstrap |  [BS4] |
 | E2E Testing | Selenium | [Selenium] |
@@ -66,8 +67,7 @@ ORM enables developers to more easily write applications whose data outlives the
 "tslint": "~5.15.0",
 ```
 #### Application User Stories
-```sh
-
+```sh 
 As an employee, I can login.
 As an employee, I can add appointments.
 As an employee, I can add notes about the pets.
@@ -75,30 +75,25 @@ As an employee, I add notes about the pets appointment.
 As an employee, I can view my upcoming appointments.
 As an employee, I can view information about the client.
 As an employee, I can view information about the pet.
+As an employee, I can add customers.
+As an employee, I can add pets to the customer
+As an employee, I can add vaccinations to an pet
+As an employee, I can view the weights of the pet on the dates of their appointment.
  
 As a customer, I can login to an account.
 As a customer, I can fill out a form with my information.
 As a customer, I can see notes on what my pet was treated for.
 As a customer, I can view a list of my owned pets.
 As a customer, I add a new pet.
-As a customer I can book an appointment 
- -----------------------------------
-Desired
-As an employee, I can add customers.
-As an employee, I can add pets to the customer
-As an employee, I can add vaccinations to an pet
-As an employee, I can view the weights of the pet on the dates of their appointment.
- 
+As a customer I can book an appointment    
 As a customer, I can upload relevant documents about my dog into the system.
 As a customer, I download copies of my vaccination/health records.
-As a customer, I can see the age of my pet.
- 
+As a customer, I can see the age of my pet. 
+
 As a system, it will notify us in some way if the vaccination record has expired.
 As a system, it will notify us if the vaccination record will expire before the scheduled visit.
 ```
-
-
-
+ 
 ** Software **
 
 * [Oracle]: <https://www.oracle.com/database/technologies/112010-win64soft.html>
@@ -113,9 +108,9 @@ As a system, it will notify us if the vaccination record will expire before the 
   website: [doggywood.io](http://doggywood.s3-website-us-east-1.amazonaws.com/t)
  
 
-### URLS for Angular/Material:
-### https://material.io
-### https://angular.io 
+#### URLS for Angular/Material:
+#### https://material.io
+#### https://angular.io 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21. 
 
 
