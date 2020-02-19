@@ -46,18 +46,14 @@
 
       <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
       <li *ngIf="authenticationService.isCustLoggedIn()" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+        <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Clients
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="cliLanding/">cliLanding</a>
-          <a class="dropdown-item" routerLink="petCreate/">Add a pet</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
           <a class="dropdown-item" routerLink="cliPetRecord/:animalId">cliPetRecord/:animalId</a>
-          <div class="dropdown-divider"></div>
-
-          <a class="dropdown-item" routerLink="apptCreate/">apptCreate</a>
-        </div>
+          <div class="dropdown-divider"></div> 
+        </div> -->
 
       </li>
 
@@ -66,28 +62,25 @@
       <li *ngIf="authenticationService.isEmpLoggedIn()" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          Employees
+          Administration
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
+ 
           <a class="dropdown-item" routerLink="register/">Add a Client</a>
           <a class="dropdown-item" routerLink="petCreate/">Add a Pet</a>
-          <a class="dropdown-item" routerLink="recLanding/">Receptionist</a>
-          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
-
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a> 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="vetLanding/">Veterinary</a>
-          <a class="dropdown-item" routerLink="vetClientProfile/:clientId">vetClientProfile/:clientId</a>
-          <a class="dropdown-item" routerLink="vetPetProfile/:animalId">vetPetProfile/:animalId</a>
-          <a class="dropdown-item" routerLink="vetPetRecord/:animalId">vetPetRecord/:animalId</a>
-          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="vetLanding/">Vet View</a> 
+          <a class="dropdown-item" routerLink="petCreate/">Add a Pet</a>
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a> 
+          <!-- <div class="dropdown-divider"></div> -->
           <br />
-          <h6> &nbsp; &nbsp; &nbsp;Client View</h6>
+          <!-- <h6> &nbsp; &nbsp; &nbsp;Client View</h6> -->
           <hr>
-          <a class="dropdown-item" routerLink="cliLanding/">Client</a>
-          <a class="dropdown-item" routerLink="petCreate/">Add a pet</a>
-          <a class="dropdown-item" routerLink="cliPetRecord/:animalId">Client Pet Record/:animalId</a>
-          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
+          <!-- <a class="dropdown-item" routerLink="cliLanding/">Client</a> -->
+          <!-- <a class="dropdown-item" routerLink="petCreate/">Add a pet</a> -->
+          <!-- <a class="dropdown-item" routerLink="cliPetRecord/:animalId">Client Pet Record/:animalId</a> -->
+          <!-- <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a> -->
         </div>
 
       </li>

@@ -1,16 +1,22 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('doggywood App', () => {
+describe('doggywood App ', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('DOGGYWOOD VETERINARY CLINIC', () => {
+  it('should show DOGGYWOOD VETERINARY CLINIC as Page Title', () => {
     page.navigateTo();
     expect(page.getTitleText()).toEqual('DOGGYWOOD VETERINARY CLINIC');
+  });
+
+   it('should display tab title Doggywood Vets', () => {
+    browser.get('http://localhost:4200');
+    expect(browser.getTitle()).toContain('Doggywood Vets');  
+    
   });
 
   afterEach(async () => {

@@ -8,10 +8,13 @@ const { SpecReporter } = require('jasmine-spec-reporter');
  * @type { import("protractor").Config }
  */
 exports.config = {
-  allScriptsTimeout: 11000,
-  // seleniumAddress: 'http://localhost:4444/wd/hub',
+  allScriptsTimeout: 6000,
+  seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: [
-    './src/**/*.e2e-spec.ts'
+    './src/**/*.e2e-spec.ts',
+    './src/page-object.js',
+    './src/pages/register.spec.ts',
+    './src/**/*.spec.ts'
   ],
   capabilities: {
     browserName: 'chrome',
@@ -24,7 +27,7 @@ exports.config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 20000,
     print: function () { }
   },
   onPrepare() {
@@ -33,20 +36,4 @@ exports.config = {
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
   }
-};
-// NOTES::::::::::::::::::::::::::
-// exports.config = {
-
-//     seleniumAddress: 'http://localhost:4444/wd/hub',
-//     specs: ['spec.js'],
-
-//     capabilities: {
-
-//         browserName: 'chrome',
-
-//         chromeOptions: {
-//             args: ["--headless", "--disable-gpu"]
-//         }
-//     }
-
-// }
+}; 

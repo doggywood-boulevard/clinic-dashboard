@@ -2,7 +2,9 @@
 
 
 /* CUSTOM CLASSES */
-
+div.main {
+    min-height: 450px;
+} 
 .scroll-window {
     /* this class for scrolling through long lists */
     max-height: 400px;
