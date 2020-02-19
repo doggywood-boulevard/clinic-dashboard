@@ -11,19 +11,15 @@ import { AppComponent } from './app.component';
 import { PetCreateComponent } from './components/pet-create/pet-create.component';
 import { ApptComponent } from './components/appt/appt.component';
 import { ApptCreateComponent } from './components/appt-create/appt-create.component';
-import { DoggydashComponent } from './components/doggydash/doggydash.component';
-import { CliProfileComponent } from './components/landing/cli-profile/cli-profile.component';
-import { RecLandingComponent } from './components/landing/rec-landing/rec-landing.component';
+import { DoggydashComponent } from './components/doggydash/doggydash.component'; 
 import { VetLandingComponent } from './components/landing/vet-landing/vet-landing.component';
 import { LoginComponent } from './components/logins/login/login.component';
-import { RegisterComponent } from './components/logins/register/register.component';
-import { EmpRecLoginComponent } from './components/logins/emp-rec-login/emp-rec-login.component';
+import { RegisterComponent } from './components/logins/register/register.component'; 
 import { EmpVetLoginComponent } from './components/logins/emp-vet-login/emp-vet-login.component';
 import { VetPetProfileComponent } from './components/vet/vet-pet-profile/vet-pet-profile.component'; 
 import { VetPetRecordComponent } from './components/vet/vet-pet-record/vet-pet-record.component';
 import { CliPetRecordComponent } from './components/cli/cli-pet-record/cli-pet-record.component';
-import { ClientsComponent } from './components/cli/clients/clients.component';
-import { CreateClientComponent } from './components/cli/create-client/create-client.component';
+import { ClientsComponent } from './components/cli/clients/clients.component'; 
 import { CliPetProfileComponent } from './components/cli/cli-pet-profile/cli-pet-profile.component';
 /* Layout */
 import { NavComponent } from './layout/nav/nav.component';
@@ -43,19 +39,15 @@ import { VacCreateComponent } from './components/vac-create/vac-create.component
     PetCreateComponent,
     ApptComponent,
     ApptCreateComponent,
-    DoggydashComponent,
-    CliProfileComponent,
-    RecLandingComponent,
+    DoggydashComponent, 
     VetLandingComponent,
     LoginComponent,
-    RegisterComponent,
-    EmpRecLoginComponent,
+    RegisterComponent, 
     EmpVetLoginComponent,
     VetPetProfileComponent, 
     VetPetRecordComponent, 
     CliPetRecordComponent,
-    ClientsComponent,
-    CreateClientComponent,
+    ClientsComponent, 
     CliPetProfileComponent,
 
     NavComponent,

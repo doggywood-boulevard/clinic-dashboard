@@ -3,6 +3,7 @@
   <div class="panel panel-primary" *ngIf="customer">
     <div class="panel-heading">
       <h3 class="panel-title">{{panelTitle}}</h3>
+      <hr>
     </div>
  
     <div class="panel-body">
@@ -54,7 +55,7 @@
       </div>
  
         <div class="alert alert-warning" *ngIf="successMessage != '' ">{{successMessage}}</div>
-      <button type="submit"  class="btn btn-primary"  > SUBMIT </button>
+      <button type="submit"  class="btn btn-primary register"  > SUBMIT </button>
      
     </div> 
 </form>

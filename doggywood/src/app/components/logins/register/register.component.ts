@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.register = true;
-    this.panelTitle = "CUSTOMER REGISTER";
+    this.panelTitle = "CLIENT REGISTRATION";
     this.successMessage = '';
     // cust
     this.clientService.getCustomers()
@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
         password: "",
         cusUrl: ""
       };
-      this.panelTitle = 'Register';
+      this.panelTitle = 'Client Registration';
       // this.createPetForm.resetForm();
     } else {
       // this.pet = Object.assign({}, this._petService.getPet(id));

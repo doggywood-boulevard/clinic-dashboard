@@ -1,13 +1,4 @@
-footer {
-    position:absolute;
-    bottom:0px; 
-    padding: 10px 0 20px;
-    margin: 0;
-    height:100px;
-    min-width:100%;
-    background-color: rgba(144, 184, 219, 0.256); 
-    color: rgba(0, 0, 139, 0.719);
-}
+
 .title {
     cursor:default;
 }
