@@ -26,30 +26,22 @@ export class VacCreateComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("ng " + this.importPetId)
+    console.log("ngOnInit: " + this.importPetId)
   }
 
   addRecord() {
 
-    console.log("ng aaaa" + this.importPetId)
-    //  this.petService.getPet(this.petId).subscribe(
-    //   response => {
-    //     console.log(response.weight);
-    //     this.weight = response.weight;
-    //   },
-    //   response => {
-    //     console.log("failed to get pet by id");
-    //   });
-    // console.log(this.weight);
+    console.log("addRecord() " + this.importPetId) 
     console.log(0, this.importPetId, this.vName, this.vTime, this.vDate)
 
     this.recordService.createVaccRecord(new VaccRecord(0,this.importPetId, this.vName, this.vTime, this.vDate)).subscribe(
       response => {
         console.log(response);
+        location.reload(true);
       },
       response => {
         console.log(response);
-        console.log("faeiled to add vaccine!!");
+        alert("Oops, failed to add vaccine!!");
       }
     );
 

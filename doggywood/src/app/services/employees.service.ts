@@ -3,14 +3,15 @@ import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { Employee } from '../models/employee';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
 
-  emps_url: string = "http://localhost:8080/customers";
-  empsByEmail_url: string = "http://localhost:8080/employee-welcome/profile";
+  emps_url: string =  `${environment.baseUrl}/customers`;
+  empsByEmail_url: string =  `${environment.baseUrl}/employee-welcome/profile`;
   constructor(private http: HttpClient) { }
  
   // error handler

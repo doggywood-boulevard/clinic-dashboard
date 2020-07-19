@@ -9,14 +9,18 @@
     <img  *ngIf="pet" src="{{ pet.petUrl }}" alt=""  >
 
   </div>
-  <div class=" col col-sm-4">
+  <div class=" col col-sm-4"> 
+    <button (click)="backToConsole()" class="btn btn-outline-info"><small><em> BACK TO CONSOLE</em>&nbsp;  </small></button> 
+    <br />
+    <hr>
+     <h5>Enter Record</h5>
     <app-vac-create [importPetId]="parentPetId"></app-vac-create>
     <br />
-    <h5> &nbsp;Upload Record</h5>
-    <button class="btn btn-outline-info">&nbsp; &nbsp; &nbsp; Upload File &nbsp; &nbsp; &nbsp; </button> 
+    <h5>Upload Record</h5>
+    <button disabled class="disabled btn btn-outline-info">&nbsp; &nbsp; &nbsp; UPLOAD &nbsp; &nbsp; &nbsp; </button> 
   </div>
 </div>
-<!-- </div> -->
+<!-- </div> http://localhost:4200/clients/3  -->
 
 
 
