@@ -115,7 +115,6 @@ export class PetCreateComponent implements OnInit {
           (data) => {
             console.log(data);
           });
-		
             // this.createPetForm.resetForm();
         // this.router.navigate(['clients']);
         //   },
@@ -130,7 +129,6 @@ export class PetCreateComponent implements OnInit {
       //     (error: any) => console.log(error)
       //   );
       // } 
-	    
    }
    
 

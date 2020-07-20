@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Vaccination } from '../models/vaccination';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +22,12 @@ export class VaccinationService {
   }
   
   getVaccination(id :number) :Observable<Vaccination> {
-    return this.http.get<Vaccination>(`http://localhost:8080/vaccinations/${id}`)
+    return this.http.get<Vaccination>(`${environment.baseUrl}/vaccinations/${id}`)
     .pipe(catchError(this.handleError));
   }
 
   getAllVaccinations() :Observable<Vaccination[]> {
-    return this.http.get<Vaccination[]>(`http://localhost:8080/vaccinations/`)
+    return this.http.get<Vaccination[]>(`${environment.baseUrl}/vaccinations/`)
     .pipe(catchError(this.handleError));
   }
 

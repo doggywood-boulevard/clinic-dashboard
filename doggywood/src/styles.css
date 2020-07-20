@@ -29,6 +29,9 @@ div.main {
     align-items: center;
 }
 
+.disabled {
+    cursor:not-allowed;
+}
 /* appoint page */
 .scroll-window-large {
     /* this class for scrolling through long lists */

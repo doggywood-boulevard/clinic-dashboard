@@ -3,6 +3,7 @@ import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/htt
 import { Observable, throwError  } from 'rxjs';
 import { Pet } from '../models/pet';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -10,10 +11,10 @@ import { catchError } from 'rxjs/operators';
 })
 export class PetsService {
   // PROD 
-  // base_url: string = 'http://localhost:8080';
+  // base_url: string =  `${environment.baseUrl}`;
 
-  url: string = 'http://localhost:8080';
-  pets_url: string = 'http://localhost:8080/pets'; 
+  url: string = `${environment.baseUrl}`;
+  pets_url: string =  `${environment.baseUrl}/pets`; 
 // [{
 // 	"id": 2,
 // 	"cId": 1,
@@ -65,7 +66,7 @@ export class PetsService {
   
   getPetByCust(id: number): Observable<Pet[]> {
     // return this.listPets.find(u => u.id === id)
-    return this.http.get<Pet[]>(`http://localhost:8080/customers/${id}/pets`) 
+    return this.http.get<Pet[]>( `${environment.baseUrl}/customers/${id}/pets`) 
       .pipe(catchError(this.handleError));
   }
 
