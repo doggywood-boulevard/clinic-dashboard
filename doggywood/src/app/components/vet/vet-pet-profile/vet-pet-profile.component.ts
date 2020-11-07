@@ -46,19 +46,13 @@ export class VetPetProfileComponent implements OnInit {
     this.petId = this.route.snapshot.params.animalId;
     this.petService.getPet(this.petId).subscribe(data=>this.pet = data); 
     this.noteService.getNoteByPetId(this.petId).subscribe(data=>this.noteList = data);
-    console.log("Look here" + this.pet);
+   
+  //  setTimeout(function() {
+  //     this.custId = this.pet.custId;
+  //   console.log("Look here" + this.pet);
+  //  }, 50)
+
   }
 
-
-  getClientSessionData() {
-    // this.cliLandingService.makeSessionData();
-
-    this.custId = parseInt(sessionStorage.getItem("custId"));
-    this.firstName = sessionStorage.getItem("firstName");
-    this.lastName =sessionStorage.getItem("lastName");
-    this.email = sessionStorage.getItem("email");
-    this.phone = sessionStorage.getItem("phone");
-    this.cusUrl = sessionStorage.getItem("cusUrl"); 
-  }    
-
+ 
 }

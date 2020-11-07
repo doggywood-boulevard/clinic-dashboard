@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientsService } from '../../../services/clients.service';
 import { CliLandingService } from '../../../services/cli-landing.service'; 
-import {ActivatedRoute} from '@angular/router'; 
+import {ActivatedRoute, Router} from '@angular/router'; 
 import {map} from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs'; 
 import { catchError } from 'rxjs/operators';
@@ -37,7 +37,7 @@ export class ClientsComponent implements OnInit {
   public customerList = [];
   public pet: Pet; 
   public petList = [];
-  constructor(private route: ActivatedRoute, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
+  constructor(private route: ActivatedRoute, private router: Router, private clientService: ClientsService, private clientsService: ClientsService, private cliLandingService: CliLandingService, private petService: PetsService) {
     
     this.id = route.snapshot.paramMap.get('id');
     this.clientsService.getCustomer(this.id).subscribe(data=>this.customer = data);

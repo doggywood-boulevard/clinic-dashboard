@@ -7,10 +7,14 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
- 
+
+  title: string = 'An Angular-Java-Oracle Full-Stack App by: Thomas Maestas, Brendan Wilson, Davis Cowles, Ruben Colon';
+  footerTitle: string = 'Doggywood Boulevard Veterinary';
+  footerSubtext: string = 'Safeguarding The Bond We Share with Our Pets';
+
   constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
- 
+
 }

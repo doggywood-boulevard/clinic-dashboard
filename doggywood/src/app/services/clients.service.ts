@@ -3,14 +3,15 @@ import {  HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/htt
 import { Observable, throwError  } from 'rxjs';
 import { Customer } from '../models/customer';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientsService {
   email: string;
-  custs_url: string= "http://localhost:8080/customers";
-  base_url: string = 'http://localhost:8080';
+  custs_url: string= `${environment.baseUrl}/customers`;
+  base_url: string = `${environment.baseUrl}`;
  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }

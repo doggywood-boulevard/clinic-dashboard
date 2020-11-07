@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { Customer } from '../models/customer';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export class CustomerWelcomeBean {
   constructor(public message: string) { }
@@ -14,7 +15,7 @@ export class CustomerWelcomeBean {
   providedIn: 'root'
 })
 export class CliLandingService {
-  base_url: string = 'http://localhost:8080';
+  base_url: string =  `${environment.baseUrl}/`;
   email: string;
   emailUser: string;
   emailEmployee: string;

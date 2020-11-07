@@ -14,6 +14,8 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
 export class LoginComponent implements OnInit {
   isLoginPage:boolean;
   panelTitle: string;
+  
+  adminLogin:string = 'Admin Login';
   message: string;
   admin: boolean = false;
   email: string;
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.isLoginPage = true;
     this.authenticationService.deleteSession();
     sessionStorage.removeItem('empId');
-    this.panelTitle = "CUSTOMER LOGIN";
+    this.panelTitle = "CLIENT LOGIN";
     this.message = ``;
   }
 
@@ -81,7 +83,7 @@ export class LoginComponent implements OnInit {
 
   adminButton() {
     this.admin = (this.admin === true) ? false : true;
-    this.panelTitle = (this.admin === true) ? "ADMIN LOGIN" : "LOGIN";
+    this.panelTitle = (this.admin === true) ? "ADMINISTRATION" : "CLIENT LOGIN";
   }
 
   logout() {

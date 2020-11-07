@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Note } from '../models/note';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class NotesService {
   }
 
   createNote(note: Note): Observable<Note> { 
-    return this.http.post<Note>(`http://localhost:8080/notes`, note, { 
+    return this.http.post<Note>( `${environment.baseUrl}/notes`, note, { 
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -30,27 +31,27 @@ export class NotesService {
   }
 
   getNoteById(id: number): Observable<Note> { 
-    return this.http.get<Note>(`http://localhost:8080/notes/${id}`) 
+    return this.http.get<Note>(`${environment.baseUrl}/notes/${id}`) 
       .pipe(catchError(this.handleError));
   }
 
   // getNoteByApptId(id: number): Observable<Note> {
-  //   return this.http.get<Note>(`http://localhost:8080/note/appt/${id}`) 
+  //   return this.http.get<Note>(${environment.baseUrl}/note/appt/${id}`) 
   //     .pipe(catchError(this.handleError));
   // }
 
   getNoteByPetId(id: number): Observable<Note[]> {
-    return this.http.get<Note[]>(`http://localhost:8080/note/pet/${id}`) 
+    return this.http.get<Note[]>(`${environment.baseUrl}/note/pet/${id}`) 
       .pipe(catchError(this.handleError));
   }
 
   getNotesByApptId(id :number) :Observable<Note[]> {
-    return this.http.get<Note[]>(`http://localhost:8080/appointments/${id}/notes`) 
+    return this.http.get<Note[]>(`${environment.baseUrl}/appointments/${id}/notes`) 
       .pipe(catchError(this.handleError));
   }
 
   updateNote(note: Note): Observable<Note> { 
-    return this.http.put<Note>(`http://localhost:8080/notes`, note, { 
+    return this.http.put<Note>(`${environment.baseUrl}/notes`, note, { 
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -59,7 +60,7 @@ export class NotesService {
   }
   
   deleteNote(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`http://localhost:8080/notes/{id}`) 
+    return this.http.delete<boolean>(`${environment.baseUrl}/notes/{id}`) 
       .pipe(catchError(this.handleError));
   } 
   

@@ -21,11 +21,17 @@
     </div>
   </div>
 </div>
-</div> 
-  <div class="container" *ngIf="this.test">
-    <app-pet-create></app-pet-create>
+</div>   
+<br /> 
+  <div class="container">
+     <button class="btn btn-outline-info" routerLink="apptCreate/"> Schedule Appointment </button>
   </div>
-<div class="container" *ngIf="petList.length > 0">
+<br />
+  <div class="container" *ngIf="this.test">
+  <app-pet-create></app-pet-create> 
+  </div>
+ 
+<div class="table-1" *ngIf="petList.length > 0">
   <table class="table table-striped pet-table">
       <thead class="thead-dark"> 
         <tr> 

@@ -4,6 +4,7 @@ import { Employee } from '../models/employee';
 import { Observable, throwError } from 'rxjs';
 import { CliLandingService } from './cli-landing.service';
 import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 export class CustomerWelcomeBean {
   constructor(public message: string) { }
@@ -27,8 +28,8 @@ export class AuthenticationService {
 
   constructor(private cliLandingService: CliLandingService, private http: HttpClient) { }
 
-  url = 'http://localhost:8080/customer-welcome/profile';
-  emp_url = "http://localhost:8080/employee-welcome/profile";
+  url = `${environment.baseUrl}/customer-welcome/profile`;
+  emp_url =  `${environment.baseUrl}/employee-welcome/profile`;
 
   public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
