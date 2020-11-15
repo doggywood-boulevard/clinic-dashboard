@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doggywood.entities.Employee;
 import com.doggywood.services.EmployeeService;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 public class EmployeeController {
 
@@ -24,37 +24,27 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService es;
 	
-	@RequestMapping(value = "/employees", method = RequestMethod.POST, consumes = "application/json")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/employees", method = RequestMethod.POST, consumes = "application/json") 
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return es.createEmployee(employee);
 	}
 	
-	@GetMapping(value = "/employees/{id}")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value = "/employees/{id}") 
 	public Employee getEmployeeById(@PathVariable("id") int id) {
 		return es.getEmployeeById(id);
 	}
 
-	@GetMapping(value = "/employees")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value = "/employees") 
 	public List<Employee> getAllEmployees() {
 		return es.getAllEmployees();
 	}
 
-	@PutMapping(value = "/employees", consumes = "application/json")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@PutMapping(value = "/employees", consumes = "application/json") 
 	public Employee updatesEmployee(Employee change) {
 		return es.updatesEmployee(change);
 	}
 
-	@DeleteMapping(value = "/employees/{id}")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@DeleteMapping(value = "/employees/{id}") 
 	public boolean deleteEmployee(@PathVariable("id") int id) {
 		try {
 			es.deleteEmployee(es.getEmployeeById(id));

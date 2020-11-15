@@ -23,37 +23,27 @@ public class CustomerController {
 	@Autowired
 	CustomerService cs;
 	
-	@RequestMapping(value = "/customers", method = RequestMethod.POST, consumes = "application/json")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/customers", method = RequestMethod.POST, consumes = "application/json") 
 	public Customer createCustomer(@RequestBody Customer customer) {
 		return cs.createCustomer(customer);
 	}
 	
-	@GetMapping(value = "/customers/{id}")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value = "/customers/{id}") 
 	public Customer getCustomerById(@PathVariable("id") int id) {
 		return cs.getCustomerById(id);
 	}
 
-	@GetMapping(value = "/customers")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@GetMapping(value = "/customers") 
 	public List<Customer> getAllCustomers() {
 		return cs.getAllCustomers();
 	}
 
-	@PutMapping(value = "/customers", consumes = "application/json")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@PutMapping(value = "/customers", consumes = "application/json") 
 	public Customer updatesCustomer(@RequestBody Customer change) {
 		return cs.updatesCustomer(change);
 	}
 
-	@DeleteMapping(value = "/customers/{id}")
-//	@CrossOrigin(origins = "http://localhost:8080")
-	@CrossOrigin(origins = "*")
+	@DeleteMapping(value = "/customers/{id}") 
 	public boolean deleteCustomer(@PathVariable("id") int id) {
 		try {
 			cs.deleteCustomer(cs.getCustomerById(id));

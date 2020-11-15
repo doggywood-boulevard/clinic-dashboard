@@ -59,6 +59,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return true; 
 	}
 
+	@Override
+	public Employee getEmployeeByEmailAndPassword(String email, String password) {
+		return er.findByEmailAndPassword(email, password).get(); 
+	}
+
 
 
 }

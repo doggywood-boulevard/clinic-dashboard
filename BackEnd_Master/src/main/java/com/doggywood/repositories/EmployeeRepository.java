@@ -10,8 +10,8 @@ import com.doggywood.entities.Employee;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
-	Optional<Employee> findByEmail(String email);
-
-//	Optional<Employee> findByEmailAndPassword(String email);
+	Optional<Employee> findByEmail(String email); 
+	Optional<Employee> findByEmailAndPassword(String email, String password);
+ ;
 
 }

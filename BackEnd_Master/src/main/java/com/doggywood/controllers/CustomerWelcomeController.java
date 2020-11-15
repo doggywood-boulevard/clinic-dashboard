@@ -15,6 +15,7 @@ import com.doggywood.entities.CustomerWelcomeBean;
 import com.doggywood.entities.Pet;
 import com.doggywood.entities.Customer; 
 import com.doggywood.services.CustomerService;
+import com.doggywood.utilities.StringService;
 
 
 @CrossOrigin(origins = "*")
@@ -66,6 +67,16 @@ public class CustomerWelcomeController {
 			}
 			return null;
 	};
- 
+ ////////////////////////////////////////
+	// CUSTOMER ACTIONS
+//	private static StringService stringService = new StringService();
+	@Autowired(required=false)
+	StringService ss; 
+	public void reverse(String ...args) {
 
+		String newe = ss.reverse("robot");
+		System.out.println(newe);
+	}
+	
+	
 }

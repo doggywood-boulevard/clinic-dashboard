@@ -42,7 +42,7 @@ public class EmployeeWelcomeController {
 		return new EmployeeWelcomeBean(String.format("Welcome to Doggywood, %s!", email));
 	}
 
-//employee-welcom/value-variable/
+//employee-welcome/value-variable/
 	@GetMapping(value = "/employee-welcome/profile/{email}")
 	public Employee employeeProfile(@PathVariable String email) {
 		return es.getEmployeeByEmail(email);// .toString();
