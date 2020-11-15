@@ -23,8 +23,9 @@ public class RegisterNewCust {
 		ChromeDriver driver = new ChromeDriver();
 
 		// OPEN PAGE
-		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-		driver.navigate().to("http://localhost:4200");
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS); 
+//		driver.navigate().to("http://localhost:4200");
+		 driver.get("http://doggywood.s3-website-us-east-1.amazonaws.com");  
 		// driver.get("http://www.google.com");
 		driver.manage().window().maximize();
 		driver.manage().window().getSize();
