@@ -23,28 +23,28 @@ public class EmployeeController {
 
 	@Autowired
 	EmployeeService es;
-	
-	@RequestMapping(value = "/employees", method = RequestMethod.POST, consumes = "application/json") 
+	 
+	@RequestMapping(value = "/employees", method = RequestMethod.POST, consumes = "application/json")  
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return es.createEmployee(employee);
 	}
-	
-	@GetMapping(value = "/employees/{id}") 
+	 
+	@GetMapping(value = "/employees/{id}")  
 	public Employee getEmployeeById(@PathVariable("id") int id) {
 		return es.getEmployeeById(id);
 	}
-
-	@GetMapping(value = "/employees") 
+ 
+	@GetMapping(value = "/employees")  
 	public List<Employee> getAllEmployees() {
 		return es.getAllEmployees();
 	}
-
+ 
 	@PutMapping(value = "/employees", consumes = "application/json") 
 	public Employee updatesEmployee(Employee change) {
 		return es.updatesEmployee(change);
 	}
-
-	@DeleteMapping(value = "/employees/{id}") 
+ 
+	@DeleteMapping(value = "/employees/{id}")  
 	public boolean deleteEmployee(@PathVariable("id") int id) {
 		try {
 			es.deleteEmployee(es.getEmployeeById(id));
