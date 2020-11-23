@@ -31,5 +31,19 @@ public class KeysController {
 			 String newkey =  System.getenv("googleMapAPIKey");
 			 info.computeIfAbsent("googleMapAPIKey", key -> new HashSet<>()).add(newkey);
 			 return info;
+		} 
+	  @GetMapping("/getFirebaseApi")
+		public Map<String, Set<String>> getFirebaseApi() {
+			Map<String, Set<String>> info = new HashMap<>(); 
+			 String newkey =  System.getenv("FIREBASE_API");
+			 info.computeIfAbsent("FIREBASE_API", key -> new HashSet<>()).add(newkey);
+			 return info;
+		}
+	  @GetMapping("/getNytApi")
+		public Map<String, Set<String>> getNytApi() {
+			Map<String, Set<String>> info = new HashMap<>(); 
+			 String newkey =  System.getenv("NYT_API");
+			 info.computeIfAbsent("NYT_API", key -> new HashSet<>()).add(newkey);
+			 return info;
 		}
 }
