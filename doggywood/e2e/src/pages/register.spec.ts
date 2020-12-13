@@ -15,25 +15,23 @@ describe('register page', () => {
     expect(t).toEqual('Client Registration');
   });
 
-  it('should should add a user', () => {
+  // it('should should add a user', () => {
 
-    browser.driver.findElement(by.css('#firstName')).sendKeys('myFirstName');
-    browser.driver.findElement(by.css('#lastName')).sendKeys('myLastName');
-    browser.driver.findElement(by.css('#email')).sendKeys('user@gmail.com');
-    browser.driver.findElement(by.css('#password')).sendKeys('password');
-    browser.driver.findElement(by.css('#phone')).sendKeys('555-555-5555'); 
-    browser.driver.findElement(by.css('#cusUrl')).sendKeys('https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p7.png'); 
-    browser.driver.findElement(by.css('.register')).click();
-     
+  //   browser.driver.findElement(by.css('#firstName')).sendKeys('myFirstTest');
+  //   browser.driver.findElement(by.css('#lastName')).sendKeys('myLastNameTest');
+  //   browser.driver.findElement(by.css('#email')).sendKeys('userTest@gmail.com');
+  //   browser.driver.findElement(by.css('#password')).sendKeys('password');
+  //   browser.driver.findElement(by.css('#phone')).sendKeys('555-555-5555');
+  //   browser.driver.findElement(by.css('#cusUrl')).sendKeys('https://doggywood-veterinary.s3.amazonaws.com/assets/People/random_p3.png');
+  //   browser.driver.findElement(by.css('.register')).click();
 
+  // });
     // let abc: Alert = browser.switchTo().alert();
     // abc.accept();
     // abc.dismiss();
     // browser.driver.sleep(500);
-  
-    // expect(browser.getTitle()).toContain(' ');   
-  });
 
+    // expect(browser.getTitle()).toContain(' ');
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser

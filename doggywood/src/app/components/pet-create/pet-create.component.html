@@ -9,7 +9,7 @@
     breed: string;
     neuter: number;
     description: string;
-    petUrl: string; --> 
+    petUrl: string; -->
 
 <button class="btn btn-block btn-outline-info table-btn" data-toggle="modal" data-target="#exampleModalCenter">ADD PET</button>
 
@@ -23,7 +23,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div> 
+      </div>
       <div class="modal-body">
 
         <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
@@ -55,36 +55,36 @@
             #name="ngModel">
           <span class="help-block" *ngIf="name.invalid && name.touched"> Weight is required
           </span>
-        </div> 
+        </div>
 
         <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
           <label for="birthDate">Pet Date of Birth</label>
           <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="pet.birthDate"   #name="ngModel">
           <span class="help-block" *ngIf="name.invalid && name.touched"> DOB is required
           </span>
-        </div> 
-  
+        </div>
+
         <div class="form-group">
-          <label for="neuter" class="control-label">Pet Neuter<span class="required"></span></label>    
-            <select id="neuter" name="neuter" [(ngModel)]="pet.neuter" class="form-control" #neuter="ngModel"> 
+          <label for="neuter" class="control-label">Pet Neuter<span class="required"></span></label>
+            <select id="neuter" name="neuter" [(ngModel)]="pet.neuter" class="form-control" #neuter="ngModel">
                 <option disabled value="select"><em>Select Type of Neuter Status: </em></option>
                 <option  *ngFor="let n of petNeuters" [value]="n.id">
                   {{n.name}}
-                </option> 
+                </option>
             </select>
-        </div> 
-    
-        <div class="form-group"> 
-          <label for="type" class="control-label">Pet Type<span class="required"> 
+        </div>
+
+        <div class="form-group">
+          <label for="type" class="control-label">Pet Type<span class="required">
               </span></label>
             <select id="type"  type="number" appSelectValidator="select" name="type" [(ngModel)]="pet.type" class="form-control" #type="ngModel">
                 <option disabled  type="number" value="select"><em>Select Type of Pet: </em></option>
                 <option  *ngFor="let t of petTypes" type="number" [value]="t.id">
                   {{t.name}}
-                </option> 
-            </select> 
-        </div> 
-      
+                </option>
+            </select>
+        </div>
+
         <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
           <label for="description" class="control-label">Description</label>
           <textarea class="form-control" id="description" name="description" [(ngModel)]="pet.description"
@@ -145,5 +145,5 @@
     <li><strong>pet.neuter: </strong> {{pet.neuter}}</li>
     <li><strong>pet.breed: </strong> {{pet.breed}}</li>
     <li><strong>pet.description: </strong> {{pet.description}}</li>
-  </ul> 
-</div> --> 
+  </ul>
+</div> -->
