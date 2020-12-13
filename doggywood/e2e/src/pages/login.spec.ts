@@ -3,7 +3,7 @@ import { AppPage } from '../app.po';
 import { browser, logging, element, by, ExpectedConditions } from 'protractor';
 import { Alert } from 'selenium-webdriver';
 
- 
+
 describe('login page', () => {
 
   beforeEach(() => {
@@ -17,11 +17,11 @@ describe('login page', () => {
   });
 
   it('should accept email + passoword and redirect', () => {
-  
-    browser.driver.findElement(by.css('#email')).sendKeys('user@gmail.com');
+
+    browser.driver.findElement(by.css('#email')).sendKeys('userTest@gmail.com');
     browser.driver.findElement(by.css('#password')).sendKeys('password');
     browser.driver.findElement(by.css('.login')).click();
-     
+
 
     // let abc: Alert = browser.switchTo().alert();
     // abc.accept();
