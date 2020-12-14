@@ -5,7 +5,6 @@
 #Given: User navigates to doggywood website
 #When: User clicks on the login button on homepage AND User enters uname and pw
 #Then: User should be taken to the successful client landing page  
- 
 #Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
 #Examples: Container for s table
 #Background: List of steps run before each of the scenarios
@@ -16,7 +15,6 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-
 @tag
 Feature: Register as a DoggyWood Customer
   Online person should be able to register with first and last name, email, password, phone and url.
@@ -32,9 +30,9 @@ Scenario: Register with email, password, first and last name.
   And User provides a phone number
   And User provides a photo url
   When User clicks on submit button
-  Then User should be taken to login page 
-
-  #@tag2
+  Then User is redirected to login page 
+	    
+  #@tag2 
   #Scenario Outline: Title of your scenario outline
     #Given I want to write a step with <name>
     #When I check for the <value> in step

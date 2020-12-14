@@ -19,10 +19,11 @@ import org.junit.Assert;
 public class LoginSteps {
 	WebDriver driver;
 	
+
 	 
 	@Before
 	public void setup() { 
-		System.setProperty("webdriver.chrome.driver", "drivers/driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\w\\www\\git\\java-devops\\project2\\src\\test\\resources\\chromedriver.exe");
 		this.driver = new ChromeDriver();
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
@@ -32,7 +33,7 @@ public class LoginSteps {
 	
 //	@Before
 //	public void setup_firefox() {
-//		System.setProperty("webdriver.gecko.driver", "src/test/java/CucumberFramework/resources/geckodriver.exe");
+//		System.setProperty("C:\\w\\www\\git\\java-devops\\project2\\src\\test\\resources\\geckodriver.exe");
 //		FirefoxOptions firefoxOptions = new FirefoxOptions();
 //		firefoxOptions.setCapability("marionette", true);
 //		this.driver = new FirefoxDriver(firefoxOptions);
@@ -53,14 +54,7 @@ public class LoginSteps {
 		driver.get("http://localhost:4200"); 
 //		http://doggywood.s3-website-us-east-1.amazonaws.com
 	}
-
-	@And("^User clicks on the login button on homepage$")
-	public void user_clicks_on_the_login_button_on_homepage() throws Throwable {
-		Thread.sleep(2000);
-//		driver.findElement(By.xpath("//a[text()='Log In']")).click();
-		driver.findElement(By.xpath("//html/body/header/div/ol[2]/li[2]/a[1]")).click();
-	}              ////html/body/header/div/ol[2]/li[2]/a[1]
-
+ 
 	@And("^User enters a valid username$")
 	public void user_enters_a_valid_username() throws Throwable {
 		Thread.sleep(2000);
@@ -83,7 +77,7 @@ public class LoginSteps {
 	@Then("^User should be taken to the successful client landing page$")
 	public void user_should_be_taken_to_the_successful_client_landing_page() throws Throwable {
 		Thread.sleep(3000);
-		WebElement askQuestionButton = driver.findElement(By.xpath("//a[contains(text(), 'Ask Question')]"));
-		Assert.assertEquals(true, askQuestionButton.isDisplayed());
-	}
+		WebElement viewRecordsButton = driver.findElement(By.xpath("//a[contains(text(), 'View Records')]"));
+		Assert.assertEquals(true, viewRecordsButton.isDisplayed());
+	}     
 }
