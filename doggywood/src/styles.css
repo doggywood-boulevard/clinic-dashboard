@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+@import url('https://fonts.googleapis.com/css?family=Overpass&display=swap');
 /* CUSTOM CLASSES */
 div.main {
     min-height: 450px;
-} 
+}
 .scroll-window {
     /* this class for scrolling through long lists */
     max-height: 400px;
@@ -35,7 +35,7 @@ div.main {
 /* appoint page */
 .scroll-window-large {
     /* this class for scrolling through long lists */
-    max-height: 800px; 
+    max-height: 800px;
     overflow-y: scroll;
 }
 .appt {
@@ -54,7 +54,7 @@ div.main {
 /* appoint page */
 .scroll-window-large {
     /* this class for scrolling through long lists */
-    max-height: 800px; 
+    max-height: 800px;
     overflow-y: scroll;
 }
 .appt {
@@ -68,21 +68,21 @@ div.main {
     min-width:60px;
     margin-right:5px;
 
-} 
+}
 
 /* profile detils */
 .profile-details {
-       
+
     min-width:350px;
-  
+
      padding:auto;
  list-style-type:none;
 }
-.profile-details  strong { 
+.profile-details  strong {
       background-color:rgba(173, 216, 230, 0.219);
-     min-width:120px; 
-    margin-right:5px; 
-}  
+     min-width:120px;
+    margin-right:5px;
+}
 /* ANGULAR */
 
  :host {
