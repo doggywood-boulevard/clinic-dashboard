@@ -1,5 +1,5 @@
- 
-<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  --> 
+<!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">  -->
+
 <suite name = "Wiki Main Page Tests">
 
 <test name = "SSB Character Tests">
