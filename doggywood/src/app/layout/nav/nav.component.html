@@ -15,11 +15,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- 
+  <!--
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'pets', component: DoggydashComponent },   
-  { path: 'clients', component: ClientsComponent }, 
+  { path: 'pets', component: DoggydashComponent },
+  { path: 'clients', component: ClientsComponent },
   { path: 'petCreate', component: PetCreateComponent},
   { path: 'appt/:apptId', component: ApptComponent},
   { path: 'apptCreate', component: ApptCreateComponent},
@@ -38,11 +38,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-  
+
       <li>
 
       </li>
- 
+
 
       <!-- IF CUST LOGGED IN THEY  ONLY  SEE THIS (  EMP ALSO SEES) -->
       <li *ngIf="authenticationService.isCustLoggedIn()" class="nav-item dropdown">
@@ -50,9 +50,9 @@
           aria-haspopup="true" aria-expanded="false">
           Clients
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="cliPetRecord/:animalId">cliPetRecord/:animalId</a>
-          <div class="dropdown-divider"></div> 
+          <div class="dropdown-divider"></div>
         </div> -->
 
       </li>
@@ -65,14 +65,14 @@
           Administration
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
- 
+
           <a class="dropdown-item" routerLink="register/">Add a Client</a>
           <a class="dropdown-item" routerLink="petCreate/">Add a Pet</a>
-          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a> 
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="vetLanding/">Vet View</a> 
+          <a class="dropdown-item" routerLink="vetLanding/">Vet View</a>
           <a class="dropdown-item" routerLink="petCreate/">Add a Pet</a>
-          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a> 
+          <a class="dropdown-item" routerLink="apptCreate/">Make Appt</a>
           <!-- <div class="dropdown-divider"></div> -->
           <br />
           <!-- <h6> &nbsp; &nbsp; &nbsp;Client View</h6> -->
@@ -90,10 +90,10 @@
   </div>
 
   <form class="form-inline my-2 my-lg-0 register-logout">
-    <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
-      class="btn  " routerLink="register/">REGISTER</button>
+    <!-- <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
+      class="btn  " id="register" routerLink="register/">REGISTER</button> -->
     <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"
-      class="btn btn-outline-success"> <a routerLink="/"> LOGOUT</a></button>
+      class="btn btn-outline-success"  id="logout"> <a routerLink="/"> LOGOUT</a></button>
   </form>
 
 </nav>

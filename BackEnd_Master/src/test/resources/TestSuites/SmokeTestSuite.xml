@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SmokeTestSuite" verbose="1">
+	
+	<test name="PositiveLogInTest">
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.PositiveLogInTests" />
+		</classes>
+	</test>
+	
+	 
+	<test name="UploadTests">
+		<classes>
+			<class name="com.doggywood.selenium.uploadtests.UploadTests" />
+		</classes>
+	</test>
+	
+</suite>
