@@ -2,7 +2,15 @@
 <!-- <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> -->
 
 <suite name="NegativeLogInTestSuite" verbose="1" parallel="tests" thread-count="4">
-
+	<test name="NegativeLogInTest-CH">
+		<parameter name="browser" value="chrome"></parameter>
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.NegativeLogInTestsDataProvider">
+			</class>
+		</classes>
+	</test>
+	
+	<!-- 
 	<test name="NegativeUsernameTest-CH">
 		<parameter name="username" value="incorrectUsername"></parameter>
 		<parameter name="password" value="SuperSecretPassword!"></parameter>
@@ -46,5 +54,5 @@
 			</class>
 		</classes>
 	</test>
-
+	 -->
 </suite>
