@@ -17,6 +17,9 @@ Servers/
 BackEnd_Master/HELP.md
 BackEnd_Master/target/
 
+test-output/
+BackEnd_Master/test-output/
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
@@ -43,28 +46,11 @@ BackEnd_Master/nbbuild/
 BackEnd_Master/dist/
 BackEnd_Master/nbdist/
 BackEnd_Master/.nb-gradle/
-<<<<<<< HEAD
-<<<<<<< HEAD
-BackEnd_Master/build/
 
 ### VS Code ###
 BackEnd_Master/.vscode/
-=======
 
-BackEnd_Master/### VS Code ###
-BackEnd_Master/.vscode/
-
-=======
-=======
- 
->>>>>>> df248c14010a052d673bdfde6362ba58b6de1c3e
 BackEnd_Master/build/ 
-### VS Code ###
- 
-<<<<<<< HEAD
->>>>>>> 89da09a32b527977e243552f9c9cbdc21dd8db8d
-=======
-BackEnd_Master/.vscode/
  
  
->>>>>>> df248c14010a052d673bdfde6362ba58b6de1c3e
+ 

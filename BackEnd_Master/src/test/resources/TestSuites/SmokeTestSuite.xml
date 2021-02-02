@@ -8,11 +8,16 @@
 		</classes>
 	</test>
 	
-	 
-	<test name="UploadTests">
+	<test name="PositiveLogInTestData">
+		<classes>
+			<class name="com.doggywood.selenium.loginpagetests.PositiveLogInTestsDataProvider" />
+		</classes>
+	</test>
+	
+	<!-- <test name="UploadTests">
 		<classes>
 			<class name="com.doggywood.selenium.uploadtests.UploadTests" />
 		</classes>
-	</test>
+	</test> -->
 	
 </suite>
