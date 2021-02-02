@@ -31,7 +31,14 @@ public class LoginPage extends BasePageObject {
 		type(password, passwordLocator);
 		click(logInButtonLocator);
 	}
-
+	
+	public void positiveLogIn(String username, String password) {
+		log.info("Executing Positive LogIn with username [" + username + "] and password [" + password + "]");
+		type(username, usernameLocator);
+		type(password, passwordLocator);
+		click(logInButtonLocator);
+	}
+	
 	/** Wait for error message to be visible on the page */
 	public void waitForErrorMessage() {
 		waitForVisibilityOf(errorMessageLocator, 5);

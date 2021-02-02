@@ -23,7 +23,7 @@ public class BaseTest {
 		BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
 		driver = factory.createDriver();
 		
-		// This sleep here is for instructor only. Students don't need this here
+		// Sleep Method in TestUtilities
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
