@@ -33,10 +33,11 @@ export class AuthenticationService {
 
   public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
-    this.getCustomerAuth(email, password).subscribe((response) => {
+    // this.getCustomerAuth(email, password).subscribe((response) => {
+      this.postCustomerAuth(email, password).subscribe((response) => {
       this.customerObject = response;
       if (this.customerObject !== (null || undefined)) {
-        this.custId = this.customerObject.id;
+        this.customerObject.id != null?this.custId = this.customerObject.id : this.custId = null;
         console.log("subscribeId: " + this.custId);
         console.log(this.customerObject);
         this.makeSessionData(this.customerObject);
@@ -49,7 +50,7 @@ export class AuthenticationService {
     );
     return (this.customerObject !== null) ? true : false;
   }
-  
+
   public authenticateEmp(email, password) {
     // CHECK DB EMP TABLE
     this.getEmployeeAuth(email, password).subscribe((response) => {
@@ -91,13 +92,20 @@ export class AuthenticationService {
     console.log(email + ' ' + password)
     return this.http.get<Customer>(`${this.url}/${email}`);
   }
-
+  public postCustomerAuth(email: string, password: string): Observable<Customer> {
+    console.log(email + ' ' + password)
+    return this.http.post<Customer>(
+      `${this.url}/login`, {
+        email,
+        password
+      });
+  }
   public getEmployeeAuth(email: string, password: string): Observable<Employee> {
     console.log(email + ' ' + password)
     return this.http.get<Employee>(`${this.emp_url}/${email}`);
   }
 
-  // verify Logged in 
+  // verify Logged in
   public isCustLoggedIn() {
     let user = sessionStorage.getItem('authUser')
     return !(user === null) // i.e. true
