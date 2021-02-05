@@ -14,7 +14,7 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
 export class LoginComponent implements OnInit {
   isLoginPage:boolean;
   panelTitle: string;
-  
+
   adminLogin:string = 'Admin Login';
   message: string;
   admin: boolean = false;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   validLogin: boolean = false;
   errorMessage: string = '';
   constructor(private clientService: ClientsService, public authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
- 
+
   ngOnInit() {
     this.isLoginPage = true;
     this.authenticationService.deleteSession();
@@ -51,20 +51,18 @@ export class LoginComponent implements OnInit {
       }
 
     } else if (!this.admin) {
-      console.log(this.email);
       this.authenticationService.authenticateCust(this.email, this.password);
       console.log("logged in as customer: " + this.onLoginSubmit());
-      this.id = this.authenticationService.getCustId()
+
       if (this.onLoginSubmit() === true) {
         setTimeout(() => {
-          this.backupId = parseInt(sessionStorage.getItem('custId'));
-          this.id = (this.id !== (null || undefined) ? this.id : this.backupId)
+          this.id = this.authenticationService.getCustId();
           console.log("cust liftoff: " + this.id);
           this.router.navigate([`clients/${this.id}`]);
         }, 1000);
-
       } else {
-        this.logout();
+        this.router.navigate([`clients/login`]);
+        this.errorMessage = "Oops, wrong email or password!";
       }
     }
   }
@@ -87,9 +85,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.deleteSession();
+    this.authenticationService.logout();
     this.errorMessage = '';
-    // this.ngOnInit();
-
   }
 }

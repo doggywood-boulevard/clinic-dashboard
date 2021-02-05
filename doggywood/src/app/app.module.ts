@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,6 +35,8 @@ import { ClientsService } from './services/clients.service';
 import { PetsService } from './services/pets.service';
 import { AuthenticationService } from './services/authentication.service';
 import { VacCreateComponent } from './components/vac-create/vac-create.component';
+import { AuthGuardService } from './services/auth/auth.guard.service';
+import { ErrorInterceptorService } from './services/auth/error.interceptor.service';
 
 @NgModule({
   declarations: [
@@ -71,8 +73,9 @@ import { VacCreateComponent } from './components/vac-create/vac-create.component
     EmployeesService,
     ClientsService,
     PetsService,
-    AuthenticationService
-
+    AuthenticationService,
+    AuthGuardService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi:true}
   ],
   bootstrap: [AppComponent]
 })

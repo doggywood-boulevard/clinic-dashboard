@@ -53,8 +53,8 @@ export class ClientsComponent implements OnInit {
     // this.petService.getPetByCust(parseInt(sessionStorage.getItem('custId'))).subscribe(data=>this.petList = data);
     // console.log(parseInt(sessionStorage.getItem("custId")));  // 91
     // console.log((parseInt(sessionStorage.getItem('custId')))); // 91
-    this.test = (parseInt(sessionStorage.getItem('custId')));
-    console.log(this.test);
+    this.custId = (parseInt(localStorage.getItem("cust")));
+    console.log(this.custId);
     //this.getCustomer(this.custId);
     // this.getClientSessionData();
     // this.getClientData();
