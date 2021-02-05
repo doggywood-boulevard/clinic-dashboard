@@ -28,26 +28,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.isLoginPage = true;
-    this.authenticationService.deleteSession();
-    sessionStorage.removeItem('empId');
     this.panelTitle = "CLIENT LOGIN";
-    this.message = ``;
   }
 
   handleLogin() {
     if (this.admin) {
-      console.log(this.email);
       this.authenticationService.authenticateEmp(this.email, this.password);
       console.log("logged in as employee: " + this.onAdminSubmit());
-      this.id = this.authenticationService.getEmpId()
       if (this.onAdminSubmit() === true) {
-        this.backupId = parseInt(sessionStorage.getItem('empId'));
-        // not passing in params, but ready to:
-        this.id = (this.id !== (null || undefined) ? this.id : this.backupId)
+        setTimeout(() => {
+        this.id = this.authenticationService.getEmpId();
         console.log("emp liftoff: " + this.id);
         this.router.navigate([`vetLanding`]);
+      }, 1000);
       } else {
-        this.logout();
+        this.router.navigate([`login`]);
+        this.errorMessage = "Oops, wrong email or password!";
       }
 
     } else if (!this.admin) {
@@ -61,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([`clients/${this.id}`]);
         }, 1000);
       } else {
-        this.router.navigate([`clients/login`]);
+        this.router.navigate([`login`]);
         this.errorMessage = "Oops, wrong email or password!";
       }
     }

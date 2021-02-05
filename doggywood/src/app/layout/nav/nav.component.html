@@ -93,7 +93,7 @@
     <!-- <button *ngIf="!(authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn())" type="submit"
       class="btn  " id="register" routerLink="register/">REGISTER</button> -->
     <button *ngIf="authenticationService.isCustLoggedIn() || authenticationService.isEmpLoggedIn()"
-      class="btn btn-outline-success"  id="logout"> <a routerLink="/"> LOGOUT</a></button>
+      class="btn btn-outline-success"  id="logout"> <a routerLink="/" (click)="authenticationService.logout()"> LOGOUT</a></button>
   </form>
 
 </nav>
