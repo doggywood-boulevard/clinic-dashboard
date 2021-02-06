@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/auth/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
   public isEmpLoggedIn:boolean =  false;
    public isCustLoggedIn: boolean = false;
   constructor(private route: ActivatedRoute, public authenticationService: AuthenticationService) {
-     
+
 
    }
 
@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
     this.isCustLoggedIn = this.authenticationService.isCustLoggedIn();
 
     this.id = (this.authenticationService.isCustLoggedIn())? parseInt(sessionStorage.getItem("custId")): parseInt(sessionStorage.getItem("empId"));
-    
+
      }
 
 }

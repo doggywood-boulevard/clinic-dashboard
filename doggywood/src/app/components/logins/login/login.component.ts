@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Navigation } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, Validators, NgForm } from '@angular/forms';
 import { Customer } from 'src/app/models/customer';
 import { ClientsService } from '../../../services/clients.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
 
 @Component({
@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
 
   adminButton() {
     this.admin = (this.admin === true) ? false : true;
+    this.adminLogin = (this.admin === true) ? 'Client Login' : 'Admin Login';
     this.panelTitle = (this.admin === true) ? "ADMINISTRATION" : "CLIENT LOGIN";
   }
 
