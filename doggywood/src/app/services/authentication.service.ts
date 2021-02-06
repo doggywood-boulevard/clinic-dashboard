@@ -1,168 +1,165 @@
-import { Injectable } from '@angular/core';
-import { Customer } from '../models/customer';
-import { Employee } from '../models/employee';
-import { Observable, throwError } from 'rxjs';
-import { CliLandingService } from './cli-landing.service';
-import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { Customer } from "../models/customer";
+import { Employee } from "../models/employee";
+import { BehaviorSubject, Observable, throwError } from "rxjs";
+import { map } from "rxjs/operators";
+import { CliLandingService } from "./cli-landing.service";
+import {
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpClient,
+} from "@angular/common/http";
+import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 export class CustomerWelcomeBean {
-  constructor(public message: string) { }
-
+  constructor(public message: string) {}
 }
 export class CustomerDataBean {
-  constructor(public message: string) { }
+  constructor(public message: string) {}
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthenticationService {
-  public customerObject: Customer; // session OBJECT
-  public custId:number;
-  public employeeObject: Employee;
-  public empId:number;
+  private custSubject: BehaviorSubject<Customer>;
+  private custObservable: Observable<Customer>;
+  public custObject: Customer; // session OBJECT
+  public custId: number;
+
+
+  private empSubject: BehaviorSubject<Employee>;
+  public empObject: Employee;
+  public empId: number;
 
   loggedIn = false;
   object: any;
-
-  constructor(private cliLandingService: CliLandingService, private http: HttpClient) { }
-
   url = `${environment.baseUrl}/customer-welcome/profile`;
-  emp_url =  `${environment.baseUrl}/employee-welcome/profile`;
+  emp_url = `${environment.baseUrl}/employee-welcome/profile`;
 
+  constructor(
+    private cliLandingService: CliLandingService,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.custSubject = new BehaviorSubject<Customer>(
+      JSON.parse(localStorage.getItem("cust"))
+    );
+    this.custObservable = this.custSubject.asObservable();
+
+    this.empSubject = new BehaviorSubject<Employee>(
+      JSON.parse(localStorage.getItem("emp"))
+    );
+    this.custObservable = this.custSubject.asObservable();
+  }
+  public get custValue(): Customer {
+    return this.custSubject.value;
+  }
+  public get empValue(): Employee {
+    return this.empSubject.value;
+  }
   public authenticateCust(email, password) {
     // CHECK DB CUST TABLE
-    // this.getCustomerAuth(email, password).subscribe((response) => {
-      this.postCustomerAuth(email, password).subscribe((response) => {
-      this.customerObject = response;
-      if (this.customerObject !== (null || undefined)) {
-        this.customerObject.id != null?this.custId = this.customerObject.id : this.custId = null;
-        console.log("subscribeId: " + this.custId);
-        console.log(this.customerObject);
-        this.makeSessionData(this.customerObject);
-      }
-    },
+    this.postCustomerAuth(email, password).subscribe(
       (response) => {
-        console.log("subscribe: " + response.error);
-        this.customerObject = null;
+        this.custObject = response;
+        if (this.custObject !== (null || undefined)) {
+          localStorage.setItem("cust", JSON.stringify(this.custObject));
+        }
+      },
+      (response) => {
+        console.log("subscribeERROR: " + response.error);
+        this.custObject = null;
       }
     );
-    return (this.customerObject !== null) ? true : false;
+    return this.custObject !== null ? true : false;
   }
 
   public authenticateEmp(email, password) {
     // CHECK DB EMP TABLE
-    this.getEmployeeAuth(email, password).subscribe((response) => {
-      this.employeeObject = response;
-      console.log("subscribeEmpl: " + response.email);
-      if (this.employeeObject !== (null || undefined)) {
-        this.empId = this.employeeObject.id;
-        console.log(this.employeeObject);
-        this.makeEmpSessionData(this.employeeObject)
-
-      }
-    },
+    this.postEmployeeAuth(email, password).subscribe(
       (response) => {
-        console.log("subscribe: " + response.error);
-        this.employeeObject = null;
+        this.empObject = response;
+        if (this.empObject !== (null || undefined)) {
+          localStorage.setItem("emp", JSON.stringify(this.empObject));
+        }
+      },
+      (response) => {
+        console.log("subscribeERROR: " + response.error);
+        this.empObject = null;
       }
     );
-    return (this.employeeObject !== null) ? true : false;
+    return this.empObject !== null ? true : false;
   }
-// get ids
 
   public getCustId() {
-    console.log("get custId:" + this.custId)
-    return this.custId;
+    console.log("get custId:" + this.custObject.id);
+    return this.custObject.id;
   }
   public getEmpId() {
-    console.log("get empId:" + this.empId)
-    return this.empId;
+    this.empObject = JSON.parse(localStorage.getItem("emp"));
+    console.log("get empId:" + this.empObject.id);
+    return this.empObject.id;
   }
 
   // get cust data from email
   public getClientDataByEmail(email) {
-    this.cliLandingService.getClientByEmail(email).subscribe(
-      data => this.customerObject = data
-    );
+    this.cliLandingService
+      .getClientByEmail(email)
+      .subscribe((data) => (this.custObject = data));
+  }
 
-  }
-  public getCustomerAuth(email: string, password: string): Observable<Customer> {
-    console.log(email + ' ' + password)
-    return this.http.get<Customer>(`${this.url}/${email}`);
-  }
-  public postCustomerAuth(email: string, password: string): Observable<Customer> {
-    console.log(email + ' ' + password)
-    return this.http.post<Customer>(
-      `${this.url}/login`, {
+  public postCustomerAuth(
+    email: string,
+    password: string
+  ): Observable<Customer> {
+    return this.http
+      .post<Customer>(`${this.url}/login`, {
         email,
-        password
-      });
+        password,
+      })
+      .pipe(
+        map((cust) => {
+          localStorage.setItem("cust", JSON.stringify(cust));
+          this.custSubject.next(cust);
+          return cust;
+        })
+      );
   }
-  public getEmployeeAuth(email: string, password: string): Observable<Employee> {
-    console.log(email + ' ' + password)
-    return this.http.get<Employee>(`${this.emp_url}/${email}`);
+  public postEmployeeAuth(
+    email: string,
+    password: string
+  ): Observable<Employee> {
+    return this.http.post<Employee>(`${this.emp_url}/login`, {
+      email,
+      password
+    })
+    .pipe(
+      map((emp) => {
+        localStorage.setItem("emp", JSON.stringify(emp));
+        this.empSubject.next(emp);
+        return emp;
+      })
+    );
   }
 
   // verify Logged in
   public isCustLoggedIn() {
-    let user = sessionStorage.getItem('authUser')
-    return !(user === null) // i.e. true
+    let cust = localStorage.getItem("cust");
+    return !(cust === null); // i.e. true
   }
   public isEmpLoggedIn() {
-    let user = sessionStorage.getItem('authEmployee')
-    return !(user === null) // i.e. true
+    let emp = localStorage.getItem("emp");
+    return !(emp === null); // i.e. true
   }
 
-  // make session Data
-  public makeSessionData(customerObject) {
-    // Customers
-    if (customerObject !== null) {
-      sessionStorage.setItem("custId", (customerObject.id).toString());
-      sessionStorage.setItem("firstName", customerObject.firstName);
-      sessionStorage.setItem("lastName", customerObject.lastName);
-      sessionStorage.setItem("email", customerObject.email);
-      sessionStorage.setItem("phone", customerObject.phone);
-      sessionStorage.setItem("cusUrl", customerObject.cusUrl);
-      // auth session
-      sessionStorage.setItem("authUser", customerObject.email);
-    }
-    return sessionStorage;
-  }
-  public makeEmpSessionData(employeeObject) {
-    // Employees
-    if (employeeObject !== null) {
-      sessionStorage.setItem("empId", (employeeObject.id).toString());
-      sessionStorage.setItem("eType", (employeeObject.eType).toString());
-      sessionStorage.setItem("firstName", employeeObject.firstName);
-      sessionStorage.setItem("lastName", employeeObject.lastName);
-      sessionStorage.setItem("email", employeeObject.email);
-      sessionStorage.setItem("phone", employeeObject.phone);
-      // auth session
-      sessionStorage.setItem("authEmployee", employeeObject.email);
-    }
-     return sessionStorage;
-  }
-
-  // delete session Data
-  public deleteSession() {
-    // Customers
-    sessionStorage.removeItem('authUser');
-    sessionStorage.removeItem("custId");
-    sessionStorage.removeItem("firstName");
-    sessionStorage.removeItem("lastName");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("phone");
-    sessionStorage.removeItem("cusUrl");
-    // Employees
-    sessionStorage.removeItem('authEmployee');
-    sessionStorage.removeItem('empId');
-    sessionStorage.removeItem("firstName");
-    sessionStorage.removeItem("lastName");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("phone");
-    sessionStorage.removeItem("eType");
+  public logout() {
+    localStorage.removeItem("cust");
+    localStorage.removeItem("emp");
+    this.custSubject.next(null);
+    this.empSubject.next(null);
+    this.router.navigate(["/login"]);
   }
 
 }

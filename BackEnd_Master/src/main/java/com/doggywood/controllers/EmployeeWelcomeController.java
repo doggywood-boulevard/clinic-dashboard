@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //import com.doggywood.entities.EmployeeWelcomeBean;
 import com.doggywood.entities.Pet;   // => Pets assigned to vet employee?
+import com.doggywood.entities.Customer;
 import com.doggywood.entities.Employee;
 import com.doggywood.entities.EmployeeWelcomeBean;
 import com.doggywood.services.EmployeeService;
@@ -47,7 +48,22 @@ public class EmployeeWelcomeController {
 	public Employee employeeProfile(@PathVariable String email) {
 		return es.getEmployeeByEmail(email);// .toString();
 	}
- 
+	
+	// employee-welcome/value-variable/ POST
+	@PostMapping(value = "/employee-welcome/profile/login")
+	public Employee employeePostProfile(@RequestBody Employee employee) {
+//		System.out.println(email+password);
+		try {
+			if (es.getEmployeeByEmailAndPassword(employee.getEmail(), employee.getPassword()) != null) {
+				return es.getEmployeeByEmailAndPassword(employee.getEmail(), employee.getPassword());
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 //	 
 //	@PostMapping(value = "/employee-welcome/register")
 //	public boolean registerEmployee(@RequestBody Employee employee) {

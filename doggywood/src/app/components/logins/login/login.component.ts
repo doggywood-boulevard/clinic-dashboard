@@ -14,7 +14,7 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
 export class LoginComponent implements OnInit {
   isLoginPage:boolean;
   panelTitle: string;
-  
+
   adminLogin:string = 'Admin Login';
   message: string;
   admin: boolean = false;
@@ -25,46 +25,40 @@ export class LoginComponent implements OnInit {
   validLogin: boolean = false;
   errorMessage: string = '';
   constructor(private clientService: ClientsService, public authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
- 
+
   ngOnInit() {
     this.isLoginPage = true;
-    this.authenticationService.deleteSession();
-    sessionStorage.removeItem('empId');
     this.panelTitle = "CLIENT LOGIN";
-    this.message = ``;
   }
 
   handleLogin() {
     if (this.admin) {
-      console.log(this.email);
       this.authenticationService.authenticateEmp(this.email, this.password);
       console.log("logged in as employee: " + this.onAdminSubmit());
-      this.id = this.authenticationService.getEmpId()
       if (this.onAdminSubmit() === true) {
-        this.backupId = parseInt(sessionStorage.getItem('empId'));
-        // not passing in params, but ready to:
-        this.id = (this.id !== (null || undefined) ? this.id : this.backupId)
+        setTimeout(() => {
+        this.id = this.authenticationService.getEmpId();
         console.log("emp liftoff: " + this.id);
         this.router.navigate([`vetLanding`]);
+      }, 1000);
       } else {
-        this.logout();
+        this.router.navigate([`login`]);
+        this.errorMessage = "Oops, wrong email or password!";
       }
 
     } else if (!this.admin) {
-      console.log(this.email);
       this.authenticationService.authenticateCust(this.email, this.password);
       console.log("logged in as customer: " + this.onLoginSubmit());
-      this.id = this.authenticationService.getCustId()
+
       if (this.onLoginSubmit() === true) {
         setTimeout(() => {
-          this.backupId = parseInt(sessionStorage.getItem('custId'));
-          this.id = (this.id !== (null || undefined) ? this.id : this.backupId)
+          this.id = this.authenticationService.getCustId();
           console.log("cust liftoff: " + this.id);
           this.router.navigate([`clients/${this.id}`]);
         }, 1000);
-
       } else {
-        this.logout();
+        this.router.navigate([`login`]);
+        this.errorMessage = "Oops, wrong email or password!";
       }
     }
   }
@@ -87,9 +81,7 @@ export class LoginComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.deleteSession();
+    this.authenticationService.logout();
     this.errorMessage = '';
-    // this.ngOnInit();
-
   }
 }
