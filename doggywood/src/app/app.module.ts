@@ -33,7 +33,7 @@ import { DatePickerComponent } from './layout/date-picker/date-picker.component'
 import { EmployeesService } from './services/employees.service';
 import { ClientsService } from './services/clients.service';
 import { PetsService } from './services/pets.service';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './services/auth/authentication.service';
 import { VacCreateComponent } from './components/vac-create/vac-create.component';
 import { AuthGuardService } from './services/auth/auth.guard.service';
 import { ErrorInterceptorService } from './services/auth/error.interceptor.service';

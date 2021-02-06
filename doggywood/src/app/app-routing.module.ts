@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from './services/auth/auth.guard.service';
 
 import { ClientsComponent } from './components/cli/clients/clients.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -17,24 +18,24 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent  },
-  { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent},
-  { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent},
+  { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent, canActivate: [ AuthGuardService ] },
+  { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent, canActivate: [ AuthGuardService ] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent},
 
   // { path: 'clients', component: ClientsComponent },
-  { path: 'clients/:id', component: ClientsComponent },
-  { path: 'petCreate', component: PetCreateComponent},
-  { path: 'appt/:apptId', component: ApptComponent},
-  { path: 'apptCreate', component: ApptCreateComponent},
+  { path: 'clients/:id', component: ClientsComponent, canActivate: [ AuthGuardService ]  },
+  { path: 'petCreate', component: PetCreateComponent, canActivate: [ AuthGuardService ] },
+  { path: 'appt/:apptId', component: ApptComponent, canActivate: [ AuthGuardService ] },
+  { path: 'apptCreate', component: ApptCreateComponent, canActivate: [ AuthGuardService ] },
 
-  { path: 'vetLogin', component: EmpVetLoginComponent},
-  { path: 'vetLanding', component: VetLandingComponent},
-  { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent},
-  { path: 'recordCreate', component: VacCreateComponent},
+  { path: 'vetLogin', component: EmpVetLoginComponent },
+  { path: 'vetLanding', component: VetLandingComponent, canActivate: [ AuthGuardService ] },
+  { path: 'vetPetProfile/:animalId', component: VetPetProfileComponent, canActivate: [ AuthGuardService ] },
+  { path: 'recordCreate', component: VacCreateComponent , canActivate: [ AuthGuardService ] },
 
   /* catch-all */
-  { path: '*', component: HomePageComponent}
+  { path: '*', component: HomePageComponent }
   // { path: 'admin/:userId', component: EmployeesComponent }
   // { path: 'clients/:userId', component: ClientsComponent }
 ];
