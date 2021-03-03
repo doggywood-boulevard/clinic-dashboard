@@ -8,6 +8,7 @@ import {
   HttpHeaders,
   HttpErrorResponse,
   HttpClient,
+  JsonpClientBackend,
 } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
@@ -33,7 +34,7 @@ export class AuthenticationService {
   public empObject: Employee;
   public empId: number;
 
-  loggedIn = false;
+  loggedIn: string;
   object: any;
   url = `${environment.baseUrl}/customer-welcome/profile`;
   emp_url = `${environment.baseUrl}/employee-welcome/profile`;
@@ -66,15 +67,13 @@ export class AuthenticationService {
     this.postCustomerAuth(email, password).subscribe(
       (response) => {
         this.custObject = response;
-        if (this.custObject !== (null || undefined)) {
-          localStorage.setItem("cust", JSON.stringify(this.custObject));
-        }
+        console.log("Customer: "+ this.custObject);
       },
       (response) => {
         console.log("subscribeERROR: " + response.error);
-        this.custObject = null;
       }
     );
+    this.custObject = JSON.parse(localStorage.getItem("cust"));
     return this.custObject !== null ? true : false;
   }
 
@@ -83,19 +82,18 @@ export class AuthenticationService {
     this.postEmployeeAuth(email, password).subscribe(
       (response) => {
         this.empObject = response;
-        if (this.empObject !== (null || undefined)) {
-          localStorage.setItem("emp", JSON.stringify(this.empObject));
-        }
+        console.log("Employee: "+ this.empObject);
       },
       (response) => {
         console.log("subscribeERROR: " + response.error);
-        this.empObject = null;
       }
     );
+    this.empObject = JSON.parse(localStorage.getItem("emp"));
     return this.empObject !== null ? true : false;
   }
 
   public getCustId() {
+    this.custObject = JSON.parse(localStorage.getItem("cust"));
     console.log("get custId:" + this.custObject.id);
     return this.custObject.id;
   }
@@ -125,7 +123,8 @@ export class AuthenticationService {
         map((cust) => {
           localStorage.setItem("cust", JSON.stringify(cust));
           this.custSubject.next(cust);
-          return cust;
+          this.custObject = cust;
+          return this.custObject;
         })
       );
   }
@@ -141,19 +140,20 @@ export class AuthenticationService {
       map((emp) => {
         localStorage.setItem("emp", JSON.stringify(emp));
         this.empSubject.next(emp);
-        return emp;
+        this.empObject = emp;
+        return this.empObject;
       })
     );
   }
 
   // verify Logged in
   public isCustLoggedIn() {
-    let cust = localStorage.getItem("cust");
-    return !(cust === null); // i.e. true
+    this.custObject = JSON.parse(localStorage.getItem("cust"));
+    return !(this.custObject === null); // i.e. true
   }
   public isEmpLoggedIn() {
-    let emp = localStorage.getItem("emp");
-    return !(emp === null); // i.e. true
+    this.empObject  = JSON.parse(localStorage.getItem("emp"));
+    return !(this.empObject  === null); // i.e. true
   }
 
   public logout() {
