@@ -14,7 +14,7 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
 export class LoginComponent implements OnInit {
   isLoginPage:boolean;
   panelTitle: string;
-
+  loggedIn: boolean;
   adminLogin:string = 'Admin Login';
   message: string;
   admin: boolean = false;
@@ -33,32 +33,38 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     if (this.admin) {
-      this.authenticationService.authenticateEmp(this.email, this.password);
-      console.log("logged in as employee: " + this.onAdminSubmit());
-      if (this.onAdminSubmit() === true) {
+      this.loggedIn = this.authenticationService.authenticateEmp(this.email, this.password);
+      console.log("logged in as employee: " + this.loggedIn );
+      if (this.loggedIn === true) {
         setTimeout(() => {
         this.id = this.authenticationService.getEmpId();
         console.log("emp liftoff: " + this.id);
         this.router.navigate([`vetLanding`]);
-      }, 1000);
+      }, 1500);
       } else {
         this.router.navigate([`login`]);
         this.errorMessage = "Oops, wrong email or password!";
       }
 
     } else if (!this.admin) {
-      this.authenticationService.authenticateCust(this.email, this.password);
-      console.log("logged in as customer: " + this.onLoginSubmit());
+      this.loggedIn = this.authenticationService.authenticateCust(this.email, this.password);
+      console.log("logged in as customer: " + this.loggedIn);
 
-      if (this.onLoginSubmit() === true) {
+      if (this.loggedIn === true) {
         setTimeout(() => {
           this.id = this.authenticationService.getCustId();
           console.log("cust liftoff: " + this.id);
           this.router.navigate([`clients/${this.id}`]);
-        }, 1000);
+        }, 1500);
       } else {
-        this.router.navigate([`login`]);
+        // this.router.navigate([`login`]);
+        console.log("not logged in!");
         this.errorMessage = "Oops, wrong email or password!";
+        setTimeout(() => {
+          console.log("errorWaiting");
+          this.errorMessage = '';
+        }, 2000);
+        this.authenticationService.logout();
       }
     }
   }
