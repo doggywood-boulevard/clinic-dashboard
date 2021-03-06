@@ -1,4 +1,4 @@
 no,username,password,expectedMessage,description
-1,customer1@gmail.com,password,Your email is invalid!,not valid email
-2,customer2@gmail.com,password,Your password is invalid!,incorrect password
-3,customer3@gmail.com,password,Your username is missing!,empty username
+1,customer1@gmail.com,password,Your password is valid,valid email
+2,customer2@gmail.com,password,Your password is valid,valid email
+3,customer3@gmail.com,password,Your password is valid,valid email
