@@ -16,7 +16,7 @@ public class PositiveLogInTestsDataProvider extends TestUtilities {
 
 //	@Parameters({ "username", "password", "expectedMessage" })
 	@Test(priority = 1, dataProvider="csvReader", dataProviderClass = CsvDataProviders.class)
-//	public void negativeTest(String username, String password, String expectedErrorMessage) {
+//	public void positiveLogInTest(String username, String password, String expectedErrorMessage) {
 	public void positiveLogInTest(Map<String, String> testData) { 
 		
 		// incoming data
@@ -35,9 +35,7 @@ public class PositiveLogInTestsDataProvider extends TestUtilities {
 		// Click on Form Authentication link
 		LoginPage loginPage = welcomePage.clickFormAuthenticationLink();
 
-		// execute positive login
-		loginPage.positiveLogIn(username, password);
-		// execute log in
+		// execute positive login		 
 		SecureAreaPage secureAreaPage = loginPage.logIn(username, password);
 		
 		sleep(1500);
