@@ -24,7 +24,7 @@
             <button type="submit" id="submit-button" class="btn btn-primary login">&nbsp;&nbsp;SUBMIT&nbsp; </button>
             <br />
             <hr>
-            <div class="alert alert-warning" *ngIf="errorMessage !=''">{{errorMessage}}</div>
+            <div class="alert alert-warning" id="errorMessage" *ngIf="errorMessage !=''">{{errorMessage}}</div>
 
         <span (click)="adminButton()" class="links admin-login"
             *ngIf="!authenticationService.isCustLoggedIn() && !authenticationService.isEmpLoggedIn()">

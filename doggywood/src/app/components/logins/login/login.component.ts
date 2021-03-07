@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Navigation } from '@angular/router';
-import { FormBuilder, FormGroup, FormArray, Validators, NgForm } from '@angular/forms';
-import { Customer } from 'src/app/models/customer';
-import { ClientsService } from '../../../services/clients.service';
-import { AuthenticationService } from 'src/app/services/auth/authentication.service';
-import { FooterComponent } from 'src/app/layout/footer/footer.component';
+import { Component, OnInit } from "@angular/core";
+import { Router  } from "@angular/router";
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  Validators,
+  NgForm,
+} from "@angular/forms";
+import { AuthenticationService } from "src/app/services/auth/authentication.service";
+import { first } from "rxjs/operators";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-  isLoginPage:boolean;
+  loading: boolean = false;
+  returnUrl: string;
+
+  isLoginPage: boolean;
   panelTitle: string;
   loggedIn: boolean;
-  adminLogin:string = 'Admin Login';
+  adminLogin: string = "Admin Login";
   message: string;
   admin: boolean = false;
   email: string;
@@ -23,72 +30,92 @@ export class LoginComponent implements OnInit {
   public backupId: number;
   password: string;
   validLogin: boolean = false;
-  errorMessage: string = '';
-  constructor(private clientService: ClientsService, public authenticationService: AuthenticationService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  errorMessage: string = "";
+  constructor(
+    public authenticationService: AuthenticationService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.isLoginPage = true;
     this.panelTitle = "CLIENT LOGIN";
+    this.logout();
   }
 
   handleLogin() {
+    // EMPLOYEE LOGIN
     if (this.admin) {
-      this.loggedIn = this.authenticationService.authenticateEmp(this.email, this.password);
-      console.log("logged in as employee: " + this.loggedIn );
-      if (this.loggedIn === true) {
-        setTimeout(() => {
-        this.id = this.authenticationService.getEmpId();
-        console.log("emp liftoff: " + this.id);
-        this.router.navigate([`vetLanding`]);
-      }, 1500);
-      } else {
-        this.router.navigate([`login`]);
-        this.errorMessage = "Oops, wrong email or password!";
-      }
-
+      this.loading = true;
+      this.authenticationService
+        .loginEmp(this.email, this.password)
+        .pipe(first())
+        .subscribe(
+          (data) => {
+            console.log(data);
+            if (data !== null) {
+              this.id = this.authenticationService.getEmpId();
+              console.log("emp liftoff: " + this.id);
+              this.router.navigate([`vetLanding`]);
+              this.loading = false;
+            } else {
+              this.errorMessage = "Oops, wrong email or password!";
+              this.router.navigate(["/login"]);
+              this.errorReset();
+            }
+          },
+          (error) => {
+            console.log("errorLoginWaiting", error);
+          }
+        );
+        // CUSTOMER LOGIN
     } else if (!this.admin) {
-      this.loggedIn = this.authenticationService.authenticateCust(this.email, this.password);
-      console.log("logged in as customer: " + this.loggedIn);
+      this.loading = true;
+      this.authenticationService
+        .loginCust(this.email, this.password)
+        .pipe(first())
+        .subscribe(
+          (data) => {
+            console.log(data);
+            if (data !== null) {
+              this.id = this.authenticationService.getCustId();
+              console.log("cust liftoff: " + this.id);
+              this.router.navigate([`clients/${this.id}`]);
+              this.loading = false;
 
-      if (this.loggedIn === true) {
-        setTimeout(() => {
-          this.id = this.authenticationService.getCustId();
-          console.log("cust liftoff: " + this.id);
-          this.router.navigate([`clients/${this.id}`]);
-        }, 1500);
-      } else {
-        // this.router.navigate([`login`]);
-        console.log("not logged in!");
-        this.errorMessage = "Oops, wrong email or password!";
-        setTimeout(() => {
-          console.log("errorWaiting");
-          this.errorMessage = '';
-        }, 2000);
-        this.authenticationService.logout();
-      }
+            } else {
+              this.errorMessage = "Oops, wrong email or password!";
+              this.router.navigate(["/login"]);
+              this.errorReset();
+            }
+          },
+          (error) => {
+            console.log("errorLoginWaiting", error);
+          }
+        );
     }
   }
+
+  errorReset() {
+    setTimeout(() => {
+      this.logout();
+    }, 2000);
+  }
+
   getId() {
     return this.authenticationService.getCustId();
   }
-  // returns true if email/password in Employee DB
-  onAdminSubmit() {
-    return this.authenticationService.authenticateEmp(this.email, this.password);
-  }
-
-  // returns true if email/password in Customer DB
-  onLoginSubmit() {
-    return this.authenticationService.authenticateCust(this.email, this.password);
-  }
 
   adminButton() {
-    this.admin = (this.admin === true) ? false : true;
-    this.adminLogin = (this.admin === true) ? 'Client Login' : 'Admin Login';
-    this.panelTitle = (this.admin === true) ? "ADMINISTRATION" : "CLIENT LOGIN";
+    this.admin = this.admin === true ? false : true;
+    this.adminLogin = this.admin === true ? "Client Login" : "Admin Login";
+    this.panelTitle = this.admin === true ? "ADMINISTRATION" : "CLIENT LOGIN";
   }
 
   logout() {
     this.authenticationService.logout();
-    this.errorMessage = '';
+    this.loading = false;
+    this.errorMessage = "";
+    this.email = "";
+    this.password = "";
   }
 }

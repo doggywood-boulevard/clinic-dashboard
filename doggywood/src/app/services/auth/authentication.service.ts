@@ -29,7 +29,6 @@ export class AuthenticationService {
   public custObject: Customer; // session OBJECT
   public custId: number;
 
-
   private empSubject: BehaviorSubject<Employee>;
   public empObject: Employee;
   public empId: number;
@@ -62,35 +61,33 @@ export class AuthenticationService {
   public get empValue(): Employee {
     return this.empSubject.value;
   }
-  public authenticateCust(email, password) {
-    // CHECK DB CUST TABLE
-    this.postCustomerAuth(email, password).subscribe(
-      (response) => {
-        this.custObject = response;
-        console.log("Customer: "+ this.custObject);
-      },
-      (response) => {
-        console.log("subscribeERROR: " + response.error);
-      }
-    );
-    this.custObject = JSON.parse(localStorage.getItem("cust"));
-    return this.custObject !== null ? true : false;
+
+  loginCust(email: string, password: string): Observable<Customer> {
+    return this.http
+      .post<Customer>(`${this.url}/login`, { email, password })
+      .pipe(
+        map((cust) => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem("cust", JSON.stringify(cust));
+          this.custSubject.next(cust);
+          return cust;
+        })
+      );
   }
 
-  public authenticateEmp(email, password) {
-    // CHECK DB EMP TABLE
-    this.postEmployeeAuth(email, password).subscribe(
-      (response) => {
-        this.empObject = response;
-        console.log("Employee: "+ this.empObject);
-      },
-      (response) => {
-        console.log("subscribeERROR: " + response.error);
-      }
-    );
-    this.empObject = JSON.parse(localStorage.getItem("emp"));
-    return this.empObject !== null ? true : false;
+  loginEmp(email: string, password: string): Observable<Employee> {
+    return this.http
+      .post<Employee>(`${this.emp_url}/login`, { email, password })
+      .pipe(
+        map((emp) => {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem("emp", JSON.stringify(emp));
+          this.empSubject.next(emp);
+          return emp;
+        })
+      );
   }
+
 
   public getCustId() {
     this.custObject = JSON.parse(localStorage.getItem("cust"));
@@ -110,50 +107,14 @@ export class AuthenticationService {
       .subscribe((data) => (this.custObject = data));
   }
 
-  public postCustomerAuth(
-    email: string,
-    password: string
-  ): Observable<Customer> {
-    return this.http
-      .post<Customer>(`${this.url}/login`, {
-        email,
-        password,
-      })
-      .pipe(
-        map((cust) => {
-          localStorage.setItem("cust", JSON.stringify(cust));
-          this.custSubject.next(cust);
-          this.custObject = cust;
-          return this.custObject;
-        })
-      );
-  }
-  public postEmployeeAuth(
-    email: string,
-    password: string
-  ): Observable<Employee> {
-    return this.http.post<Employee>(`${this.emp_url}/login`, {
-      email,
-      password
-    })
-    .pipe(
-      map((emp) => {
-        localStorage.setItem("emp", JSON.stringify(emp));
-        this.empSubject.next(emp);
-        this.empObject = emp;
-        return this.empObject;
-      })
-    );
-  }
-
   // verify Logged in
   public isCustLoggedIn() {
     this.custObject = JSON.parse(localStorage.getItem("cust"));
     return !(this.custObject === null); // i.e. true
   }
   public isEmpLoggedIn() {
-    this.empObject  = JSON.parse(localStorage.getItem("emp"));
-    return !(this.empObject  === null); // i.e. true
+    this.empObject = JSON.parse(localStorage.getItem("emp"));
+    return !(this.empObject === null); // i.e. true
   }
 
   public logout() {
@@ -161,7 +122,5 @@ export class AuthenticationService {
     localStorage.removeItem("emp");
     this.custSubject.next(null);
     this.empSubject.next(null);
-    this.router.navigate(["/login"]);
   }
-
 }
