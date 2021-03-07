@@ -5,6 +5,7 @@ import java.util.Map;
 import org.testng.Assert;
 //import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.doggywood.selenium.base.TestUtilities;
 import com.doggywood.selenium.pages.LoginPage;
@@ -27,6 +28,7 @@ public class PositiveLogInTestsDataProvider extends TestUtilities {
 		
 		
 		log.info("Starting positiveTest: " + no + " for " + description);
+		SoftAssert softAssert = new SoftAssert();
 
 		// open main page
 		WelcomePage welcomePage = new WelcomePage(driver, log);
@@ -41,10 +43,11 @@ public class PositiveLogInTestsDataProvider extends TestUtilities {
 		sleep(1500);
 		// Verifications
 		// New page url is expected
-		Assert.assertEquals(secureAreaPage.getCurrentUrl(), secureAreaPage.getBasePageUrl() + no);
+		softAssert.assertEquals(secureAreaPage.getCurrentUrl(), secureAreaPage.getBasePageUrl() + no);
 
 		// log out button is visible
-		Assert.assertTrue(secureAreaPage.isLogOutButtonVisible(), "LogOut Button is not visible.");
+		softAssert.assertTrue(secureAreaPage.isLogOutButtonVisible(), "LogOut Button is not visible.");
 
+		softAssert.assertAll();
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 import org.testng.Assert;
 //import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.doggywood.selenium.base.TestUtilities;
 import com.doggywood.selenium.pages.LoginPage;
@@ -27,6 +28,7 @@ public class NegativeLogInTestsDataProvider extends TestUtilities {
 		
 		
 		log.info("Starting negativeTest: " + no + " for " + description);
+		SoftAssert softAssert = new SoftAssert();
 
 		// open main page
 		WelcomePage welcomePage = new WelcomePage(driver, log);
@@ -43,6 +45,8 @@ public class NegativeLogInTestsDataProvider extends TestUtilities {
 		String message = loginPage.getErrorMessageText();
 
 		// Verification
-		Assert.assertTrue(message.contains(expectedErrorMessage), "Message doesn't contain expected text.");
+		softAssert.assertTrue(message.contains(expectedErrorMessage), "Message doesn't contain expected text.");
+
+		softAssert.assertAll();
 	}
 }
