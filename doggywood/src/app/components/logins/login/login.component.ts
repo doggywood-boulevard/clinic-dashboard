@@ -18,36 +18,43 @@ import { first } from "rxjs/operators";
 export class LoginComponent implements OnInit {
   loading: boolean = false;
   returnUrl: string;
+  form: FormGroup;
+  submitted = false;
 
-  isLoginPage: boolean;
-  panelTitle: string;
-  loggedIn: boolean;
+  panelTitle: string;c
   adminLogin: string = "Admin Login";
-  message: string;
   admin: boolean = false;
   email: string;
   public id: number;
-  public backupId: number;
   password: string;
-  validLogin: boolean = false;
   errorMessage: string = "";
   constructor(
     public authenticationService: AuthenticationService,
+    private formBuilder: FormBuilder,
     private router: Router,
   ) {}
 
   ngOnInit() {
-    this.isLoginPage = true;
+    this.form = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]});
+
     this.panelTitle = "CLIENT LOGIN";
     this.logout();
   }
 
+  get f() { return this.form.controls; }
+
   handleLogin() {
+        this.submitted = true;
+        if (this.form.invalid) {
+          return;
+      }
+      this.loading = true;
     // EMPLOYEE LOGIN
     if (this.admin) {
-      this.loading = true;
       this.authenticationService
-        .loginEmp(this.email, this.password)
+        .loginEmp(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           (data) => {
@@ -56,7 +63,6 @@ export class LoginComponent implements OnInit {
               this.id = this.authenticationService.getEmpId();
               console.log("emp liftoff: " + this.id);
               this.router.navigate([`vetLanding`]);
-              this.loading = false;
             } else {
               this.errorMessage = "Oops, wrong email or password!";
               this.router.navigate(["/login"]);
@@ -67,11 +73,12 @@ export class LoginComponent implements OnInit {
             console.log("errorLoginWaiting", error);
           }
         );
+        this.loading = false;
+
         // CUSTOMER LOGIN
     } else if (!this.admin) {
-      this.loading = true;
       this.authenticationService
-        .loginCust(this.email, this.password)
+        .loginCust(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
           (data) => {
@@ -80,7 +87,6 @@ export class LoginComponent implements OnInit {
               this.id = this.authenticationService.getCustId();
               console.log("cust liftoff: " + this.id);
               this.router.navigate([`clients/${this.id}`]);
-              this.loading = false;
 
             } else {
               this.errorMessage = "Oops, wrong email or password!";
@@ -92,6 +98,7 @@ export class LoginComponent implements OnInit {
             console.log("errorLoginWaiting", error);
           }
         );
+        this.loading = false;
     }
   }
 
@@ -113,9 +120,6 @@ export class LoginComponent implements OnInit {
 
   logout() {
     this.authenticationService.logout();
-    this.loading = false;
     this.errorMessage = "";
-    this.email = "";
-    this.password = "";
   }
 }

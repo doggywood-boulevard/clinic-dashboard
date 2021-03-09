@@ -1,6 +1,12 @@
-span.links:hover {
+a.links {
+  float:right;
+  color:#0056b3;
+}
+
+a.links:hover {
     cursor: pointer;
     text-decoration: none;
+    text-decoration: underline;
 }
 
 h5.panel-title {
