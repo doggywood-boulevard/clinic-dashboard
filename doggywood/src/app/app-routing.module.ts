@@ -5,6 +5,8 @@ import { AuthGuardService } from './services/auth/auth.guard.service';
 import { ClientsComponent } from './components/cli/clients/clients.component';
 import { LoginComponent } from './components/logins/login/login.component';
 import { RegisterComponent } from './components/logins/register/register.component';
+
+import { ProfileComponent } from './components/logins/profile/profile.component';
 import { PetCreateComponent } from './components/pet-create/pet-create.component';
 import { ApptComponent } from './components/appt/appt.component';
 import { ApptCreateComponent } from './components/appt-create/appt-create.component';
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'cliPetProfile/:animalId', component: CliPetProfileComponent, canActivate: [ AuthGuardService ] },
   { path: 'cliPetRecord/:animalId', component: CliPetRecordComponent, canActivate: [ AuthGuardService ] },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+
   { path: 'login', component: LoginComponent},
 
   // { path: 'clients', component: ClientsComponent },

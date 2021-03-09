@@ -26,7 +26,7 @@ import { AuthenticationService } from 'src/app/services/auth/authentication.serv
 })
 export class VetLandingComponent implements OnInit {
   eid: number;
-  welcome: string;
+  panelTitle: string = "Welcome, ";
   object: string;
   email: string;
 

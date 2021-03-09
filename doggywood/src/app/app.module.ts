@@ -37,6 +37,7 @@ import { AuthenticationService } from './services/auth/authentication.service';
 import { VacCreateComponent } from './components/vac-create/vac-create.component';
 import { AuthGuardService } from './services/auth/auth.guard.service';
 import { ErrorInterceptorService } from './services/auth/error.interceptor.service';
+import { ProfileComponent } from './components/logins/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ErrorInterceptorService } from './services/auth/error.interceptor.servi
     NavComponent,
     FooterComponent,
     DatePickerComponent,
-    VacCreateComponent
+    VacCreateComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
