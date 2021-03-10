@@ -8,7 +8,7 @@
       data-toggle="modal"
       data-target="#editClientModal"
     >
-      Edit Client Profile
+      Edit Profile
     </button>
   </div>
 
@@ -37,16 +37,26 @@
           </button>
         </div>
         <div class="modal-body">
+          <form #registerForm="ngForm">
+            <!-- (ngSubmit)="editCustomer()" -->
+            <div class="form-group">
+              <label for="selectClient">Select a Client</label>
+              <select
+                (change)="getCustomer()"
+                class="form-control"
+                id="selectClient"
+                [(ngModel)]="custId"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option
+                  [value]="customer.id"
+                  *ngFor="let customer of customers"
+                >
+                  {{ customer.firstName }} {{ customer.lastName }}
+                </option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label for="selectClient">Select a Client</label>
-            <select (change)="getClient()" class="form-control" id="selectClient" [(ngModel)]="custId">
-              <option [value]="customer.id" *ngFor="let customer of customers">{{customer.firstName}}
-                {{customer.lastName}}</option>
-            </select>
-          </div>
-
-          <form #registerForm="ngForm" (ngSubmit)="editCustomer()">
             <div class="panel panel-primary" *ngIf="customer">
               <div class="panel-heading">
                 <h3 class="panel-title">{{ panelTitle }}</h3>
@@ -54,8 +64,7 @@
               </div>
 
               <div class="panel-body">
-                <div
-                  class="form-group" >
+                <div class="form-group">
                   <label for="customerName" class="control-label"
                     >First Name<span class="required"> *</span></label
                   >
@@ -63,19 +72,18 @@
                     id="firstName"
                     required
                     name="firstName"
+                    [ngModelOptions]="{ standalone: true }"
                     [(ngModel)]="customer.firstName"
                     type="text"
                     class="form-control"
                     #name="ngModel"
                   />
-
                 </div>
 
-                <div
-                  class="form-group"  >
+                <div class="form-group">
                   <label for="customerName" class="control-label"
-                    >Last Name </label
-                  >
+                    >Last Name
+                  </label>
                   <input
                     id="lastName"
                     required
@@ -86,11 +94,8 @@
                     #name="ngModel"
                   />
                 </div>
-                <div
-                  class="form-group"  >
-                  <label for="email" class="control-label"
-                    >Email </label
-                  >
+                <div class="form-group">
+                  <label for="email" class="control-label">Email </label>
                   <input
                     id="email"
                     name="email"
@@ -101,8 +106,7 @@
                   />
                 </div>
 
-                <div
-                  class="form-group" >
+                <div class="form-group">
                   <label for="password" class="control-label"
                     >password<span class="required"> *</span></label
                   >
@@ -117,10 +121,10 @@
                   />
                 </div>
 
-                <div class="form-group" >
+                <div class="form-group">
                   <label for="phone" class="control-label"
-                    >Customer Phone </label
-                  >
+                    >Customer Phone
+                  </label>
                   <input
                     id="phone"
                     name="phone"
@@ -131,11 +135,8 @@
                   />
                 </div>
 
-                <div
-                  class="form-group" >
-                  <label for="cusUrl" class="control-label"
-                    >Photo URL </label
-                  >
+                <div class="form-group">
+                  <label for="cusUrl" class="control-label">Photo URL </label>
                   <input
                     id="cusUrl"
                     name="cusUrl"
@@ -157,13 +158,22 @@
               </div>
 
               <button
-                type="submit"
+                type="text"
+                (click)="editCustomer()"
                 data-dismiss="modal"
                 id="register-button"
                 class="btn btn-primary register"
               >
                 SUBMIT
               </button>
+              <!-- <button
+                type="submit"
+                data-dismiss="modal"
+                id="register-button"
+                class="btn btn-primary register"
+              >
+                SUBMIT
+              </button> -->
             </div>
           </form>
         </div>
