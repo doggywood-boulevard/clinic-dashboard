@@ -33,6 +33,7 @@ export class ClientsComponent implements OnInit {
   cusUrl: string;
   test: any;
   panelTitle:string = 'Welcome';
+  today: any;
 
   // public customerParam: Customer;
   public customer: Customer;
@@ -47,10 +48,30 @@ export class ClientsComponent implements OnInit {
     this.petService.getPetByCust(this.id).subscribe(data=>this.petList = data);
    }
   ngOnInit() {
-
+    this.displayDate();
     this.custObj=JSON.parse(localStorage.getItem("cust"));
     this.custId = this.custObj.id
     console.log(this.custId);
+
+  }
+
+displayDate() {
+  this.today = new Date();
+  var dd:any = this.today.getDate();
+  var mm:any = this.today.getMonth()+1;
+  var yyyy:any = this.today.getFullYear();
+  if(dd<10)
+  {
+      dd ='0'+ dd;
+  }
+
+  if(mm<10)
+  {
+      mm='0'+mm;
+  }
+
+  this.today = dd+'-'+mm+'-'+yyyy;
+  console.log(this.today);
 
   }
   // getCustomer(id: number) {

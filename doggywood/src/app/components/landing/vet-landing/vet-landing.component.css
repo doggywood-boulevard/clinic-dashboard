@@ -1,7 +1,14 @@
 .table-striped{
-    margin: 20px;
+    margin: 20px 0px;
 }
 
 .table-btn{
-    margin: 5px;
+    margin: 5px 0px;
+}
+
+.button-fix {
+  height:52px;
+}
+.right {
+  text-align:right;
 }

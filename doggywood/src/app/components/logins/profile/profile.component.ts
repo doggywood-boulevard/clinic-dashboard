@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ClientsService } from "../../../services/clients.service";
 import { Router, ActivatedRoute, Navigation } from "@angular/router";
 import {
@@ -16,19 +16,18 @@ import { Customer } from "src/app/models/customer";
   templateUrl: "./profile.component.html",
   styleUrls: ["./profile.component.css"],
 })
-
 export class ProfileComponent implements OnInit {
   loading = false;
   submitted = false;
-  // registerForm: NgForm;
-  form: FormGroup;
-  //  @ViewChild('registerForm')
+  // form: FormGroup;
+  @ViewChild("registerForm", { static: true }) editUserForm: NgForm;
+
   panelTitle: string;
 
   public customersList = [];
-  customers :Customer[] = [];
+  customers: Customer[] = [];
   customer: Customer; //;
-  custId :number;
+  custId: number;
   // registerForm: FormGroup;
   successMessage: string;
 
@@ -41,28 +40,42 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCustomers();
+    this.editUserForm.reset();
   }
-
-  editCustomer() {};
 
   getAllCustomers() {
     this.clientService.getCustomers().subscribe(
-      response => {
+      (response) => {
         console.log(response);
         this.customers = response;
       },
-      response => {
+      (response) => {
         console.log("Failed to get all customers");
-      });
+      }
+    );
   }
 
-  getClient() {
+  getCustomer() {
     this.clientService.getCustomer(this.custId).subscribe(
-      response => {
+      (response) => {
         this.customer = response;
       },
-      response => {
+      (response) => {
         console.log("Failed to find customer");
-      });
+      }
+    );
+  }
+
+  editCustomer() {
+    console.log("Will add updates for ", this.customer.firstName);
+    this.clientService.updateCustomer(this.customer).subscribe(
+      (response) => {
+        this.editUserForm.reset();
+        console.log("Added updates for ", this.customer.firstName);
+      },
+      (response) => {
+        console.log("Failed to get all customers");
+      }
+    );
   }
 }
