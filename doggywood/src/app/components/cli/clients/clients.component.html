@@ -58,7 +58,7 @@
 </div>
 <br />
 <div class="container">
-  <!-- <app-profile class="btn btn-info button"></app-profile> -->
+  <app-profile class="btn btn-info button"></app-profile>
   <hr />
   <button class="disabled btn btn-info button" routerLink="apptCreate" disabled>
     Schedule Appointment
@@ -77,9 +77,9 @@
         <th scope="col">Name</th>
         <th scope="col">Breed</th>
         <th scope="col">Weight</th>
-        <th scope="col">Birthday</th>
+        <th scope="col">Age</th>
         <th scope="col">Records</th>
-        <th scope="col">Details</th>
+        <th scope="col">Info</th>
       </tr>
     </thead>
     <tbody>
@@ -97,7 +97,7 @@
             class="btn btn-outline-info table-btn"
             role="button"
             routerLink="../../cliPetRecord/{{ pet.id }}"
-            >View Records</a
+            >View</a
           >
         </td>
         <td>

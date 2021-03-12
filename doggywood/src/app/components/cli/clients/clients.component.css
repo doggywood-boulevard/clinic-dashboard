@@ -15,7 +15,9 @@
 .table-btn {
   margin: 5px;
 }
-
+.table td, .table th {
+  max-width:30rem;
+}
 /*  TEMP DEV  (to see) */
 p.dev {
   color: blue;

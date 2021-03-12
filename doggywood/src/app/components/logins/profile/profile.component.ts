@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { AuthenticationService } from "../../../services/auth/authentication.service";
 import { ClientsService } from "../../../services/clients.service";
 import { Router, ActivatedRoute, Navigation } from "@angular/router";
 import {
@@ -22,7 +23,8 @@ export class ProfileComponent implements OnInit {
   // form: FormGroup;
   @ViewChild("registerForm", { static: true }) editUserForm: NgForm;
 
-  panelTitle: string;
+  clientView: boolean;
+  panelTitle: string = "Edit Client Profile";
 
   public customersList = [];
   customers: Customer[] = [];
@@ -32,6 +34,7 @@ export class ProfileComponent implements OnInit {
   successMessage: string;
 
   constructor(
+    private auth: AuthenticationService,
     private clientService: ClientsService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -39,8 +42,12 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getAllCustomers();
+
     this.editUserForm.reset();
+
+    this.auth.isCustLoggedIn()? this.getMyProfile():this.getAllCustomers();
+    this.auth.isCustLoggedIn()? this.clientView = true:false;
+    this.auth.isCustLoggedIn()? this.panelTitle = "Edit Profile":"Edit Client Profiles";
   }
 
   getAllCustomers() {
@@ -54,7 +61,9 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
+  getMyProfile() {
+    this.customer = this.auth.custValue;
+   }
   getCustomer() {
     this.clientService.getCustomer(this.custId).subscribe(
       (response) => {
@@ -77,5 +86,6 @@ export class ProfileComponent implements OnInit {
         console.log("Failed to get all customers");
       }
     );
+    this.auth.updateLocalStorage();
   }
 }
