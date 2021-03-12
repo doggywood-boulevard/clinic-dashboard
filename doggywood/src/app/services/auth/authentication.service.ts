@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { ClientsService } from "../../services/clients.service";
 import { Customer } from "../../models/customer";
 import { Employee } from "../../models/employee";
 import { BehaviorSubject, Observable, throwError } from "rxjs";
@@ -24,12 +25,14 @@ export class CustomerDataBean {
   providedIn: "root",
 })
 export class AuthenticationService {
+  private customer: Customer;
   private custSubject: BehaviorSubject<Customer>;
   private custObservable: Observable<Customer>;
   public custObject: Customer; // session OBJECT
   public custId: number;
 
   private empSubject: BehaviorSubject<Employee>;
+  private empObservable: Observable<Employee>;
   public empObject: Employee;
   public empId: number;
 
@@ -39,6 +42,7 @@ export class AuthenticationService {
   emp_url = `${environment.baseUrl}/employee-welcome/profile`;
 
   constructor(
+    private clientService: ClientsService,
     private cliLandingService: CliLandingService,
     private http: HttpClient,
     private router: Router
@@ -51,7 +55,7 @@ export class AuthenticationService {
     this.empSubject = new BehaviorSubject<Employee>(
       JSON.parse(localStorage.getItem("emp"))
     );
-    this.custObservable = this.custSubject.asObservable();
+    this.empObservable = this.empSubject.asObservable();
   }
 
   // GETTERS
@@ -60,6 +64,21 @@ export class AuthenticationService {
   }
   public get empValue(): Employee {
     return this.empSubject.value;
+  }
+
+  // UPDATE LOCAL STORAGE AFTER PROFILE CHANGE
+  public updateLocalStorage() {
+    this.clientService.getCustomer(this.getCustId()).subscribe(
+      (response) => {
+        this.customer = response;
+        localStorage.removeItem("cust");
+        localStorage.setItem("cust", JSON.stringify(this.customer));
+        this.custSubject.next(this.customer);
+      },
+      (response) => {
+        console.log("Failed to update local storage");
+      }
+    );
   }
 
   loginCust(email: string, password: string): Observable<Customer> {

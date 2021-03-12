@@ -5,10 +5,10 @@
     <button
       type="button"
       class="btn btn-info"
-      data-toggle="modal"
+      data-toggle="modal"d
       data-target="#editClientModal"
     >
-      Edit Profile
+      {{panelTitle}}
     </button>
   </div>
 
@@ -25,8 +25,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="editClientModalTitle">
-            Edit Client Profile
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{panelTitle}}
           </h5>
+
           <button
             type="button"
             class="close"
@@ -39,7 +40,8 @@
         <div class="modal-body">
           <form #registerForm="ngForm">
             <!-- (ngSubmit)="editCustomer()" -->
-            <div class="form-group">
+
+            <div class="form-group" *ngIf="!clientView">
               <label for="selectClient">Select a Client</label>
               <select
                 (change)="getCustomer()"

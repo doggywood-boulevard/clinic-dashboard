@@ -1,3 +1,7 @@
+.table-head {
+  text-align: center;
+  font-size:smaller;
+}
 .table-striped{
     margin: 20px 0px;
 }
