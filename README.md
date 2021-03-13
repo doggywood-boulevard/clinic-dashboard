@@ -1,9 +1,8 @@
-<a style="margin-left:20%;" href="http://doggywood.s3-website-us-east-1.amazonaws.com
-">
+<a style="margin-left:20%;"href="http://doggywood.dog.s3-website-us-east-1.amazonaws.com/">
 <img width="200" src="https://doggywood.s3.amazonaws.com/assets/style6.png" title="Doggywood_Veterinary_App" alt="Doggywood_Veterinary_Image"></a>
 
 ### Doggywood Veterinarian Data Tracker 
-> <a style="text-decoration:none;color:black;" href="http://doggywood.s3-website-us-east-1.amazonaws.com">Appointment and Pet Records Management URL</a>
+> <a style="text-decoration:none;color:black;"href="http://doggywood.dog.s3-website-us-east-1.amazonaws.com">Appointment and Pet Records Management URL</a>
 
 > Full-Stack application that manages clients' and employees' appointments and records
  
@@ -96,16 +95,16 @@ As a system, it will notify us if the vaccination record will expire before the 
  
 ** Software **
 
-* [Oracle]: <https://www.oracle.com/database/technologies/112010-win64soft.html>
-* [AWS-RDS]: <https://aws.amazon.com/rds/>
-* [AWS-S3]: <https://aws.amazon.com/s3/>
-* [Angular]: <https://angular.io/>
-* [BS4]: <https://numpy.org/>
-* [Selenium]: <https://selenium.dev/documentation/en/>
-* [Jenkins]: <https://jenkins.io/> 
-* [CodeBuild]:<https://aws.amazon.com/codebuild/> 
+ [Oracle](https://www.oracle.com/database/technologies/112010-win64soft.html)
+ [AWS-RDS](https://aws.amazon.com/rds/)
+ [AWS-S3](https://aws.amazon.com/s3/)
+ [Angular](https://angular.io/)
+ [BS4](https://numpy.org/)
+ [Selenium](https://selenium.dev/documentation/en/)
+ [Jenkins](https://jenkins.io/)
+ [CodeBuild](https://aws.amazon.com/codebuild/)
    
-  website: [doggywood.io](http://doggywood.s3-website-us-east-1.amazonaws.com/t)
+  website: [doggywood.dog](href="http://doggywood.dog.s3-website-us-east-1.amazonaws.com)
  
 
 #### URLS for Angular/Material:
