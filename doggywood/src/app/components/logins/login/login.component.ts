@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   panelTitle: string;c
-  adminLogin: string = "Admin Login";
+  adminLogin: string = "ADMIN LOGIN";
   admin: boolean = false;
   email: string;
   public id: number;
@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
 
   adminButton() {
     this.admin = this.admin === true ? false : true;
-    this.adminLogin = this.admin === true ? "Client Login" : "Admin Login";
+    this.adminLogin = this.admin === true ? "CLIENT LOGIN" : "ADMIN LOGIN";
     this.panelTitle = this.admin === true ? "ADMINISTRATION" : "CLIENT LOGIN";
   }
 
