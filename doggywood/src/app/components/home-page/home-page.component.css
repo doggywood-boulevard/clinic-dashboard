@@ -10,7 +10,12 @@
 i{
   padding-top:5px;
 }
-
+button#login, button#register {
+  z-index: 100;
+}
+div#login-register {
+  z-index:99;
+}
   /* Bottom left text */
   .bottom-left {
     position: absolute;
@@ -94,7 +99,7 @@ margin: 0 auto;
   /* margin-bottom: 15px; */
 
 }
- 
+
 .card{
   padding: 20px 0px;
   min-height:230px;
@@ -113,7 +118,7 @@ margin: 0 auto;
   text-align:center;
 }
 @media(max-width:767px){
-  .card{ 
+  .card{
   padding: 20px 10px;
     min-height:230px;
     max-height:230px;
@@ -126,13 +131,15 @@ margin: 0 auto;
   }
 }
 
-@media(max-width:574px){ 
+@media(max-width:574px){
   .mobile {
     padding-top:120px;
+
   }
   .mBot{
-    margin-top:40px;
-    /* margin-bottom: 15px; */ 
+
+    /* translate:translateY(-40px); */
+    margin-bottom: 15px;
   }
   .card {
     margin-left:auto;

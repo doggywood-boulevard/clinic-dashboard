@@ -1,12 +1,12 @@
 a.links {
-  float:right;
   color:#0056b3;
+  margin-right:auto;
+  margin-left:auto;
 }
 
 a.links:hover {
     cursor: pointer;
     text-decoration: none;
-    text-decoration: underline;
 }
 
 h5.panel-title {
@@ -20,9 +20,12 @@ div.panel {
 
 .admin-login {
     padding: 5px;
-    text-align: right;
+    text-align: center;
 }
 
 .register-logout {
     float: right;
+}
+.register {
+  float:right;
 }
