@@ -9,7 +9,7 @@ public class LoginPage extends BasePageObject {
 	private By usernameLocator = By.id("email");
 	private By passwordLocator = By.name("password");
 	private By logInButtonLocator = By.id("submit-button");
-	private By errorMessageLocator = By.id("flash");
+	private By errorMessageLocator = By.id("errorMessage");
 
 	// CONSTRUCTOR -don't forget super - to get methods from BasePageObject
 	public LoginPage(WebDriver driver, Logger log) {
