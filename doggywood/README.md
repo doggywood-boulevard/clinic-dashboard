@@ -15,6 +15,10 @@
 
 ### Application Overview
 The mission of the app is to organize and persist health and appointment information relating to clients and the client's pets. The architecture provides a service-based design managing both customers' and receptionists' data-related tasks. The system maintains vaccination records dynamically by tracking expiration dates, with notifications to customers of upcoming vaccination expiries and other information. 
+#### Instructions
+http://34.199.129.2: 
+8090 =>AWS 
+8080 =>LOCAL
 
 #### Purposes
 The veterinarians are able to record notes based off the clients visits, and those notes will be tied to the client's pet in the graphical user interface. The goal of this application is to reduce the workload of data entry on the employees, as well as maintain a structured note system and portable vaccination record for the pets that visit the practice using an intuitive interface.
